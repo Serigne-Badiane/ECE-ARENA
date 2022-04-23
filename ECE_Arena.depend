@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1650727009 source:c:\users\badia\onedrive\documents\github\ece-arena\terrain.c
+	"bib.h"
+
+1650727080 c:\users\badia\onedrive\documents\github\ece-arena\bib.h
+
+1650727085 source:c:\users\badia\onedrive\documents\github\ece-arena\personnage.c
+	"bib.h"
+
+1650727089 source:c:\users\badia\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	"bib.h"
+
