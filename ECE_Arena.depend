@@ -12,3 +12,21 @@
 	<stdlib.h>
 	"bib.h"
 
+1650980950 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+
+1650827521 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+
+1650980979 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+	"bib.h"
+	<allegro.h>
+
+1650827521 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+	"bib.h"
+
+1650827521 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
+	"bib.h"
+
