@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bib.h"
+#include <time.h>
 
 int main()
 {
-    printf("test Victor");
-    printf("test paul");
-    printf("test julien");
+    srand(time(NULL));
+    initialisation();
+
     return 0;
 }
