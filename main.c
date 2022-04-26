@@ -8,6 +8,7 @@ int main()
 {
     srand(time(NULL));
     initialisation();
+    affichage_terrain();
 
     return 0;
 }END_OF_MAIN();

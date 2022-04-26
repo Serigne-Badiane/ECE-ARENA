@@ -12,13 +12,14 @@
 	<stdlib.h>
 	"bib.h"
 
-1650968694 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1650970512 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
+	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1650966779 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+1650970512 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
 1650969877 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
@@ -44,6 +45,27 @@
 	<time.h>
 
 1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650970201 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650970201 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650970729 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

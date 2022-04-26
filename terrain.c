@@ -16,3 +16,14 @@ void initialisation()
     }
 }
 
+void affichage_terrain()
+{
+    while (!key[KEY_ESC])
+    {
+        BITMAP* terrain= load_bitmap("terrain_iso.bmp", NULL);
+        BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+        blit(terrain,buffer,0,0,mouse_x,mouse_y,SCREEN_W,SCREEN_H);
+        draw_sprite(screen, buffer, 0,0);
+    }
+}
+
