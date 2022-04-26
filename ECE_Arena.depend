@@ -20,3 +20,33 @@
 
 1650966779 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
+1650969877 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969858 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
