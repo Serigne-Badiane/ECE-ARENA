@@ -4,10 +4,13 @@
 #include "bib.h"
 #include <time.h>
 
+
+
 int main()
 {
     srand(time(NULL));
     initialisation();
+    init_struct_case();
     affichage_terrain();
 
     return 0;
