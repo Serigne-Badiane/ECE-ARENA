@@ -4,6 +4,14 @@
 #include "bib.h"
 #include <time.h>
 
+
+/*void init_perso()
+{
+
+}*/
+
+
+
 void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
     //rectfill(buffer,150,150,250,250, makecol(0,255,255));
@@ -26,11 +34,12 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     }
 
     int a=8, b=8;
+    int o,z;
     for (var=0; var<nombre_joueurs; var++)
     {
 
         blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);        ///variable de placement initiale a mettre
-        int o,z;
+
         o = mouse_x/34;
         z = mouse_y/34;
         //int matrice_souris[LIGNE][COLONNE];
