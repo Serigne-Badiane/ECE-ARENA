@@ -57,7 +57,7 @@ void init_struct_case()
 
 void affichage_terrain()
 {
-    BITMAP* terrain= load_bitmap("terrain_normal.bmp", NULL);
+    BITMAP* terrain = load_bitmap("terrain_normal.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* type_case[5];
     type_case[0]=load_bitmap("terre.bmp", NULL);
