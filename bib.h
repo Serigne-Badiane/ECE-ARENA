@@ -1,5 +1,7 @@
 #ifndef BIB_H_INCLUDED
 #define BIB_H_INCLUDED
+#define LIGNE 18
+#define COLONNE 24
 
 typedef struct{
     int type;
@@ -9,7 +11,7 @@ typedef struct{
     int largeur;
 }t_case;
 
-t_case matrice_terrain[18][30];
+t_case matrice_terrain[LIGNE][COLONNE];
 
 int addi (int a, int b);
 void initialisation();
