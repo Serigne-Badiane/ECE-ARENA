@@ -71,10 +71,33 @@ void affichage_terrain()
                 {
                      case 1:
                 }*/
+                case_terre(matrice_terrain[8][4].x,matrice_terrain[8][4].y, buffer);
             }
         }
         draw_sprite(screen, buffer, 0,0);
     }
 }
 
-//void case_terre()
+void case_terre(int pos_x, int pos_y, BITMAP* buffer)
+{
+    for(int i=0;i<matrice_terrain[0][0].largeur;i++)
+    {
+        for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
+        {
+            float rougeG= 91-(1*pos_x)+(1*pos_y);
+            float vertG= 121+(1*pos_x)-(1*pos_y);
+            float bleuG= 42-(1*pos_x)+(1*pos_y);
+            putpixel(buffer,pos_x-i,pos_y-j,makecol(rougeG,vertG,bleuG));
+        }
+    }
+    for(int i=0;i<matrice_terrain[0][0].largeur;i++)
+    {
+        for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
+        {
+            float rougeG= 91-(1*pos_x)+(1*pos_y);
+            float vertG= 121+(1*pos_x)-(1*pos_y);
+            float bleuG= 42-(1*pos_x)+(1*pos_y);
+            putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
+        }
+    }
+}
