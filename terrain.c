@@ -84,9 +84,9 @@ void case_terre(int pos_x, int pos_y, BITMAP* buffer)
     {
         for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
         {
-            float rougeG= 91-(1*pos_x)+(1*pos_y);
-            float vertG= 121+(1*pos_x)-(1*pos_y);
-            float bleuG= 42-(1*pos_x)+(1*pos_y);
+            float rougeG= 91-(0.01*pos_x)+(0.01*pos_y);
+            float vertG= 121+(0.01*pos_x)-(0.01*pos_y);
+            float bleuG= 42-(0.01*pos_x)+(0.01*pos_y);
             putpixel(buffer,pos_x-i,pos_y-j,makecol(rougeG,vertG,bleuG));
         }
     }
@@ -94,9 +94,9 @@ void case_terre(int pos_x, int pos_y, BITMAP* buffer)
     {
         for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
         {
-            float rougeG= 91-(1*pos_x)+(1*pos_y);
-            float vertG= 121+(1*pos_x)-(1*pos_y);
-            float bleuG= 42-(1*pos_x)+(1*pos_y);
+            float rougeG= 91-(0.01*pos_x)+(0.01*pos_y);
+            float vertG= 121+(0.01*pos_x)-(0.01*pos_y);
+            float bleuG= 42-(0.01*pos_x)+(0.01*pos_y);
             putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
         }
     }
