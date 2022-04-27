@@ -12,21 +12,93 @@
 	<stdlib.h>
 	"bib.h"
 
-1650980950 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1651061905 D
+
+1651077179 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651061905 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+
+1651061898 193f821a79c14bc3ce6f2591fe2637b453390
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 
-1650827521 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1651067839 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
 1650980979 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	"bib.h"
 	<allegro.h>
 
-1650827521 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+1651067839 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
 	"bib.h"
+	<time.h>
 
-1650827521 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
+1651067839 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
 	"bib.h"
+	<time.h>
+
+1650976701 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+
+1650969877 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969858 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969905 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650970201 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650974117 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651061898 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 

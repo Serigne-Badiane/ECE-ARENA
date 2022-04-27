@@ -1,4 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
 #include "bib.h"
+
 #include <allegro.h>
 
 void menu(){
@@ -44,3 +48,11 @@ void menu(){
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
     }}
+
+#include <time.h>
+
+void afficher()
+{
+    printf("MM");
+}
+
