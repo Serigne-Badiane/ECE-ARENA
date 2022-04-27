@@ -94,7 +94,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                 }
             }
         }
-        draw_sprite(screen, buffer, 0,0);
+        //draw_sprite(screen, buffer, 0,0);
     //}
 }
 

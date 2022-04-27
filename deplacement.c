@@ -14,6 +14,6 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
 
     blit(image,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-    draw_sprite(screen, buffer, 0,0);
+    //draw_sprite(screen, buffer, 0,0);
     //}
 }

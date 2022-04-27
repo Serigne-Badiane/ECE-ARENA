@@ -19,6 +19,7 @@ int main()
     {
     affichage_terrain(terrain,buffer);
     deplacement(terrain,buffer);
+    draw_sprite(screen, buffer, 0,0);
     }
 
     return 0;
