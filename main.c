@@ -15,8 +15,11 @@ int main()
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
     init_struct_case();
+    while (!key[KEY_ESC])
+    {
     affichage_terrain(terrain,buffer);
     deplacement(terrain,buffer);
+    }
 
     return 0;
 }END_OF_MAIN();
