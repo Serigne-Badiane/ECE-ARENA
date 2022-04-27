@@ -66,8 +66,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
     type_case[2]=load_bitmap("montagne.bmp", NULL);
     type_case[3]=load_bitmap("sable.bmp", NULL);
     type_case[4]=load_bitmap("arbre.bmp", NULL);
-    //while (!key[KEY_ESC])
-    //{
+
         blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
         for (int i=0;i<LIGNE;i++)
         {
@@ -95,7 +94,6 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
             }
         }
         //draw_sprite(screen, buffer, 0,0);
-    //}
 }
 
 void case_terre(int pos_x, int pos_y, BITMAP* buffer)
