@@ -57,7 +57,7 @@ void init_struct_case()
 
 void affichage_terrain()
 {
-    BITMAP* terrain= load_bitmap("terrain_iso.bmp", NULL);
+    BITMAP* terrain= load_bitmap("terrain_normal.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     while (!key[KEY_ESC])
     {
