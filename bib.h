@@ -17,9 +17,7 @@ int addi (int a, int b);
 void initialisation();
 void afficher();
 void init_struct_case();
-void affichage_terrain();
-void deplacement();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
-
+void deplacement(BITMAP* terrain, BITMAP* buffer);
 
 #endif // BIB_H_INCLUDED
