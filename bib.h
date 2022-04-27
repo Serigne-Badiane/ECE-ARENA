@@ -9,7 +9,7 @@ typedef struct{
     int largeur;
 }t_case;
 
-t_case matrice_terrain[19][21];
+t_case matrice_terrain[18][30];
 
 int addi (int a, int b);
 void initialisation();

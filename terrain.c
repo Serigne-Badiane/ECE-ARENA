@@ -21,35 +21,35 @@ void initialisation()
 
 void init_struct_case()
 {
-    matrice_terrain[0][0].hauteur=23;
-    matrice_terrain[0][0].largeur=40;
-    matrice_terrain[0][0].x=-4;
-    matrice_terrain[0][0].y=13;
+    matrice_terrain[0][0].hauteur=34;
+    matrice_terrain[0][0].largeur=34;
+    matrice_terrain[0][0].x=0;
+    matrice_terrain[0][0].y=0;
     matrice_terrain[0][0].type=rand()%(5-1)+1;
     for (int i=1;i<18;i++)
     {
         matrice_terrain[i][0].hauteur=matrice_terrain[0][0].hauteur;
         matrice_terrain[i][0].largeur=matrice_terrain[0][0].largeur;
-        matrice_terrain[i][0].x=matrice_terrain[i-1][0].x+(2*matrice_terrain[i][0].largeur);
-        matrice_terrain[i][0].y=matrice_terrain[0][0].y;
+        matrice_terrain[i][0].x=matrice_terrain[0][0].x;
+        matrice_terrain[i][0].y=matrice_terrain[i-1][0].y+(matrice_terrain[i][0].hauteur);
         matrice_terrain[i][0].type=rand()%(5-1)+1;
     }
-    for (int j=1;j<20;j++)
+    for (int j=1;j<30;j++)
     {
         matrice_terrain[0][j].hauteur=matrice_terrain[0][0].hauteur;
         matrice_terrain[0][j].largeur=matrice_terrain[0][0].largeur;
-        matrice_terrain[0][j].x=matrice_terrain[0][0].x;
-        matrice_terrain[0][j].y=matrice_terrain[0][j-1].y+(2*matrice_terrain[0][j].hauteur);
+        matrice_terrain[0][j].x=matrice_terrain[0][j-1].x+(matrice_terrain[0][j].largeur);
+        matrice_terrain[0][j].y=matrice_terrain[0][0].y;
         matrice_terrain[0][j].type=rand()%(5-1)+1;
     }
     for (int i=1;i<18;i++)
     {
-        for(int j=1;j<20;j++)
+        for(int j=1;j<30;j++)
         {
             matrice_terrain[i][j].hauteur=matrice_terrain[0][0].hauteur;
             matrice_terrain[i][j].largeur=matrice_terrain[0][0].largeur;
-            matrice_terrain[i][j].x=matrice_terrain[i-1][j].x+(2*matrice_terrain[i][j].largeur);
-            matrice_terrain[i][j].y=matrice_terrain[i][j-1].y+(2*matrice_terrain[i][j].hauteur);
+            matrice_terrain[i][j].x=matrice_terrain[i][j-1].x+(matrice_terrain[i][j].largeur);
+            matrice_terrain[i][j].y=matrice_terrain[i-1][j].y+(matrice_terrain[i][j].hauteur);
             matrice_terrain[i][j].type=rand()%(5-1)+1;
         }
     }
