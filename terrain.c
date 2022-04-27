@@ -4,6 +4,8 @@
 #include "bib.h"
 #include <time.h>
 
+
+
 void initialisation()
 {
     allegro_init();
@@ -55,10 +57,9 @@ void init_struct_case()
     }
 }
 
-void affichage_terrain()
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 {
-    BITMAP* terrain = load_bitmap("terrain_normal.bmp", NULL);
-    BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+
     BITMAP* type_case[5];
     type_case[0]=load_bitmap("terre.bmp", NULL);
     type_case[1]=load_bitmap("mer.bmp", NULL);

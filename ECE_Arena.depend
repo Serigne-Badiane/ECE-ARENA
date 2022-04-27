@@ -1,16 +1,26 @@
 # depslib dependency file v1.0
-1650727009 source:c:\users\badia\onedrive\documents\github\ece-arena\terrain.c
-	"bib.h"
-
-1650727080 c:\users\badia\onedrive\documents\github\ece-arena\bib.h
-
-1650727085 source:c:\users\badia\onedrive\documents\github\ece-arena\personnage.c
-	"bib.h"
-
-1650727089 source:c:\users\badia\onedrive\documents\github\ece-arena\main.c
+1651074770 source:c:\users\badia\onedrive\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
+	<allegro.h>
 	"bib.h"
+	<time.h>
+
+1651074706 c:\users\badia\onedrive\documents\github\ece-arena\bib.h
+
+1650989485 source:c:\users\badia\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651074706 source:c:\users\badia\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 
 1651061905 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
@@ -73,6 +83,20 @@
 	<time.h>
 
 1651074070 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651074684 source:c:\users\badia\onedrive\documents\github\ece-arena\deplacement.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1650969959 source:c:\users\badia\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
