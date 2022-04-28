@@ -2,6 +2,7 @@
 #define BIB_H_INCLUDED
 #define LIGNE 18
 #define COLONNE 24
+#define NB_JOUEURS 4
 
 typedef struct
 {
@@ -20,7 +21,7 @@ typedef struct
     int y;
 }t_joueur;
 
-t_joueur acteur[10];
+t_joueur acteur[NB_JOUEURS];
 
 
 int addi (int a, int b);
