@@ -16,6 +16,8 @@ int main()
 
     init_struct_case();
 
+    init_perso();
+
     while (!key[KEY_ESC])
     {
     affichage_terrain(terrain,buffer);
