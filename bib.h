@@ -11,6 +11,7 @@ typedef struct
     int y;
     int hauteur;
     int largeur;
+    int passage;
 }t_case;
 
 t_case matrice_terrain[LIGNE][COLONNE];
