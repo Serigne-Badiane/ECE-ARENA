@@ -7,6 +7,13 @@
 
 /*void init_perso()
 {
+    int nombre_joueurs=1;
+    for (int var=0; var<nombre_joueurs; var++)
+    {
+        int a=8, b=8;
+        matrice_terrain[b][a].x;
+        matrice_terrain[b][a].y;
+    }
 
 }*/
 
@@ -39,7 +46,6 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     {
 
         blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);        ///variable de placement initiale a mettre
-
         o = mouse_x/34;
         z = mouse_y/34;
         //int matrice_souris[LIGNE][COLONNE];
@@ -58,6 +64,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     a++;
                     textprintf_ex(buffer,font,600,300,makecol(255,0,0),1,"SOURIS 2 : %d %d",o,z);
                     textprintf_ex(buffer,font,500,300,makecol(255,0,0),1,"PION : %d %d",a,b);
+                    clear_bitmap(buffer);
+                    affichage_terrain(terrain,buffer);
                     blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);
                     //rest(50);
                 }
@@ -69,6 +77,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     b++;
                     textprintf_ex(buffer,font,600,300,makecol(255,0,0),1,"SOURIS 2 : %d %d",o,z);
                     textprintf_ex(buffer,font,500,300,makecol(255,0,0),1,"PION : %d %d",a,b);
+                    clear_bitmap(buffer);
+                    affichage_terrain(terrain,buffer);
                     blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);
                     //rest(50);
                 }
@@ -80,6 +90,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     a--;
                     textprintf_ex(buffer,font,600,300,makecol(255,0,0),1,"SOURIS 2 : %d %d",o,z);
                     textprintf_ex(buffer,font,500,300,makecol(255,0,0),1,"PION : %d %d",a,b);
+                    clear_bitmap(buffer);
+                    affichage_terrain(terrain,buffer);
                     blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);
                     //rest(50);
                 }
@@ -91,6 +103,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     b--;
                     textprintf_ex(buffer,font,600,300,makecol(255,0,0),1,"SOURIS 2 : %d %d",o,z);
                     textprintf_ex(buffer,font,500,300,makecol(255,0,0),1,"PION : %d %d",a,b);
+                    clear_bitmap(buffer);
+                    affichage_terrain(terrain,buffer);
                     blit(image_joueur[var], buffer, 0 ,0, matrice_terrain[b][a].x, matrice_terrain[b][a].y, image_joueur[var]->w, image_joueur[var]->h);
                     //rest(50);
                 }
