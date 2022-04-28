@@ -7,8 +7,8 @@
 
 void init_struct_case()
 {
-    matrice_terrain[0][0].hauteur=34;
-    matrice_terrain[0][0].largeur=34;
+    matrice_terrain[0][0].hauteur=45;
+    matrice_terrain[0][0].largeur=45;
     matrice_terrain[0][0].x=0;
     matrice_terrain[0][0].y=0;
     matrice_terrain[0][0].type=rand()%(6-1)+1;
@@ -80,8 +80,8 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
         {
             for(int j=0;j<COLONNE;j++)
             {
-                textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(0,0,0),-1,".");
-                switch (matrice_terrain[i][j].type)
+                textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(0,0,0),-1,"l");
+                /*switch (matrice_terrain[i][j].type)
                 {
                     case 1:
                         blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
@@ -98,7 +98,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                     case 5:
                         blit(type_case[4],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
-                }
+                }*/
             }
         }
         //draw_sprite(screen, buffer, 0,0);
