@@ -73,7 +73,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
     type_case[1]=load_bitmap("mer.bmp", NULL);
     type_case[2]=load_bitmap("montagne.bmp", NULL);
     type_case[3]=load_bitmap("sable.bmp", NULL);
-    type_case[4]=load_bitmap("arbre.bmp", NULL);
+    type_case[4]=load_bitmap("arbre_dofus.bmp", NULL);
 
         blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
         for (int i=0;i<LIGNE;i++)
@@ -96,7 +96,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                         blit(type_case[3],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
                     case 5:
-                        blit(type_case[4],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                        case_arbre(matrice_terrain[i][j].x, matrice_terrain[i][j].y, buffer, type_case[4]);
                         break;
                 }*/
             }
@@ -116,4 +116,25 @@ void case_terre(int pos_x, int pos_y, BITMAP* buffer)
             putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
         }
     }
+}
+
+void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
+{
+    blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
+    int changement_couleur[3], couleur_pixel;
+    for(int i=0;i<type_case->w;i++)
+    {
+        for(int j=0;j<type_case->h;j++)
+        {
+            couleur_pixel= getpixel(type_case,i,j);
+            changement_couleur[0]=getr(couleur_pixel);
+            changement_couleur[1]=getb(couleur_pixel);
+            changement_couleur[2]=getg(couleur_pixel);
+            if (changement_couleur[0]>30 && changement_couleur[0]<35 && changement_couleur[1]>30 && changement_couleur[1]<35 && changement_couleur[2]>30 && changement_couleur[2]<35)
+            {
+                putpixel(buffer,pos_x+i-60,pos_y+j-80,makecol(255,255,255));
+            }
+        }
+    }
+    //blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
 }
