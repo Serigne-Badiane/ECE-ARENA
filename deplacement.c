@@ -3,7 +3,7 @@
 #include <allegro.h>
 #include "bib.h"
 #include <time.h>
-#define taille_case 34
+#define taille_case 45
 #define nombre_perso 2
 
 
@@ -15,8 +15,8 @@ void init_perso()                                                               
 
     for (int var=0; var<nombre_joueurs; var++)
     {
-        posa = rand()%(17);                                                                             /// RAND OU INITIALISATION ???
-        posb = rand()%(23);
+        posa = rand()%(12);                                                                             /// RAND OU INITIALISATION ???
+        posb = rand()%(18);
 
         acteur[var].x = matrice_terrain[posa][posb].x;
         acteur[var].y = matrice_terrain[posa][posb].y;
@@ -28,6 +28,9 @@ void init_perso()                                                               
 void deplacement(BITMAP* terrain, BITMAP* buffer)                                                       /// DEPLACEMENT DES JOUEURS
 {
     BITMAP* image_joueur[nombre_perso];
+
+    BITMAP* image_deplacement;
+    image_deplacement = load_bitmap("carre deplacement.bmp", NULL);
 
     int nombre_joueurs = nombre_perso;
     int var;
@@ -47,18 +50,22 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
 
     int o,z;
 
-    //clear_bitmap(buffer);
-    //affichage_terrain(terrain,buffer);
-
     for (var=0; var<nombre_joueurs; var++)
     {
-
         blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+
+        for (int j=1; j<5; j++)
+        {
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
+        }
 
         o = mouse_x/*/taille_case*/;
         z = mouse_y/*/taille_case*/;
 
-        if(mouse_b&1 && o<acteur[var].x+5*taille_case && o>acteur[var].x-5*taille_case && z<acteur[var].x+5*taille_case && z>acteur[var].y-5*taille_case)       ///pas de caillon ou autre : caillou()==0                                                                                    ///mettre condition du deplacement
+        if(mouse_b&1 && o<acteur[var].x+5*taille_case && o>acteur[var].x-4*taille_case && z<acteur[var].x+4*taille_case && z>acteur[var].y-5*taille_case /*&& acteur[var].y!=acteur[var+1].y && acteur[var].x!=acteur[var+1].x*/)       ///pas de caillon ou autre : caillou()==0  && remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
         {
             if(acteur[var].x<o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
             {
