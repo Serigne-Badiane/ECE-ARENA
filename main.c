@@ -4,7 +4,6 @@
 #include "bib.h"
 #include <time.h>
 
-
 void initialisation()
 {
     allegro_init();
@@ -20,13 +19,12 @@ void initialisation()
     show_mouse(screen);
 }
 
-
 int main()
 {
     srand(time(NULL));
     initialisation();
 
-    BITMAP* terrain= load_bitmap("terrain_normal.bmp", NULL);
+    BITMAP* terrain= load_bitmap("terrain_normal_grand.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
     init_struct_case();

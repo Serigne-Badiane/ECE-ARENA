@@ -7,11 +7,17 @@
 
 void init_struct_case()
 {
-    matrice_terrain[0][0].hauteur=34;
-    matrice_terrain[0][0].largeur=34;
+    matrice_terrain[0][0].hauteur=45;
+    matrice_terrain[0][0].largeur=45;
     matrice_terrain[0][0].x=0;
     matrice_terrain[0][0].y=0;
     matrice_terrain[0][0].type=rand()%(6-1)+1;
+    if (matrice_terrain[0][0].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
+    {
+        matrice_terrain[0][0].passage==1;
+    }
+    else
+        matrice_terrain[0][0].passage==0;
     for (int i=1;i<LIGNE;i++)
     {
         matrice_terrain[i][0].hauteur=matrice_terrain[0][0].hauteur;
@@ -19,6 +25,12 @@ void init_struct_case()
         matrice_terrain[i][0].x=matrice_terrain[0][0].x;
         matrice_terrain[i][0].y=matrice_terrain[i-1][0].y+(matrice_terrain[i][0].hauteur);
         matrice_terrain[i][0].type=rand()%(6-1)+1;
+        if (matrice_terrain[i][0].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
+        {
+            matrice_terrain[i][0].passage==1;
+        }
+        else
+            matrice_terrain[i][0].passage==0;
     }
     for (int j=1;j<COLONNE;j++)
     {
@@ -27,6 +39,12 @@ void init_struct_case()
         matrice_terrain[0][j].x=matrice_terrain[0][j-1].x+(matrice_terrain[0][j].largeur);
         matrice_terrain[0][j].y=matrice_terrain[0][0].y;
         matrice_terrain[0][j].type=rand()%(6-1)+1;
+        if (matrice_terrain[0][j].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
+        {
+            matrice_terrain[0][j].passage==1;
+        }
+        else
+            matrice_terrain[0][j].passage==0;
     }
     for (int i=1;i<LIGNE;i++)
     {
@@ -37,6 +55,12 @@ void init_struct_case()
             matrice_terrain[i][j].x=matrice_terrain[i][j-1].x+(matrice_terrain[i][j].largeur);
             matrice_terrain[i][j].y=matrice_terrain[i-1][j].y+(matrice_terrain[i][j].hauteur);
             matrice_terrain[i][j].type=rand()%(6-1)+1;
+            if (matrice_terrain[i][j].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
+            {
+                matrice_terrain[i][j].passage==1;
+            }
+            else
+                matrice_terrain[i][j].passage==0;
         }
     }
 }
@@ -45,7 +69,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 {
 
     BITMAP* type_case[5];
-    type_case[0]=load_bitmap("terre.bmp", NULL);
+    type_case[0]=load_bitmap("herbe.bmp", NULL);
     type_case[1]=load_bitmap("mer.bmp", NULL);
     type_case[2]=load_bitmap("montagne.bmp", NULL);
     type_case[3]=load_bitmap("sable.bmp", NULL);
@@ -56,8 +80,8 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
         {
             for(int j=0;j<COLONNE;j++)
             {
-                textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(0,0,0),-1,".");
-                switch (matrice_terrain[i][j].type)
+                textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(0,0,0),-1,"l");
+                /*switch (matrice_terrain[i][j].type)
                 {
                     case 1:
                         blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
@@ -74,7 +98,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                     case 5:
                         blit(type_case[4],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
-                }
+                }*/
             }
         }
         //draw_sprite(screen, buffer, 0,0);
