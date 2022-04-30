@@ -14,7 +14,7 @@
 
 1651061905 D
 
-1651077179 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1651319177 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -31,7 +31,10 @@
 
 1651067839 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1650980979 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1651323756 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
 	"bib.h"
 	<allegro.h>
 
