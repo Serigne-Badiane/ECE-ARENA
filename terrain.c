@@ -4,18 +4,14 @@
 #include "bib.h"
 #include <time.h>
 
-void case_terre(int pos_x, int pos_y, BITMAP* buffer)
+void case_chemin_verticale(int pos_x, int pos_y, BITMAP* buffer, BITMAP* chemin)
 {
-    for(int i=0;i<matrice_terrain[0][0].largeur;i++)
-    {
-        for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
-        {
-            float rougeG= 91-(0.01*pos_x)+(0.01*pos_y);
-            float vertG= 121+(0.01*pos_x)-(0.01*pos_y);
-            float bleuG= 42-(0.01*pos_x)+(0.01*pos_y);
-            putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
-        }
-    }
+    blit(chemin,buffer,0,0,pos_x+matrice_terrain[0][0].largeur/4,pos_y,SCREEN_H,SCREEN_W);
+}
+
+void case_chemin_horiz(int pos_x, int pos_y, BITMAP* buffer, BITMAP* chemin)
+{
+    blit(chemin,buffer,0,0,pos_x,pos_y+matrice_terrain[0][0].hauteur/4,SCREEN_H,SCREEN_W);
 }
 
 void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
@@ -51,11 +47,10 @@ void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
 
 void init_struct_case()
 {
-    matrice_terrain[0][0].hauteur=45;
+    matrice_terrain[0][0].hauteur=45;                               ///initialisation des structs : largeur, longueur, pos x, pos y, possibilite de passage
     matrice_terrain[0][0].largeur=45;
     matrice_terrain[0][0].x=0;
     matrice_terrain[0][0].y=0;
-    matrice_terrain[0][0].type=rand()%(6-1)+1;
     if (matrice_terrain[0][0].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
     {
         matrice_terrain[0][0].passage==1;
@@ -68,7 +63,6 @@ void init_struct_case()
         matrice_terrain[i][0].largeur=matrice_terrain[0][0].largeur;
         matrice_terrain[i][0].x=matrice_terrain[0][0].x;
         matrice_terrain[i][0].y=matrice_terrain[i-1][0].y+(matrice_terrain[i][0].hauteur);
-        matrice_terrain[i][0].type=rand()%(6-1)+1;
         if (matrice_terrain[i][0].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
         {
             matrice_terrain[i][0].passage==1;
@@ -82,7 +76,6 @@ void init_struct_case()
         matrice_terrain[0][j].largeur=matrice_terrain[0][0].largeur;
         matrice_terrain[0][j].x=matrice_terrain[0][j-1].x+(matrice_terrain[0][j].largeur);
         matrice_terrain[0][j].y=matrice_terrain[0][0].y;
-        matrice_terrain[0][j].type=rand()%(6-1)+1;
         if (matrice_terrain[0][j].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
         {
             matrice_terrain[0][j].passage==1;
@@ -98,7 +91,6 @@ void init_struct_case()
             matrice_terrain[i][j].largeur=matrice_terrain[0][0].largeur;
             matrice_terrain[i][j].x=matrice_terrain[i][j-1].x+(matrice_terrain[i][j].largeur);
             matrice_terrain[i][j].y=matrice_terrain[i-1][j].y+(matrice_terrain[i][j].hauteur);
-            matrice_terrain[i][j].type=rand()%(6-1)+1;
             if (matrice_terrain[i][j].type==1||matrice_terrain[0][0].type==2||matrice_terrain[0][0].type==4)
             {
                 matrice_terrain[i][j].passage==1;
@@ -107,6 +99,35 @@ void init_struct_case()
                 matrice_terrain[i][j].passage==0;
         }
     }
+    for (int i=0;i<LIGNE/2;i++)                                                                           ///initialisation du type de la case
+    {
+        for(int j=0;j<COLONNE/2;j++)
+        {
+            matrice_terrain[i][j].type=1;
+        }
+    }
+    for (int i=LIGNE/2;i<LIGNE;i++)
+    {
+        for(int j=COLONNE/2;j<COLONNE;j++)
+        {
+            matrice_terrain[i][j].type=4;
+        }
+    }
+    for (int i=LIGNE/2;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE/2;j++)
+        {
+            matrice_terrain[i][j].type=3;
+        }
+    }
+    for (int i=0;i<LIGNE/2;i++)
+    {
+        for(int j=COLONNE/2;j<COLONNE;j++)
+        {
+            matrice_terrain[i][j].type=2;
+        }
+    }
+
 }
 
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
@@ -114,10 +135,12 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 
     BITMAP* type_case[5];
     type_case[0]=load_bitmap("herbe.bmp", NULL);
-    type_case[1]=load_bitmap("mer.bmp", NULL);
-    type_case[2]=load_bitmap("montagne.bmp", NULL);
+    type_case[1]=load_bitmap("terre.bmp", NULL);
+    type_case[2]=load_bitmap("neige.bmp", NULL);
     type_case[3]=load_bitmap("sable.bmp", NULL);
     type_case[4]=load_bitmap("arbre_dofus.bmp", NULL);
+    BITMAP* chemin_verticale=load_bitmap("chemin_verticale.bmp", NULL);
+    BITMAP* chemin_horiz=load_bitmap("chemin_horiz.bmp", NULL);
 
         blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
         for (int i=0;i<LIGNE;i++)
@@ -126,6 +149,9 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
             {
                 switch (matrice_terrain[i][j].type)
                 {
+                    case 1:
+                        blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                        break;
                     case 2:
                         blit(type_case[1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
@@ -135,18 +161,28 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                     case 4:
                         blit(type_case[3],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
-                    case 5:
-                        blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-
                 }
             }
         }
+        for (int i=3;i<LIGNE-3;i++)
+        {
+                case_chemin_verticale(matrice_terrain[i][2].x,matrice_terrain[i][2].y,buffer,chemin_verticale);
+                case_chemin_verticale(matrice_terrain[i][COLONNE-3].x,matrice_terrain[i][COLONNE-3].y,buffer,chemin_verticale);
+        }
+        for (int i=3;i<COLONNE-3;i++)
+        {
+                case_chemin_horiz(matrice_terrain[2][i].x,matrice_terrain[2][i].y,buffer,chemin_horiz);
+                case_chemin_horiz(matrice_terrain[LIGNE-3][i].x,matrice_terrain[LIGNE-3][i].y,buffer,chemin_horiz);
+        }
+        matrice_terrain[5][5].type=5;
+        matrice_terrain[9][5].type=5;
+        matrice_terrain[9][12].type=5;
+        matrice_terrain[5][12].type=5;
         for (int i=0;i<LIGNE;i++)
         {
             for(int j=0;j<COLONNE;j++)
             {
-                if (matrice_terrain[i][j].type==1)
+                if (matrice_terrain[i][j].type==5)
                 {
                     case_arbre(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[4]);
                 }

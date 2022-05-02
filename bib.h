@@ -1,7 +1,7 @@
 #ifndef BIB_H_INCLUDED
 #define BIB_H_INCLUDED
-#define LIGNE 18
-#define COLONNE 24
+#define LIGNE 14
+#define COLONNE 18
 #define NB_JOUEURS 4
 
 typedef struct
