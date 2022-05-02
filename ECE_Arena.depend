@@ -20,32 +20,32 @@
 	"bib.h"
 	<stdio.h>
 	<stdlib.h>
-<<<<<<< HEAD
-=======
+
+1651061905 D
 	<allegro.h>
 	"bib.h"
 	<time.h>
-
-1651061905 D
 
 1651319177 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
->>>>>>> 414509a5b5c7b188d783463004f2f40fdeecf8b3
-	<allegro.h>
-	"bib.h"
-	<time.h>
-
-1651061905 D
-
-1651319177 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1651512566 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1651319177 509a5b5c7b188d783463004f2f40fdeecf8b3
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651513287 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -53,6 +53,14 @@
 	<time.h>
 
 1651061898 193f821a79c14bc3ce6f2591fe2637b453390
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -66,37 +74,11 @@
 	<allegro.h>
 	"bib.h"
 	<allegro.h>
-
-1651067839 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
-	<time.h>
-
-1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
-	<stdio.h>
-	<stdlib.h>
 	<allegro.h>
-	"bib.h"
-	<time.h>
-
-1651074770 9d1f76b29e0b66e2953e9f55f38b5d2594e6a
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-	<time.h>
-
-1651061898 193f821a79c14bc3ce6f2591fe2637b453390
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-
-1651512226 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
-
-1651511179 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -109,6 +91,16 @@
 	<allegro.h>
 	"bib.h"
 	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 
 1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
 	<stdio.h>
@@ -116,8 +108,28 @@
 	<allegro.h>
 	"bib.h"
 	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 
 1651074770 9d1f76b29e0b66e2953e9f55f38b5d2594e6a
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -156,12 +168,12 @@
 	"bib.h"
 	<time.h>
 
-1650970201 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1651513085 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
-	<time.h>
+	<allegro.h>
 
 1650974117 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>

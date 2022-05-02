@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <allegro.h>
 #include "bib.h"
-
 #include <allegro.h>
 
 void menu(){
@@ -15,10 +14,6 @@ void menu(){
     allegro_init();
     install_keyboard();
     install_mouse();
-
-
-
-
 
     set_color_depth(desktop_color_depth());
 
@@ -48,9 +43,6 @@ void menu(){
         rect(page,500,300,850,500,makecol(255,0,0));
 
         masked_blit(Logo, page, 0, 0, 100, 100, Logo->w, Logo->h);
-
-
-
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
