@@ -1,14 +1,13 @@
 # depslib dependency file v1.0
+151 <<<<<<< HEAD
+
 1651074770 source:c:\users\badia\onedrive\documents\github\ece-arena\terrain.c
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
 	"bib.h"
-	<time.h>
 
 1651074706 c:\users\badia\onedrive\documents\github\ece-arena\bib.h
 
 1650989485 source:c:\users\badia\onedrive\documents\github\ece-arena\personnage.c
+	"bib.h"
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -18,11 +17,59 @@
 1651074706 source:c:\users\badia\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
+	"bib.h"
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651061905 D
+
+1651319177 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
 1651512566 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651061898 193f821a79c14bc3ce6f2591fe2637b453390
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+
+1651512226 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+
+1651511179 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<allegro.h>
+
+1651067839 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651074770 9d1f76b29e0b66e2953e9f55f38b5d2594e6a
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -104,6 +151,13 @@
 	<time.h>
 
 1651493041 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

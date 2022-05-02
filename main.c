@@ -21,6 +21,12 @@ void initialisation()
 
 int main()
 {
+
+    menu();
+
+
+    printf("test");
+
     srand(time(NULL));
     initialisation();
 
@@ -39,4 +45,5 @@ int main()
     }
 
     return 0;
+
 }END_OF_MAIN();
