@@ -4,6 +4,51 @@
 #include "bib.h"
 #include <time.h>
 
+void case_terre(int pos_x, int pos_y, BITMAP* buffer)
+{
+    for(int i=0;i<matrice_terrain[0][0].largeur;i++)
+    {
+        for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
+        {
+            float rougeG= 91-(0.01*pos_x)+(0.01*pos_y);
+            float vertG= 121+(0.01*pos_x)-(0.01*pos_y);
+            float bleuG= 42-(0.01*pos_x)+(0.01*pos_y);
+            putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
+        }
+    }
+}
+
+void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
+{
+    int changement_couleur[3], couleur_pixel, ancienne_couleur[3], ancienne_couleur_pixel;
+    for(int i=0;i<type_case->w;i++)
+    {
+        for(int j=0;j<type_case->h;j++)
+        {
+            ancienne_couleur_pixel=getpixel(buffer,i,j);
+            ancienne_couleur[0]=getr(couleur_pixel);
+            ancienne_couleur[1]=getb(couleur_pixel);
+            ancienne_couleur[2]=getg(couleur_pixel);
+            printf("%d %d %d\n", ancienne_couleur[0],ancienne_couleur[2],ancienne_couleur[1]);
+        }
+    }
+    blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
+    for(int i=0;i<type_case->w;i++)
+    {
+        for(int j=0;j<type_case->h;j++)
+        {
+            couleur_pixel= getpixel(type_case,i,j);
+            changement_couleur[0]=getr(couleur_pixel);
+            changement_couleur[1]=getb(couleur_pixel);
+            changement_couleur[2]=getg(couleur_pixel);
+            if (changement_couleur[0]>30 && changement_couleur[0]<35 && changement_couleur[1]>30 && changement_couleur[1]<35 && changement_couleur[2]>30 && changement_couleur[2]<35)
+            {
+                putpixel(buffer,pos_x+i-60,pos_y+j-80,makecol(ancienne_couleur[0],ancienne_couleur[2],ancienne_couleur[1]));
+            }
+        }
+    }
+    //blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
+}
 
 void init_struct_case()
 {
@@ -80,12 +125,8 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
         {
             for(int j=0;j<COLONNE;j++)
             {
-                textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(0,0,0),-1,"l");
-                /*switch (matrice_terrain[i][j].type)
+                switch (matrice_terrain[i][j].type)
                 {
-                    case 1:
-                        blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
                     case 2:
                         blit(type_case[1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
@@ -96,45 +137,21 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
                         blit(type_case[3],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
                     case 5:
-                        case_arbre(matrice_terrain[i][j].x, matrice_terrain[i][j].y, buffer, type_case[4]);
+                        blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
                         break;
-                }*/
+
+                }
+            }
+        }
+        for (int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                if (matrice_terrain[i][j].type==1)
+                {
+                    case_arbre(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[4]);
+                }
             }
         }
         //draw_sprite(screen, buffer, 0,0);
-}
-
-void case_terre(int pos_x, int pos_y, BITMAP* buffer)
-{
-    for(int i=0;i<matrice_terrain[0][0].largeur;i++)
-    {
-        for(int j=0;j<matrice_terrain[0][0].hauteur;j++)
-        {
-            float rougeG= 91-(0.01*pos_x)+(0.01*pos_y);
-            float vertG= 121+(0.01*pos_x)-(0.01*pos_y);
-            float bleuG= 42-(0.01*pos_x)+(0.01*pos_y);
-            putpixel(buffer,pos_x+i,pos_y+j,makecol(rougeG,vertG,bleuG));
-        }
-    }
-}
-
-void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
-{
-    blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
-    int changement_couleur[3], couleur_pixel;
-    for(int i=0;i<type_case->w;i++)
-    {
-        for(int j=0;j<type_case->h;j++)
-        {
-            couleur_pixel= getpixel(type_case,i,j);
-            changement_couleur[0]=getr(couleur_pixel);
-            changement_couleur[1]=getb(couleur_pixel);
-            changement_couleur[2]=getg(couleur_pixel);
-            if (changement_couleur[0]>30 && changement_couleur[0]<35 && changement_couleur[1]>30 && changement_couleur[1]<35 && changement_couleur[2]>30 && changement_couleur[2]<35)
-            {
-                putpixel(buffer,pos_x+i-60,pos_y+j-80,makecol(255,255,255));
-            }
-        }
-    }
-    //blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
 }
