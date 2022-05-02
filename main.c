@@ -21,11 +21,15 @@ void initialisation()
 
 int main()
 {
+<<<<<<< HEAD
 
     menu();
 
 
 
+=======
+    printf("test");
+>>>>>>> 874fa80c88288af21af3a1535866f240d1693c58
     srand(time(NULL));
     initialisation();
 
