@@ -49,12 +49,14 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
     }
 
     int o,z;
+    int compteur;
 
     for (var=0; var<nombre_joueurs; var++)
     {
+        compteur=0;
         blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
 
-        for (int j=1; j<5; j++)
+        for (int j=1; j<4; j++)
         {
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
@@ -65,7 +67,24 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
         o = mouse_x/*/taille_case*/;
         z = mouse_y/*/taille_case*/;
 
-        if(mouse_b&1 && o<acteur[var].x+5*taille_case && o>acteur[var].x-4*taille_case && z<acteur[var].x+4*taille_case && z>acteur[var].y-5*taille_case /*&& acteur[var].y!=acteur[var+1].y && acteur[var].x!=acteur[var+1].x*/)       ///pas de caillon ou autre : caillou()==0  && remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
+        if(acteur[var].x==acteur[var+1].x && acteur[var].y==acteur[var+1].y)
+        {
+            compteur=1;
+        }
+        if(acteur[var].x!=acteur[var+1].x && acteur[var].y==acteur[var+1].y)
+        {
+            compteur=0;
+        }
+        if(acteur[var].x==acteur[var+1].x && acteur[var].y!=acteur[var+1].y)
+        {
+            compteur=0;
+        }
+
+
+
+
+
+        if(mouse_b&1 && o<acteur[var].x+4*taille_case && o>acteur[var].x-3*taille_case && z<acteur[var].y+4*taille_case && z>acteur[var].y-3*taille_case && compteur==0)       ///pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
         {
             if(acteur[var].x<o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
             {
@@ -95,9 +114,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                     acteur[var].y=acteur[var].y-taille_case;
                 }
             }
-
         }
-
     }
 
 }
