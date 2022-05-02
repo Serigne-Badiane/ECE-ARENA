@@ -45,7 +45,7 @@
 	"bib.h"
 	<time.h>
 
-1651513287 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1651513469 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -168,7 +168,7 @@
 	"bib.h"
 	<time.h>
 
-1651513085 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1651513469 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
