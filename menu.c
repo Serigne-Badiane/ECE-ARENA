@@ -15,7 +15,7 @@ void menu(){
     allegro_init();
     install_keyboard();
     install_mouse();
-    install_sound();
+
 
 
 
