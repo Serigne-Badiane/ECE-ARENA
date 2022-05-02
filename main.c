@@ -21,6 +21,7 @@ void initialisation()
 
 int main()
 {
+    printf("test");
     srand(time(NULL));
     initialisation();
 
