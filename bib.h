@@ -1,21 +1,36 @@
 #ifndef BIB_H_INCLUDED
 #define BIB_H_INCLUDED
+#define LIGNE 18
+#define COLONNE 24
+#define NB_JOUEURS 4
 
-typedef struct{
+typedef struct
+{
     int type;
     int x;
     int y;
     int hauteur;
     int largeur;
+    int passage;
 }t_case;
 
-t_case matrice_terrain[19][21];
+t_case matrice_terrain[LIGNE][COLONNE];
+
+typedef struct
+{
+    int x;
+    int y;
+}t_joueur;
+
+t_joueur acteur[NB_JOUEURS];
+
 
 int addi (int a, int b);
 void initialisation();
 void afficher();
 void init_struct_case();
-void affichage_terrain();
-
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
+void init_perso();
+void deplacement(BITMAP* terrain, BITMAP* buffer);
 
 #endif // BIB_H_INCLUDED
