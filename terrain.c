@@ -20,19 +20,18 @@ void case_terre(int pos_x, int pos_y, BITMAP* buffer)
 
 void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
 {
-    int changement_couleur[3], couleur_pixel, ancienne_couleur[3], ancienne_couleur_pixel;
-    for(int i=0;i<type_case->w;i++)
+    int changement_couleur[3], couleur_pixel, ancienne_couleur[3][type_case->w][type_case->h], ancienne_couleur_pixel;
+    for(int i=pos_x-55;i<pos_x-55+type_case->w;i++)
     {
-        for(int j=0;j<type_case->h;j++)
+        for(int j=pos_y-70;j<pos_y-70+type_case->h;j++)
         {
             ancienne_couleur_pixel=getpixel(buffer,i,j);
-            ancienne_couleur[0]=getr(couleur_pixel);
-            ancienne_couleur[1]=getb(couleur_pixel);
-            ancienne_couleur[2]=getg(couleur_pixel);
-            printf("%d %d %d\n", ancienne_couleur[0],ancienne_couleur[2],ancienne_couleur[1]);
+            ancienne_couleur[0][i-pos_x+55][j-pos_y+70]=getr(ancienne_couleur_pixel);
+            ancienne_couleur[1][i-pos_x+55][j-pos_y+70]=getb(ancienne_couleur_pixel);
+            ancienne_couleur[2][i-pos_x+55][j-pos_y+70]=getg(ancienne_couleur_pixel);
         }
     }
-    blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
+    blit(type_case,buffer,0,0,pos_x-55,pos_y-70,SCREEN_W,SCREEN_H);
     for(int i=0;i<type_case->w;i++)
     {
         for(int j=0;j<type_case->h;j++)
@@ -43,11 +42,11 @@ void case_arbre(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
             changement_couleur[2]=getg(couleur_pixel);
             if (changement_couleur[0]>30 && changement_couleur[0]<35 && changement_couleur[1]>30 && changement_couleur[1]<35 && changement_couleur[2]>30 && changement_couleur[2]<35)
             {
-                putpixel(buffer,pos_x+i-60,pos_y+j-80,makecol(ancienne_couleur[0],ancienne_couleur[2],ancienne_couleur[1]));
+                putpixel(buffer,pos_x+i-55,pos_y+j-70,makecol(ancienne_couleur[0][i][j],ancienne_couleur[2][i][j],ancienne_couleur[1][i][j]));
             }
         }
     }
-    //blit(type_case,buffer,0,0,pos_x-60,pos_y-80,SCREEN_W,SCREEN_H);
+    //blit(type_case,buffer,0,0,pos_x-55,pos_y-70,SCREEN_W,SCREEN_H);
 }
 
 void init_struct_case()
