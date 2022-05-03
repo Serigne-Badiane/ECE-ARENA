@@ -33,7 +33,7 @@ int main()
 
     while (!key[KEY_ESC])
     {
-        menu();
+        //menu();
         affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
         draw_sprite(screen, buffer, 0,0);
