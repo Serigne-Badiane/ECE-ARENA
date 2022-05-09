@@ -4,6 +4,8 @@
 #include "bib.h"
 #include <time.h>
 
+
+
 void initialisation()
 {
     allegro_init();
@@ -21,6 +23,7 @@ void initialisation()
 
 int main()
 {
+    menu();
     srand(time(NULL));
     initialisation();
 
