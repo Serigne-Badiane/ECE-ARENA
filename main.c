@@ -27,7 +27,7 @@ int main()
     srand(time(NULL));
     initialisation();
 
-    BITMAP* terrain= load_bitmap("terrain_normal_grand.bmp", NULL);
+    BITMAP* terrain= load_bitmap("map_donjon.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
     init_struct_case();
@@ -37,7 +37,8 @@ int main()
     while (!key[KEY_ESC])
     {
         //menu();
-        affichage_terrain(terrain,buffer);
+        //affichage_terrain(terrain,buffer);
+        blit(terrain,buffer,0,0,0,0,800,600);
         deplacement(terrain,buffer);
         draw_sprite(screen, buffer, 0,0);
     }
