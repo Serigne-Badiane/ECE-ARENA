@@ -91,6 +91,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].x<o)
                 {
                     acteur[var].x=acteur[var].x+taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
                 }
             }
             if(acteur[var].y<z && o<=acteur[var].x+taille_case && o>=acteur[var].x)
@@ -98,6 +100,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].y<z)
                 {
                     acteur[var].y=acteur[var].y+taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
                 }
             }
             if(acteur[var].x>o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
@@ -105,6 +109,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].x>o)
                 {
                     acteur[var].x=acteur[var].x-taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
                 }
             }
             if(acteur[var].y>z && o<=acteur[var].x+taille_case && o>=acteur[var].x)
@@ -112,6 +118,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].y>z)
                 {
                     acteur[var].y=acteur[var].y-taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
                 }
             }
         }
