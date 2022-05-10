@@ -36,6 +36,7 @@ int main()
 
     while (!key[KEY_ESC])
     {
+        chrono(terrain, buffer);
         //menu();
         //affichage_terrain(terrain,buffer);
         blit(terrain,buffer,0,0,0,0,800,600);
