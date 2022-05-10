@@ -173,69 +173,97 @@ void init_struct_case()
 
 }
 
-void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
 {
+    //int changement_couleur[3], couleur_pixel, ancienne_couleur[3][ciel->w][ciel->h], ancienne_couleur_pixel;
+    blit(ciel,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+    /*for(int i=0;i<ciel->w;i++)
+    {
+        for(int j=0;j<ciel->h;j++)
+        {
+            ancienne_couleur_pixel=getpixel(ciel,i,j);
+            ancienne_couleur[0][i][j]=getr(ancienne_couleur_pixel);
+            ancienne_couleur[1][i][j]=getb(ancienne_couleur_pixel);
+            ancienne_couleur[2][i][j]=getg(ancienne_couleur_pixel);
+        }
+    }*/
+    blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+   /* for(int i=0;i<terrain->w;i++)
+    {
+        for(int j=0;j<terrain->h;j++)
+        {
+            couleur_pixel= getpixel(terrain,i,j);
+            changement_couleur[0]=getr(couleur_pixel);
+            changement_couleur[1]=getb(couleur_pixel);
+            changement_couleur[2]=getg(couleur_pixel);
+            if (changement_couleur[0]>250 && changement_couleur[0]<260 && changement_couleur[1]>250 && changement_couleur[1]<260 && changement_couleur[2]>250 && changement_couleur[2]<260)
+            {
+                putpixel(buffer,i,j,makecol(ancienne_couleur[0][i][j],ancienne_couleur[2][i][j],ancienne_couleur[1][i][j]));
+            }
+        }
+    }*/
 
-    BITMAP* type_case[6];
-    type_case[0]=load_bitmap("herbe.bmp", NULL);
+    //draw_sprite(screen, buffer, 0,0);*/
+}
+
+
+
+//BITMAP* type_case[6];
+    /*type_case[0]=load_bitmap("herbe.bmp", NULL);
     type_case[1]=load_bitmap("terre.bmp", NULL);
     type_case[2]=load_bitmap("neige.bmp", NULL);
     type_case[3]=load_bitmap("sable.bmp", NULL);
     type_case[4]=load_bitmap("arbre_dofus.bmp", NULL);
     type_case[5]=load_bitmap("eau.bmp",NULL);
     BITMAP* chemin_verticale=load_bitmap("chemin_verticale.bmp", NULL);
-    BITMAP* chemin_horiz=load_bitmap("chemin_horiz.bmp", NULL);
-
-        blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-        for (int i=0;i<LIGNE;i++)
+    BITMAP* chemin_horiz=load_bitmap("chemin_horiz.bmp", NULL);*/
+/*for (int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
         {
-            for(int j=0;j<COLONNE;j++)
+            switch (matrice_terrain[i][j].type)
             {
-                switch (matrice_terrain[i][j].type)
-                {
-                    case 1:
-                        blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-                    case 2:
-                        blit(type_case[1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-                    case 3:
-                        blit(type_case[2],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-                    case 4:
-                        blit(type_case[3],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-                    case 5:
-                        blit(type_case[matrice_terrain[i][j-1].type-1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
-                        break;
-                    case 6:
-                        case_eau(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[5]);
-                }
+                case 1:
+                    blit(type_case[0],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                    break;
+                case 2:
+                    blit(type_case[1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                    break;
+                case 3:
+                    blit(type_case[2],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                    break;
+                case 4:
+                    blit(type_case[3],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                    break;
+                case 5:
+                    blit(type_case[matrice_terrain[i][j-1].type-1],buffer,0,0,matrice_terrain[i][j].x,matrice_terrain[i][j].y,SCREEN_W,SCREEN_H);
+                    break;
+                case 6:
+                    case_eau(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[5]);
             }
         }
-        for (int i=3;i<LIGNE-3;i++)
+    }
+    for (int i=3;i<LIGNE-3;i++)
+    {
+            case_chemin_verticale(matrice_terrain[i][2].x,matrice_terrain[i][2].y,buffer,chemin_verticale);
+            case_chemin_verticale(matrice_terrain[i][COLONNE-3].x,matrice_terrain[i][COLONNE-3].y,buffer,chemin_verticale);
+    }
+    for (int i=3;i<COLONNE-3;i++)
+    {
+            case_chemin_horiz(matrice_terrain[2][i].x,matrice_terrain[2][i].y,buffer,chemin_horiz);
+            case_chemin_horiz(matrice_terrain[LIGNE-3][i].x,matrice_terrain[LIGNE-3][i].y,buffer,chemin_horiz);
+    }
+    matrice_terrain[4][5].type=5;
+    matrice_terrain[9][5].type=5;
+    matrice_terrain[9][12].type=5;
+    matrice_terrain[4][12].type=5;
+    for (int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
         {
-                case_chemin_verticale(matrice_terrain[i][2].x,matrice_terrain[i][2].y,buffer,chemin_verticale);
-                case_chemin_verticale(matrice_terrain[i][COLONNE-3].x,matrice_terrain[i][COLONNE-3].y,buffer,chemin_verticale);
-        }
-        for (int i=3;i<COLONNE-3;i++)
-        {
-                case_chemin_horiz(matrice_terrain[2][i].x,matrice_terrain[2][i].y,buffer,chemin_horiz);
-                case_chemin_horiz(matrice_terrain[LIGNE-3][i].x,matrice_terrain[LIGNE-3][i].y,buffer,chemin_horiz);
-        }
-        matrice_terrain[4][5].type=5;
-        matrice_terrain[9][5].type=5;
-        matrice_terrain[9][12].type=5;
-        matrice_terrain[4][12].type=5;
-        for (int i=0;i<LIGNE;i++)
-        {
-            for(int j=0;j<COLONNE;j++)
+            if (matrice_terrain[i][j].type==5)
             {
-                if (matrice_terrain[i][j].type==5)
-                {
-                    case_arbre(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[4]);
-                }
+                case_arbre(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[4]);
             }
         }
-        //draw_sprite(screen, buffer, 0,0);
-}
+    }*/
