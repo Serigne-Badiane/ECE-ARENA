@@ -10,7 +10,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -23,11 +23,13 @@ void initialisation()
 
 int main()
 {
-    //menu();
+
+
     srand(time(NULL));
     initialisation();
+    menu();
 
-    BITMAP* terrain= load_bitmap("map_donjon.bmp", NULL);
+    BITMAP* terrain= load_bitmap("terrain_normal_grand.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
     init_struct_case();
@@ -36,10 +38,8 @@ int main()
 
     while (!key[KEY_ESC])
     {
-        chrono(terrain, buffer);
-        //menu();
-        //affichage_terrain(terrain,buffer);
-        blit(terrain,buffer,0,0,0,0,800,600);
+
+        affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
         draw_sprite(screen, buffer, 0,0);
     }
