@@ -162,7 +162,7 @@
 	"bib.h"
 	<time.h>
 
-1652129290 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+1652188310 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -191,6 +191,13 @@
 	<time.h>
 
 1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652178439 source:c:\users\paul\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

@@ -35,8 +35,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
     int nombre_joueurs = nombre_perso;
     int var;
 
-    image_joueur[0] = load_bitmap("perso1.bmp", NULL);
-    image_joueur[1] = load_bitmap("perso2.bmp", NULL);
+    image_joueur[0] = load_bitmap("player1.bmp", NULL);
+    image_joueur[1] = load_bitmap("test2.bmp", NULL);
 
     image_joueur[2] = load_bitmap("MARCHER11.bmp", NULL);
     image_joueur[3] = load_bitmap("MARCHER12.bmp", NULL);
