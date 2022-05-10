@@ -13,6 +13,14 @@ typedef struct
     int largeur;
     int passage;
 }t_case;
+typedef struct{
+
+    int pa;
+    int pm;
+    int pv;
+
+}str_perso;
+
 
 t_case matrice_terrain[LIGNE][COLONNE];
 
