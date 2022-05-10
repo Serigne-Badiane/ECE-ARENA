@@ -49,10 +49,7 @@ int main()
         //affichage_terrain(terrain,buffer);
 
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         blit(terrain,buffer,0,0,0,0,800,600);
         blit(bdf, buffer ,0,0,220,550,bdf->h,bdf->w);
         blit(tir_explosif, buffer ,0,0,265,550,bdf->h,bdf->w);
@@ -61,16 +58,11 @@ int main()
 
         draw_sprite(buffer,coeurpv,5,10);
 
-<<<<<<< Updated upstream
         rectfill(buffer,100,20,220,40,makecol(0,0,255));
         rectfill(buffer,100,45,220,65,makecol(0,255,0));
         textprintf_ex(buffer,font,35,40,makecol(255,255,255),makecol(255,0,0),"%d",test.pv);
         textprintf_ex(buffer,font,160,25,makecol(255,255,255),makecol(0,0,255),"%d",test.pa);
         textprintf_ex(buffer,font,160,50,makecol(255,255,255),makecol(0,255,0),"%d",test.pm);
-=======
-        rectfill(buffer,100,20,220,40,makeacol(0,0,255,0));
-        rectfill(buffer,100,45,220,65,makeacol(0,255,50,0));
->>>>>>> Stashed changes
         //deplacement(terrain,buffer);
         draw_sprite(screen, buffer, 0,0);
     }
