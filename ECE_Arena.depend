@@ -26,7 +26,30 @@
 	"bib.h"
 	<time.h>
 
+1652179035 ated upstream
+
 1652194777 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652179035 shed changes
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<allegro.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -64,13 +87,13 @@
 
 1652194839 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1652194582 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1652195633 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652194585 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+1652195645 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

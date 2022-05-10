@@ -23,7 +23,15 @@ int menu()
 
     /*allegro_init();
     install_keyboard();
-    install_mouse();*/
+    install_mouse();
+
+    set_color_depth(desktop_color_depth());
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    {
+        allegro_message("prb gfx mode");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }*/
 
 
     son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav");
@@ -94,6 +102,24 @@ int menu()
 
             rect(screen,500,300,850,400,makecol(0,255,255));
 
+            if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
+            {
+
+
+                show_mouse(Menu2);
+
+
+                blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
+
+                blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+                rect(screen,500,300,850,400,makecol(0,255,255));
+                rect(screen,500,450,850,550,makecol(255,0,255));
+                rect(screen,500,600,850,700,makecol(0,100,255));
+
+
+        }
+
         }
 
         if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850)
@@ -112,23 +138,7 @@ int menu()
 
         }
 
-        if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
-        {
 
-
-            show_mouse(Menu2);
-
-
-            blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
-
-            blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-
-            rect(screen,500,300,850,400,makecol(0,255,255));
-            rect(screen,500,450,850,550,makecol(255,0,255));
-            rect(screen,500,600,850,700,makecol(0,100,255));
-
-
-        }
 
         /*if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
         {

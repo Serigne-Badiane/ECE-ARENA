@@ -5,13 +5,13 @@
 #include <time.h>
 
 
-typedef struct{
+/*typedef struct{
 
     int pa;
     int pm;
     int pv;
 
-}str_perso;
+}str_perso;*/
 
 
 

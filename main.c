@@ -23,11 +23,11 @@ void initialisation()
 
 int main()
 {
-    menu();
+
 
     srand(time(NULL));
     initialisation();
-
+    menu();
 
     BITMAP* terrain= load_bitmap("terrain_normal_grand.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
