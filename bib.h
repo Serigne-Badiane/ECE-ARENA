@@ -1,17 +1,17 @@
 #ifndef BIB_H_INCLUDED
 #define BIB_H_INCLUDED
-#define LIGNE 14
-#define COLONNE 18
+#define LIGNE 23
+#define COLONNE 55
 #define NB_JOUEURS 4
 
 typedef struct
 {
-    int type;
     int x;
     int y;
     int hauteur;
     int largeur;
     int passage;
+    int passage_attaque;
 }t_case;
 typedef struct{
 
@@ -42,5 +42,6 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer,BITMAP*ciel);
 void init_perso();
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel);
 void chrono(BITMAP* terrain, BITMAP* buffer);
+void case_couleur(BITMAP* buffer,BITMAP* terrain);
 
 #endif // BIB_H_INCLUDED

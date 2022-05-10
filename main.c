@@ -42,6 +42,7 @@ int main()
     {
         affichage_terrain(terrain,buffer,ciel);
         deplacement(terrain,buffer, ciel);
+        case_couleur(buffer,terrain);
         draw_sprite(screen, buffer, 0,0);
     }
 
