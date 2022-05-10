@@ -10,7 +10,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -27,7 +27,7 @@ int main()
 
     srand(time(NULL));
     initialisation();
-    menu();
+    //menu();
 
     BITMAP* terrain= load_bitmap("terrain_normal_grand.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);

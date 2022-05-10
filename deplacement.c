@@ -66,25 +66,37 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
         compteur=0;
         blit(image_joueur[2], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
 
-        /*for (int j=1; j<4; j++)
+        for (int j=1; j<3; j++)
         {
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-        }*/
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+1*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y+1*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y-1*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+1*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-1*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+        }
 
 
         o = mouse_x/*/taille_case*/;
         z = mouse_y/*/taille_case*/;
 
-        if(o<acteur[var].x+4*taille_case && o>acteur[var].x-3*taille_case && z<acteur[var].y+4*taille_case && z>acteur[var].y-3*taille_case)
+        /*if(o<acteur[var].x+4*taille_case && o>acteur[var].x-3*taille_case && z<acteur[var].y+4*taille_case && z>acteur[var].y-3*taille_case)
         {
-            blit(image_deplacement, buffer, 0 ,0, o, z, image_deplacement->h, image_deplacement->w);
-        }
+            blit(image_deplacement, buffer, 0 ,0, o-20, z-20, image_deplacement->h, image_deplacement->w);
+        }*/
 
 
-        if(mouse_b&1 && o<acteur[var].x+4*taille_case && o>acteur[var].x-3*taille_case && z<acteur[var].y+4*taille_case && z>acteur[var].y-3*taille_case)       ///pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
+        if(mouse_b&1 && o<acteur[var].x+3*taille_case && o>acteur[var].x-2*taille_case && z<acteur[var].y+3*taille_case && z>acteur[var].y-2*taille_case)       ///pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
         {
             if(acteur[var].x<o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
             {
