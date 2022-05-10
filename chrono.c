@@ -36,7 +36,7 @@ void chrono(BITMAP* terrain, BITMAP* buffer)
 
     if(s%15==0 )
     {
-        s=0;
+        s=0;            ///fin tour
     }
     else
     {
