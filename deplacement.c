@@ -15,8 +15,8 @@ void init_perso()                                                               
 
     for (int var=0; var<nombre_joueurs; var++)
     {
-        posa = rand()%(12);                                                                             /// RAND OU INITIALISATION ???
-        posb = rand()%(18);
+        posa = 10;                                                                             /// RAND OU INITIALISATION ???
+        posb = 12;
 
         acteur[var].x = matrice_terrain[posa][posb].x;
         acteur[var].y = matrice_terrain[posa][posb].y;
@@ -25,12 +25,12 @@ void init_perso()                                                               
 
 
 
-void deplacement(BITMAP* terrain, BITMAP* buffer)                                                       /// DEPLACEMENT DES JOUEURS
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)                                                       /// DEPLACEMENT DES JOUEURS
 {
     BITMAP* image_joueur[nombre_perso*8];
 
     BITMAP* image_deplacement;
-    image_deplacement = load_bitmap("carre deplacement.bmp", NULL);
+    image_deplacement = load_bitmap("deplacement.bmp", NULL);
 
     int nombre_joueurs = nombre_perso;
     int var;
@@ -68,8 +68,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
 
         for (int j=1; j<3; j++)
         {
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*23, image_deplacement->h, image_deplacement->w);
+            /*blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
@@ -83,7 +83,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+1*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-1*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);*/
         }
 
 
