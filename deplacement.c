@@ -4,7 +4,7 @@
 #include "bib.h"
 #include <time.h>
 #define taille_case 45
-#define nombre_perso 2
+#define nombre_perso 4
 
 
 void init_perso()                                                                                       /// INITIALISATION DES POSITIONS DES JOUEURS
@@ -37,6 +37,9 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
 
     image_joueur[0] = load_bitmap("perso1.bmp", NULL);
     image_joueur[1] = load_bitmap("perso2.bmp", NULL);
+
+    image_joueur[2] = load_bitmap("MARCHER11.bmp", NULL);
+    image_joueur[3] = load_bitmap("MARCHER12.bmp", NULL);
 
     for (var=0; var<nombre_joueurs; var++)
     {
@@ -91,6 +94,19 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].x<o)
                 {
                     acteur[var].x=acteur[var].x+taille_case;
+                    if(acteur[var].x%2==0)
+                    {
+                        blit(image_joueur[2], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                        draw_sprite(screen, buffer, 0,0);
+                        rest(500);
+                    }
+                    else
+                    {
+                        blit(image_joueur[3], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                        draw_sprite(screen, buffer, 0,0);
+                        rest(500);
+                    }
+
                 }
             }
             if(acteur[var].y<z && o<=acteur[var].x+taille_case && o>=acteur[var].x)
@@ -98,6 +114,9 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].y<z)
                 {
                     acteur[var].y=acteur[var].y+taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
+                    rest(500);
                 }
             }
             if(acteur[var].x>o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
@@ -105,6 +124,9 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].x>o)
                 {
                     acteur[var].x=acteur[var].x-taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
+                    rest(500);
                 }
             }
             if(acteur[var].y>z && o<=acteur[var].x+taille_case && o>=acteur[var].x)
@@ -112,6 +134,9 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
                 while(acteur[var].y>z)
                 {
                     acteur[var].y=acteur[var].y-taille_case;
+                    blit(image_joueur[var], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+                    draw_sprite(screen, buffer, 0,0);
+                    rest(500);
                 }
             }
         }
