@@ -126,16 +126,16 @@
 
 1652201781 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1652175091 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1652201331 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652175091 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1652200975 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
-1651072888 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+1652200975 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -149,7 +149,7 @@
 	"bib.h"
 	<time.h>
 
-1652127394 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+1652200975 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -175,7 +175,7 @@
 	"bib.h"
 	<time.h>
 
-1652188310 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+1652202566 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -210,7 +210,7 @@
 	"bib.h"
 	<time.h>
 
-1652178439 source:c:\users\paul\onedrive\documents\github\ece-arena\chrono.c
+1652201245 source:c:\users\paul\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
