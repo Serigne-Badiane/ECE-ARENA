@@ -38,7 +38,7 @@ void initialisation();
 void menu();
 void afficher();
 void init_struct_case();
-void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer,BITMAP*ciel);
 void init_perso();
 void deplacement(BITMAP* terrain, BITMAP* buffer);
 void chrono(BITMAP* terrain, BITMAP* buffer);
