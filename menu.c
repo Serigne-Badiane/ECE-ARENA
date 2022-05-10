@@ -16,8 +16,11 @@ int menu()
     BITMAP* Credits;
     BITMAP* Regles;
     BITMAP* Menu2;
+    BITMAP* Sorcier[2];
 
     SAMPLE *son;
+
+    char NomFichier[30];
 
 
 
@@ -65,8 +68,34 @@ int menu()
     Credits=load_bitmap("Credits.bmp", NULL);
     Regles=load_bitmap("Regles.bmp", NULL);
 
+    for (int i = 1; i < 3; i++){
+
+        sprintf(NomFichier,"marcher%d.bmp",i);
+
+        Sorcier[i] = load_bitmap(NomFichier,NULL);
+
+
+
+        if (!Sorcier[i]){
+
+            allegro_message( "pas pu trouver %s",NomFichier);
+
+            exit( EXIT_FAILURE );
+
+        }
+
+        /*if(i=1){
+            i=0;
+        }*/
+
+
+    }
+
+
+
 
     page=create_bitmap(SCREEN_W,SCREEN_H);
+    Menu2=create_bitmap(SCREEN_W,SCREEN_H);
 
     Logo=load_bitmap("Logo.bmp",NULL);
 
@@ -77,8 +106,21 @@ int menu()
         exit(EXIT_FAILURE);
     }
 
+    int cptimage = 0;
+    int tmpimage = 2;
+    int imgcourante = 1;
+
+
     while (!key[KEY_ESC])
     {
+
+        cptimage++;
+        if (cptimage>=tmpimage){
+            cptimage=0;
+
+            imgcourante++;
+        }
+
         show_mouse(page);
 
 
@@ -91,9 +133,17 @@ int menu()
         masked_blit(Regles, page, 0, 0, 560, 616, Logo->w, Logo->h);
         masked_blit(Credits, page, 0, 0, 560, 468, Logo->w, Logo->h);
 
+        /*masked_blit(Sorcier[imgcourante],page, 0, 0, 200, 468, Logo->w, Logo->h);*/
+
+
+
+
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
+
+        draw_sprite(page,Sorcier[imgcourante],200,468);
+
 
 
         if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850) /// Petite animation quand on passe la souris
@@ -102,20 +152,25 @@ int menu()
 
             rect(screen,500,300,850,400,makecol(0,255,255));
 
+
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
             {
+                clear_bitmap(page);
 
 
-                show_mouse(Menu2);
+                show_mouse(screen);
 
 
                 blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
 
                 blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
+
                 rect(screen,500,300,850,400,makecol(0,255,255));
                 rect(screen,500,450,850,550,makecol(255,0,255));
                 rect(screen,500,600,850,700,makecol(0,100,255));
+
+                rest(50000);
 
 
         }
@@ -137,6 +192,11 @@ int menu()
             rect(screen,500,600,850,700,makecol(0,100,255));
 
         }
+         if(imgcourante == 2){
+            imgcourante = 1;
+        }
+
+        rest(100);
 
 
 
