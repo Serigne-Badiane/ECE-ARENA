@@ -30,7 +30,7 @@ void chrono(BITMAP* terrain, BITMAP* buffer)
     //printf("La date : %02d/%02d/%d\n", day, mois, an);
 
     //textprintf_ex(terrain,font,0,0,makecol(0,255,0),makecol(0,0,0),"L'heure : %02d:%02d:%02d\n", h, min, s);
-    textprintf_ex(terrain,font,0,0,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
+    textprintf_ex(terrain,font,800,0,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
     int s2;
 
 
@@ -43,5 +43,5 @@ void chrono(BITMAP* terrain, BITMAP* buffer)
 
     }
 
-    textprintf_ex(terrain,font,0,30,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
+    textprintf_ex(terrain,font,800,30,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
 }
