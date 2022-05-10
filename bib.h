@@ -35,6 +35,7 @@ t_joueur acteur[NB_JOUEURS];
 
 int addi (int a, int b);
 void initialisation();
+void menu();
 void afficher();
 void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);

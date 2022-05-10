@@ -26,7 +26,7 @@
 	"bib.h"
 	<time.h>
 
-1652178759 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1652194777 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -62,25 +62,15 @@
 	<allegro.h>
 	"bib.h"
 
-1651767313 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1652194839 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1652178446 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1652194582 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1651067839 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-	<time.h>
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-	<time.h>
+1652194585 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -190,7 +180,7 @@
 	"bib.h"
 	<time.h>
 
-1651512226 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
+1652194585 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -241,6 +231,13 @@
 	<time.h>
 
 1652128220 source:c:\users\serigne\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652194585 source:c:\users\victo\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
