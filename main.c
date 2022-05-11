@@ -10,7 +10,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272,713,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -32,9 +32,10 @@ int main()
 
     init_struct_case();
 
-    init_perso();
+
     while (!key[KEY_ESC])
     {
+        init_perso();
         affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
         /*for (int i=0;i<LIGNE;i++)
