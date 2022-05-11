@@ -35,7 +35,6 @@ int main()
 
     while (!key[KEY_ESC])
     {
-        init_perso();
         affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
         /*for (int i=0;i<LIGNE;i++)
