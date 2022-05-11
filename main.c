@@ -35,17 +35,9 @@ int main()
     init_perso();
     while (!key[KEY_ESC])
     {
-<<<<<<< HEAD
         affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
         /*for (int i=0;i<LIGNE;i++)
-=======
-
-
-        affichage_terrain(terrain,buffer);
-        deplacement(terrain,buffer);
-        for (int i=0;i<LIGNE;i++)
->>>>>>> e029d400b40eb01faad56cd6410dff43af3e55ca
         {
             for(int j=0;j<COLONNE;j++)
             {
