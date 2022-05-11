@@ -30,42 +30,70 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
         }
     }
 
-    int posx=8*50-image_joueur[2]->w/2;
-    int posy=9*28-image_joueur[2]->h/2;
+    int posx=8*50;
+    int posy=9*28-14;
 
-    blit(image_joueur[2], buffer, 0 ,0, posx, posy, image_joueur[2]->w, image_joueur[2]->h);
+    blit(image_joueur[2], buffer, 0 ,0, posx-image_joueur[2]->w/2, posy-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+    circlefill(buffer,posx,posy, 10, makecol(255,255,255));
 
-    int clique=0;
-
-    if(mouse_b&1 && mouse_x<posx+3*50 && mouse_x>posx-3*50 && mouse_y<posy+3*50 && mouse_y>posy-3*50)       ///pas de caillon ou autre
+    if(mouse_b&1 && mouse_x>posx && mouse_x<posx+3*50+25 && mouse_y>posy-14 && mouse_y<posy+14)          ///&& mouse_y>posy && mouse_y<posy+3*28+14
     {
-            if(mouse_x>posx && mouse_x<posx+3*50 && mouse_y>posy && mouse_y<posy+3*50)
+        circlefill(buffer,10,20, 10, makecol(255,255,255));
+        while(mouse_x<posx)
+        {
+            if()
             {
-                clique = (mouse_x-posx)/50 + 2;
+                posx=posx+50;
+                posy=posy+14;
+                blit(image_joueur[4], buffer, 0 ,0, posx-image_joueur[2]->w/2, posy-image_joueur[2]->h, image_joueur[4]->w, image_joueur[4]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+            else
+            {
+                posx=posx+50;
+                posy=posy-14;
+                blit(image_joueur[5], buffer, 0 ,0, posx-image_joueur[2]->w/2, posy-image_joueur[2]->h, image_joueur[5]->w, image_joueur[5]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+        }
 
-                for(int n=1; n<=clique; n++)
+    }
+
+    /*if(mouse_b&1 && mouse_x<posx+3*50+25 && mouse_x>posx-3*50+25 && mouse_y<posy+3*28+14 && mouse_y>posy-3*28+14)       ///pas de caillon ou autre
+    {
+        circlefill(buffer,10,10, 10, makecol(255,255,255));
+
+            if(mouse_b&1 && mouse_x>posx && mouse_x<posx+3*50+25 && mouse_y>posy-14 && mouse_y<posy-14)          ///&& mouse_y>posy && mouse_y<posy+3*28+14
+            {
+                circlefill(buffer,10,20, 10, makecol(255,255,255));
+                while(mouse_x!=posx && mouse_y!=posy)
                 {
-                    posx=posx+25;
-                    posy=posy+14;
-
-                    if(n==1 || n==3)
+                    a++;
+                    if(a%2==0)
                     {
+                        posx=posx+50;
+                        posy=posy+14;
                         blit(image_joueur[4], buffer, 0 ,0, posx, posy, image_joueur[4]->w, image_joueur[4]->h);
                         draw_sprite(screen, buffer, 0,0);
                         rest(500);
                     }
                     else
                     {
+                        posx=posx+50;
+                        posy=posy-14;
                         blit(image_joueur[5], buffer, 0 ,0, posx, posy, image_joueur[5]->w, image_joueur[5]->h);
                         draw_sprite(screen, buffer, 0,0);
                         rest(500);
                     }
                 }
+
             }
 
             if(mouse_x>posx && mouse_x<posx+3*50 && mouse_y<posy && mouse_y>posy-3*50)
             {
-                clique = (mouse_x-posx)/50 + 2;
+                clique = (mouse_x-posx)/50;
 
                 for(int n=1; n<=clique; n++)
                 {
@@ -88,7 +116,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
             }
             if(mouse_x<posx && mouse_x>posx-3*50 && mouse_y<posy+3*50 && mouse_y>posy)
             {
-                clique = (mouse_x-posx)/50 + 5;
+                clique = (mouse_x-posx)/50;
 
                 for(int n=1; n<=clique; n++)
                 {
@@ -111,7 +139,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
             }
             if(mouse_x<posx && mouse_x>posx-3*50 && mouse_y>posy-3*50 && mouse_y<posy)
             {
-                clique = (posx-mouse_x)/50 + 3;
+                clique = (posx-mouse_x)/50;
 
                 for(int n=1; n<=clique; n++)
                 {
@@ -132,5 +160,5 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     }
                 }
             }
-        }
+        }*/
 }
