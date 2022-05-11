@@ -120,9 +120,9 @@ void init_struct_case()
             matrice_terrain[i][j].y=matrice_terrain[i-1][j].y+(matrice_terrain[i][j].hauteur);
         }
     }
-    for (int i=1;i<LIGNE;i++)                                                           ///toute les cases sont traversables:initialisation (par le joueur et ses attaques)
+    for (int i=0;i<LIGNE;i++)                                                           ///toute les cases sont traversables:initialisation (par le joueur et ses attaques)
     {
-        for(int j=1;j<COLONNE;j++)
+        for(int j=0;j<COLONNE;j++)
         {
             matrice_terrain[i][j].passage=1;
             matrice_terrain[i][j].passage_attaque=1;
@@ -131,29 +131,33 @@ void init_struct_case()
     }
 }
 
-void case_couleur(BITMAP* buffer,BITMAP* terrain)
+void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
 {
-    for(int i=0;i<matrice_terrain[0][0].hauteur/2;i++)
+    int losange=0;
+    for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
     {
-        for(int j=matrice_terrain[0][0].largeur/2;j<matrice_terrain[0][0].largeur-i;j++)
+        for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange;j++)
         {
-            putpixel(buffer,i,j,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126,247,253));
         }
-        for(int j=matrice_terrain[0][0].largeur/2;j>+i;j--)
+        for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange;j--)
         {
-            putpixel(buffer,i,j,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126,247,253));
         }
+        losange+=2;
     }
-    for(int i=matrice_terrain[0][0].hauteur/2;i<matrice_terrain[0][0].hauteur;i--)
+    int losange2=0;
+    for(int i=coord_y;i>coord_y-matrice_terrain[0][0].hauteur/2;i--)
     {
-        for(int j=matrice_terrain[0][0].largeur/2;j<matrice_terrain[0][0].largeur-i;j++)
+        for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange2;j++)
         {
-            putpixel(buffer,i,j,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126,247,253));
         }
-        for(int j=matrice_terrain[0][0].largeur/2;j>+i;j--)
+        for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange2;j--)
         {
-            putpixel(buffer,i,j,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126,247,253));
         }
+    losange2+=2;
     }
 }
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
@@ -175,7 +179,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
     {
         for(int j=0;j<COLONNE;j++)
         {
-            printf("%d %d\n",matrice_terrain[2][27].x,matrice_terrain[2][27].y);
+            //printf("%d %d\n",matrice_terrain[2][27].x,matrice_terrain[2][27].y);
             textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(40,40,40),-1,"l");
         }
     }

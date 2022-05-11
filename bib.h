@@ -42,6 +42,6 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer,BITMAP*ciel);
 void init_perso();
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel);
 void chrono(BITMAP* terrain, BITMAP* buffer);
-void case_couleur(BITMAP* buffer,BITMAP* terrain);
+void case_couleur(BITMAP* buffer,BITMAP* terrain, int coord_x, int coord_y);
 
 #endif // BIB_H_INCLUDED

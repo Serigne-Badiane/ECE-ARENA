@@ -23,8 +23,6 @@ void initialisation()
 
 int main()
 {
-
-
     srand(time(NULL));
     initialisation();
     //menu();
@@ -42,10 +40,9 @@ int main()
     {
         affichage_terrain(terrain,buffer,ciel);
         deplacement(terrain,buffer, ciel);
-        case_couleur(buffer,terrain);
+        case_couleur(buffer,terrain,matrice_terrain[3][3].x,matrice_terrain[3][3].y);
         draw_sprite(screen, buffer, 0,0);
     }
-
     return 0;
 
 }END_OF_MAIN();
