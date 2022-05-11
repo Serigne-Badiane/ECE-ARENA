@@ -122,6 +122,66 @@ void init_struct_case()
             matrice_terrain[i][j].passage=0;
         }
     }
+    matrice_terrain[12][9].passage=1;
+    matrice_terrain[13][35].passage=1;
+    matrice_terrain[12][35].passage=1;
+    matrice_terrain[11][35].passage=1;
+    matrice_terrain[8][35].passage=1;
+    matrice_terrain[12][36].passage=1;
+    matrice_terrain[11][36].passage=1;
+    matrice_terrain[11][37].passage=1;
+    matrice_terrain[12][37].passage=1;
+    matrice_terrain[10][10].passage=0;
+    matrice_terrain[13][10].passage=0;
+    matrice_terrain[14][10].passage=0;
+    matrice_terrain[15][10].passage=0;
+    matrice_terrain[14][11].passage=0;
+    matrice_terrain[15][11].passage=0;
+    matrice_terrain[16][11].passage=0;
+    matrice_terrain[14][12].passage=0;
+    matrice_terrain[15][12].passage=0;
+    matrice_terrain[16][12].passage=0;
+    matrice_terrain[15][13].passage=0;
+    matrice_terrain[16][15].passage=0;
+    matrice_terrain[17][15].passage=0;
+    matrice_terrain[16][16].passage=0;
+    matrice_terrain[17][16].passage=0;
+    matrice_terrain[17][17].passage=0;
+    matrice_terrain[18][17].passage=0;
+    matrice_terrain[7][15].passage=0;
+    matrice_terrain[7][16].passage=0;
+    matrice_terrain[1][24].passage=0;
+    matrice_terrain[4][22].passage=0;
+    matrice_terrain[5][21].passage=0;
+    matrice_terrain[19][18].passage=0;
+    matrice_terrain[19][19].passage=0;
+    matrice_terrain[19][20].passage=0;
+    matrice_terrain[20][19].passage=0;
+    matrice_terrain[20][20].passage=0;
+    matrice_terrain[20][21].passage=0;
+    matrice_terrain[21][22].passage=0;
+    matrice_terrain[18][20].passage=0;
+    matrice_terrain[21][21].passage=0;
+    matrice_terrain[21][24].passage=0;
+    matrice_terrain[21][25].passage=0;
+    matrice_terrain[21][26].passage=0;
+    matrice_terrain[18][26].passage=0;
+    matrice_terrain[18][27].passage=0;
+    matrice_terrain[18][28].passage=0;
+    matrice_terrain[18][29].passage=0;
+    matrice_terrain[18][30].passage=0;
+    matrice_terrain[18][31].passage=0;
+    matrice_terrain[17][31].passage=0;
+    matrice_terrain[16][31].passage=0;
+    matrice_terrain[16][32].passage=0;
+    matrice_terrain[16][30].passage=0;
+    matrice_terrain[17][30].passage=0;
+    matrice_terrain[19][27].passage=0;
+    matrice_terrain[17][28].passage=0;
+    matrice_terrain[19][28].passage=0;
+    matrice_terrain[17][29].passage=0;
+    matrice_terrain[19][29].passage=0;
+    matrice_terrain[17][34].passage=0;;
 }
 
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
