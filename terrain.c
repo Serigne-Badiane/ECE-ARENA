@@ -49,9 +49,34 @@ void init_struct_case()
         for(int j=0;j<COLONNE;j++)                                                      ///2=case eau
         {                                                                               ///3=case non traversable
             matrice_terrain[i][j].passage=0;
-            matrice_terrain[i][j].passage_attaque=0;
-
         }
+    }
+    int losange=0;
+    for(int i=11;i<22;i++)
+    {
+
+        for(int j=24;j<48-losange;j++)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        for(int j=24;j>0+losange;j--)
+        {
+           matrice_terrain[i][j].passage=1;
+        }
+        losange+=2;
+    }
+    int losange2=0;
+    for(int i=11;i>0;i--)
+    {
+        for(int j=24;j<45-losange2;j++)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        for(int j=24;j>5+losange2;j--)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        losange2+=2;
     }
     matrice_terrain[9][19].passage=3;
     matrice_terrain[9][21].passage=3;
@@ -65,7 +90,98 @@ void init_struct_case()
     matrice_terrain[11][30].passage=3;
     matrice_terrain[12][31].passage=3;
     matrice_terrain[12][29].passage=3;
-    matrice_terrain[5][27].passage=3;                                                                              ///initialisation des autres cases
+    matrice_terrain[5][27].passage=3;
+    matrice_terrain[9][22].passage=2;
+    matrice_terrain[8][22].passage=2;
+    matrice_terrain[9][23].passage=2;
+    matrice_terrain[10][22].passage=2;
+    matrice_terrain[10][23].passage=2;
+    matrice_terrain[11][22].passage=2;
+    matrice_terrain[12][22].passage=2;
+    matrice_terrain[11][23].passage=2;
+    matrice_terrain[12][23].passage=2;
+    matrice_terrain[13][23].passage=2;
+    matrice_terrain[12][21].passage=2;
+    matrice_terrain[14][23].passage=2;
+    matrice_terrain[14][24].passage=2;
+    matrice_terrain[13][24].passage=2;
+    matrice_terrain[12][24].passage=2;
+    matrice_terrain[11][24].passage=2;
+    matrice_terrain[10][24].passage=2;
+    for(int i=8;i<18;i++)
+    {
+        for(int j=35;j<48;j++)
+        {
+            matrice_terrain[i][j].passage=0;
+        }
+    }
+    for(int i=10;i<16;i++)
+    {
+        for(int j=1;j<10;j++)
+        {
+            matrice_terrain[i][j].passage=0;
+        }
+    }
+    matrice_terrain[12][9].passage=1;
+    matrice_terrain[13][35].passage=1;
+    matrice_terrain[12][35].passage=1;
+    matrice_terrain[11][35].passage=1;
+    matrice_terrain[8][35].passage=1;
+    matrice_terrain[12][36].passage=1;
+    matrice_terrain[11][36].passage=1;
+    matrice_terrain[11][37].passage=1;
+    matrice_terrain[12][37].passage=1;
+    matrice_terrain[10][10].passage=0;
+    matrice_terrain[13][10].passage=0;
+    matrice_terrain[14][10].passage=0;
+    matrice_terrain[15][10].passage=0;
+    matrice_terrain[14][11].passage=0;
+    matrice_terrain[15][11].passage=0;
+    matrice_terrain[16][11].passage=0;
+    matrice_terrain[14][12].passage=0;
+    matrice_terrain[15][12].passage=0;
+    matrice_terrain[16][12].passage=0;
+    matrice_terrain[15][13].passage=0;
+    matrice_terrain[16][15].passage=0;
+    matrice_terrain[17][15].passage=0;
+    matrice_terrain[16][16].passage=0;
+    matrice_terrain[17][16].passage=0;
+    matrice_terrain[17][17].passage=0;
+    matrice_terrain[18][17].passage=0;
+    matrice_terrain[7][15].passage=0;
+    matrice_terrain[7][16].passage=0;
+    matrice_terrain[1][24].passage=0;
+    matrice_terrain[4][22].passage=0;
+    matrice_terrain[5][21].passage=0;
+    matrice_terrain[19][18].passage=0;
+    matrice_terrain[19][19].passage=0;
+    matrice_terrain[19][20].passage=0;
+    matrice_terrain[20][19].passage=0;
+    matrice_terrain[20][20].passage=0;
+    matrice_terrain[20][21].passage=0;
+    matrice_terrain[21][22].passage=0;
+    matrice_terrain[18][20].passage=0;
+    matrice_terrain[21][21].passage=0;
+    matrice_terrain[21][24].passage=0;
+    matrice_terrain[21][25].passage=0;
+    matrice_terrain[21][26].passage=0;
+    matrice_terrain[18][26].passage=0;
+    matrice_terrain[18][27].passage=0;
+    matrice_terrain[18][28].passage=0;
+    matrice_terrain[18][29].passage=0;
+    matrice_terrain[18][30].passage=0;
+    matrice_terrain[18][31].passage=0;
+    matrice_terrain[17][31].passage=0;
+    matrice_terrain[16][31].passage=0;
+    matrice_terrain[16][32].passage=0;
+    matrice_terrain[16][30].passage=0;
+    matrice_terrain[17][30].passage=0;
+    matrice_terrain[19][27].passage=0;
+    matrice_terrain[17][28].passage=0;
+    matrice_terrain[19][28].passage=0;
+    matrice_terrain[17][29].passage=0;
+    matrice_terrain[19][29].passage=0;
+    matrice_terrain[17][34].passage=0;;
 }
 
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
@@ -142,5 +258,4 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
             textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(40,40,40),-1,"l");
         }
     }*/
-    //draw_sprite(screen, buffer, 0,0);*/
 }

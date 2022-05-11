@@ -1,7 +1,7 @@
 #ifndef BIB_H_INCLUDED
 #define BIB_H_INCLUDED
-#define LIGNE 23
-#define COLONNE 55
+#define LIGNE 26
+#define COLONNE 52
 #define NB_JOUEURS 4
 
 typedef struct
@@ -11,13 +11,13 @@ typedef struct
     int hauteur;
     int largeur;
     int passage;
-    int passage_attaque;
 }t_case;
 typedef struct{
 
     int pa;
     int pm;
     int pv;
+    int classe;
 
 }str_perso;
 
