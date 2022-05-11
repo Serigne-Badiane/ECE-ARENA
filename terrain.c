@@ -138,11 +138,11 @@ void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
     {
         for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange;j++)
         {
-            putpixel(buffer,j,i,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126-losange/2,247-losange,253-losange*2));
         }
         for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange;j--)
         {
-            putpixel(buffer,j,i,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126-losange/2,247-losange,253-losange*2));
         }
         losange+=2;
     }
@@ -151,11 +151,11 @@ void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
     {
         for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange2;j++)
         {
-            putpixel(buffer,j,i,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126-losange2/2,247-losange2,253-losange2*2));
         }
         for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange2;j--)
         {
-            putpixel(buffer,j,i,makecol(126,247,253));
+            putpixel(buffer,j,i,makecol(126-losange2/2,247-losange2,253-losange2*2));
         }
     losange2+=2;
     }
