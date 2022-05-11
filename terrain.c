@@ -49,9 +49,34 @@ void init_struct_case()
         for(int j=0;j<COLONNE;j++)                                                      ///2=case eau
         {                                                                               ///3=case non traversable
             matrice_terrain[i][j].passage=0;
-            matrice_terrain[i][j].passage_attaque=0;
-
         }
+    }
+    int losange=0;
+    for(int i=11;i<22;i++)
+    {
+
+        for(int j=24;j<48-losange;j++)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        for(int j=24;j>0+losange;j--)
+        {
+           matrice_terrain[i][j].passage=1;
+        }
+        losange+=2;
+    }
+    int losange2=0;
+    for(int i=11;i>0;i--)
+    {
+        for(int j=24;j<45-losange2;j++)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        for(int j=24;j>5+losange2;j--)
+        {
+            matrice_terrain[i][j].passage=1;
+        }
+        losange2+=2;
     }
     matrice_terrain[9][19].passage=3;
     matrice_terrain[9][21].passage=3;
@@ -65,7 +90,38 @@ void init_struct_case()
     matrice_terrain[11][30].passage=3;
     matrice_terrain[12][31].passage=3;
     matrice_terrain[12][29].passage=3;
-    matrice_terrain[5][27].passage=3;                                                                              ///initialisation des autres cases
+    matrice_terrain[5][27].passage=3;
+    matrice_terrain[9][22].passage=2;
+    matrice_terrain[8][22].passage=2;
+    matrice_terrain[9][23].passage=2;
+    matrice_terrain[10][22].passage=2;
+    matrice_terrain[10][23].passage=2;
+    matrice_terrain[11][22].passage=2;
+    matrice_terrain[12][22].passage=2;
+    matrice_terrain[11][23].passage=2;
+    matrice_terrain[12][23].passage=2;
+    matrice_terrain[13][23].passage=2;
+    matrice_terrain[12][21].passage=2;
+    matrice_terrain[14][23].passage=2;
+    matrice_terrain[14][24].passage=2;
+    matrice_terrain[13][24].passage=2;
+    matrice_terrain[12][24].passage=2;
+    matrice_terrain[11][24].passage=2;
+    matrice_terrain[10][24].passage=2;
+    for(int i=8;i<18;i++)
+    {
+        for(int j=35;j<48;j++)
+        {
+            matrice_terrain[i][j].passage=0;
+        }
+    }
+    for(int i=10;i<16;i++)
+    {
+        for(int j=1;j<10;j++)
+        {
+            matrice_terrain[i][j].passage=0;
+        }
+    }
 }
 
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
@@ -142,5 +198,4 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
             textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(40,40,40),-1,"l");
         }
     }*/
-    //draw_sprite(screen, buffer, 0,0);*/
 }

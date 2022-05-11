@@ -26,7 +26,6 @@ int main()
     srand(time(NULL));
     initialisation();
     //menu();
-    BITMAP* ciel = load_bitmap("ciel.bmp", NULL);
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
@@ -42,6 +41,16 @@ int main()
             for(int j=0;j<COLONNE;j++)
             {
                 case_couleur(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
+            }
+        }*/
+        /*for (int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                if(matrice_terrain[i][j].passage==3 || matrice_terrain[i][j].passage==2 || matrice_terrain[i][j].passage==1)
+                {
+                    case_couleur(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
+                }
             }
         }*/
         quadrillage(buffer,terrain);
