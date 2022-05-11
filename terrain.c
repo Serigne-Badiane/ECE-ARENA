@@ -82,10 +82,10 @@ void case_eau(int pos_x, int pos_y, BITMAP* buffer, BITMAP* type_case)
 
 void init_struct_case()
 {
-    matrice_terrain[0][0].hauteur=29;                               ///initialisation des structs : largeur, longueur, pos x, pos y
+    matrice_terrain[0][0].hauteur=28;                               ///initialisation des structs : largeur, longueur, pos x, pos y
     matrice_terrain[0][0].largeur=50;
     matrice_terrain[0][0].x=0;
-    matrice_terrain[0][0].y=25;
+    matrice_terrain[0][0].y=14;
     for (int i=1;i<LIGNE;i++)
     {
         matrice_terrain[i][0].hauteur=matrice_terrain[0][0].hauteur;
@@ -131,6 +131,40 @@ void init_struct_case()
     }
 }
 
+void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
+{
+    int losange=0, j, j2;
+    for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
+    {
+
+        putpixel(buffer,j,i,makecol(0,0,0));
+        putpixel(buffer,j2,i,makecol(0,0,0));
+        j=coord_x+matrice_terrain[0][0].largeur/2-losange;
+        j2=coord_x-matrice_terrain[0][0].largeur/2+losange;
+        losange+=2;
+    }
+    int losange2=0,j3,j4;
+    for(int i=coord_y;i>coord_y-matrice_terrain[0][0].hauteur/2;i--)
+    {
+        putpixel(buffer,j3,i,makecol(0,0,0));
+        putpixel(buffer,j4,i,makecol(0,0,0));
+        j3=coord_x+matrice_terrain[0][0].largeur/2-losange2;
+        j4=coord_x-matrice_terrain[0][0].largeur/2+losange2;
+        losange2+=2;
+    }
+}
+
+void quadrillage(BITMAP* buffer,BITMAP* terrain)
+{
+    for (int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                case_quadrillage(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
+            }
+        }
+}
+
 void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
 {
     int losange=0;
@@ -160,10 +194,9 @@ void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
     losange2+=2;
     }
 }
-void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 {
     //int changement_couleur[3], couleur_pixel, ancienne_couleur[3][ciel->w][ciel->h], ancienne_couleur_pixel;
-    blit(ciel,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
     /*for(int i=0;i<ciel->w;i++)
     {
         for(int j=0;j<ciel->h;j++)
