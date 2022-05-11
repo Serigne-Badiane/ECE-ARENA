@@ -194,11 +194,9 @@ void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
     losange2+=2;
     }
 }
-
-void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 {
     //int changement_couleur[3], couleur_pixel, ancienne_couleur[3][ciel->w][ciel->h], ancienne_couleur_pixel;
-    blit(ciel,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
     /*for(int i=0;i<ciel->w;i++)
     {
         for(int j=0;j<ciel->h;j++)
