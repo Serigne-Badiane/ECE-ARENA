@@ -10,7 +10,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1280,700,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272,713,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -40,7 +40,15 @@ int main()
     {
         affichage_terrain(terrain,buffer,ciel);
         deplacement(terrain,buffer, ciel);
-        case_couleur(buffer,terrain,matrice_terrain[3][3].x,matrice_terrain[3][3].y);
+        for (int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                case_couleur(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
+            }
+        }
+        quadrillage(buffer,terrain);
+
         draw_sprite(screen, buffer, 0,0);
     }
     return 0;
