@@ -39,8 +39,8 @@ int main()
     {
 
 
-        affichage_terrain(terrain,buffer,ciel);
-        deplacement(terrain,buffer, ciel);
+        affichage_terrain(terrain,buffer);
+        deplacement(terrain,buffer);
         for (int i=0;i<LIGNE;i++)
         {
             for(int j=0;j<COLONNE;j++)
