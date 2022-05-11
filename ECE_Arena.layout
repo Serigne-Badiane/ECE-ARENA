@@ -2,6 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< Updated upstream
 	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1259" topLine="38" />
@@ -20,16 +21,45 @@
 	<File name="deplacement.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="319" topLine="33" />
+=======
+	<File name="terrain.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4145" topLine="66" />
 		</Cursor>
 	</File>
-	<File name="bib.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="menu.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+			<Cursor1 position="1364" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="deplacement.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3028" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="personnage.c" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="61" topLine="3" />
+>>>>>>> Stashed changes
+		</Cursor>
+	</File>
+	<File name="chrono.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+<<<<<<< Updated upstream
 			<Cursor1 position="714" topLine="25" />
 		</Cursor>
 	</File>
 	<File name="terrain.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3915" topLine="14" />
+=======
+			<Cursor1 position="648" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="bib.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="972" topLine="25" />
+>>>>>>> Stashed changes
 		</Cursor>
 		<Folding>
 			<Collapse line="7" />
@@ -41,9 +71,15 @@
 			<Collapse line="163" />
 		</Folding>
 	</File>
+<<<<<<< Updated upstream
 	<File name="menu.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1364" topLine="40" />
+=======
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="790" topLine="33" />
+>>>>>>> Stashed changes
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
