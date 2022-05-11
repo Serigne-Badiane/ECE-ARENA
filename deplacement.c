@@ -25,7 +25,7 @@ void init_perso()                                                               
 
 
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)                                                       /// DEPLACEMENT DES JOUEURS
+void deplacement(BITMAP* terrain, BITMAP* buffer)                                                       /// DEPLACEMENT DES JOUEURS
 {
     BITMAP* image_joueur[nombre_perso*8];
 
