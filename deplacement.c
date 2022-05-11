@@ -14,8 +14,8 @@ void init_perso()                                                               
 
     if(mouse_b&1 && fin==0)
     {
-        a=mouse_x/26;
-        b=mouse_y/32;
+        a=12/*mouse_x/28*/;
+        b=10/*mouse_y/28*/;
 
         for (int var=0; var<1; var++)
         {
@@ -61,43 +61,31 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
     }
 
     int o,z;
+    int p,e;
+
+    int x=12;
+    int y=12;
 
     for (var=0; var<nombre_joueurs; var++)
     {
-        blit(image_joueur[2], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
+        blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[x][y].x, matrice_terrain[x][y].y, image_joueur[var]->w, image_joueur[var]->h);
 
-        for (int j=1; j<3; j++)
+        o = mouse_x;             /*/taille_case*/
+        z = mouse_y;             /*/taille_case*/
+
+        p = matrice_terrain[x][y].x/50;
+        e = matrice_terrain[x][y].y/28;
+
+        textprintf_ex(buffer,font,100,100,makecol(0,255,0),makecol(0,0,0),"%d %d", o,z);
+        textprintf_ex(buffer,font,100,125,makecol(0,255,0),makecol(0,0,0),"%d %d", mouse_x,mouse_y);
+        textprintf_ex(buffer,font,100,150,makecol(0,255,0),makecol(0,0,0),"%d %d", matrice_terrain[x][y].x/50, matrice_terrain[x][y].y/28);
+
+
+
+        if(mouse_b&1 && o<matrice_terrain[x+3][y].x && o>matrice_terrain[x-3][y].x && z<matrice_terrain[x][y+3].y && z>matrice_terrain[x][y-3].y)       ///remplacer 3 par characteristique perso && pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
         {
-            /*blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*23, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+1*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y+1*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y-1*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+1*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-1*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x-1*45, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);*/
-        }
+            textprintf_ex(buffer,font,100,10,makecol(0,255,0),makecol(0,0,0),"OUIIII");
 
-
-        o = mouse_x/*/taille_case*/;
-        z = mouse_y/*/taille_case*/;
-
-        /*if(o<acteur[var].x+4*taille_case && o>acteur[var].x-3*taille_case && z<acteur[var].y+4*taille_case && z>acteur[var].y-3*taille_case)
-        {
-            blit(image_deplacement, buffer, 0 ,0, o-20, z-20, image_deplacement->h, image_deplacement->w);
-        }*/
-
-
-        if(mouse_b&1 && mouse_x<acteur[var].x+3*matrice_terrain[0][0].largeur && mouse_x>acteur[var].x-3*matrice_terrain[0][0].largeur && mouse_y<acteur[var].y+3*matrice_terrain[0][0].hauteur && mouse_x>acteur[var].y-3*matrice_terrain[0][0].hauteur)       ///remplacer 3 par characteristique perso && pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
-        {
             if(acteur[var].x<o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
             {
                 while(acteur[var].x<o && acteur[var].y<z)
