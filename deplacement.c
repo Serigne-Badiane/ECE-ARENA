@@ -9,17 +9,19 @@
 
 void init_perso()                                                                                       /// INITIALISATION DES POSITIONS DES JOUEURS
 {
-    int nombre_joueurs = nombre_perso;
-    int posa, posb;
+    int fin=0;
+    int a,b;
 
-
-    for (int var=0; var<nombre_joueurs; var++)
+    if(mouse_b&1 && fin==0)
     {
-        posa = 10;                                                                             /// RAND OU INITIALISATION ???
-        posb = 12;
+        a=mouse_x/26;
+        b=mouse_y/32;
 
-        acteur[var].x = matrice_terrain[posa][posb].x;
-        acteur[var].y = matrice_terrain[posa][posb].y;
+        for (int var=0; var<1; var++)
+        {
+            acteur[var].x = matrice_terrain[b][a].x;
+            acteur[var].y = matrice_terrain[b][a].y;
+        }
     }
 }
 
@@ -59,17 +61,15 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)                 
     }
 
     int o,z;
-    int compteur;
 
     for (var=0; var<nombre_joueurs; var++)
     {
-        compteur=0;
         blit(image_joueur[2], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);
 
         for (int j=1; j<3; j++)
         {
-            blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*23, image_deplacement->h, image_deplacement->w);
-            /*blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
+            /*blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y+j*23, image_deplacement->h, image_deplacement->w);
+            blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y+j*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x-j*45, acteur[var].y, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
             blit(image_deplacement, buffer, 0 ,0, acteur[var].x+j*45, acteur[var].y-j*45, image_deplacement->h, image_deplacement->w);
@@ -96,13 +96,14 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)                 
         }*/
 
 
-        if(mouse_b&1 && o<acteur[var].x+3*taille_case && o>acteur[var].x-2*taille_case && z<acteur[var].y+3*taille_case && z>acteur[var].y-2*taille_case)       ///pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
+        if(mouse_b&1 && mouse_x<acteur[var].x+3*matrice_terrain[0][0].largeur && mouse_x>acteur[var].x-3*matrice_terrain[0][0].largeur && mouse_y<acteur[var].y+3*matrice_terrain[0][0].hauteur && mouse_x>acteur[var].y-3*matrice_terrain[0][0].hauteur)       ///remplacer 3 par characteristique perso && pas de caillon ou autre : caillou()==0 & remplacer 5 par possibilité deplacement                                                                                   ///mettre condition du deplacement
         {
             if(acteur[var].x<o && z<=acteur[var].y+taille_case && z>=acteur[var].y)
             {
-                while(acteur[var].x<o)
+                while(acteur[var].x<o && acteur[var].y<z)
                 {
                     acteur[var].x=acteur[var].x+taille_case;
+                    acteur[var].y=acteur[var].y+23;
                     if(acteur[var].x%2==0)
                     {
                         blit(image_joueur[4], buffer, 0 ,0, acteur[var].x, acteur[var].y, image_joueur[var]->w, image_joueur[var]->h);

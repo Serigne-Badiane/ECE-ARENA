@@ -46,9 +46,10 @@ int main()
     init_struct_case();
 
     init_perso();
-
     while (!key[KEY_ESC])
     {
+
+
         affichage_terrain(terrain,buffer,ciel);
         deplacement(terrain,buffer, ciel);
         case_couleur(buffer,terrain,matrice_terrain[3][3].x,matrice_terrain[3][3].y);

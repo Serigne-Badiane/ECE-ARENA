@@ -126,14 +126,14 @@
 
 1652269024 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1652277710 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652271540 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1652277246 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
 1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
@@ -142,7 +142,7 @@
 	"bib.h"
 	<time.h>
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
+1652272148 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -175,7 +175,7 @@
 	"bib.h"
 	<time.h>
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+1652277462 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
