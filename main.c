@@ -25,7 +25,7 @@ int main()
 {
     srand(time(NULL));
     initialisation();
-    menu();
+    //menu();
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
