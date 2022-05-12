@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -42,7 +42,7 @@ int main()
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer);
-        //deplacement(terrain,buffer);
+        deplacement(terrain,buffer);
         init_joueur(nbrjoueur,joueur);
         /*for (int i=0;i<LIGNE;i++)
         {
