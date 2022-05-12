@@ -26,7 +26,7 @@
 	"bib.h"
 	<time.h>
 
-1652179035 ated upstream
+1652303149 ated upstream
 
 1652268274 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
@@ -35,7 +35,7 @@
 	"bib.h"
 	<time.h>
 
-1652179035 shed changes
+1652340808 shed changes
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -55,6 +55,15 @@
 	<allegro.h>
 	"bib.h"
 	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<allegro.h>
 
 1651319177 509a5b5c7b188d783463004f2f40fdeecf8b3
 	<allegro.h>
@@ -64,12 +73,7 @@
 	"bib.h"
 	<time.h>
 
-1652339279 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-	<time.h>
+1652340808 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 
 1651061898 193f821a79c14bc3ce6f2591fe2637b453390
 	<stdio.h>
@@ -155,13 +159,13 @@
 	<time.h>
 	<allegro.h>
 
-1652338572 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1652341086 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652277473 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+1652341086 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
