@@ -4,6 +4,23 @@
 #include "bib.h"
 #include <time.h>
 
+void init_depla()
+{
+    /*int a,b;
+    if(mouse_b&1)
+    {
+        a=mouse_x/50;
+        b=mouse_y/28;
+        play[0].x=matrice_terrain[a][b].x;
+        play[0].y=matrice_terrain[a][b].y;
+    }*/
+
+    play[0].x=matrice_terrain[8][12].x;             ///10*50;                   ///A GAUCHE Y A DROITE X
+    play[0].y=matrice_terrain[8][12].y;             ///12*28-14;
+
+    play[1].x=14*50;
+    play[1].y=14*28-14;
+}
 
 void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
@@ -35,7 +52,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     int a=0;
 
     blit(image_joueur[2], buffer, 0 ,0, play[0].x-image_joueur[2]->w/2, play[0].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-    circlefill(buffer,play[0].x,play[0].y, 3, makecol(255,255,255));
+    circlefill(buffer,play[0].x-matrice_terrain[3][3].x,play[0].y-matrice_terrain[3][3].y, 3, makecol(255,255,255));        ///A MODIFIER
 
     if(mouse_x>=play[0].x-1*50+25 && mouse_x<=play[0].x+1*50+25 && mouse_y>=play[0].y-28-28 && mouse_y<=play[0].y+28+28)
     {

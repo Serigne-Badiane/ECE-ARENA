@@ -23,24 +23,22 @@ int main()
 {
     srand(time(NULL));
     initialisation();
-    //menu();
+
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     int nbrjoueur = 4;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
-    player [0] = create_bitmap(SCREEN_W, SCREEN_H);
+    player[0] = create_bitmap(SCREEN_W, SCREEN_H);
     str_perso joueur [nbrjoueur];
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
 
+
+    //menu();
     init_struct_case();
 
-    play[0].x=10*50;
-    play[0].y=12*28-14;
-
-    play[1].x=14*50;
-    play[1].y=14*28-14;
+    init_depla();
 
     while (!key[KEY_ESC])
     {
