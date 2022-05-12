@@ -233,20 +233,20 @@
 	"bib.h"
 	<time.h>
 
-1652339137 source:c:\users\serigne\documents\github\ece-arena\main.c
+1652341583 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652300318 source:c:\users\serigne\documents\github\ece-arena\menu.c
+1652340836 source:c:\users\serigne\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652277414 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1652341525 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
