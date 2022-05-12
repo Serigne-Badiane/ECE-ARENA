@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -38,6 +38,9 @@ int main()
 
     play[0].x=10*50;
     play[0].y=12*28-14;
+
+    play[1].x=14*50;
+    play[1].y=14*28-14;
 
     while (!key[KEY_ESC])
     {

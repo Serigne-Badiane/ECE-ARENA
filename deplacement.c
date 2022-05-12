@@ -37,6 +37,11 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     blit(image_joueur[2], buffer, 0 ,0, play[0].x-image_joueur[2]->w/2, play[0].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
     circlefill(buffer,play[0].x,play[0].y, 3, makecol(255,255,255));
 
+    if(mouse_x>=play[0].x-1*50+25 && mouse_x<=play[0].x+1*50+25 && mouse_y>=play[0].y-28-28 && mouse_y<=play[0].y+28+28)
+    {
+        circlefill(buffer, mouse_x, mouse_y, 15, makecol(255,255,255));
+    }
+
     if(mouse_b&1 && mouse_x>=play[0].x && mouse_x<=play[0].x+3*50+25 && mouse_y>=play[0].y && mouse_y<=play[0].y+28+28)
     {
         while(play[0].x<mouse_x && play[0].y<mouse_y)
@@ -138,4 +143,117 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
         }
     }
+
+
+    if(mouse_x>=play[1].x-1*50+25 && mouse_x<=play[1].x+1*50+25 && mouse_y>=play[1].y-28-28 && mouse_y<=play[1].y+28+28)
+    {
+        circlefill(buffer, mouse_x, mouse_y, 15, makecol(255,255,255));
+    }
+
+    blit(image_joueur[8], buffer, 0 ,0, play[1].x-image_joueur[8]->w/2, play[1].y-image_joueur[8]->h, image_joueur[8]->w, image_joueur[8]->h);
+    circlefill(buffer,play[1].x,play[1].y, 3, makecol(255,255,255));
+
+    if(mouse_b&1 && mouse_x>=play[1].x && mouse_x<=play[1].x+3*50+25 && mouse_y>=play[1].y && mouse_y<=play[1].y+28+28)
+    {
+        while(play[1].x<mouse_x && play[1].y<mouse_y)
+        {
+            a++;
+            play[1].x=play[1].x+25;
+            play[1].y=play[1].y+14;
+            clear_bitmap(buffer);
+            affichage_terrain(terrain,buffer);
+
+            if(a%2==0)
+            {
+                blit(image_joueur[8], buffer, 0 ,0, play[1].x-image_joueur[8]->w/2, play[1].y-image_joueur[8]->h, image_joueur[8]->w, image_joueur[8]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+            else
+            {
+                blit(image_joueur[9], buffer, 0 ,0, play[1].x-image_joueur[9]->w/2, play[1].y-image_joueur[9]->h, image_joueur[9]->w, image_joueur[9]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+        }
+    }
+    if(mouse_b&1 && mouse_x>play[1].x-3*50-25 && mouse_x<play[1].x && mouse_y>play[1].y && mouse_y<play[1].y+28+14)
+    {
+        while(play[1].x>mouse_x && play[1].y<mouse_y)
+        {
+            a++;
+            play[1].x=play[1].x-25;
+            play[1].y=play[1].y+14;
+            clear_bitmap(buffer);
+            affichage_terrain(terrain,buffer);
+
+
+            if(a%2==0)
+            {
+                blit(image_joueur[10], buffer, 0 ,0, play[1].x-image_joueur[10]->w/2, play[1].y-image_joueur[10]->h, image_joueur[10]->w, image_joueur[10]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+            else
+            {
+                blit(image_joueur[11], buffer, 0 ,0, play[1].x-image_joueur[11]->w/2, play[1].y-image_joueur[11]->h, image_joueur[11]->w, image_joueur[11]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+
+        }
+    }
+    if(mouse_b&1 && mouse_x>play[1].x && mouse_x<play[1].x+3*50+25 && mouse_y<play[1].y && mouse_y>play[1].y-28-14)
+    {
+        while(play[1].x<mouse_x && play[1].y>mouse_y)
+        {
+            a++;
+            play[1].x=play[1].x+25;
+            play[1].y=play[1].y-14;
+            clear_bitmap(buffer);
+            affichage_terrain(terrain,buffer);
+
+            if(a%2==0)
+            {
+                blit(image_joueur[8], buffer, 0 ,0, play[1].x-image_joueur[8]->w/2, play[1].y-image_joueur[8]->h, image_joueur[8]->w, image_joueur[8]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+            else
+            {
+                blit(image_joueur[9], buffer, 0 ,0, play[1].x-image_joueur[9]->w/2, play[1].y-image_joueur[9]->h, image_joueur[9]->w, image_joueur[9]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+
+        }
+    }
+    if(mouse_b&1 && mouse_x<play[1].x && mouse_x>play[1].x-3*50-25 && mouse_y<play[1].y && mouse_y>play[1].y-28-14)
+    {
+        while(play[1].x>mouse_x && play[1].y>mouse_y)
+        {
+            a++;
+            play[1].x=play[1].x-25;
+            play[1].y=play[1].y-14;
+            clear_bitmap(buffer);
+            affichage_terrain(terrain,buffer);
+
+            if(a%2==0)
+            {
+                blit(image_joueur[10], buffer, 0 ,0, play[1].x-image_joueur[10]->w/2, play[1].y-image_joueur[10]->h, image_joueur[10]->w, image_joueur[10]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+            else
+            {
+                blit(image_joueur[11], buffer, 0 ,0, play[1].x-image_joueur[11]->w/2, play[1].y-image_joueur[11]->h, image_joueur[11]->w, image_joueur[11]->h);
+                draw_sprite(screen, buffer, 0,0);
+                rest(500);
+            }
+
+        }
+    }
+
+
+
 }
