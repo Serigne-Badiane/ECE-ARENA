@@ -32,6 +32,15 @@ typedef struct
 
 t_joueur acteur[NB_JOUEURS];
 
+typedef struct{
+    BITMAP* sort1;
+    BITMAP* sort2;
+    BITMAP* sort3;
+    BITMAP* sort4;
+
+}sortperso;
+
+void load_cra_feu (sortperso* perso);
 
 int addi (int a, int b);
 void initialisation();
@@ -39,7 +48,7 @@ void menu();
 void afficher();
 void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
-void affichagesort (BITMAP* buffer,BITMAP* bdf,BITMAP*  tir_explosif, BITMAP* feu_oku, BITMAP* cac_feu,BITMAP * coeurpv, str_perso joueur [4]);
+void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 void deplacement(BITMAP* terrain, BITMAP* buffer);
 void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);

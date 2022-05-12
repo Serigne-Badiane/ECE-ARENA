@@ -27,14 +27,12 @@ int main()
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     int nbrjoueur = 4;
-    BITMAP* bdf = load_bitmap("bdf.bmp",NULL);
-    BITMAP* tir_explosif = load_bitmap("tir_explosif.bmp",NULL);
-    BITMAP* feu_oku= load_bitmap("feu_oku.bmp",NULL);
-    BITMAP* cac_feu= load_bitmap("cac_feu.bmp",NULL);
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
     player [0] = create_bitmap(SCREEN_W, SCREEN_H);
     str_perso joueur [nbrjoueur];
+    sortperso sortjoueur [nbrjoueur];
+    load_cra_feu(&sortjoueur[0]);
 
     init_struct_case();
     //init_perso();
@@ -42,7 +40,7 @@ int main()
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer);
-        deplacement(terrain,buffer);
+        //deplacement(terrain,buffer);
         init_joueur(nbrjoueur,joueur);
         /*for (int i=0;i<LIGNE;i++)
         {
@@ -52,7 +50,7 @@ int main()
             }
         }*/
         quadrillage(buffer,terrain);
-        affichagesort(buffer,bdf,tir_explosif,feu_oku,cac_feu,coeurpv,joueur);
+        affichagesort(buffer,sortjoueur[0],coeurpv,joueur);
         draw_sprite(screen, buffer, 0,0);
     }
     return 0;

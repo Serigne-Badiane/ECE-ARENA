@@ -7,7 +7,7 @@
 ///#define nombre_perso 1
 
 
-void deplacement(BITMAP* terrain, BITMAP* buffer)
+/*void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
     BITMAP* image_joueur[32];
 
@@ -160,5 +160,5 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     }
                 }
             }
-        }*/
-}
+        }
+}*/
