@@ -30,7 +30,7 @@ typedef struct
     int y;
 }t_joueur;
 
-t_joueur acteur[NB_JOUEURS];
+t_joueur play[4];
 
 typedef struct{
     BITMAP* sort1;

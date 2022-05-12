@@ -5,6 +5,8 @@
 #include <time.h>
 
 
+///METTRE SOURCE
+
 void chrono(BITMAP* terrain, BITMAP* buffer)
 {
     int h, min, s, day, mois, an;
