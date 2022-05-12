@@ -210,31 +210,36 @@ int menu()
             if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
             {
                 clear_bitmap(page);
+                while (!key[KEY_ENTER]) /// Click sur Credits
+                {
+
+                    rect(screen,500,450,850,550,makecol(255,0,255));
+
+                    show_mouse(screen);
+
+                    blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
+
+                    blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+                    blit(victor, screen, 0, 0, 100, 200, victor->w, victor->h);
+                    textprintf_ex(screen,font,120,450,makecol(255,0,0),2,"Victor CHEVALLIER");
+
+                    blit(serigne, screen, 0, 0, 425, 200, victor->w, victor->h);
+                    textprintf_ex(screen,font,450,450,makecol(255,0,0),2,"Serigne BADIANE");
+
+                    blit(julien, screen, 0, 0, 750, 200, victor->w, victor->h);
+                    textprintf_ex(screen,font,781,450,makecol(255,0,0),2,"Julien DOUVRY");
+
+                    blit(paul, screen, 0, 0, 1075, 200, victor->w, victor->h);
+                    textprintf_ex(screen,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
+                    //rest(5000);
+                }
 
 
-                show_mouse(screen);
-
-                blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
-
-                blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-
-                blit(victor, screen, 0, 0, 100, 200, victor->w, victor->h);
-                textprintf_ex(screen,font,120,450,makecol(255,0,0),2,"Victor CHEVALLIER");
-
-                blit(serigne, screen, 0, 0, 425, 200, victor->w, victor->h);
-                textprintf_ex(screen,font,450,450,makecol(255,0,0),2,"Serigne BADIANE");
-
-                blit(julien, screen, 0, 0, 750, 200, victor->w, victor->h);
-                textprintf_ex(screen,font,781,450,makecol(255,0,0),2,"Julien DOUVRY");
-
-                blit(paul, screen, 0, 0, 1075, 200, victor->w, victor->h);
-                textprintf_ex(screen,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
 
 
 
 
-
-                rest(50000);
 
         }
         }

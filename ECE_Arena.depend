@@ -64,7 +64,7 @@
 	"bib.h"
 	<time.h>
 
-1652271317 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1652297646 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -124,58 +124,58 @@
 	"bib.h"
 	<time.h>
 
-1652269024 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+1652297074 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1652303169 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652271540 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1652303149 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+1652280607 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
+1652303149 source:c:\users\paul\onedrive\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+1652303149 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652206634 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1652298481 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652200687 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
-	"bib.h"
-	<time.h>
-
-1652271623 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
+1652277473 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652271541 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+1652296655 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652306933 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -196,7 +196,7 @@
 	"bib.h"
 	<time.h>
 
-1652206634 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+1652297646 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -217,43 +217,43 @@
 	"bib.h"
 	<time.h>
 
-1652190471 source:c:\users\serigne\documents\github\ece-arena\chrono.c
+1652206687 source:c:\users\serigne\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652190471 c:\users\serigne\documents\github\ece-arena\bib.h
+1652337576 c:\users\serigne\documents\github\ece-arena\bib.h
 
-1652190444 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
+1652337576 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652190728 source:c:\users\serigne\documents\github\ece-arena\main.c
+1652337576 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652128220 source:c:\users\serigne\documents\github\ece-arena\menu.c
+1652300318 source:c:\users\serigne\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652190471 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1652277414 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652128220 source:c:\users\serigne\documents\github\ece-arena\terrain.c
+1652300318 source:c:\users\serigne\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
