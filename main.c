@@ -27,7 +27,7 @@ int main()
 
     srand(time(NULL));
     initialisation();
-    menu();
+    /*menu();*/
     BITMAP* ciel = load_bitmap("ciel.bmp", NULL);
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
@@ -39,7 +39,7 @@ int main()
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer,ciel);
-        deplacement(terrain,buffer);
+        /*deplacement(terrain,buffer);*/
         draw_sprite(screen, buffer, 0,0);
     }
 
