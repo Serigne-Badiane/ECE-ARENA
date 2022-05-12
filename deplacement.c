@@ -18,7 +18,12 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     image_joueur[6] = load_bitmap("player/player7.bmp", NULL);
     image_joueur[7] = load_bitmap("player/player8.bmp", NULL);
 
-    for (int test=0; test<8; test++)
+    image_joueur[8] = load_bitmap("player/player9.bmp", NULL);
+    image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
+    image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
+    image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
+
+    for (int test=0; test<12; test++)
     {
         if (image_joueur[test]==NULL)
         {
@@ -27,13 +32,10 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
             exit(EXIT_FAILURE);
         }
     }
-
     int a=0;
 
     blit(image_joueur[2], buffer, 0 ,0, play[0].x-image_joueur[2]->w/2, play[0].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
     circlefill(buffer,play[0].x,play[0].y, 3, makecol(255,255,255));
-
-
 
     if(mouse_b&1 && mouse_x>=play[0].x && mouse_x<=play[0].x+3*50+25 && mouse_y>=play[0].y && mouse_y<=play[0].y+28+28)
     {
