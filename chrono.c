@@ -5,35 +5,39 @@
 #include <time.h>
 
 
-///METTRE SOURCE
+///https://forums.commentcamarche.net/forum/affich-15461118-chronometre-en-c-et-precision
+
 
 void chrono(BITMAP* terrain, BITMAP* buffer)
 {
-    int h, min, s, day, mois, an;
-    time_t now;
+clock_t debut, fin ;
+long clk_tck = CLOCKS_PER_SEC ;
+double difference ;
 
-    // Renvoie l'heure actuelle
-    time(&now);
+int tour=0;
 
-    struct tm *local = localtime(&now);
-    h = local->tm_hour;
-    min = local->tm_min;
-    s = local->tm_sec;
-    day = local->tm_mday;
-    mois = local->tm_mon + 1;
-    an = local->tm_year + 1900;
-    textprintf_ex(terrain,font,800,0,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
-    int s2;
+do
+{
+    debut=clock() ;
 
-
-    if(s%15==0 )
+    do
     {
-        s=0;            ///fin tour
-    }
-    else
-    {
+        fin=clock() ;
+        difference = (double)(fin-debut)/(double)clk_tck ;
+        /*if(difference>10 && difference<11)
+        {
+            textprintf_ex(terrain,font,50,350,makecol(255,255,255),makecol(255,0,0),"Fin de tour dans 5 secondes");
+        }*/
+    }while(difference<15);
 
-    }
+    textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
+    /*rest(100);
+    clear_bitmap(buffer);
+    affichage_terrain(terrain,buffer);*/
 
-    textprintf_ex(terrain,font,800,30,makecol(0,255,0),makecol(0,0,0),"Temps de jeu : %02d\n",s);
+    tour++;
+
+}while(tour<1);
+
 }
+

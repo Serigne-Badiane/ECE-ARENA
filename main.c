@@ -44,7 +44,9 @@ int main()
 
     while (!key[KEY_ESC])
     {
+
         affichage_terrain(terrain,buffer);
+        //chrono(terrain, buffer);
         deplacement(terrain,buffer);
         init_joueur(nbrjoueur,joueur);
         /*for (int i=0;i<LIGNE;i++)
