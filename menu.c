@@ -22,6 +22,9 @@ int menu()
     BITMAP* serigne;
     BITMAP* victor;
     BITMAP* julien;
+    BITMAP* deux;
+    BITMAP* trois;
+    BITMAP* quatre;
 
     SAMPLE *son;
 
@@ -68,6 +71,7 @@ int menu()
 
     play_sample(son, 255, 128, 1000, 1);
 
+    Logo=load_bitmap("Logo.bmp",NULL);
     decor=load_bitmap("decordo.bmp",NULL);
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
@@ -76,6 +80,10 @@ int menu()
     victor=load_bitmap("victor.bmp",NULL);
     julien=load_bitmap("julien.bmp",NULL);
     paul=load_bitmap("paul.bmp",NULL);
+
+    deux=load_bitmap("deux.bmp",NULL);
+    trois=load_bitmap("trois.bmp",NULL);
+    quatre=load_bitmap("quatre.bmp",NULL);
 
 
     for (int i = 1; i < 3; i++){
@@ -108,7 +116,7 @@ int menu()
     /*page2=create_bitmap(SCREEN_W,SCREEN_H);*/
     Menu2=create_bitmap(SCREEN_W,SCREEN_H);
 
-    Logo=load_bitmap("Logo.bmp",NULL);
+
 
     clear_bitmap(page);
     if (!decor)
@@ -178,8 +186,13 @@ int menu()
 
 
                 rect(screen,500,300,850,400,makecol(0,255,255));
+                masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
+
                 rect(screen,500,450,850,550,makecol(255,0,255));
+                masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
+
                 rect(screen,500,600,850,700,makecol(0,100,255));
+                masked_blit(quatre, page, 0, 0, 600, 500, deux->w, deux->h);
 
                 rest(50000);
 
