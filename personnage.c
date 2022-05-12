@@ -13,10 +13,12 @@ void init_joueur(int nbrjoueur,str_perso joueur [4]){
 }
 
 void affichagesort (BITMAP* buffer,BITMAP* bdf,BITMAP*  tir_explosif, BITMAP* feu_oku, BITMAP* cac_feu,BITMAP * coeurpv, str_perso joueur [4]){
+        rectfill(buffer,0,650,1272,713,makecol(220,180,120));
+        rectfill(buffer,900,450,1272,650,makecol(64,47,32));
         blit(bdf, buffer ,0,0,220,650,bdf->h,bdf->w);
-        blit(tir_explosif, buffer ,0,0,265,650,bdf->h,bdf->w);
-        blit(feu_oku, buffer ,0,0,310,650,bdf->h,bdf->w);
-        blit(cac_feu, buffer ,0,0,355,650,bdf->h,bdf->w);
+        blit(tir_explosif, buffer ,0,0,300,650,bdf->h,bdf->w);
+        blit(feu_oku, buffer ,0,0,380,650,bdf->h,bdf->w);
+        blit(cac_feu, buffer ,0,0,460,650,bdf->h,bdf->w);
         rectfill(buffer,100,20,220,40,makecol(0,0,255));
         rectfill(buffer,100,45,220,65,makecol(0,255,0));
         textprintf_ex(buffer,font,35,40,makecol(255,255,255),makecol(255,0,0),"%d",joueur[0].pv);
