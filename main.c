@@ -8,11 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-<<<<<<< Updated upstream
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
-=======
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,713,0,0)!=0)
->>>>>>> Stashed changes
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -28,7 +24,6 @@ int main()
     srand(time(NULL));
     initialisation();
     //menu();
-<<<<<<< Updated upstream
     BITMAP* ciel = load_bitmap("ciel.bmp", NULL);
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
@@ -44,17 +39,12 @@ int main()
     str_perso joueur [nbrjoueur];
 
     init_struct_case();
-
-<<<<<<< Updated upstream
-=======
     //init_perso();
->>>>>>> Stashed changes
 
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer);
         deplacement(terrain,buffer);
-<<<<<<< Updated upstream
         init_joueur(nbrjoueur,joueur);
         /*for (int i=0;i<LIGNE;i++)
         {
@@ -65,8 +55,6 @@ int main()
         }*/
         quadrillage(buffer,terrain);
         affichagesort(buffer,bdf,tir_explosif,feu_oku,cac_feu,coeurpv,joueur);
-=======
->>>>>>> Stashed changes
         draw_sprite(screen, buffer, 0,0);
     }
     return 0;

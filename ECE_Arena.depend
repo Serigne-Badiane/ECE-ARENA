@@ -73,7 +73,12 @@
 	"bib.h"
 	<time.h>
 
-1652340808 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1652341391 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
 
 1651061898 193f821a79c14bc3ce6f2591fe2637b453390
 	<stdio.h>
@@ -128,7 +133,7 @@
 	"bib.h"
 	<time.h>
 
-1652339060 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+1652341332 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
 1652303169 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
@@ -200,7 +205,7 @@
 	"bib.h"
 	<time.h>
 
-1652339060 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+1652341332 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
