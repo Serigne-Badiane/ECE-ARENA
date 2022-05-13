@@ -179,3 +179,18 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)                               
     }
 
 }
+
+
+void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain)
+{
+    for(int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
+        {
+            if (getr(mouse_x)==getr(matrice_terrain[i][j].x) && getr(mouse_y)==getr(matrice_terrain[i][j].y) && mouse_b & 1)
+            {
+                case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
+            }
+        }
+    }
+}

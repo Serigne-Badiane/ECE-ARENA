@@ -64,7 +64,11 @@
 	"bib.h"
 	<time.h>
 
+<<<<<<< Updated upstream
 1652202894 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+=======
+1652455142 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -124,7 +128,11 @@
 	"bib.h"
 	<time.h>
 
+<<<<<<< Updated upstream
 1652201781 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+=======
+1652455908 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+>>>>>>> Stashed changes
 
 1652201331 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
@@ -155,20 +163,32 @@
 	<time.h>
 	<allegro.h>
 
+<<<<<<< Updated upstream
 1652200687 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+=======
+1652372897 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
+<<<<<<< Updated upstream
 1652200687 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+=======
+1652454728 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
+<<<<<<< Updated upstream
 1652202853 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
+=======
+1652455089 source:c:\users\jdouv\onedrive\documents\github\ece-arena\terrain.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -196,7 +216,11 @@
 	"bib.h"
 	<time.h>
 
+<<<<<<< Updated upstream
 1652202894 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+=======
+1652455908 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -267,7 +291,7 @@
 	"bib.h"
 	<time.h>
 
-1652202894 source:c:\users\jdouv\onedrive\documents\github\ece-arena\chrono.c
+1652372899 source:c:\users\jdouv\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

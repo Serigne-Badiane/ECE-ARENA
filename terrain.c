@@ -206,6 +206,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
     //draw_sprite(screen, buffer, 0,0);*/
 }
 
+<<<<<<< Updated upstream
 
 
 //BITMAP* type_case[6];
@@ -241,6 +242,19 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer, BITMAP* ciel)
                 case 6:
                     case_eau(matrice_terrain[i][j].x,matrice_terrain[i][j].y,buffer,type_case[5]);
             }
+=======
+void terrain_couleur(BITMAP* buffer)
+{
+    float r=70,v=100,b=100;
+    for(int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
+        {
+            case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,r,v,b);
+            r+=0,05;
+            v+=0,05;
+            b+=0,05;
+>>>>>>> Stashed changes
         }
     }
     for (int i=3;i<LIGNE-3;i++)
