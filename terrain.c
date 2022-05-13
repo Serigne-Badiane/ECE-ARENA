@@ -218,7 +218,7 @@ void quadrillage(BITMAP* buffer,BITMAP* terrain)
     }
 }
 
-void case_couleur(BITMAP* buffer,int coord_x,int coord_y,int r,int v,int b)
+void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b)
 {
     int losange=0;
     for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
@@ -248,17 +248,17 @@ void case_couleur(BITMAP* buffer,int coord_x,int coord_y,int r,int v,int b)
     }
 }
 
-void terain_couleur(BITMAP* buffer)
+void terrain_couleur(BITMAP* buffer)
 {
-    int r=70,v=100,b=100;
+    float r=40,v=40,b=40;
     for(int i=0;i<LIGNE;i++)
     {
         for(int j=0;j<COLONNE;j++)
         {
             case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,r,v,b);
-            r+=5;
-            v++;
-            b++;
+            r+=1;
+            v+=0.1;
+            b+=0.1;
         }
     }
 }

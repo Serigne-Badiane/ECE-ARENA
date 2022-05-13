@@ -112,3 +112,47 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
             }
         }
 }
+
+void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
+{
+    while(play[0].case_ligne==0 || play[0].case_colonne==0)
+    {
+        for(int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                if (getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && mouse_b & 1)
+                {
+                    if (matrice_terrain[i][j].passage==1)
+                    {
+                        case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
+                        play[0].case_ligne=i;
+                        play[0].case_colonne=j;
+                        printf("%d %d \n", play[0].case_ligne,play[0].case_colonne);
+                    }
+                }
+            }
+        }
+        draw_sprite(screen, buffer, 0,0);
+    }
+    while(play[1].case_ligne==0 || play[1].case_colonne==0)
+    {
+        for(int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                if (getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && mouse_b & 1)
+                {
+                    if (matrice_terrain[i][j].passage==1)
+                    {
+                        case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
+                        play[1].case_ligne=i;
+                        play[1].case_colonne=j;
+                        printf("%d %d \n", play[1].case_ligne,play[1].case_colonne);
+                    }
+                }
+            }
+        }
+        draw_sprite(screen, buffer, 0,0);
+    }
+}
