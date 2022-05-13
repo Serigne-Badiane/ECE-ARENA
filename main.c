@@ -49,7 +49,6 @@ int main()
 
     while (!key[KEY_ESC])
     {
-
         affichage_terrain(terrain,buffer);
         //chrono(terrain, buffer);
         deplacement(terrain,buffer);
