@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -60,6 +60,7 @@ int main()
                 case_couleur(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
             }
         }*/
+        terain_couleur(buffer);
         quadrillage(buffer,terrain);
         affichagesort(player[0],sortjoueur[0],coeurpv,joueur);
         affichagesort(player[1],sortjoueur[1],coeurpv,joueur);

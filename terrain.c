@@ -218,18 +218,18 @@ void quadrillage(BITMAP* buffer,BITMAP* terrain)
     }
 }
 
-void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
+void case_couleur(BITMAP* buffer,int coord_x,int coord_y,int r,int v,int b)
 {
     int losange=0;
     for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
     {
         for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange;j++)
         {
-            putpixel(buffer,j,i,makecol(126-losange/2,247-losange,253-losange*2));
+            putpixel(buffer,j,i,makecol(r,v,b));
         }
         for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange;j--)
         {
-            putpixel(buffer,j,i,makecol(126-losange/2,247-losange,253-losange*2));
+            putpixel(buffer,j,i,makecol(r,v,b));
         }
         losange+=2;
     }
@@ -238,13 +238,28 @@ void case_couleur(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
     {
         for(int j=coord_x;j<coord_x+matrice_terrain[0][0].largeur/2-losange2;j++)
         {
-            putpixel(buffer,j,i,makecol(126-losange2/2,247-losange2,253-losange2*2));
+            putpixel(buffer,j,i,makecol(r,v,b));
         }
         for(int j=coord_x;j>coord_x-matrice_terrain[0][0].largeur/2+losange2;j--)
         {
-            putpixel(buffer,j,i,makecol(126-losange2/2,247-losange2,253-losange2*2));
+            putpixel(buffer,j,i,makecol(r,v,b));
         }
     losange2+=2;
+    }
+}
+
+void terain_couleur(BITMAP* buffer)
+{
+    int r=70,v=100,b=100;
+    for(int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
+        {
+            case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,r,v,b);
+            r+=5;
+            v++;
+            b++;
+        }
     }
 }
 

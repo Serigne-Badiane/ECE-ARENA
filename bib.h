@@ -56,7 +56,8 @@ void init_depla();
 
 void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
-void case_couleur(BITMAP* buffer,BITMAP* terrain, int coord_x, int coord_y);
+void case_couleur(BITMAP* buffer,int coord_x,int coord_y,int r,int v,int b);
+void terain_couleur(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 
