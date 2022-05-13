@@ -53,30 +53,30 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
         }
     }
 
+    //clear_bitmap(terrain);
+    affichage_terrain(terrain,buffer);
 
         for(int j=0; j<2; j++)
         {
-            blit(dera, buffer, 0 ,0, play[j].x-matrice_terrain[0][0].largeur/2, play[j].y-matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x-2*matrice_terrain[0][0].largeur/2, play[j].y-2*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x-3*matrice_terrain[0][0].largeur/2, play[j].y-3*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+matrice_terrain[0][0].largeur/2, play[j].y-matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+2*matrice_terrain[0][0].largeur/2, play[j].y-2*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+3*matrice_terrain[0][0].largeur/2, play[j].y-3*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x-matrice_terrain[0][0].largeur/2, play[j].y+matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x-2*matrice_terrain[0][0].largeur/2, play[j].y+2*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x-3*matrice_terrain[0][0].largeur/2, play[j].y+3*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+matrice_terrain[0][0].largeur/2, play[j].y+matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+2*matrice_terrain[0][0].largeur/2, play[j].y+2*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
-            blit(dera, buffer, 0 ,0, play[j].x+3*matrice_terrain[0][0].largeur/2, play[j].y+3*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
 
-            blit(image_joueur[2], buffer, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+            for(int i=1; i<=3; i++)
+            {
+                blit(dera, terrain, 0 ,0, play[j].x-i*matrice_terrain[0][0].largeur/2, play[j].y-i*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
+                blit(dera, terrain, 0 ,0, play[j].x+i*matrice_terrain[0][0].largeur/2, play[j].y-i*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
+                blit(dera, terrain, 0 ,0, play[j].x-i*matrice_terrain[0][0].largeur/2, play[j].y+i*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
+                blit(dera, terrain, 0 ,0, play[j].x+i*matrice_terrain[0][0].largeur/2, play[j].y+i*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
+            }
+
+
+            blit(image_joueur[2], terrain, 0 ,0, play[j].x, play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+
             if(mouse_b&1 && mouse_x>play[j].x && mouse_x<play[j].x+2*matrice_terrain[0][0].largeur && mouse_y>play[j].y && mouse_y<play[j].y+2*matrice_terrain[0][0].hauteur)
             {
                 do
                 {
                     play[j].x=play[j].x+(matrice_terrain[0][0].largeur/2);
                     play[j].y=play[j].y+(matrice_terrain[0][0].hauteur/2);
-                    blit(image_joueur[2], buffer, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+                    blit(image_joueur[2], terrain, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
                     //rest(500);
                 }while(play[j].x<mouse_x || play[j].y<mouse_y);
             }
@@ -86,7 +86,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 {
                     play[j].x=play[j].x+(matrice_terrain[0][0].largeur/2);
                     play[j].y=play[j].y-(matrice_terrain[0][0].hauteur/2);
-                    blit(image_joueur[2], buffer, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+                    blit(image_joueur[2], terrain, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
                 //rest(500);
                 }while(play[j].x<mouse_x || play[j].y>mouse_y);
             }
@@ -96,7 +96,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 {
                     play[j].x=play[j].x-(matrice_terrain[0][0].largeur/2);
                     play[j].y=play[j].y+(matrice_terrain[0][0].hauteur/2);
-                    blit(image_joueur[2], buffer, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+                    blit(image_joueur[2], terrain, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
                 //rest(500);
                 }while(play[j].x>mouse_x || play[j].y<mouse_y);
             }
@@ -106,7 +106,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 {
                     play[j].x=play[j].x-(matrice_terrain[0][0].largeur/2);
                     play[j].y=play[j].y-(matrice_terrain[0][0].hauteur/2);
-                    blit(image_joueur[2], buffer, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+                    blit(image_joueur[2], terrain, 0 ,0, play[j].x-(image_joueur[2]->w/2), play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
                     //rest(500);
                 }while(play[j].x>mouse_x || play[j].y>mouse_y);
             }

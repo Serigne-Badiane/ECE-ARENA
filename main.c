@@ -42,7 +42,6 @@ int main()
 
     while (!key[KEY_ESC])
     {
-
         affichage_terrain(terrain,buffer);
         //chrono(terrain, buffer);
         deplacement(terrain,buffer);
@@ -56,6 +55,7 @@ int main()
         }*/
         quadrillage(buffer,terrain);
         affichagesort(buffer,sortjoueur[0],coeurpv,joueur);
+
         draw_sprite(screen, buffer, 0,0);
     }
     return 0;
