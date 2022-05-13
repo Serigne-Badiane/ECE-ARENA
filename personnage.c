@@ -4,7 +4,7 @@
 #include "bib.h"
 #include <time.h>
 
-void init_joueur(int nbrjoueur,str_perso joueur [4]){
+void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur]){
     for (int i =0 ; i < nbrjoueur; i ++ ){
         joueur[i].pa = 6;
         joueur[i].pm = 3;
@@ -19,8 +19,16 @@ void load_cra_feu (sortperso* perso){
     perso->sort4 = load_bitmap("cac_feu.bmp",NULL);
 }
 
+void load_mage_eau (sortperso* perso){
+    perso->sort1 = load_bitmap("vague.bmp",NULL);
+    perso->sort2 = load_bitmap("propulsion.bmp",NULL);
+    perso->sort3= load_bitmap("protection.bmp",NULL);
+    perso->sort4 = load_bitmap("vision.bmp",NULL);
+
+}
+
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]){
-        rectfill(buffer,0,650,1272,713,makecol(220,180,120));
+        rectfill(buffer,0,650,1272,713,makecol(130,98,85));
         rectfill(buffer,900,450,1272,650,makecol(64,47,32));
         blit(perso.sort1, buffer ,0,0,220,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort2, buffer ,0,0,300,650,perso.sort1->h,perso.sort1->w);

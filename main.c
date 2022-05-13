@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -30,9 +30,16 @@ int main()
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
     player[0] = create_bitmap(SCREEN_W, SCREEN_H);
+    player[1] = create_bitmap(SCREEN_W, SCREEN_H);
+    player[2] = create_bitmap(SCREEN_W, SCREEN_H);
+    player[3] = create_bitmap(SCREEN_W, SCREEN_H);
+    for (int i = 0 ; i <4 ; i++){
+        rectfill(player[i],0,0,1272,713,makecol(255,0,255));
+    }
     str_perso joueur [nbrjoueur];
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
+    load_mage_eau(&sortjoueur[1]);
 
 
     //menu();
@@ -55,8 +62,14 @@ int main()
             }
         }*/
         quadrillage(buffer,terrain);
-        affichagesort(buffer,sortjoueur[0],coeurpv,joueur);
+        affichagesort(player[0],sortjoueur[0],coeurpv,joueur);
+        affichagesort(player[1],sortjoueur[1],coeurpv,joueur);
+        draw_sprite(buffer, player[0], 0,0);
         draw_sprite(screen, buffer, 0,0);
+        rest(500);
+        draw_sprite(buffer, player[1], 0,0);
+        draw_sprite(screen, buffer, 0,0);
+        rest(500);
     }
     return 0;
 

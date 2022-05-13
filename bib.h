@@ -41,6 +41,7 @@ typedef struct{
 }sortperso;
 
 void load_cra_feu (sortperso* perso);
+void load_mage_eau (sortperso* perso);
 
 int addi (int a, int b);
 void initialisation();
