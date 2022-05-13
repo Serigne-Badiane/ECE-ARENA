@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -26,6 +26,7 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
     int nbrjoueur = 4;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
@@ -44,22 +45,20 @@ int main()
 
     //menu();
     init_struct_case();
-
     init_depla();
+    terrain_couleur(buffer_invisible_couleur);
 
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer);
+        while(play[0].case_ligne==0 || play[0].case_colonne==0 || play[1].case_ligne==0 || play[1].case_colonne==0 || play[2].case_ligne==0 || play[2].case_colonne==0 || play[3].case_ligne==0 || play[3].case_colonne==0)
+        {
+            placement_joueur_debut(buffer,buffer_invisible_couleur);
+        }
         //chrono(terrain, buffer);
         deplacement(terrain,buffer);
         init_joueur(nbrjoueur,joueur);
-        /*for (int i=0;i<LIGNE;i++)
-        {
-            for(int j=0;j<COLONNE;j++)
-            {
-                case_couleur(buffer,terrain,matrice_terrain[i][j].x,matrice_terrain[i][j].y);
-            }
-        }*/
+
         quadrillage(buffer,terrain);
         affichagesort(player[0],sortjoueur[0],coeurpv,joueur);
         affichagesort(player[1],sortjoueur[1],coeurpv,joueur);

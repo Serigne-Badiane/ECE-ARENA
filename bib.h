@@ -30,6 +30,8 @@ typedef struct
 {
     int x;
     int y;
+    int case_ligne;
+    int case_colonne;
 }t_joueur;
 
 t_joueur play[4];
@@ -56,9 +58,11 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 void deplacement(BITMAP* terrain, BITMAP* buffer);
 void init_depla();
 
+void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
-void case_couleur(BITMAP* buffer,BITMAP* terrain, int coord_x, int coord_y);
+void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);
+void terrain_couleur(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 
