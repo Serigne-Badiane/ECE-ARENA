@@ -14,6 +14,8 @@ typedef struct
 }t_case;
 typedef struct{
 
+    int x;
+    int y;
     int pa;
     int pm;
     int pv;

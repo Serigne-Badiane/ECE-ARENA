@@ -63,11 +63,11 @@ int main()
         affichagesort(player[0],sortjoueur[0],coeurpv,joueur);
         affichagesort(player[1],sortjoueur[1],coeurpv,joueur);
         draw_sprite(buffer, player[0], 0,0);
-        draw_sprite(screen, buffer, 0,0);
-        rest(500);
+        //draw_sprite(screen, buffer, 0,0);
+        //rest(500);
         draw_sprite(buffer, player[1], 0,0);
         draw_sprite(screen, buffer, 0,0);
-        rest(500);
+        //rest(500);
     }
     return 0;
 
