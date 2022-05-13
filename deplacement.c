@@ -115,7 +115,29 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 {
-    for(int a=0;a<3;a++)
+    for(int i=0;i<LIGNE;i++)
+    {
+        for(int j=0;j<COLONNE;j++)
+        {
+            switch(matrice_terrain[i][j].placement_debut)
+            {
+                case 1:
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,100,100);
+                    break;
+                case 2:
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,170,100);
+                    break;
+                case 3:
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,100,170);
+                    break;
+                case 4:
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,170,100,100);
+                    break;
+            }
+        }
+    }
+
+    for(int a=0;a<4;a++)
     {
         while(play[a].case_ligne==0 || play[a].case_colonne==0)
         {
@@ -125,12 +147,16 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                 {
                     if (getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][j].x,matrice_terrain[i][j].y)) && mouse_b & 1)
                     {
-                        if (matrice_terrain[i][j].passage==1)
+                        if (matrice_terrain[i][j].placement_debut==a && matrice_terrain[i][j].passage==1)
                         {
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             play[a].case_ligne=i;
                             play[a].case_colonne=j;
-                            printf("%d %d \n", play[a].case_ligne,play[a].case_colonne);
+                            while (mouse_b & 1)                 ///blindage click gauche
+                            {
+                                rest(150);
+                            }
+                            //rest(300);                                      ///sinon trop rapide donc tous les joueurs au meme endroit
                         }
                     }
                 }
