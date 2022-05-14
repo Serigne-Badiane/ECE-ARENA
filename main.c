@@ -38,9 +38,10 @@ int main()
     player[1] = create_bitmap(SCREEN_W, SCREEN_H);
     player[2] = create_bitmap(SCREEN_W, SCREEN_H);
     player[3] = create_bitmap(SCREEN_W, SCREEN_H);
-    for (int i = 0 ; i <4 ; i++){
+    for (int i = 0 ; i <4 ; i++)
+        {
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
-    }
+        }
     str_perso joueur [nbrjoueur];
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
@@ -81,7 +82,7 @@ int main()
             placement_joueur_debut(buffer,buffer_invisible_couleur);
         }
         //chrono(terrain, buffer);
-        deplacement(terrain,buffer);
+        deplacement(terrain,buffer, buffer_invisible_couleur);
         init_joueur(nbrjoueur,joueur);
 
         quadrillage(buffer,terrain);
