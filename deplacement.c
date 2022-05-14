@@ -231,7 +231,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
     int c=0;
 
-    do
+    /*do
     {
         if(mouse_b&1 && matrice_terrain[a][b].passage==1)
         {
@@ -243,13 +243,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
         }
 
     c++;
-    }while(c<90);
-
-
-
-
-
-
+    }while(c<90);*/
 
     }
 }

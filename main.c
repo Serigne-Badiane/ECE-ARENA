@@ -79,7 +79,7 @@ int main()
         while(play[0].case_ligne==0 || play[0].case_colonne==0 || play[1].case_ligne==0 || play[1].case_colonne==0 || play[2].case_ligne==0 || play[2].case_colonne==0 || play[3].case_ligne==0 || play[3].case_colonne==0)
         {
             placement_joueur_debut(buffer,buffer_invisible_couleur);
-        }*/
+        }
         //chrono(terrain, buffer);
         deplacement(terrain,buffer);
         init_joueur(nbrjoueur,joueur);
