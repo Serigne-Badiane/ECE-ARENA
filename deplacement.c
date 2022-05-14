@@ -4,16 +4,19 @@
 #include "bib.h"
 #include <time.h>
 
-void init_depla()
+void init_depla(BITMAP* terrain, BITMAP* buffer)
 {
-    /*int a,b;
+    int r,g,b;
+    int couleur;
     if(mouse_b&1)
     {
-        a=mouse_x/50;
-        b=mouse_y/28;
-        play[0].x=matrice_terrain[a][b].x;
-        play[0].y=matrice_terrain[a][b].y;
-    }*/
+        couleur = getpixel(terrain,mouse_x,mouse_y);
+        r = getr(couleur);
+        g = getg(couleur);
+        b = getb(couleur);
+        textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"%d %d %d", r,g,b);
+
+    }
 
     play[0].x=matrice_terrain[9][12].x;             ///10*50;                   ///A GAUCHE Y A DROITE X
     play[0].y=matrice_terrain[9][12].y;             ///12*28-14;
@@ -130,7 +133,9 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             play[a].case_ligne=i;
                             play[a].case_colonne=j;
-                            printf("%d %d \n", play[a].case_ligne,play[a].case_colonne);
+
+
+                            //printf("%d %d \n", play[a].case_ligne,play[a].case_colonne);
                         }
                     }
                 }
