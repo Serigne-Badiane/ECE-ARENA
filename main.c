@@ -50,7 +50,7 @@ int main()
     while (!key[KEY_ESC])
     {
         affichage_terrain(terrain,buffer);
-        for(int i=0;i<LIGNE;i++)
+        /*for(int i=0;i<LIGNE;i++)
         {
             for(int j=0;j<COLONNE;j++)
             {
@@ -58,10 +58,10 @@ int main()
                 {
                     case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,200,200,200);
                 }
-                /*if(matrice_terrain[i][j].passage==1)
+                if(matrice_terrain[i][j].passage==1)
                 {
                     case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,250,200,150);
-                }*/
+                }
                 if(matrice_terrain[i][j].passage==2)
                 {
                     case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,50,200);
@@ -71,7 +71,7 @@ int main()
                     case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,200,20,200);
                 }
             }
-        }
+        }*/
         while(play[0].case_ligne==0 || play[0].case_colonne==0 || play[1].case_ligne==0 || play[1].case_colonne==0 || play[2].case_ligne==0 || play[2].case_colonne==0 || play[3].case_ligne==0 || play[3].case_colonne==0)
         {
             placement_joueur_debut(buffer,buffer_invisible_couleur);
