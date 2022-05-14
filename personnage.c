@@ -41,3 +41,20 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
         textprintf_ex(buffer,font,160,50,makecol(255,255,255),makecol(0,255,0),"%d",joueur[0].pm);
         draw_sprite(buffer,coeurpv,5,10);
 }
+
+
+void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3){
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
+
+            draw_sprite(buffer,bdf1,600,400);
+    }
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
+            rectfill(buffer,0,300,400,713,makecol(255,0,0));
+    }
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450 && mouse_b & 1){
+            rectfill(buffer,0,300,400,713,makecol(255,0,0));
+    }
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530 && mouse_b & 1){
+            rectfill(buffer,0,300,400,713,makecol(255,0,0));
+    }
+}

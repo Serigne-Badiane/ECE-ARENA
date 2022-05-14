@@ -42,6 +42,10 @@ typedef struct{
     BITMAP* sort2;
     BITMAP* sort3;
     BITMAP* sort4;
+    BITMAP* expli1;
+    BITMAP* expli2;
+    BITMAP* expli3;
+    BITMAP* expli4;
 
 }sortperso;
 
@@ -56,7 +60,10 @@ void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur);
+
+void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3);
+
+void deplacement(BITMAP* terrain, BITMAP* buffer);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);
