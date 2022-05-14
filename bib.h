@@ -63,7 +63,7 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 
 void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3);
 
-void deplacement(BITMAP* terrain, BITMAP* buffer);
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);

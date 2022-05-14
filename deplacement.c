@@ -229,9 +229,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
         {
             for(int t=0; t<COLONNE; t++)
             {
-                if (matrice_terrain[i][t].passage==1 && getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && mouse_b&1)
+                if (matrice_terrain[i][t].passage==1 && getr(getpixel(buffer,mouse_x,mouse_y))==140 && getb(getpixel(buffer,mouse_x,mouse_y))==140 && getg(getpixel(buffer,mouse_x,mouse_y))==140 && getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && mouse_b&1)
                 {
-                    //autre if pour savoir si ds zone grise
                     while(matrice_terrain[play[j].case_ligne][play[j].case_colonne].y<matrice_terrain[i][t].y)
                     {
                         matrice_terrain[play[j].case_ligne][play[j].case_colonne].y+=matrice_terrain[0][0].hauteur;
