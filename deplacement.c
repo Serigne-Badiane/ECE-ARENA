@@ -4,7 +4,6 @@
 #include "bib.h"
 #include <time.h>
 
-
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 {
     for(int i=0;i<LIGNE;i++)
@@ -58,7 +57,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
         }
     }
 }
-
 
 void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
