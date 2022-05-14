@@ -4,7 +4,6 @@
 #include "bib.h"
 #include <time.h>
 
-
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 {
     for(int i=0;i<LIGNE;i++)
@@ -44,7 +43,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             play[a].case_ligne=i;
                             play[a].case_colonne=j;
-                            //play[a].x=matrice_terrain[][]
                             while (mouse_b & 1)                 ///blindage click gauche
                             {
                                 rest(150);
@@ -58,7 +56,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
         }
     }
 }
-
 
 void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
@@ -169,7 +166,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
         else
         {
-            for(int o=p+1; o<p+4; o++)
+            for(int o=p; o<p+4; o++)
             {
                 if(matrice_terrain[i-1][o].passage==1)
                 {
@@ -181,34 +178,20 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 if(matrice_terrain[i-1][o].passage==1)
                 {
                     case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
-                }
-            }
-            for(int o=p+1; o<p+4; o++)
-            {
-                if(matrice_terrain[i+1][o].passage==1)
-                {
-                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
-                }
-            }
-            for(int o=p-1; o>p-4; o--)
-            {
-                if(matrice_terrain[i+1][o].passage==1)
-                {
-                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
                 }
             }
             for(int o=p+1; o<p+5; o+=2)
             {
-                if(matrice_terrain[i+2][o].passage==1)
+                if(matrice_terrain[i-2][o].passage==1)
                 {
-                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
                 }
             }
             for(int o=p-1; o>p-5; o-=2)
             {
-                if(matrice_terrain[i+2][o].passage==1)
+                if(matrice_terrain[i-2][o].passage==1)
                 {
-                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
                 }
             }
             for(int o=p+1; o<p+4; o++)
@@ -225,14 +208,48 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
                 }
             }
-            if(matrice_terrain[i-1][p].passage==1)
+            for(int o=p; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i-1][p].x, matrice_terrain[i-1][p].y, 140,140,140);
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
             }
-            if(matrice_terrain[i+1][p].passage==1)
+            for(int o=p-1; o>p-4; o--)
             {
-                case_couleur(buffer,matrice_terrain[i+1][p].x, matrice_terrain[i+1][p].y, 140,140,140);
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
             }
+
         }
+
+
+    int a = mouse_x/50;
+    int b = mouse_y/28;
+
+    int c=0;
+
+    do
+    {
+        if(mouse_b&1 && matrice_terrain[a][b].passage==1)
+        {
+        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"C BON");
+        }
+        if(mouse_b&1 && matrice_terrain[a][b].passage!=1)
+        {
+        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"FUCK");
+        }
+
+    c++;
+    }while(c<90);
+
+
+
+
+
+
+
     }
 }
