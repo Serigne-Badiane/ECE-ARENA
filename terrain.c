@@ -10,15 +10,15 @@ void init_struct_case()
     matrice_terrain[0][0].largeur=50;
     matrice_terrain[0][0].x=0;
     matrice_terrain[0][0].y=14;
-    for (int i=1;i<LIGNE;i++)
-    {
+    for (int i=1;i<LIGNE;i++)                                       ///d'abord colonne 0 car on utilise i-1 pour initialiser i
+    {                                                               ///si i=1 i-1=0 et donc doit etre initialiser auparavant
         matrice_terrain[i][0].hauteur=matrice_terrain[0][0].hauteur;
         matrice_terrain[i][0].largeur=matrice_terrain[0][0].largeur;
         matrice_terrain[i][0].x=matrice_terrain[0][0].x;
         matrice_terrain[i][0].y=matrice_terrain[i-1][0].y+(matrice_terrain[i][0].hauteur);
     }
     int z=1;
-    for (int j=1;j<COLONNE;j++)
+    for (int j=1;j<COLONNE;j++)                                   ///pareil pour la ligne 0
     {
         matrice_terrain[0][j].hauteur=matrice_terrain[0][0].hauteur;
         matrice_terrain[0][j].largeur=matrice_terrain[0][0].largeur;
@@ -34,7 +34,7 @@ void init_struct_case()
         else
             z=0;
     }
-    for (int i=1;i<LIGNE;i++)
+    for (int i=1;i<LIGNE;i++)                                               ///initialisation de toutes les autres cases
     {
         for(int j=1;j<COLONNE;j++)
         {
@@ -181,7 +181,47 @@ void init_struct_case()
     matrice_terrain[19][28].passage=0;
     matrice_terrain[17][29].passage=0;
     matrice_terrain[19][29].passage=0;
-    matrice_terrain[17][34].passage=0;;
+    matrice_terrain[17][34].passage=0;                                                      ///fin initialisation du passage
+
+    matrice_terrain[6][30].placement_debut=1;                                              ///debut initialisation pour le placement au depart
+    matrice_terrain[7][30].placement_debut=1;                                             ///1=j1;2=j2...
+    matrice_terrain[7][31].placement_debut=1;                                            ///joueur1
+    matrice_terrain[6][31].placement_debut=1;
+    matrice_terrain[6][29].placement_debut=1;
+    matrice_terrain[7][29].placement_debut=1;
+    matrice_terrain[6][28].placement_debut=1;
+    matrice_terrain[6][32].placement_debut=1;
+    matrice_terrain[5][30].placement_debut=1;
+
+    matrice_terrain[19][23].placement_debut=2;                                              ///joueur 2
+    matrice_terrain[19][24].placement_debut=2;
+    matrice_terrain[19][22].placement_debut=2;
+    matrice_terrain[18][23].placement_debut=2;
+    matrice_terrain[18][22].placement_debut=2;
+    matrice_terrain[18][24].placement_debut=2;
+    matrice_terrain[19][25].placement_debut=2;
+    matrice_terrain[19][21].placement_debut=2;
+    matrice_terrain[20][23].placement_debut=2;
+
+    matrice_terrain[14][32].placement_debut=3;                                              ///joueur 3
+    matrice_terrain[14][33].placement_debut=3;
+    matrice_terrain[14][34].placement_debut=3;
+    matrice_terrain[14][31].placement_debut=3;
+    matrice_terrain[14][30].placement_debut=3;
+    matrice_terrain[13][32].placement_debut=3;
+    matrice_terrain[15][32].placement_debut=3;
+    matrice_terrain[15][31].placement_debut=3;
+    matrice_terrain[15][33].placement_debut=3;
+
+    matrice_terrain[9][12].placement_debut=4;                                              ///joueur 4
+    matrice_terrain[9][13].placement_debut=4;
+    matrice_terrain[9][14].placement_debut=4;
+    matrice_terrain[9][11].placement_debut=4;
+    matrice_terrain[9][10].placement_debut=4;
+    matrice_terrain[8][12].placement_debut=4;
+    matrice_terrain[10][12].placement_debut=4;
+    matrice_terrain[10][11].placement_debut=4;
+    matrice_terrain[10][13].placement_debut=4;
 }
 
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
