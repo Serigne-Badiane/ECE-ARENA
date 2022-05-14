@@ -181,7 +181,7 @@ void init_struct_case()
     matrice_terrain[19][28].passage=0;
     matrice_terrain[17][29].passage=0;
     matrice_terrain[19][29].passage=0;
-    matrice_terrain[17][34].passage=0;                                                      ///fin initialisation du passage
+    matrice_terrain[17][34].passage=0;                                                       ///fin initialisation du passage
 
     matrice_terrain[6][30].placement_debut=1;                                              ///debut initialisation pour le placement au depart
     matrice_terrain[7][30].placement_debut=1;                                             ///1=j1;2=j2...

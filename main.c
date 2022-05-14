@@ -45,7 +45,6 @@ int main()
 
     //menu();
     init_struct_case();
-    //init_depla(terrain,buffer);
     terrain_couleur(buffer_invisible_couleur);
 
     while (!key[KEY_ESC])
