@@ -11,6 +11,7 @@ typedef struct
     int hauteur;
     int largeur;
     int passage;
+    int placement_debut;
 }t_case;
 typedef struct{
 

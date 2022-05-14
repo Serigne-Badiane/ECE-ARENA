@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <allegro.h>>
-
-
-
-
+#include <allegro.h>
 
 int menu()
 {
