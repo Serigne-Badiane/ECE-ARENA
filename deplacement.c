@@ -4,7 +4,6 @@
 #include "bib.h"
 #include <time.h>
 
-
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 {
     for(int i=0;i<LIGNE;i++)
@@ -57,7 +56,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
         }
     }
 }
-
 
 void deplacement(BITMAP* terrain, BITMAP* buffer)
 {
@@ -168,7 +166,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
 
         else
         {
-            for(int o=p+1; o<p+4; o++)
+            for(int o=p; o<p+4; o++)
             {
                 if(matrice_terrain[i-1][o].passage==1)
                 {
@@ -180,34 +178,20 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 if(matrice_terrain[i-1][o].passage==1)
                 {
                     case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
-                }
-            }
-            for(int o=p+1; o<p+4; o++)
-            {
-                if(matrice_terrain[i+1][o].passage==1)
-                {
-                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
-                }
-            }
-            for(int o=p-1; o>p-4; o--)
-            {
-                if(matrice_terrain[i+1][o].passage==1)
-                {
-                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
                 }
             }
             for(int o=p+1; o<p+5; o+=2)
             {
-                if(matrice_terrain[i+2][o].passage==1)
+                if(matrice_terrain[i-2][o].passage==1)
                 {
-                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
                 }
             }
             for(int o=p-1; o>p-5; o-=2)
             {
-                if(matrice_terrain[i+2][o].passage==1)
+                if(matrice_terrain[i-2][o].passage==1)
                 {
-                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
                 }
             }
             for(int o=p+1; o<p+4; o++)
@@ -224,14 +208,21 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
                 }
             }
-            if(matrice_terrain[i-1][p].passage==1)
+            for(int o=p; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i-1][p].x, matrice_terrain[i-1][p].y, 140,140,140);
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
             }
-            if(matrice_terrain[i+1][p].passage==1)
+            for(int o=p-1; o>p-4; o--)
             {
-                case_couleur(buffer,matrice_terrain[i+1][p].x, matrice_terrain[i+1][p].y, 140,140,140);
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
             }
+
         }
 
 
