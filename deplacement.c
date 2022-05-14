@@ -15,9 +15,6 @@ void init_depla()
         play[0].y=matrice_terrain[a][b].y;
     }*/
 
-    play[0].x=matrice_terrain[9][12].x;             ///10*50;                   ///A GAUCHE Y A DROITE X
-    play[0].y=matrice_terrain[9][12].y;             ///12*28-14;
-
     play[1].x=matrice_terrain[14][14].x;
     play[1].y=matrice_terrain[14][14].y;
 }
@@ -54,7 +51,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
     }
 
     //clear_bitmap(terrain);
-    affichage_terrain(terrain,buffer);
+    //affichage_terrain(terrain,buffer);
 
         for(int j=0; j<2; j++)
         {
@@ -67,8 +64,8 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 blit(dera, terrain, 0 ,0, play[j].x+i*matrice_terrain[0][0].largeur/2, play[j].y+i*matrice_terrain[0][0].hauteur/2, image_joueur[2]->w, image_joueur[2]->h);
             }
 
-
-            blit(image_joueur[2], terrain, 0 ,0, play[j].x, play[j].y-(image_joueur[2]->h/2), image_joueur[2]->w, image_joueur[2]->h);
+            ///CEST BON
+            blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[0].case_ligne][play[0].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[0].case_ligne][play[0].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
 
             if(mouse_b&1 && mouse_x>play[j].x && mouse_x<play[j].x+2*matrice_terrain[0][0].largeur && mouse_y>play[j].y && mouse_y<play[j].y+2*matrice_terrain[0][0].hauteur)
             {
@@ -152,6 +149,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             play[a].case_ligne=i;
                             play[a].case_colonne=j;
+                            //play[a].x=matrice_terrain[][]
                             while (mouse_b & 1)                 ///blindage click gauche
                             {
                                 rest(150);
