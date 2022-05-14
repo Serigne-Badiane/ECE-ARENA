@@ -44,7 +44,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             play[a].case_ligne=i;
                             play[a].case_colonne=j;
-                            //play[a].x=matrice_terrain[][]
                             while (mouse_b & 1)                 ///blindage click gauche
                             {
                                 rest(150);
@@ -234,5 +233,32 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                 case_couleur(buffer,matrice_terrain[i+1][p].x, matrice_terrain[i+1][p].y, 140,140,140);
             }
         }
+
+
+    int a = mouse_x/50;
+    int b = mouse_y/28;
+
+    int c=0;
+
+    do
+    {
+        if(mouse_b&1 && matrice_terrain[a][b].passage==1)
+        {
+        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"C BON");
+        }
+        if(mouse_b&1 && matrice_terrain[a][b].passage!=1)
+        {
+        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"FUCK");
+        }
+
+    c++;
+    }while(c<90);
+
+
+
+
+
+
+
     }
 }
