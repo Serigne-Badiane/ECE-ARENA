@@ -57,7 +57,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
     }
 }
 
-void deplacement(BITMAP* terrain, BITMAP* buffer)
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
 {
     BITMAP* image_joueur[32];
     //BITMAP* los;
@@ -222,34 +222,45 @@ void deplacement(BITMAP* terrain, BITMAP* buffer)
                     case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
                 }
             }
-
         }
 
 
-    int a = mouse_x/50;
-    int b = mouse_y/28;
-
-    int c=0;
-
-    do
-    {
-        if(mouse_b&1 && matrice_terrain[a][b].passage==1)
+        for(int i=0;i<LIGNE;i++)
         {
-        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"C BON");
+            for(int t=0; t<COLONNE; t++)
+            {
+                if (matrice_terrain[i][t].passage==1 && getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain[i][t].x,matrice_terrain[i][t].y)) && mouse_b&1)
+                {
+                    //autre if pour savoir si ds zone grise
+                    while(matrice_terrain[play[j].case_ligne][play[j].case_colonne].y<matrice_terrain[i][t].y)
+                    {
+                        matrice_terrain[play[j].case_ligne][play[j].case_colonne].y+=matrice_terrain[0][0].hauteur;
+                        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                        rest(300);
+                    }
+                    while(matrice_terrain[play[j].case_ligne][play[j].case_colonne].x<matrice_terrain[i][t].x)
+                    {
+                        matrice_terrain[play[j].case_ligne][play[j].case_colonne].x+=matrice_terrain[0][0].largeur;
+                        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                        rest(200);
+                    }
+                    while(matrice_terrain[play[j].case_ligne][play[j].case_colonne].y>matrice_terrain[i][t].y)
+                    {
+                        matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-=matrice_terrain[0][0].hauteur;
+                        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                        rest(200);
+                    }
+                    while(matrice_terrain[play[j].case_ligne][play[j].case_colonne].x>matrice_terrain[i][t].x)
+                    {
+                        matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-=matrice_terrain[0][0].largeur;
+                        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                        rest(200);
+                    }
+
+
+                }
+            }
         }
-        if(mouse_b&1 && matrice_terrain[a][b].passage!=1)
-        {
-        textprintf_ex(terrain,font,50,200,makecol(255,255,255),makecol(255,0,0),"FUCK");
-        }
-
-    c++;
-    }while(c<90);
-
-
-
-
-
-
 
     }
 }

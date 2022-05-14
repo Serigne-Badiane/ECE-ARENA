@@ -56,7 +56,7 @@ void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
-void deplacement(BITMAP* terrain, BITMAP* buffer);
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);
