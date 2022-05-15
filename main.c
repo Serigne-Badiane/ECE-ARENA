@@ -29,7 +29,7 @@ int main()
     BITMAP* bdf1 = load_bitmap("bdf1.bmp", NULL);
     BITMAP* bdf2 = load_bitmap("bdf2.bmp", NULL);
     BITMAP* bdf3 = load_bitmap("bdf3.bmp", NULL);
-
+    BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
     int nbrjoueur = 4;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
@@ -43,6 +43,9 @@ int main()
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
         }
     str_perso joueur [nbrjoueur];
+    joueur[0].x = 200;
+    joueur[0].y = 400;
+    joueur[1].x = 400;
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
     load_mage_eau(&sortjoueur[1]);
@@ -94,8 +97,11 @@ int main()
         //draw_sprite(screen, buffer, 0,0);
         //rest(500);
         //draw_sprite(buffer, player[1], 0,0);
-        usesort(buffer,bdf1,bdf2,bdf3);
+        usesort(buffer,bdf1,bdf2,bdf3,joueur[0],joueur[1]);
+        textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
+        textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
         draw_sprite(screen, buffer, 0,0);
+
         //rest(500);
     }
     return 0;

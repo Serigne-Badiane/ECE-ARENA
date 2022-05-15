@@ -43,10 +43,36 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 }
 
 
-void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3){
+void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2){
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
+        int altern = 0 ;
 
-            draw_sprite(buffer,bdf1,600,400);
+
+
+        for (int i = 1; i< (joueur2.x-joueur1.x)/2 ; i++){
+            if (altern == 0){
+                draw_sprite(buffer,bdf1,joueur1.x+(2*i),joueur1.y);
+                textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
+                blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
+
+                altern = 1;
+            }
+            if (altern == 1){
+                draw_sprite(buffer,bdf2,joueur1.x+(2*i),joueur1.y);
+                textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
+                blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
+                altern = 2;
+            }
+            if (altern == 2){
+                draw_sprite(buffer,bdf3,joueur1.x+(2*i),joueur1.y);
+                textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
+                blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
+
+                altern = 0;
+            }
+
+        }
+
     }
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
             rectfill(buffer,0,300,400,713,makecol(255,0,0));
