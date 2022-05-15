@@ -314,3 +314,8 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
         }
     }*/
 }
+
+void recuperation_couleur()
+{
+
+}
