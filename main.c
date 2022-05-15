@@ -83,6 +83,7 @@ int main()
         }
         //chrono(terrain, buffer);
         deplacement(terrain,buffer, buffer_invisible_couleur);
+        void deplacement_p2(terrain,buffer,buffer_invisible_couleur);
         init_joueur(nbrjoueur,joueur);
 
         quadrillage(buffer,terrain);

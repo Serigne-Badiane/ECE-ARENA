@@ -13,6 +13,7 @@ typedef struct
     int passage;
     int placement_debut;
 }t_case;
+
 typedef struct{
 
     int x;
@@ -23,7 +24,6 @@ typedef struct{
     int classe;
 
 }str_perso;
-
 
 t_case matrice_terrain[LIGNE][COLONNE];
 
@@ -64,6 +64,7 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3);
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur);
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);
