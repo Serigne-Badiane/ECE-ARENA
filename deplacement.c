@@ -59,39 +59,8 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
 {
-    BITMAP* image_joueur[32];
-
-    image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
-    image_joueur[1] = load_bitmap("player/player2.bmp", NULL);
-    image_joueur[2] = load_bitmap("player/player3.bmp", NULL);
-    image_joueur[3] = load_bitmap("player/player4.bmp", NULL);
-    image_joueur[4] = load_bitmap("player/player5.bmp", NULL);
-    image_joueur[5] = load_bitmap("player/player6.bmp", NULL);
-    image_joueur[6] = load_bitmap("player/player7.bmp", NULL);
-    image_joueur[7] = load_bitmap("player/player8.bmp", NULL);
-
-    image_joueur[8] = load_bitmap("player/player9.bmp", NULL);
-    image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
-    image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
-    image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
-
-    //los = load_bitmap("los.bmp", NULL);
-
-    for (int test=0; test<12; test++)
-    {
-        if (image_joueur[test]==NULL)
-        {
-            allegro_message("Pas l'image %d", test);
-            allegro_exit();
-            exit(EXIT_FAILURE);
-        }
-    }
-
-
     for(int j=0; j<4; j++)
     {
-        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-
         int i=play[j].case_ligne;
         int p=play[j].case_colonne;
 
@@ -242,6 +211,10 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur)
     image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
     image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
     image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
+    for(int j=0;j<4;j++)
+    {
+        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+    }
     for(int i=0;i<LIGNE;i++)
     {
         for(int t=0; t<COLONNE; t++)
