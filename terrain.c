@@ -317,5 +317,15 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 
 void recuperation_couleur()
 {
-
+    int changement_couleur[3], couleur_pixel, ancienne_couleur[3][type_case->w][type_case->h], ancienne_couleur_pixel;
+    for(int i=pos_x-55;i<pos_x-55+type_case->w;i++)
+    {
+        for(int j=pos_y-70;j<pos_y-70+type_case->h;j++)
+        {
+            ancienne_couleur_pixel=getpixel(buffer,i,j);
+            ancienne_couleur[0][i-pos_x+55][j-pos_y+70]=getr(ancienne_couleur_pixel);
+            ancienne_couleur[1][i-pos_x+55][j-pos_y+70]=getb(ancienne_couleur_pixel);
+            ancienne_couleur[2][i-pos_x+55][j-pos_y+70]=getg(ancienne_couleur_pixel);
+        }
+    }
 }
