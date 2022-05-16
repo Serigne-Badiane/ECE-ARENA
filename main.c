@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -113,6 +113,7 @@ int main()
         usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1]);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+
         draw_sprite(screen, buffer, 0,0);
 
 
