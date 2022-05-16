@@ -14,11 +14,9 @@ int menu()
     BITMAP* Regles;
     BITMAP* Menu2;
     BITMAP* Sorcier[2];
-    BITMAP* paul;
-    BITMAP* serigne;
-    BITMAP* victor;
-    BITMAP* julien;
+
     BITMAP* nbre_joueurs;
+    BITMAP* cursor;
 
 
 
@@ -72,10 +70,9 @@ int menu()
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
     Regles=load_bitmap("Regles.bmp", NULL);
-    serigne=load_bitmap("serigne.bmp",NULL);
-    victor=load_bitmap("victor.bmp",NULL);
-    julien=load_bitmap("julien.bmp",NULL);
-    paul=load_bitmap("paul.bmp",NULL);
+    cursor=load_bitmap("cursor.bmp",NULL);
+
+
 
 
 
@@ -127,14 +124,16 @@ int menu()
     while (!key[KEY_ESC])
     {
 
+        masked_blit(cursor, page, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
         cptimage++;
-        if (cptimage>=tmpimage){
+        if (cptimage>=tmpimage){ // Animation sorcier dans le menu
             cptimage=0;
 
             imgcourante++;
         }
 
-        show_mouse(page);
+        /*show_mouse(page);*/
 
 
         rect(page,500,300,850,400,makecol(255,0,0));
@@ -168,6 +167,7 @@ int menu()
 
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
             {
+                masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
                 BITMAP* deux;
                 BITMAP* trois;
@@ -186,7 +186,7 @@ int menu()
 
 
 
-                    show_mouse(Menu2);
+                    /*show_mouse(Menu2);*/
 
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
@@ -243,12 +243,23 @@ int menu()
 
             if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
             {
+                masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
+                BITMAP* paul;
+                BITMAP* serigne;
+                BITMAP* victor;
+                BITMAP* julien;
+                serigne=load_bitmap("serigne.bmp",NULL);
+                victor=load_bitmap("victor.bmp",NULL);
+                julien=load_bitmap("julien.bmp",NULL);
+                paul=load_bitmap("paul.bmp",NULL);
+
                 clear_bitmap(page);
                 while (!key[KEY_ENTER]) /// Retour en arriere
                 {
 
 
-                    show_mouse(Menu2);
+                    /*show_mouse(Menu2);*/
 
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
