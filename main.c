@@ -23,6 +23,7 @@ int main()
 {
     srand(time(NULL));
     initialisation();
+    int tourjoueur;
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
@@ -31,7 +32,7 @@ int main()
     BITMAP* bdf3 = load_bitmap("bdf3.bmp", NULL);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
-    int nbrjoueur = 4;
+    int nbrjoueur = 2;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
     player[0] = create_bitmap(SCREEN_W, SCREEN_H);
@@ -57,6 +58,9 @@ int main()
 
     while (!key[KEY_ESC])
     {
+        if (tourjoueur > nbrjoueur - 1){
+            tourjoueur = 0;
+        }
         affichage_terrain(terrain,buffer);
         /*for(int i=0;i<LIGNE;i++)
         {
@@ -91,16 +95,14 @@ int main()
         init_joueur(nbrjoueur,joueur);
 
         quadrillage(buffer,terrain);
-        affichagesort(player[0],sortjoueur[0],coeurpv,joueur);
-        //affichagesort(player[1],sortjoueur[1],coeurpv,joueur);
-        draw_sprite(buffer, player[0], 0,0);
-        //draw_sprite(screen, buffer, 0,0);
-        //rest(500);
-        //draw_sprite(buffer, player[1], 0,0);
-        usesort(buffer,bdf1,bdf2,bdf3,joueur[0],joueur[1]);
+        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+
+        draw_sprite(buffer, player[tourjoueur], 0,0);
+        usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1]);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
         draw_sprite(screen, buffer, 0,0);
+        tourjoueur ++;
 
         //rest(500);
     }
