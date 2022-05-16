@@ -224,16 +224,16 @@
 	"bib.h"
 	<time.h>
 
-1652703197 c:\users\serigne\documents\github\ece-arena\bib.h
+1652704642 c:\users\serigne\documents\github\ece-arena\bib.h
 
-1652623124 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
+1652704626 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652703187 source:c:\users\serigne\documents\github\ece-arena\main.c
+1652704626 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -246,7 +246,7 @@
 	<time.h>
 	<allegro.h>
 
-1652699813 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1652703217 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

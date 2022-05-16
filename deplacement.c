@@ -30,7 +30,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 
     for(int a=0;a<4;a++)
     {
-        while(play[a].case_ligne==0 || play[a].case_colonne==0)
+        while(joueur[a].pos.case_ligne==0 || joueur[a].pos.case_colonne==0)
         {
             for(int i=0;i<LIGNE;i++)
             {
@@ -41,8 +41,8 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
                         if (matrice_terrain[i][j].placement_debut==a+1 && matrice_terrain[i][j].passage==1)
                         {
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
-                            play[a].case_ligne=i;
-                            play[a].case_colonne=j;
+                            joueur[a].pos.case_ligne=i;
+                            joueur[a].pos.case_colonne=j;
                             while (mouse_b & 1)                 ///blindage click gauche
                             {
                                 rest(150);
@@ -57,12 +57,10 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
     }
 }
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,str_perso joueur)
 {
-    for(int j=0; j<4; j++)
-    {
-        int i=play[j].case_ligne;
-        int p=play[j].case_colonne;
+        int i=joueur.pos.case_ligne;
+        int p=joueur.pos.case_colonne;
 
         if(p%2==0)
         {
@@ -191,10 +189,10 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
                 }
             }
         }
-    }
+
 }
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur)
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,str_perso joueur)
 {
     BITMAP* image_joueur[32];
 
@@ -211,9 +209,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur)
     image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
     image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
     image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
-    for(int j=0;j<4;j++)
-    {
-        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+        blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[joueur.pos.case_ligne][joueur.pos.case_colonne].x-image_joueur[2]->w/2, matrice_terrain[joueur.pos.case_ligne][joueur.pos.case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
         for(int i=0;i<LIGNE;i++)
         {
             for(int t=0; t<COLONNE; t++)
@@ -247,11 +243,11 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur)
                         rest(200);
                     }*/
                     blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[i][t].x-image_joueur[2]->w/2, matrice_terrain[i][t].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                    play[j].case_ligne=i;
-                    play[j].case_colonne=t;
+                    joueur.pos.case_ligne=i;
+                    joueur.pos.case_colonne=t;
                     }
                 }
             }
         }
-    }
+
 }

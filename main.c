@@ -43,7 +43,6 @@ int main()
         {
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
         }
-    str_perso joueur [nbrjoueur];
     joueur[0].pos.x = 200;
     joueur[0].pos.y = 400;
     joueur[1].pos.x = 400;
@@ -84,7 +83,7 @@ int main()
                 }
             }
         }*/
-        while(play[0].case_ligne==0 || play[0].case_colonne==0 || play[1].case_ligne==0 || play[1].case_colonne==0 || play[2].case_ligne==0 || play[2].case_colonne==0 || play[3].case_ligne==0 || play[3].case_colonne==0)
+        while(joueur[0].pos.case_ligne==0 || joueur[0].pos.case_colonne==0 || joueur[1].pos.case_ligne==0 || joueur[1].pos.case_colonne==0 || joueur[2].pos.case_ligne==0 || joueur[2].pos.case_colonne==0 || joueur[3].pos.case_ligne==0 || joueur[3].pos.case_colonne==0)
         {
             placement_joueur_debut(buffer,buffer_invisible_couleur);
         }
@@ -108,8 +107,8 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
-        deplacement(terrain,buffer, buffer_invisible_couleur);
-        deplacement_p2(terrain,buffer,buffer_invisible_couleur);
+        deplacement(terrain,buffer, buffer_invisible_couleur,joueur[tourjoueur]);
+        deplacement_p2(terrain,buffer,buffer_invisible_couleur,joueur[tourjoueur]);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);

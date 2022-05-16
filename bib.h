@@ -35,7 +35,7 @@ t_case matrice_terrain[LIGNE][COLONNE];
 
 
 
-t_joueur play[4];
+//t_joueur play[4];
 
 typedef struct{
     BITMAP* sort1;
@@ -49,6 +49,8 @@ typedef struct{
 
 }sortperso;
 
+
+str_perso joueur [4];
 void load_cra_feu (sortperso* perso);
 void load_mage_eau (sortperso* perso);
 
@@ -60,11 +62,10 @@ void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
-
 void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2);
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur);
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur);
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,str_perso joueur);
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,str_perso joueur);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);
