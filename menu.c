@@ -7,7 +7,7 @@ int menu()
 {
     BITMAP* decor;
     BITMAP* page;
-    BITMAP* page2;
+    /*BITMAP* page2;*/
     BITMAP* Logo;
     BITMAP* NewGame;
     BITMAP* Credits;
@@ -18,10 +18,11 @@ int menu()
     BITMAP* serigne;
     BITMAP* victor;
     BITMAP* julien;
+    BITMAP* nbre_joueurs;
 
     /*BITMAP* deux;
-    BITMAP* trois;
-    BITMAP* quatre;*/
+    BITMAP* trois;*/
+    //BITMAP* quatre;
 
     SAMPLE *son;
 
@@ -77,6 +78,7 @@ int menu()
     victor=load_bitmap("victor.bmp",NULL);
     julien=load_bitmap("julien.bmp",NULL);
     paul=load_bitmap("paul.bmp",NULL);
+ //   nbre_joueurs=load_bitmap("nbre_joueurs.bmp",NULL);
 
     //deux=load_bitmap("deux.bmp",NULL);
 /*    trois=load_bitmap("trois.bmp",NULL);
@@ -171,30 +173,43 @@ int menu()
 
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
             {
+
                 clear_bitmap(page);
 
 
-                show_mouse(screen);
+                while (!key[KEY_ENTER]) /// Retour en arriere
+                {
 
 
-                blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
+                    show_mouse(Menu2);
 
-                blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-
-
-                rect(screen,500,300,850,400,makecol(0,255,255));
-               // masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
-
-                rect(screen,500,450,850,550,makecol(255,0,255));
-               // masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
-
-                rect(screen,500,600,850,700,makecol(0,100,255));
-               // masked_blit(quatre, page, 0, 0, 600, 500, deux->w, deux->h);
-
-                rest(50000);
+                    blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-        }
+                    blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                    rect(Menu2,500,300,850,400,makecol(0,255,255));
+
+//                    masked_blit(nbre_joueurs, Menu2, 0, 0, 0, 0, Logo->w, Logo->h);
+
+                    textprintf_ex(Menu2,font,640,350,makecol(255,0,0),2,"2 Joueurs");
+                   // masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
+
+                    rect(Menu2,500,450,850,550,makecol(255,0,255));
+
+                    textprintf_ex(Menu2,font,640,500,makecol(0,255,0),2,"3 Joueurs");
+                   // masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
+
+                    rect(Menu2,500,600,850,700,makecol(0,100,255));
+
+                    textprintf_ex(Menu2,font,640,650,makecol(0,0,255),2,"4 Joueurs");
+                    //masked_blit(quatre, screen, 0, 0, 600, 500, quatre->w, quatre->h);
+
+                    /*rest(50000);*/
+
+
+        }}
 
         }
 
@@ -207,7 +222,7 @@ int menu()
             if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
             {
                 clear_bitmap(page);
-                while (!key[KEY_ENTER]) /// Click sur Credits
+                while (!key[KEY_ENTER]) /// Retour en arriere
                 {
 
 
@@ -230,6 +245,8 @@ int menu()
 
                     blit(paul, Menu2, 0, 0, 1075, 200, victor->w, victor->h);
                     textprintf_ex(Menu2,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
+
+                    textprintf_ex(Menu2,font,0,0,makecol(0,0,255),2,"Appuyez sur ENTREE pour revenir au MENU");
                     //rest(5000);
                 }
 
