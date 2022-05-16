@@ -95,17 +95,35 @@ int main()
         init_joueur(nbrjoueur,joueur);
 
         quadrillage(buffer,terrain);
-        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
 
+
+
+        clock_t debut, fin ;
+        long clk_tck = CLOCKS_PER_SEC ;
+        double difference ;
+
+        debut=clock() ;
+        do
+        {
+        fin=clock() ;
+        difference = (double)(fin-debut)/(double)clk_tck ;
+
+        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1]);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
         draw_sprite(screen, buffer, 0,0);
-        tourjoueur ++;
 
-        //rest(500);
+
+        }while(difference<15);
+
+    //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
+
+
+    tourjoueur ++;
+
     }
     return 0;
 
