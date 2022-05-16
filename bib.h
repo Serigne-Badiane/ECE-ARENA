@@ -2,6 +2,8 @@
 #define BIB_H_INCLUDED
 #define LIGNE 26
 #define COLONNE 52
+#define LIGNE2 21
+#define COLONNE2 22
 #define NB_JOUEURS 4
 
 typedef struct
@@ -13,6 +15,13 @@ typedef struct
     int passage;
     int placement_debut;
 }t_case;
+
+typedef struct
+{
+    int x;
+    int y;
+}t_case_iso;
+
 typedef struct
 {
     int x;
@@ -32,6 +41,7 @@ typedef struct{
 }str_perso;
 
 t_case matrice_terrain[LIGNE][COLONNE];
+t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
 
 
@@ -49,8 +59,8 @@ typedef struct{
 
 }sortperso;
 
-int ancienne_couleur[3][1272][700],ancienne_couleur_pixel;
 str_perso joueur [4];
+
 void load_cra_feu (sortperso* perso);
 void load_mage_eau (sortperso* perso);
 
@@ -75,7 +85,6 @@ void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
 void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);
 void terrain_couleur(BITMAP* buffer);
-void terrain_deplacement(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 

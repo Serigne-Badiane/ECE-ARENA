@@ -222,6 +222,17 @@ void init_struct_case()
     matrice_terrain[10][12].placement_debut=4;
     matrice_terrain[10][11].placement_debut=4;
     matrice_terrain[10][13].placement_debut=4;
+
+    matrice_terrain_iso[0][0].x=matrice_terrain[12][4].x;
+    matrice_terrain_iso[0][0].y=matrice_terrain[12][4].y;
+    /*for (int i=0;i<LIGNE2;i++)
+    {
+        for(int j=0;j<COLONNE2;j++)
+        {
+            if ()
+        }
+    }*/
+
 }
 
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)
@@ -299,17 +310,6 @@ void terrain_couleur(BITMAP* buffer)
             r+=1;
             v+=0.1;
             b+=0.1;
-        }
-    }
-}
-
-void terrain_deplacement(BITMAP* buffer)
-{
-    for(int i=0;i<SCREEN_W;i++)
-    {
-        for(int j=0;j<SCREEN_H;j++)
-        {
-            putpixel(buffer,i,j,makecol(255,255,255));
         }
     }
 }

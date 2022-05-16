@@ -71,133 +71,183 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tou
     int i=joueur[tour_joueur].pos.case_ligne;
     int p=joueur[tour_joueur].pos.case_colonne;
 
-    if(p%2==0)
+    if(joueur[tour_joueur].pm==3)
     {
-        for(int o=p+1; o<p+4; o++)
+        if(p%2==0)
         {
-            if(matrice_terrain[i-1][o].passage==1)
+            for(int o=p+1; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                if(matrice_terrain[i-1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                }
+            }
+            for(int o=p-1; o>p-4; o--)
+            {
+                if(matrice_terrain[i-1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                }
+            }
+            for(int o=p+1; o<p+4; o++)
+            {
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
+            }
+            for(int o=p-1; o>p-4; o--)
+            {
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
+            }
+            for(int o=p+1; o<p+5; o+=2)
+            {
+                if(matrice_terrain[i+2][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                }
+            }
+            for(int o=p-1; o>p-5; o-=2)
+            {
+                if(matrice_terrain[i+2][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                }
+            }
+            for(int o=p+1; o<p+4; o++)
+            {
+                if(matrice_terrain[i][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                }
+            }
+            for(int o=p-1; o>p-4; o--)
+            {
+                if(matrice_terrain[i][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                }
+            }
+            if(matrice_terrain[i-1][p].passage==1)
+            {
+                case_couleur(buffer,matrice_terrain[i-1][p].x, matrice_terrain[i-1][p].y, 140,140,140);
+            }
+            if(matrice_terrain[i+1][p].passage==1)
+            {
+                case_couleur(buffer,matrice_terrain[i+1][p].x, matrice_terrain[i+1][p].y, 140,140,140);
             }
         }
-        for(int o=p-1; o>p-4; o--)
+
+        else
         {
-            if(matrice_terrain[i-1][o].passage==1)
+            for(int o=p; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                if(matrice_terrain[i-1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p+1; o<p+4; o++)
-        {
-            if(matrice_terrain[i+1][o].passage==1)
+            for(int o=p-1; o>p-4; o--)
             {
-                case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                if(matrice_terrain[i-1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p-1; o>p-4; o--)
-        {
-            if(matrice_terrain[i+1][o].passage==1)
+            for(int o=p+1; o<p+5; o+=2)
             {
-                case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                if(matrice_terrain[i-2][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p+1; o<p+5; o+=2)
-        {
-            if(matrice_terrain[i+2][o].passage==1)
+            for(int o=p-1; o>p-5; o-=2)
             {
-                case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                if(matrice_terrain[i-2][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p-1; o>p-5; o-=2)
-        {
-            if(matrice_terrain[i+2][o].passage==1)
+            for(int o=p+1; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i+2][o].x, matrice_terrain[i+2][o].y, 140,140,140);
+                if(matrice_terrain[i][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p+1; o<p+4; o++)
-        {
-            if(matrice_terrain[i][o].passage==1)
+            for(int o=p-1; o>p-4; o--)
             {
-                case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                if(matrice_terrain[i][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                }
             }
-        }
-        for(int o=p-1; o>p-4; o--)
-        {
-            if(matrice_terrain[i][o].passage==1)
+            for(int o=p; o<p+4; o++)
             {
-                case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
             }
-        }
-        if(matrice_terrain[i-1][p].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain[i-1][p].x, matrice_terrain[i-1][p].y, 140,140,140);
-        }
-        if(matrice_terrain[i+1][p].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain[i+1][p].x, matrice_terrain[i+1][p].y, 140,140,140);
+            for(int o=p-1; o>p-4; o--)
+            {
+                if(matrice_terrain[i+1][o].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                }
+            }
         }
     }
 
-    else
+    if(joueur[tour_joueur].pm==2)
     {
-        for(int o=p; o<p+4; o++)
+
+    }
+    if(joueur[tour_joueur].pm==1)
+    {
+        if (p%2==0)
         {
-            if(matrice_terrain[i-1][o].passage==1)
+            if(matrice_terrain[i][p+1].passage==1)
             {
-                case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                case_couleur(buffer,matrice_terrain[i][p+1].x, matrice_terrain[i][p+1].y, 140,140,140);
+            }
+            if(matrice_terrain[i][p-1].passage==1)
+            {
+                case_couleur(buffer,matrice_terrain[i][p-1].x, matrice_terrain[i][p-1].y, 140,140,140);
+            }
+            if(matrice_terrain[i+1][p-1].passage==1)
+            {
+                case_couleur(buffer,matrice_terrain[i+1][p-1].x, matrice_terrain[i+1][p-1].y, 140,140,140);
+            }
+            if(matrice_terrain[i+1][p+1].passage==1)
+            {
+                case_couleur(buffer,matrice_terrain[i+1][p+1].x, matrice_terrain[i][p+1].y, 140,140,140);
             }
         }
-        for(int o=p-1; o>p-4; o--)
+        if (p%2!=0)
         {
-            if(matrice_terrain[i-1][o].passage==1)
+            if(matrice_terrain[i+1][p+1].passage==1)
             {
-                case_couleur(buffer,matrice_terrain[i-1][o].x, matrice_terrain[i-1][o].y, 140,140,140);
+                case_couleur(buffer,matrice_terrain[i-1][p+1].x, matrice_terrain[i-1][p+1].y, 140,140,140);
             }
-        }
-        for(int o=p+1; o<p+5; o+=2)
-        {
-            if(matrice_terrain[i-2][o].passage==1)
+            if(matrice_terrain[i+1][p-1].passage==1)
             {
-                case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
+                case_couleur(buffer,matrice_terrain[i-1][p-1].x, matrice_terrain[i-1][p-1].y, 140,140,140);
             }
-        }
-        for(int o=p-1; o>p-5; o-=2)
-        {
-            if(matrice_terrain[i-2][o].passage==1)
+            if(matrice_terrain[i][p-1].passage==1)
             {
-                case_couleur(buffer,matrice_terrain[i-2][o].x, matrice_terrain[i-2][o].y, 140,140,140);
+                case_couleur(buffer,matrice_terrain[i][p-1].x, matrice_terrain[i][p-1].y, 140,140,140);
             }
-        }
-        for(int o=p+1; o<p+4; o++)
-        {
-            if(matrice_terrain[i][o].passage==1)
+            if(matrice_terrain[i][p+1].passage==1)
             {
-                case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
-            }
-        }
-        for(int o=p-1; o>p-4; o--)
-        {
-            if(matrice_terrain[i][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain[i][o].x, matrice_terrain[i][o].y, 140,140,140);
-            }
-        }
-        for(int o=p; o<p+4; o++)
-        {
-            if(matrice_terrain[i+1][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
-            }
-        }
-        for(int o=p-1; o>p-4; o--)
-        {
-            if(matrice_terrain[i+1][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain[i+1][o].x, matrice_terrain[i+1][o].y, 140,140,140);
+                case_couleur(buffer,matrice_terrain[i][p+1].x, matrice_terrain[i][p+1].y, 140,140,140);
             }
         }
     }
+
 }
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)

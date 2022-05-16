@@ -55,7 +55,6 @@ int main()
     //menu();
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
-    terrain_deplacement(buffer_deplacement);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
 
@@ -93,8 +92,8 @@ int main()
         usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
-
         draw_sprite(screen, buffer, 0,0);
+        //draw_sprite(screen, buffer_deplacement, 0,0);
         compteur_pour_enlever_les_indics++;
         }while(difference<15);
 
@@ -102,7 +101,6 @@ int main()
     clear_bitmap(buffer_deplacement);
     clear_bitmap(buffer_deplacement2);
     clear_bitmap(buffer_enlevage_indication);
-
 
     tourjoueur ++;
 
