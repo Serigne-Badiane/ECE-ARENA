@@ -59,7 +59,11 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur)
 {
-    //recuperation_couleur(buffer);
+    if (c==0)
+    {
+        recuperation_couleur(terrain, buffer_enlevage_indication);
+        recuperation_couleur(buffer,buffer_deplacement2);
+    }
     int i=joueur[tour_joueur].pos.case_ligne;
     int p=joueur[tour_joueur].pos.case_colonne;
 
@@ -192,7 +196,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tou
     }
 }
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur)
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)
 {
     BITMAP* image_joueur[20];
 
@@ -209,9 +213,10 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
     image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
     image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
-
-
-    blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[joueur[tour_joueur].pos.case_ligne][joueur[tour_joueur].pos.case_colonne].x-image_joueur[2]->w/2, matrice_terrain[joueur[tour_joueur].pos.case_ligne][joueur[tour_joueur].pos.case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+    for (int s=0;s<nbr_joueur;s++)
+    {
+        blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[joueur[s].pos.case_ligne][joueur[s].pos.case_colonne].x-image_joueur[2]->w/2, matrice_terrain[joueur[s].pos.case_ligne][joueur[s].pos.case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+    }
         for(int i=0;i<LIGNE;i++)
         {
             for(int t=0; t<COLONNE; t++)
