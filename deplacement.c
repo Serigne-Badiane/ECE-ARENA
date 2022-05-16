@@ -43,6 +43,8 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_
                         {
                             case_couleur(buffer, matrice_terrain[i][j].x,matrice_terrain[i][j].y,40,150,78);
                             joueur[a].pos.case_ligne=i;
+                            joueur[a].pos.x = matrice_terrain[i][j].x;
+                            joueur[a].pos.y = matrice_terrain[i][j].y;
                             joueur[a].pos.case_colonne=j;
                             while (mouse_b & 1)                 ///blindage click gauche
                             {
@@ -256,6 +258,8 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                     blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[i][t].x-image_joueur[2]->w/2, matrice_terrain[i][t].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                     joueur[tour_joueur].pos.case_ligne=i;
                     joueur[tour_joueur].pos.case_colonne=t;
+                    joueur[tour_joueur].pos.x = matrice_terrain[i][t].x;
+                    joueur[tour_joueur].pos.y = matrice_terrain[i][t].y;
                     }
                 }
             }

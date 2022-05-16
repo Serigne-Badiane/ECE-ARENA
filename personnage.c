@@ -43,34 +43,185 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 }
 
 
-void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2){
+void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2,BITMAP* temp){
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290)
         {
+        blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
 
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui infliche 45pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
             int altern = 0;
-            for (int i = 1; i< (joueur2.pos.x-joueur1.pos.x)/2 ; i++)
+            int i = 1;
+            int am;
+            int bm;
+            int j =1 ;
+            int a;
+            int b;
+            a = ((joueur2.pos.x-joueur1.pos.x)/2);
+            b = ((joueur2.pos.y-joueur1.pos.y)/2);
+            if (((joueur2.pos.x-joueur1.pos.x)/2) > 0){
+                am  = 0;
+            }
+            if (((joueur2.pos.x-joueur1.pos.x)/2) < 0){
+                am = 1;
+            }
+            if (((joueur2.pos.y-joueur1.pos.y)/2) > 0){
+                bm  = 0;
+            }
+            if (((joueur2.pos.y-joueur1.pos.y)/2) < 0){
+                bm = 1;
+            }
+            if (am == 0 && bm == 0){
+                while( i< a && j< b)
                 {
-                if (altern == 0)
-                   {
-                    blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i),joueur1.pos.y, bdf1->w, bdf1->h);
-                    draw_sprite(screen, buffer, 0,0);
-                    altern = 1;
-                   }
-                if (altern == 1)
-                {
-                    blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i),joueur1.pos.y, bdf2->w, bdf2->h);
-                    draw_sprite(screen, buffer, 0,0);
-                    altern = 2;
+                        if (altern == 0)
+                           {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                            //draw_sprite(screen, buffer, 0,0);
+                            rotate_sprite(buffer, bdf1, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10)); // 128 = 180°
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 1;
+                           }
+                        if (altern == 1)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            //blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf2->w,joueur1.pos.y+(2*j), bdf2->w, bdf2->h);
+                            //draw_sprite(screen, buffer, 0,0);
+                            rotate_sprite(buffer, bdf2, joueur1.pos.x+(2*i) - bdf2->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 2;
+                        }
+                        if (altern == 2)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            //blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf3->w,joueur1.pos.y+(2*j), bdf3->w, bdf3->h);
+                            //draw_sprite(screen, buffer, 0,0);
+                            rotate_sprite(buffer, bdf3, joueur1.pos.x+(2*i) - bdf3->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 0;
+                        }
+                        if (i < a){
+                          i++;
+                        }
+                        if (j< b){
+                          j++;
+                        }
+
                 }
-                if (altern == 2)
+            }
+            if (am == 1 && bm == 0){
+                while( i > a && j< b)
                 {
-                    blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i),joueur1.pos.y, bdf3->w, bdf3->h);
-                    draw_sprite(screen, buffer, 0,0);
-                    altern = 0;
+                        if (altern == 0)
+                           {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf1, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 1;
+                           }
+                        if (altern == 1)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf2->w,joueur1.pos.y+(2*j), bdf2->w, bdf2->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf2, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 2;
+                        }
+                        if (altern == 2)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf3->w,joueur1.pos.y+(2*j), bdf3->w, bdf3->h);
+                            */
+                            rotate_sprite(buffer, bdf3, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 0;
+                        }
+                        if (i > a){
+                          i--;
+                        }
+                        if (j< b){
+                          j++;
+                        }
                 }
 
+            }
+            if (am == 0 && bm == 1){
+                while( i< a && j> b)
+                {
+                        if (altern == 0)
+                           {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                           /* blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf1, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 1;
+                           }
+                        if (altern == 1)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf2->w,joueur1.pos.y+(2*j), bdf2->w, bdf2->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf2, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+                            altern = 2;
+                        }
+                        if (altern == 2)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                           /* blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf3->w,joueur1.pos.y+(2*j), bdf3->w, bdf3->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf3, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            draw_sprite(screen, buffer, 0,0);
+
+                            altern = 0;
+                        }
+                        if (i < a){
+                          i++;
+                        }
+                        if (j> b){
+                          j--;
+                        }
+                }
+            }
+            if (am == 1 && bm == 1){
+                while( i> a && j> b)
+                {
+                        if (altern == 0)
+                           {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf1, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            altern = 1;
+                           }
+                        if (altern == 1)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf2->w,joueur1.pos.y+(2*j), bdf2->w, bdf2->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf2, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            altern = 2;
+                        }
+                        if (altern == 2)
+                        {
+                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            /*blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf3->w,joueur1.pos.y+(2*j), bdf3->w, bdf3->h);
+                            draw_sprite(screen, buffer, 0,0);*/
+                            rotate_sprite(buffer, bdf3, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), ftofix(-10));
+                            altern = 0;
+                        }
+                        if (i > a){
+                          i--;
+                        }
+                        if (j> b){
+                          j--;
+                        }
+                }
             }
         }
 

@@ -46,9 +46,7 @@ int main()
         {
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
         }
-    joueur[0].pos.x = 200;
-    joueur[0].pos.y = 400;
-    joueur[1].pos.x = 400;
+
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
     load_mage_eau(&sortjoueur[1]);
@@ -92,7 +90,7 @@ int main()
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
-        usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1]);
+        usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
