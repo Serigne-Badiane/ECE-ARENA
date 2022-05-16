@@ -20,9 +20,7 @@ int menu()
     BITMAP* julien;
     BITMAP* nbre_joueurs;
 
-    /*BITMAP* deux;
-    BITMAP* trois;*/
-    //BITMAP* quatre;
+
 
     SAMPLE *son;
 
@@ -78,11 +76,8 @@ int menu()
     victor=load_bitmap("victor.bmp",NULL);
     julien=load_bitmap("julien.bmp",NULL);
     paul=load_bitmap("paul.bmp",NULL);
- //   nbre_joueurs=load_bitmap("nbre_joueurs.bmp",NULL);
 
-    //deux=load_bitmap("deux.bmp",NULL);
-/*    trois=load_bitmap("trois.bmp",NULL);
-    quatre=load_bitmap("quatre.bmp",NULL);*/
+
 
 
     for (int i = 1; i < 3; i++){
@@ -174,11 +169,21 @@ int menu()
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
             {
 
+                BITMAP* deux;
+                BITMAP* trois;
+                BITMAP* quatre;
+
+                nbre_joueurs=load_bitmap("nbrejoueurs.bmp",NULL);
+                deux=load_bitmap("deux.bmp", NULL);
+                trois=load_bitmap("trois.bmp", NULL);
+                quatre=load_bitmap("quatre.bmp", NULL);
+
                 clear_bitmap(page);
 
 
                 while (!key[KEY_ENTER]) /// Retour en arriere
                 {
+
 
 
                     show_mouse(Menu2);
@@ -191,22 +196,39 @@ int menu()
 
                     rect(Menu2,500,300,850,400,makecol(0,255,255));
 
-//                    masked_blit(nbre_joueurs, Menu2, 0, 0, 0, 0, Logo->w, Logo->h);
+                    masked_blit(nbre_joueurs, Menu2, 0, 0, 30, 0, nbre_joueurs->w, nbre_joueurs->h);
 
-                    textprintf_ex(Menu2,font,640,350,makecol(255,0,0),2,"2 Joueurs");
-                   // masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
+                   // textprintf_ex(Menu2,font,640,350,makecol(255,0,0),2,"2 Joueurs");
+                    masked_blit(deux, Menu2, 0, 0,615, 287, deux->w, deux->h);
 
                     rect(Menu2,500,450,850,550,makecol(255,0,255));
 
-                    textprintf_ex(Menu2,font,640,500,makecol(0,255,0),2,"3 Joueurs");
-                   // masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
+                    //textprintf_ex(Menu2,font,640,500,makecol(0,255,0),2,"3 Joueurs");
+                    masked_blit(trois, Menu2, 0, 0, 615, 437, trois->w, trois->h);
 
                     rect(Menu2,500,600,850,700,makecol(0,100,255));
 
-                    textprintf_ex(Menu2,font,640,650,makecol(0,0,255),2,"4 Joueurs");
-                    //masked_blit(quatre, screen, 0, 0, 600, 500, quatre->w, quatre->h);
+                    //textprintf_ex(Menu2,font,640,650,makecol(0,0,255),2,"4 Joueurs");
+                    masked_blit(quatre, Menu2, 0, 0, 615, 587, quatre->w, quatre->h);
 
-                    /*rest(50000);*/
+                    if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850) /// Petite animation quand on passe la souris
+                    {
+                        rect(screen,500,300,850,400,makecol(255,0,0));
+                    }
+
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850)
+                    {
+
+                    rect(screen,500,450,850,550,makecol(0,0,255));
+
+                    }
+                    if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850)
+                    {
+
+
+                    rect(screen,500,600,850,700,makecol(0,255,0));
+
+                    }
 
 
         }}
