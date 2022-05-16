@@ -51,7 +51,7 @@ int main()
     load_mage_eau(&sortjoueur[1]);
 
 
-    //menu();
+    menu();
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
 

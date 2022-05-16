@@ -18,9 +18,10 @@ int menu()
     BITMAP* serigne;
     BITMAP* victor;
     BITMAP* julien;
-    BITMAP* deux;
+
+    /*BITMAP* deux;
     BITMAP* trois;
-    BITMAP* quatre;
+    BITMAP* quatre;*/
 
     SAMPLE *son;
 
@@ -30,7 +31,7 @@ int menu()
 
     /*allegro_init();
     install_keyboard();
-    install_mouse();
+    install_mouse();*/
 
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
@@ -38,7 +39,7 @@ int menu()
         allegro_message("prb gfx mode");
         allegro_exit();
         exit(EXIT_FAILURE);
-    }*/
+    }
 
 
     son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav");
@@ -77,9 +78,9 @@ int menu()
     julien=load_bitmap("julien.bmp",NULL);
     paul=load_bitmap("paul.bmp",NULL);
 
-    deux=load_bitmap("deux.bmp",NULL);
-    trois=load_bitmap("trois.bmp",NULL);
-    quatre=load_bitmap("quatre.bmp",NULL);
+    //deux=load_bitmap("deux.bmp",NULL);
+/*    trois=load_bitmap("trois.bmp",NULL);
+    quatre=load_bitmap("quatre.bmp",NULL);*/
 
 
     for (int i = 1; i < 3; i++){
@@ -109,7 +110,7 @@ int menu()
 
 
     page=create_bitmap(SCREEN_W,SCREEN_H);
-    /*page2=create_bitmap(SCREEN_W,SCREEN_H);*/
+    //page2=create_bitmap(SCREEN_W,SCREEN_H);
     Menu2=create_bitmap(SCREEN_W,SCREEN_H);
 
 
@@ -182,13 +183,13 @@ int menu()
 
 
                 rect(screen,500,300,850,400,makecol(0,255,255));
-                masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
+               // masked_blit(deux, page, 0, 0,600, 400, deux->w, deux->h);
 
                 rect(screen,500,450,850,550,makecol(255,0,255));
-                masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
+               // masked_blit(trois, page, 0, 0, 600, 450, deux->w, deux->h);
 
                 rect(screen,500,600,850,700,makecol(0,100,255));
-                masked_blit(quatre, page, 0, 0, 600, 500, deux->w, deux->h);
+               // masked_blit(quatre, page, 0, 0, 600, 500, deux->w, deux->h);
 
                 rest(50000);
 
@@ -209,25 +210,26 @@ int menu()
                 while (!key[KEY_ENTER]) /// Click sur Credits
                 {
 
-                    rect(screen,500,450,850,550,makecol(255,0,255));
 
-                    show_mouse(screen);
-
-                    blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
+                    show_mouse(Menu2);
 
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
-                    blit(victor, screen, 0, 0, 100, 200, victor->w, victor->h);
-                    textprintf_ex(screen,font,120,450,makecol(255,0,0),2,"Victor CHEVALLIER");
+                    blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
 
-                    blit(serigne, screen, 0, 0, 425, 200, victor->w, victor->h);
-                    textprintf_ex(screen,font,450,450,makecol(255,0,0),2,"Serigne BADIANE");
 
-                    blit(julien, screen, 0, 0, 750, 200, victor->w, victor->h);
-                    textprintf_ex(screen,font,781,450,makecol(255,0,0),2,"Julien DOUVRY");
 
-                    blit(paul, screen, 0, 0, 1075, 200, victor->w, victor->h);
-                    textprintf_ex(screen,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
+                    blit(victor, Menu2, 0, 0, 100, 200, victor->w, victor->h);
+                    textprintf_ex(Menu2,font,120,450,makecol(255,0,0),2,"Victor CHEVALLIER");
+
+                    blit(serigne, Menu2, 0, 0, 425, 200, victor->w, victor->h);
+                    textprintf_ex(Menu2,font,450,450,makecol(255,0,0),2,"Serigne BADIANE");
+
+                    blit(julien, Menu2, 0, 0, 750, 200, victor->w, victor->h);
+                    textprintf_ex(Menu2,font,781,450,makecol(255,0,0),2,"Julien DOUVRY");
+
+                    blit(paul, Menu2, 0, 0, 1075, 200, victor->w, victor->h);
+                    textprintf_ex(Menu2,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
                     //rest(5000);
                 }
 
