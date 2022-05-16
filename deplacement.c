@@ -59,8 +59,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
 {
-    for(int j=0; j<4; j++)
-    {
         int i=play[j].case_ligne;
         int p=play[j].case_colonne;
 
@@ -191,7 +189,6 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur)
                 }
             }
         }
-    }
 }
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur)
