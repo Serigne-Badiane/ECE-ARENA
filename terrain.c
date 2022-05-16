@@ -303,55 +303,28 @@ void terrain_couleur(BITMAP* buffer)
     }
 }
 
+void terrain_deplacement(BITMAP* buffer)
+{
+    for(int i=0;i<SCREEN_W;i++)
+    {
+        for(int j=0;j<SCREEN_H;j++)
+        {
+            putpixel(buffer,i,j,makecol(255,255,255));
+        }
+    }
+}
+
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
 {
     blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-    /*for(int i=0;i<LIGNE;i++)
-    {
-        for(int j=0;j<COLONNE;j++)
-        {
-            textprintf_ex(buffer,font,matrice_terrain[i][j].x,matrice_terrain[i][j].y,makecol(40,40,40),-1,"l");
-        }
-    }*/
 }
 
-/*void recuperation_couleur()
+void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication)
 {
-    int changement_couleur[3], couleur_pixel, ancienne_couleur[3][type_case->w][type_case->h], ancienne_couleur_pixel;
-    for(int i=pos_x-55;i<pos_x-55+type_case->w;i++)
-    {
-        for(int j=pos_y-70;j<pos_y-70+type_case->h;j++)
-        {
-            ancienne_couleur_pixel=getpixel(buffer,i,j);
-            ancienne_couleur[0][i-pos_x+55][j-pos_y+70]=getr(ancienne_couleur_pixel);
-            ancienne_couleur[1][i-pos_x+55][j-pos_y+70]=getb(ancienne_couleur_pixel);
-            ancienne_couleur[2][i-pos_x+55][j-pos_y+70]=getg(ancienne_couleur_pixel);
-        }
-    }
-}
-*/
-
-void recuperation_couleur(BITMAP* buffer)
-{
-    for(int i=0;i<1272;i++)
-    {
-        for(int j=0;j<700;j++)
-        {
-            ancienne_couleur_pixel=getpixel(buffer,i,j);
-            ancienne_couleur[0][i][j]=getr(ancienne_couleur_pixel);
-            ancienne_couleur[1][i][j]=getb(ancienne_couleur_pixel);
-            ancienne_couleur[2][i][j]=getg(ancienne_couleur_pixel);
-        }
-    }
+    blit(buffer,buffer_enlevage_indication,0,0,0,0,SCREEN_W,SCREEN_H);
 }
 
-void enlevage_des_indications(BITMAP* buffer)
+void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
 {
-    for(int i=0;i<1272;i++)
-    {
-        for(int j=0;j<700;j++)
-        {
-            putpixel(buffer,i,j,makecol(ancienne_couleur[0][i][j],ancienne_couleur[2][i][j],ancienne_couleur[1][i][j]));
-        }
-    }
+    blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
