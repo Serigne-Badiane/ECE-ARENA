@@ -58,6 +58,7 @@ int main()
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
     terrain_deplacement(buffer_deplacement);
+    quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
 
     while (!key[KEY_ESC])
@@ -76,10 +77,6 @@ int main()
 
         init_joueur(nbrjoueur,joueur);
 
-        quadrillage(buffer,terrain);
-
-
-
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
@@ -91,7 +88,7 @@ int main()
         difference = (double)(fin-debut)/(double)clk_tck ;
 
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur,buffer,buffer_enlevage_indication,compteur_pour_enlever_les_indics,buffer_deplacement2);
-        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
