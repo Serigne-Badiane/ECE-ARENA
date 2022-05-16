@@ -49,7 +49,7 @@ typedef struct{
 
 }sortperso;
 
-
+int ancienne_couleur[3][1272][700],ancienne_couleur_pixel;
 str_perso joueur [4];
 void load_cra_feu (sortperso* perso);
 void load_mage_eau (sortperso* perso);
@@ -64,8 +64,11 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
 
 void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2);
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,str_perso joueur);
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,str_perso joueur);
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur);
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur);
+
+void recuperation_couleur(BITMAP* buffer);
+void enlevage_des_indications(BITMAP* buffer);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain);
 void chrono(BITMAP* terrain, BITMAP* buffer);

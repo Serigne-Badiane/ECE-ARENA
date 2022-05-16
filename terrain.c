@@ -330,3 +330,28 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer)
     }
 }
 */
+
+void recuperation_couleur(BITMAP* buffer)
+{
+    for(int i=0;i<1272;i++)
+    {
+        for(int j=0;j<700;j++)
+        {
+            ancienne_couleur_pixel=getpixel(buffer,i,j);
+            ancienne_couleur[0][i][j]=getr(ancienne_couleur_pixel);
+            ancienne_couleur[1][i][j]=getb(ancienne_couleur_pixel);
+            ancienne_couleur[2][i][j]=getg(ancienne_couleur_pixel);
+        }
+    }
+}
+
+void enlevage_des_indications(BITMAP* buffer)
+{
+    for(int i=0;i<1272;i++)
+    {
+        for(int j=0;j<700;j++)
+        {
+            putpixel(buffer,i,j,makecol(ancienne_couleur[0][i][j],ancienne_couleur[2][i][j],ancienne_couleur[1][i][j]));
+        }
+    }
+}
