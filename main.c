@@ -8,7 +8,7 @@ void initialisation()
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 713, 0,0)!=0)         ///1272,713
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -89,8 +89,8 @@ int main()
             placement_joueur_debut(buffer,buffer_invisible_couleur);
         }
         //chrono(terrain, buffer);
-        deplacement(terrain,buffer, buffer_invisible_couleur);
-        deplacement_p2(terrain,buffer,buffer_invisible_couleur);
+        //deplacement(terrain,buffer, buffer_invisible_couleur);
+        //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
 
         init_joueur(nbrjoueur,joueur);
 
@@ -107,6 +107,9 @@ int main()
         {
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
+
+        deplacement(terrain,buffer, buffer_invisible_couleur);
+        deplacement_p2(terrain,buffer,buffer_invisible_couleur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
