@@ -189,7 +189,6 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,str_per
                 }
             }
         }
-
 }
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,str_perso joueur)
