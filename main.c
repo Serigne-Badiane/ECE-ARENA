@@ -27,8 +27,6 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* bdf1 = load_bitmap("bdf1.bmp", NULL);
     BITMAP* bdf2 = load_bitmap("bdf2.bmp", NULL);
@@ -54,21 +52,41 @@ int main()
     load_mage_eau(&sortjoueur[1]);
 
 
-    //menu();
+    menu();
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
-    terrain_deplacement(buffer_deplacement);
-    affichage_terrain(terrain,buffer);
 
     while (!key[KEY_ESC])
     {
-        int compteur_pour_enlever_les_indics=0;
         if (tourjoueur > nbrjoueur - 1){
             tourjoueur = 0;
         }
+        affichage_terrain(terrain,buffer);
+        /*for(int i=0;i<LIGNE;i++)
+        {
+            for(int j=0;j<COLONNE;j++)
+            {
+                if(matrice_terrain[i][j].passage==0)
+                {
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,200,200,200);
+                }
+                if(matrice_terrain[i][j].passage==1)
+                {
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,250,200,150);
+                }
+                if(matrice_terrain[i][j].passage==2)
+                {
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,50,200);
+                }
+                if(matrice_terrain[i][j].passage==3)
+                {
+                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,200,20,200);
+                }
+            }
+        }*/
         while(joueur[0].pos.case_ligne==0 || joueur[0].pos.case_colonne==0 || joueur[1].pos.case_ligne==0 || joueur[1].pos.case_colonne==0 || joueur[2].pos.case_ligne==0 || joueur[2].pos.case_colonne==0 || joueur[3].pos.case_ligne==0 || joueur[3].pos.case_colonne==0)
         {
-            placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication);
+            placement_joueur_debut(buffer,buffer_invisible_couleur);
         }
         //chrono(terrain, buffer);
         //deplacement(terrain,buffer, buffer_invisible_couleur);
@@ -84,14 +102,14 @@ int main()
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
 
-        debut=clock() ;
+        debut=clock();
         do
         {
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
-        deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur,buffer,buffer_enlevage_indication,compteur_pour_enlever_les_indics,buffer_deplacement2);
-        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2);
+        deplacement(terrain, buffer, buffer_invisible_couleur, tourjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
@@ -100,13 +118,9 @@ int main()
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
         draw_sprite(screen, buffer, 0,0);
-        compteur_pour_enlever_les_indics++;
-        }while(difference<15);
+        }while(difference<15 /*|| fin tour || fin sort*/);
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
-    clear_bitmap(buffer_deplacement);
-    clear_bitmap(buffer_deplacement2);
-    clear_bitmap(buffer_enlevage_indication);
 
 
     tourjoueur ++;
