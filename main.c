@@ -102,8 +102,8 @@ int main()
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
 
-        debut=clock() ;
-        while(difference<15)
+        debut=clock();
+        do
         {
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
@@ -118,7 +118,7 @@ int main()
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
         draw_sprite(screen, buffer, 0,0);
-        }
+        }while(difference<15 /*|| fin tour || fin sort*/);
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
 
