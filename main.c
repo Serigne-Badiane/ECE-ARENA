@@ -27,6 +27,7 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* bdf1 = load_bitmap("bdf1.bmp", NULL);
     BITMAP* bdf2 = load_bitmap("bdf2.bmp", NULL);
     BITMAP* bdf3 = load_bitmap("bdf3.bmp", NULL);
@@ -102,13 +103,13 @@ int main()
         double difference ;
 
         debut=clock() ;
-        do
+        while(difference<15)
         {
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
-        deplacement(terrain,buffer, buffer_invisible_couleur,joueur[tourjoueur]);
-        deplacement_p2(terrain,buffer,buffer_invisible_couleur,joueur[tourjoueur]);
+        deplacement(terrain, buffer, buffer_invisible_couleur, tourjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
@@ -117,9 +118,7 @@ int main()
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
         draw_sprite(screen, buffer, 0,0);
-
-
-        }while(difference<15);
+        }
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
 
