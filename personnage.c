@@ -49,20 +49,20 @@ void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso jo
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui infliche 45pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
             int altern = 0;
-            for (int i = 1; i< (joueur2.x-joueur1.x)/2 ; i++){
+            for (int i = 1; i< (joueur2.pos.x-joueur1.pos.x)/2 ; i++){
                 if (altern == 0){
-                    draw_sprite(buffer,bdf1,joueur1.x+(2*i),joueur1.y);
+                    draw_sprite(buffer,bdf1,joueur1.pos.x+(2*i),joueur1.pos.y);
                     blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
 
                     altern = 1;
                 }
                 if (altern == 1){
-                    draw_sprite(buffer,bdf2,joueur1.x+(2*i),joueur1.y);
+                    draw_sprite(buffer,bdf2,joueur1.pos.x+(2*i),joueur1.pos.y);
                     blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
                     altern = 2;
                 }
                 if (altern == 2){
-                    draw_sprite(buffer,bdf3,joueur1.x+(2*i),joueur1.y);
+                    draw_sprite(buffer,bdf3,joueur1.pos.x+(2*i),joueur1.pos.y);
                     blit(buffer,screen,0,0,0,0,SCREEN_H,SCREEN_W);
 
                     altern = 0;

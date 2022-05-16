@@ -13,11 +13,17 @@ typedef struct
     int passage;
     int placement_debut;
 }t_case;
+typedef struct
+{
+    int x;
+    int y;
+    int case_ligne;
+    int case_colonne;
+}t_joueur;
 
 typedef struct{
 
-    int x;
-    int y;
+    t_joueur pos;
     int pa;
     int pm;
     int pv;
@@ -27,13 +33,7 @@ typedef struct{
 
 t_case matrice_terrain[LIGNE][COLONNE];
 
-typedef struct
-{
-    int x;
-    int y;
-    int case_ligne;
-    int case_colonne;
-}t_joueur;
+
 
 t_joueur play[4];
 

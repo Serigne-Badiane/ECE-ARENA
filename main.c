@@ -44,9 +44,9 @@ int main()
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
         }
     str_perso joueur [nbrjoueur];
-    joueur[0].x = 200;
-    joueur[0].y = 400;
-    joueur[1].x = 400;
+    joueur[0].pos.x = 200;
+    joueur[0].pos.y = 400;
+    joueur[1].pos.x = 400;
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
     load_mage_eau(&sortjoueur[1]);
