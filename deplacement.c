@@ -59,7 +59,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur)
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur)
 {
-    recuperation_couleur(buffer);
+    //recuperation_couleur(buffer);
     int i=joueur[tour_joueur].pos.case_ligne;
     int p=joueur[tour_joueur].pos.case_colonne;
 
@@ -242,7 +242,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         blit(image_joueur[2], terrain, 0 ,0, matrice_terrain[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                         rest(200);
                     }*/
-                    enlevage_des_indications(buffer);
+                    //enlevage_des_indications(buffer);
                     blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[i][t].x-image_joueur[2]->w/2, matrice_terrain[i][t].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                     joueur[tour_joueur].pos.case_ligne=i;
                     joueur[tour_joueur].pos.case_colonne=t;

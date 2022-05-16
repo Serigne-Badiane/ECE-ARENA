@@ -27,6 +27,7 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* bdf1 = load_bitmap("bdf1.bmp", NULL);
     BITMAP* bdf2 = load_bitmap("bdf2.bmp", NULL);
     BITMAP* bdf3 = load_bitmap("bdf3.bmp", NULL);
@@ -51,7 +52,7 @@ int main()
     load_mage_eau(&sortjoueur[1]);
 
 
-    menu();
+    //menu();
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
 
@@ -107,8 +108,8 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
-        deplacement(terrain,buffer, buffer_invisible_couleur,tourjoueur);
-        deplacement_p2(terrain,buffer,buffer_invisible_couleur, tourjoueur);
+        deplacement(terrain, buffer, buffer_invisible_couleur, tourjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
