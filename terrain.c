@@ -225,13 +225,155 @@ void init_struct_case()
 
     matrice_terrain_iso[0][0].x=matrice_terrain[12][4].x;
     matrice_terrain_iso[0][0].y=matrice_terrain[12][4].y;
-    /*for (int i=0;i<LIGNE2;i++)
+    for (int i=1;i<COLONNE2;i++)
     {
-        for(int j=0;j<COLONNE2;j++)
+        matrice_terrain_iso[0][i].x = matrice_terrain_iso[0][i-1].x+matrice_terrain[0][0].largeur/2;
+        matrice_terrain_iso[0][i].y = matrice_terrain_iso[0][i-1].y-matrice_terrain[0][0].hauteur/2;
+    }
+    for (int i=1;i<LIGNE2;i++)
+    {
+        for (int j=0;j<COLONNE2;j++)
         {
-            if ()
+            matrice_terrain_iso[i][j].x = matrice_terrain_iso[i-1][j].x+matrice_terrain[0][0].largeur/2;
+            matrice_terrain_iso[i][j].y = matrice_terrain_iso[i-1][j].y+matrice_terrain[0][0].hauteur/2;
         }
-    }*/
+    }
+    for (int i=0;i<LIGNE2;i++)
+    {
+        for (int j=0;j<COLONNE2;j++)
+        {
+            matrice_terrain_iso[i][j].passage=1;
+        }
+    }
+    for (int i=0;i<2;i++)
+    {
+        for (int j=0;j<6;j++)
+        {
+            matrice_terrain_iso[i][j].passage=0;
+        }
+    }
+    for (int i=0;i<8;i++)
+    {
+        for (int j=0;j<3;j++)
+        {
+            matrice_terrain_iso[i][j].passage=0;
+        }
+    }
+    matrice_terrain_iso[8][0].passage=0;
+    matrice_terrain_iso[10][1].passage=0;
+    matrice_terrain_iso[11][1].passage=0;
+    matrice_terrain_iso[12][1].passage=0;
+    matrice_terrain_iso[10][2].passage=0;
+    matrice_terrain_iso[11][2].passage=0;
+    matrice_terrain_iso[9][2].passage=0;
+    matrice_terrain_iso[14][2].passage=0;
+    matrice_terrain_iso[14][1].passage=0;
+    matrice_terrain_iso[15][1].passage=0;
+    matrice_terrain_iso[16][1].passage=0;
+    matrice_terrain_iso[19][1].passage=0;
+    matrice_terrain_iso[20][1].passage=0;
+    matrice_terrain_iso[19][2].passage=0;
+    matrice_terrain_iso[20][2].passage=0;
+    for (int i=14;i<LIGNE2;i++)
+    {
+        matrice_terrain_iso[i][0].passage=0;
+    }
+    matrice_terrain_iso[0][11].passage=0;
+    matrice_terrain_iso[1][11].passage=0;
+    matrice_terrain_iso[1][16].passage=0;
+    matrice_terrain_iso[1][17].passage=0;
+    for (int i=17;i<20;i++)
+    {
+        for (int j=5;j<11;j++)
+        {
+             matrice_terrain_iso[i][j].passage=0;
+        }
+    }
+    matrice_terrain_iso[19][9].passage=1;
+    matrice_terrain_iso[19][10].passage=1;
+    matrice_terrain_iso[13][18].passage=0;
+    matrice_terrain_iso[14][18].passage=0;
+    matrice_terrain_iso[16][18].passage=0;
+    for (int i=12;i<LIGNE2;i++)
+    {
+        for (int j=19;j<COLONNE2;j++)
+        {
+            matrice_terrain_iso[i][j].passage=0;
+        }
+    }
+    for (int i=17;i<LIGNE2;i++)
+    {
+        for (int j=14;j<COLONNE2;j++)
+        {
+            matrice_terrain_iso[i][j].passage=0;
+        }
+    }
+    for (int i=10;i<COLONNE2;i++)
+    {
+        matrice_terrain_iso[LIGNE2-1][i].passage=0;
+    }
+    matrice_terrain_iso[LIGNE2-2][12].passage=0;
+    matrice_terrain_iso[LIGNE2-2][13].passage=0;
+    matrice_terrain_iso[LIGNE2-3][13].passage=0;
+    matrice_terrain_iso[4][11].passage=3;
+    matrice_terrain_iso[5][15].passage=3;
+    matrice_terrain_iso[6][10].passage=3;
+    matrice_terrain_iso[5][12].passage=3;
+    matrice_terrain_iso[10][6].passage=3;
+    matrice_terrain_iso[12][9].passage=3;
+    matrice_terrain_iso[12][13].passage=3;
+    matrice_terrain_iso[12][14].passage=3;
+    matrice_terrain_iso[13][13].passage=3;
+    matrice_terrain_iso[13][14].passage=3;
+    matrice_terrain_iso[4][19].passage=3;
+    matrice_terrain_iso[8][13].passage=3;
+    matrice_terrain_iso[5][13].passage=2;
+    matrice_terrain_iso[6][13].passage=2;
+    matrice_terrain_iso[6][12].passage=2;
+    matrice_terrain_iso[7][12].passage=2;
+    matrice_terrain_iso[8][12].passage=2;
+    matrice_terrain_iso[7][11].passage=2;
+    for (int i=8;i<10;i++)
+    {
+        for (int j=9;j<12;j++)
+        {
+            matrice_terrain_iso[i][j].passage=2;
+        }
+    }
+    matrice_terrain_iso[10][9].passage=2;
+    matrice_terrain_iso[10][10].passage=2;
+    matrice_terrain_iso[11][9].passage=2;
+    matrice_terrain_iso[11][8].passage=2;
+    matrice_terrain_iso[12][8].passage=2;
+    for (int i=6;i<9;i++)
+    {
+        for (int j=18;j<21;j++)
+        {
+            matrice_terrain_iso[i][j].placement_debut=1;
+        }
+    }
+    for (int i=15;i<18;i++)
+    {
+        for (int j=11;j<14;j++)
+        {
+            matrice_terrain_iso[i][j].placement_debut=2;
+        }
+    }
+    for (int i=15;i<18;i++)
+    {
+        for (int j=2;j<5;j++)
+        {
+            matrice_terrain_iso[i][j].placement_debut=3;
+        }
+    }
+    for (int i=0;i<3;i++)
+    {
+        for (int j=6;j<9;j++)
+        {
+            matrice_terrain_iso[i][j].placement_debut=4;
+        }
+    }
+
 
 }
 

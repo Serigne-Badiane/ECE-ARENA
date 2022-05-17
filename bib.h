@@ -20,6 +20,9 @@ typedef struct
 {
     int x;
     int y;
+    int passage;
+    int placement_debut;
+
 }t_case_iso;
 
 typedef struct
@@ -28,6 +31,8 @@ typedef struct
     int y;
     int case_ligne;
     int case_colonne;
+    int case_ligne_iso;
+    int case_colonne_iso;
 }t_joueur;
 
 typedef struct{
@@ -46,22 +51,28 @@ t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
 
 //t_joueur play[4];
+typedef struct{
+    BITMAP* anim1;
+    BITMAP* anim2;
+    BITMAP* anim3;
+}animation;
 
 typedef struct{
     BITMAP* sort1;
     BITMAP* sort2;
     BITMAP* sort3;
     BITMAP* sort4;
-    BITMAP* expli1;
-    BITMAP* expli2;
-    BITMAP* expli3;
-    BITMAP* expli4;
+    char expl1 [100];
+    char expl2 [100];
+    char expl3 [100];
+    char expl4 [100];
 
 }sortperso;
 
 str_perso joueur [4];
 
 void load_cra_feu (sortperso* perso);
+void load_cra_feu_anim(sortperso* perso);
 void load_mage_eau (sortperso* perso);
 
 int addi (int a, int b);
@@ -72,7 +83,7 @@ void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
-void usesort (BITMAP* buffer,BITMAP* bdf1,BITMAP* bdf2,BITMAP* bdf3,str_perso joueur1,str_perso joueur2,BITMAP* temp);
+void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso joueur2,BITMAP* temp);
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur,BITMAP* buffer_vrai,BITMAP* buffer_enlevage_indication,int c,BITMAP* buffer_deplacement2);
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement,BITMAP* buffer_enlevage_indication,BITMAP* buffer_deplacement2,int nbr_joueur);
@@ -80,7 +91,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
 void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 
-void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication);
+void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication,int nb_joueur);
 void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
 void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);
