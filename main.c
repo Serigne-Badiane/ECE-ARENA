@@ -30,9 +30,6 @@ int main()
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* bdf1 = load_bitmap("bdf1.bmp", NULL);
-    BITMAP* bdf2 = load_bitmap("bdf2.bmp", NULL);
-    BITMAP* bdf3 = load_bitmap("bdf3.bmp", NULL);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
     int nbrjoueur = 2;
@@ -42,6 +39,8 @@ int main()
     player[1] = create_bitmap(SCREEN_W, SCREEN_H);
     player[2] = create_bitmap(SCREEN_W, SCREEN_H);
     player[3] = create_bitmap(SCREEN_W, SCREEN_H);
+    animation perso1 [4] [4];
+
     for (int i = 0 ; i <4 ; i++)
         {
         rectfill(player[i],0,0,1272,713,makecol(255,0,255));
@@ -50,13 +49,18 @@ int main()
     sortperso sortjoueur [nbrjoueur];
     load_cra_feu(&sortjoueur[0]);
     load_mage_eau(&sortjoueur[1]);
-
+    int ennemi;
 
     //menu();
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
+    load_cra_feu(&sortjoueur[0]);
+    load_anim_cra_feu_bdf(&perso1[0][0]);
+    load_anim_cra_feu_fleche_feu(&perso1[0][1]);
+    load_anim_mage_eau_vague(&perso1[1][0]);
+    load_anim_mage_eau_flaque(&perso1[1][1]);
 
     while (!key[KEY_ESC])
     {
@@ -65,6 +69,13 @@ int main()
             tourjoueur = 0;
         }
         for (int i=0;i<nbrjoueur;i++)
+        if (tourjoueur == 0){
+            ennemi = 1;
+        }
+        else{
+            ennemi = 0;
+        }
+        while(joueur[0].pos.case_ligne==0 || joueur[0].pos.case_colonne==0 || joueur[1].pos.case_ligne==0 || joueur[1].pos.case_colonne==0 || joueur[2].pos.case_ligne==0 || joueur[2].pos.case_colonne==0 || joueur[3].pos.case_ligne==0 || joueur[3].pos.case_colonne==0)
         {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
             {
@@ -103,7 +114,7 @@ int main()
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
-        usesort(buffer,bdf1,bdf2,bdf3,joueur[tourjoueur],joueur[1],temp);
+        usesort(buffer,perso1[tourjoueur],joueur[tourjoueur],joueur[ennemi],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
         draw_sprite(screen, buffer, 0,0);
