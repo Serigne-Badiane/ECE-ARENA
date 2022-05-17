@@ -102,7 +102,7 @@ void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tou
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)
 {
-    BITMAP* image_joueur[32];
+    BITMAP* image_joueur[20];
 
     image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
     image_joueur[1] = load_bitmap("player/player2.bmp", NULL);
@@ -112,11 +112,33 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     image_joueur[5] = load_bitmap("player/player6.bmp", NULL);
     image_joueur[6] = load_bitmap("player/player7.bmp", NULL);
     image_joueur[7] = load_bitmap("player/player8.bmp", NULL);
-
     image_joueur[8] = load_bitmap("player/player9.bmp", NULL);
     image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
     image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
     image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
+    image_joueur[12] = load_bitmap("player/player13.bmp", NULL);
+    image_joueur[13] = load_bitmap("player/player14.bmp", NULL);
+    image_joueur[14] = load_bitmap("player/player15.bmp", NULL);
+    image_joueur[15] = load_bitmap("player/player16.bmp", NULL);
+    image_joueur[16] = load_bitmap("player/player17.bmp", NULL);
+    image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
+    image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
+    image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
+
+
+    for(int k=0; k<20; k++)
+    {
+        if (image_joueur[k]==NULL)
+        {
+            allegro_message("Pas l'image %d", k);
+            allegro_exit();
+            exit(EXIT_FAILURE);
+        }
+    }
+
+
+
+
     for (int s=0;s<nbr_joueur;s++)
     {
         blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
