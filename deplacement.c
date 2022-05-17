@@ -6,7 +6,6 @@
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_enlevage_indication,int nb_joueur)
 {
-    recuperation_couleur(buffer,buffer_enlevage_indication);
     for(int i=0;i<LIGNE2;i++)
     {
         for(int j=0;j<COLONNE2;j++)
@@ -57,16 +56,10 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_
             draw_sprite(screen, buffer, 0,0);
         }
     }
-    enlevage_des_indications(buffer,buffer_enlevage_indication);
 }
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur,BITMAP* buffer_vrai, BITMAP* buffer_enlevage_indication,int c,BITMAP*buffer_deplacement2)
+void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur)
 {
-    if (c==0)
-    {
-        recuperation_couleur(terrain, buffer_enlevage_indication);
-        recuperation_couleur(buffer,buffer_deplacement2);
-    }
     int i=joueur[tour_joueur].pos.case_ligne_iso;
     int p=joueur[tour_joueur].pos.case_colonne_iso;
 
@@ -247,7 +240,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
             exit(EXIT_FAILURE);
         }
     }
-
     for (int s=0;s<nbr_joueur;s++)
     {
         blit(image_joueur[0+s*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
@@ -260,7 +252,39 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
             {
                 if(getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)))
                 {
-                   // blit(buffer_deplacement,buffer,)
+                    int z=i,y=t;
+                    if (z<joueur[tour_joueur].pos.case_ligne_iso)
+                    {
+                        while(z<joueur[tour_joueur].pos.case_ligne_iso)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,140,140,140);
+                            z++;
+                        }
+                    }
+                    if (z>joueur[tour_joueur].pos.case_ligne_iso )
+                    {
+                        while(z>joueur[tour_joueur].pos.case_ligne_iso)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,140,140,140);
+                            z--;
+                        }
+                    }
+                    if (y<joueur[tour_joueur].pos.case_colonne_iso)
+                    {
+                        while(y<joueur[tour_joueur].pos.case_colonne_iso)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,140,140,140);
+                            y++;
+                        }
+                    }
+                    if (y>joueur[tour_joueur].pos.case_colonne_iso )
+                    {
+                        while(y>joueur[tour_joueur].pos.case_colonne_iso)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,140,140,140);
+                            y--;
+                        }
+                    }
                     if(mouse_b&1)
                     {
                         /*while(matrice_terrain_iso[play[j].case_ligne][play[j].case_colonne].y<matrice_terrain_iso[i][t].y)

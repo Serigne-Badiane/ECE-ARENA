@@ -62,10 +62,11 @@ int main()
     load_anim_mage_eau_vague(&perso1[1][0]);
     load_anim_mage_eau_flaque(&perso1[1][1]);
     init_joueur(nbrjoueur,joueur);
+    recuperation_couleur(terrain, buffer_enlevage_indication);
+    recuperation_couleur(buffer_deplacement,buffer_deplacement2);
 
     while (!key[KEY_ESC])
     {
-        int compteur_pour_enlever_les_indics=0;
         if (tourjoueur > nbrjoueur - 1){
             tourjoueur = 0;
         }
@@ -82,7 +83,7 @@ int main()
                 placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication,nbrjoueur);
             }
         }
-
+        enlevage_des_indications(buffer,buffer_enlevage_indication);
         //chrono(terrain, buffer);
         //deplacement(terrain,buffer, buffer_invisible_couleur);
         //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
@@ -102,28 +103,27 @@ int main()
         }*/
 
         debut=clock() ;
-        do
-        {
-            fin=clock() ;
-            difference = (double)(fin-debut)/(double)clk_tck ;
+    do
+    {
+        fin=clock() ;
+        difference = (double)(fin-debut)/(double)clk_tck ;
 
-            deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur,buffer,buffer_enlevage_indication,compteur_pour_enlever_les_indics,buffer_deplacement2);
-            deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
+        deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
-            affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
-            draw_sprite(buffer, player[tourjoueur], 0,0);
-            usesort(buffer,perso1[tourjoueur],joueur[tourjoueur],joueur[ennemi],temp);
-            textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
-            textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
-            draw_sprite(screen, buffer, 0,0);
-            //draw_sprite(screen, buffer_deplacement, 0,0);
-            compteur_pour_enlever_les_indics++;
-        }while(difference<5);
+        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+        draw_sprite(buffer, player[tourjoueur], 0,0);
+        usesort(buffer,perso1[tourjoueur],joueur[tourjoueur],joueur[ennemi],temp);
+        textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
+        textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+
+        draw_sprite(screen, buffer, 0,0);
+
+    }while(difference<5);
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
     clear_bitmap(buffer_deplacement);
     clear_bitmap(buffer_deplacement2);
-    clear_bitmap(buffer_enlevage_indication);
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
