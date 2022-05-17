@@ -290,6 +290,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         enlevage_des_indications(buffer, buffer_enlevage_indication);
                         enlevage_des_indications(buffer_deplacement,buffer_deplacement2);
                         blit(image_joueur[2], buffer, 0 ,0, matrice_terrain_iso[i][t].x-image_joueur[2]->w/2, matrice_terrain_iso[i][t].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                        joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_ligne_iso-i+joueur[tour_joueur].pos.case_colonne_iso-t;
                         joueur[tour_joueur].pos.case_ligne_iso=i;
                         joueur[tour_joueur].pos.case_colonne_iso=t;
                         joueur[tour_joueur].pos.x = matrice_terrain_iso[i][t].x;
