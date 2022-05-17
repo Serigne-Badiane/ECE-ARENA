@@ -68,14 +68,13 @@ int main()
         if (tourjoueur > nbrjoueur - 1){
             tourjoueur = 0;
         }
-        for (int i=0;i<nbrjoueur;i++)
         if (tourjoueur == 0){
             ennemi = 1;
         }
         else{
             ennemi = 0;
         }
-        while(joueur[0].pos.case_ligne==0 || joueur[0].pos.case_colonne==0 || joueur[1].pos.case_ligne==0 || joueur[1].pos.case_colonne==0 || joueur[2].pos.case_ligne==0 || joueur[2].pos.case_colonne==0 || joueur[3].pos.case_ligne==0 || joueur[3].pos.case_colonne==0)
+        for (int i=0;i<nbrjoueur;i++)
         {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
             {

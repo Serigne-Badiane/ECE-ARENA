@@ -7,23 +7,23 @@
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_enlevage_indication,int nb_joueur)
 {
     recuperation_couleur(buffer,buffer_enlevage_indication);
-    for(int i=0;i<LIGNE;i++)
+    for(int i=0;i<LIGNE2;i++)
     {
-        for(int j=0;j<COLONNE;j++)
+        for(int j=0;j<COLONNE2;j++)
         {
-            switch(matrice_terrain[i][j].placement_debut)
+            switch(matrice_terrain_iso[i][j].placement_debut)
             {
                 case 1:
-                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,100,100);
+                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,100,100,100);
                     break;
                 case 2:
-                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,170,100);
+                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,100,170,100);
                     break;
                 case 3:
-                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,100,100,170);
+                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,100,100,170);
                     break;
                 case 4:
-                    case_couleur(buffer,matrice_terrain[i][j].x,matrice_terrain[i][j].y,170,100,100);
+                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,170,100,100);
                     break;
             }
         }
@@ -119,7 +119,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
     for (int s=0;s<nbr_joueur;s++)
     {
-        blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[joueur[s].pos.case_ligne][joueur[s].pos.case_colonne].x-image_joueur[2]->w/2, matrice_terrain[joueur[s].pos.case_ligne][joueur[s].pos.case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+        blit(image_joueur[2], buffer, 0 ,0, matrice_terrain[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
     }
         for(int i=0;i<LIGNE;i++)
         {
