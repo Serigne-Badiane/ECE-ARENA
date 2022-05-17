@@ -20,6 +20,9 @@ typedef struct
 {
     int x;
     int y;
+    int passage;
+    int placement_debut;
+
 }t_case_iso;
 
 typedef struct
@@ -28,6 +31,8 @@ typedef struct
     int y;
     int case_ligne;
     int case_colonne;
+    int case_ligne_iso;
+    int case_colonne_iso;
 }t_joueur;
 
 typedef struct{
@@ -80,7 +85,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
 void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 
-void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication);
+void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication,int nb_joueur);
 void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
 void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);

@@ -64,10 +64,14 @@ int main()
         if (tourjoueur > nbrjoueur - 1){
             tourjoueur = 0;
         }
-        while(joueur[0].pos.case_ligne==0 || joueur[0].pos.case_colonne==0 || joueur[1].pos.case_ligne==0 || joueur[1].pos.case_colonne==0 || joueur[2].pos.case_ligne==0 || joueur[2].pos.case_colonne==0 || joueur[3].pos.case_ligne==0 || joueur[3].pos.case_colonne==0)
+        for (int i=0;i<nbrjoueur;i++)
         {
-            placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication);
+             while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
+            {
+                placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication,nbrjoueur);
+            }
         }
+
         //chrono(terrain, buffer);
         //deplacement(terrain,buffer, buffer_invisible_couleur);
         //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
@@ -77,6 +81,16 @@ int main()
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
+        /*for (int i=0;i<LIGNE2;i++)
+        {
+            for (int j=0;j<COLONNE2;j++)
+            {
+                if (matrice_terrain_iso[i][j].placement_debut==2)
+                {
+                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,80,80,80);
+                }
+            }
+        }*/
 
         debut=clock() ;
         do
