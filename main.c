@@ -95,7 +95,7 @@ int main()
         {
             for (int j=0;j<COLONNE2;j++)
             {
-                if (matrice_terrain_iso[i][j].placement_debut==2)
+                if (matrice_terrain_iso[i][j].passage==1)
                 {
                     case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,80,80,80);
                 }
