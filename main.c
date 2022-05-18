@@ -21,8 +21,15 @@ void initialisation()
 
 int main()
 {
+
+
+
     srand(time(NULL));
     initialisation();
+
+    int nbre_joueurs, classe_perso;
+    menu(&nbre_joueurs,&classe_perso);
+
     int tourjoueur;
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
@@ -51,7 +58,7 @@ int main()
     load_mage_eau(&sortjoueur[1]);
     int ennemi;
 
-    //menu();
+
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);

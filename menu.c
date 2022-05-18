@@ -3,7 +3,7 @@
 #include <time.h>
 #include <allegro.h>
 
-int menu()
+void menu(int* nbre_joueur, int* classe_perso)
 {
     BITMAP* decor;
     BITMAP* page;
@@ -17,6 +17,11 @@ int menu()
 
     BITMAP* nbre_joueurs;
     BITMAP* cursor;
+    BITMAP* serigne;
+    BITMAP* victor;
+    BITMAP* julien;
+    BITMAP* paul;
+
 
 
 
@@ -45,12 +50,12 @@ int menu()
     if (install_sound(DIGI_AUTODETECT, MIDI_NONE, 0) != 0)
     {
         printf("Error initialising sound: %s\n", allegro_error);
-        return 1;
+
     }
 
     if (!son) {
       allegro_message("Error avec le fichier .wav ");
-      return 1;
+
    }
 
 
@@ -72,6 +77,10 @@ int menu()
     Regles=load_bitmap("Regles.bmp", NULL);
     cursor=load_bitmap("cursor.bmp",NULL);
 
+    serigne=load_bitmap("serigne.bmp",NULL);
+    victor=load_bitmap("victor.bmp",NULL);
+    paul=load_bitmap("paul.bmp",NULL);
+    julien=load_bitmap("julien.bmp",NULL);
 
 
 
@@ -92,11 +101,6 @@ int menu()
             exit( EXIT_FAILURE );
 
         }
-
-        /*if(i=1){
-            i=0;
-        }*/
-
 
     }
 
@@ -230,6 +234,23 @@ int menu()
 
                     }
 
+                    if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
+
+                    {
+                        nbre_joueur = 2;
+
+                    }
+
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
+                    {
+                        nbre_joueur = 3;
+                    }
+
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
+                    {
+                        nbre_joueurs = 4;
+                    }
+
 
         }}
 
@@ -241,18 +262,12 @@ int menu()
 
             rect(screen,500,450,850,550,makecol(255,0,255));
 
-            if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
+        }
+
+            if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Regles
             {
                 masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
-                BITMAP* paul;
-                BITMAP* serigne;
-                BITMAP* victor;
-                BITMAP* julien;
-                serigne=load_bitmap("serigne.bmp",NULL);
-                victor=load_bitmap("victor.bmp",NULL);
-                julien=load_bitmap("julien.bmp",NULL);
-                paul=load_bitmap("paul.bmp",NULL);
 
                 clear_bitmap(page);
                 while (!key[KEY_ENTER]) /// Retour en arriere
@@ -280,7 +295,7 @@ int menu()
                     textprintf_ex(Menu2,font,1075,450,makecol(255,0,0),2,"Paul ARNAUD BATTANDIER");
 
                     textprintf_ex(Menu2,font,0,0,makecol(0,0,255),2,"Appuyez sur ENTREE pour revenir au MENU");
-                    //rest(5000);
+
                 }
 
 
@@ -290,7 +305,7 @@ int menu()
 
 
         }
-        }
+
 
         if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850)
         {
@@ -298,12 +313,22 @@ int menu()
 
             rect(screen,500,600,850,700,makecol(0,100,255));
 
+            if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)
+            {
+
+
+
+            }
+
         }
-         if(imgcourante == 2){
+
+
+
+        if(imgcourante == 2){
             imgcourante = 1;
         }
 
-        rest(100);
+        /*rest(200);*/
 
 
 
@@ -325,6 +350,10 @@ int menu()
 
 }
 }
+
+/*int menu_selec_perso(int choix_perso){
+
+}*/
 /*destroy_sample(son);*/
 
 /*}END_OF_MAIN();*/
