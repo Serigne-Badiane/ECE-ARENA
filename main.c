@@ -21,8 +21,15 @@ void initialisation()
 
 int main()
 {
+
+
+
     srand(time(NULL));
     initialisation();
+
+    int nbre_joueurs, classe_perso;
+    menu(&nbre_joueurs,&classe_perso);
+
     int tourjoueur;
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
@@ -50,7 +57,7 @@ int main()
 
     int ennemi;
 
-    //menu();
+
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
@@ -100,6 +107,7 @@ int main()
         debut=clock() ;
     do
     {
+        affichage_terrain(terrain,buffer);
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
@@ -114,9 +122,10 @@ int main()
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
         difference = fin_de_tour(buffer);
 
-        draw_sprite(screen, buffer, 0,0);
+        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+        enlevage_des_indications(buffer,terrain);
 
-    }while(difference<5);
+    }while(difference<15);
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
     clear_bitmap(buffer_deplacement);
