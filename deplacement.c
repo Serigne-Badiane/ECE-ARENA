@@ -245,7 +245,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     for (int s=0;s<nbr_joueur;s++)
     {
         masked_blit(image_joueur[0+s*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-    }
+    //}
     recuperation_couleur(buffer,buffer_enlevage_indication);
     for(int i=0;i<LIGNE2;i++)
     {
@@ -264,7 +264,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                             z++;
                         }
                     }
-                    if (z>joueur[tour_joueur].pos.case_ligne_iso )
+                    if (z>joueur[tour_joueur].pos.case_ligne_iso)
                     {
                         while(z>joueur[tour_joueur].pos.case_ligne_iso)
                         {
@@ -280,7 +280,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                             y++;
                         }
                     }
-                    if (y>joueur[tour_joueur].pos.case_colonne_iso )
+                    if (y>joueur[tour_joueur].pos.case_colonne_iso)
                     {
                         while(y>joueur[tour_joueur].pos.case_colonne_iso)
                         {
@@ -290,90 +290,75 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                     }
 
 
-                    if(mouse_b&1 && i>=joueur[tour_joueur].pos.case_ligne_iso && t>=joueur[tour_joueur].pos.case_colonne_iso)
-                    /*while (mouse_x<matrice_terrain_iso[i][t].x+matrice_terrain[0][0].largeur/2 &&  mouse_x>matrice_terrain_iso[i][t].x-matrice_terrain[0][0].largeur/2 && mouse_y<matrice_terrain_iso[i][t].y+matrice_terrain[0][0].hauteur/2 &&  mouse_y>matrice_terrain_iso[i][t].y-matrice_terrain[0][0].hauteur/2)
-                    {
-                        printf("l\n");
-                        rest(15);
-                    }*/
-                    //enlevage_des_indications(buffer,buffer_enlevage_indication);
-                    if(mouse_b&1)
-                    {
-                        /*while(matrice_terrain_iso[play[j].case_ligne][play[j].case_colonne].y<matrice_terrain_iso[i][t].y)
+                    //if(mouse_b&1)
+                    //{
+                        if(mouse_b&1 && i>=joueur[tour_joueur].pos.case_ligne_iso && t>=joueur[tour_joueur].pos.case_colonne_iso)
                         {
                             textprintf_ex(buffer,font,50,400,makecol(255,255,255),makecol(255,0,0),"LAAAAA");
                             while(i>joueur[tour_joueur].pos.case_ligne_iso)
                             {
                                 blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_ligne_iso++;
                                 while(t>joueur[tour_joueur].pos.case_colonne_iso)
                                 {
                                 blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_colonne_iso++;
                                 }
                             }
                         }
-                    else if (mouse_b&1 && i>=joueur[tour_joueur].pos.case_ligne_iso && t<=joueur[tour_joueur].pos.case_colonne_iso)
+                        else if (mouse_b&1 && i>=joueur[tour_joueur].pos.case_ligne_iso && t<=joueur[tour_joueur].pos.case_colonne_iso)
                         {
                             textprintf_ex(buffer,font,50,400,makecol(255,255,255),makecol(255,0,0),"LAAAAA2");
                             while(i>joueur[tour_joueur].pos.case_ligne_iso)
                             {
                                 blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_ligne_iso++;
                                 while(t<joueur[tour_joueur].pos.case_colonne_iso)
                                 {
                                 blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_colonne_iso--;
                                 }
                             }
                         }
-                    else if (mouse_b&1 && i<=joueur[tour_joueur].pos.case_ligne_iso && t>=joueur[tour_joueur].pos.case_colonne_iso)
+                        else if (mouse_b&1 && i<=joueur[tour_joueur].pos.case_ligne_iso && t>=joueur[tour_joueur].pos.case_colonne_iso)
                         {
                             textprintf_ex(buffer,font,50,400,makecol(255,255,255),makecol(255,0,0),"LAAAAA3");
                             while(i<joueur[tour_joueur].pos.case_ligne_iso)
                             {
                                 blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_ligne_iso--;
                                 while(t>joueur[tour_joueur].pos.case_colonne_iso)
                                 {
                                 blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_colonne_iso++;
                                 }
                             }
                         }
-                    else if (mouse_b&1 && i<=joueur[tour_joueur].pos.case_ligne_iso && t<=joueur[tour_joueur].pos.case_colonne_iso)
+                        else if (mouse_b&1 && i<=joueur[tour_joueur].pos.case_ligne_iso && t<=joueur[tour_joueur].pos.case_colonne_iso)
                         {
                             textprintf_ex(buffer,font,50,400,makecol(255,255,255),makecol(255,0,0),"LAAAAA4");
                             while(i<joueur[tour_joueur].pos.case_ligne_iso)
                             {
                                 blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_ligne_iso--;
                                 while(t<joueur[tour_joueur].pos.case_colonne_iso)
                                 {
                                 blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                rest(200);
                                 joueur[tour_joueur].pos.case_colonne_iso--;
                                 }
                             }
                         }
 
-                        /*enlevage_des_indications(buffer, buffer_enlevage_indication);
-                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);
-
-                        joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_ligne_iso-i+joueur[tour_joueur].pos.case_colonne_iso-t;
-                        joueur[tour_joueur].pos.case_ligne_iso=i;
-                        joueur[tour_joueur].pos.case_colonne_iso=t;
-                        joueur[tour_joueur].pos.x = matrice_terrain_iso[i][t].x;
-                        joueur[tour_joueur].pos.y = matrice_terrain_iso[i][t].y;*/
-                            matrice_terrain_iso[play[j].case_ligne][play[j].case_colonne].x-=matrice_terrain_iso[0][0].largeur;
-                            blit(image_joueur[2], terrain, 0 ,0, matrice_terrain_iso[play[j].case_ligne][play[j].case_colonne].x-image_joueur[2]->w/2, matrice_terrain_iso[play[j].case_ligne][play[j].case_colonne].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                            rest(200);
-                        }*/
-                        enlevage_des_indications(buffer, terrain);
-                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);
-                        /*for (int s=0;s<nbr_joueur;s++)
-                        {
-                            blit(image_joueur[0+s*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                        }*/
+                        /*enlevage_des_indications(buffer, terrain);
+                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);*/
                         if(i<joueur[tour_joueur].pos.case_ligne_iso)
                         {
                             joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_ligne_iso-i;
@@ -390,16 +375,17 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_colonne_iso-t;
                         }
-                        joueur[tour_joueur].pos.case_ligne_iso=i;
+
+                        /*joueur[tour_joueur].pos.case_ligne_iso=i;
                         joueur[tour_joueur].pos.case_colonne_iso=t;
                         joueur[tour_joueur].pos.x = matrice_terrain_iso[i][t].x;
-                        joueur[tour_joueur].pos.y = matrice_terrain_iso[i][t].y;
-                        printf("%d\n",joueur[tour_joueur].pm);
-                        while (mouse_b & 1)                 ///blindage click gauche
+                        joueur[tour_joueur].pos.y = matrice_terrain_iso[i][t].y;*/
+
+                        while (mouse_b&1)                 ///blindage click gauche
                         {
                             rest(150);
                         }
-                    }
+                    //}
                 }
             }
         }
