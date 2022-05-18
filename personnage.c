@@ -291,7 +291,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
                             //draw_sprite(screen, buffer, 0,0);
-                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i),joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(32)); // 128 = 180°
+                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i),joueur1.pos.y+(2*j)-45, ftofix(32)); // 128 = 180°
                             draw_sprite(screen, buffer, 0,0);
                             altern = 1;
                            }
@@ -300,7 +300,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             //blit(bdf2, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf2->w,joueur1.pos.y+(2*j), bdf2->w, bdf2->h);
                             //draw_sprite(screen, buffer, 0,0);
-                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(32));
+                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(32));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 2;
                         }
@@ -309,7 +309,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             //blit(bdf3, buffer, 0, 0, joueur1.pos.x+(2*i)- bdf3->w,joueur1.pos.y+(2*j), bdf3->w, bdf3->h);
                             //draw_sprite(screen, buffer, 0,0);
-                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i),joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(32));
+                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i),joueur1.pos.y+(2*j)-45, ftofix(32));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 0;
                         }
@@ -330,7 +330,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim1, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim1->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim1->w, perso[1].animsort1.anim1->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(96));
+                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(96));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 1;
                            }
@@ -339,7 +339,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim2, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim2->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim2->w, perso[1].animsort1.anim2->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(96));
+                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(96));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 2;
                         }
@@ -348,7 +348,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim3, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim3->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim3->w, perso[1].animsort1.anim3->h);
                             */
-                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(96));
+                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(96));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 0;
                         }
@@ -369,7 +369,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                            /* blit(perso[1].animsort1.anim1, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim1->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim1->w, perso[1].animsort1.anim1->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(-96));
+                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(-96));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 1;
                            }
@@ -378,7 +378,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim2, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim2->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim2->w, perso[1].animsort1.anim2->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h, ftofix(-96));
+                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j), ftofix(-96));
                             draw_sprite(screen, buffer, 0,0);
                             altern = 2;
                         }
@@ -387,7 +387,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                            /* blit(perso[1].animsort1.anim3, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim3->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim3->w, perso[1].animsort1.anim3->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(-96));
+                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(-96));
                             draw_sprite(screen, buffer, 0,0);
 
                             altern = 0;
@@ -408,7 +408,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim1, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim1->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim1->w, perso[1].animsort1.anim1->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(-32));
+                            rotate_sprite(buffer, perso[1].anim1, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(-32));
                             altern = 1;
                            }
                         if (altern == 1)
@@ -416,7 +416,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim2, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim2->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim2->w, perso[1].animsort1.anim2->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(-32));
+                            rotate_sprite(buffer, perso[1].anim2, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(-32));
                             altern = 2;
                         }
                         if (altern == 2)
@@ -424,7 +424,7 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
                             blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                             /*blit(perso[1].animsort1.anim3, buffer, 0, 0, joueur1.pos.x+(2*i)- perso[1].animsort1.anim3->w,joueur1.pos.y+(2*j), perso[1].animsort1.anim3->w, perso[1].animsort1.anim3->h);
                             draw_sprite(screen, buffer, 0,0);*/
-                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)- perso[1].anim1->h-45, ftofix(-32));
+                            rotate_sprite(buffer, perso[1].anim3, joueur1.pos.x+(2*i) ,joueur1.pos.y+(2*j)-45, ftofix(-32));
                             altern = 0;
                         }
                         if (i > a){
@@ -456,10 +456,10 @@ void usesort (BITMAP* buffer,animation perso [4],str_perso joueur1,str_perso jou
 }
 
 
-/*void fin_de_tour (BITMAP* buffer){
+double fin_de_tour (BITMAP* buffer){
     rectfill(buffer,700,650,880,700,makecol(242,143,45));
     textprintf_ex(buffer,font,745,670,makecol(0,0,0),makecol(242,143,45),"FIN DE TOUR");
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 700 && mouse_x < 880 && mouse_b & 1){
-
+        return 15;
     }
-}*/
+}

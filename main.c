@@ -75,7 +75,7 @@ int main()
             ennemi = 0;
         }
         for (int i=0;i<nbrjoueur;i++)
-        {
+            {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
             {
                 placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication,nbrjoueur);
@@ -108,14 +108,17 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck ;
 
+
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur,buffer,buffer_enlevage_indication,compteur_pour_enlever_les_indics,buffer_deplacement2);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],joueur[tourjoueur],joueur[ennemi],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+        difference = fin_de_tour(buffer);
         draw_sprite(screen, buffer, 0,0);
         //draw_sprite(screen, buffer_deplacement, 0,0);
         compteur_pour_enlever_les_indics++;
