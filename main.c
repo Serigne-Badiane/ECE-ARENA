@@ -28,7 +28,7 @@ int main()
     initialisation();
 
     int nbre_joueurs, classe_perso;
-    menu(&nbre_joueurs,&classe_perso);
+    //menu(&nbre_joueurs,&classe_perso);
 
     int tourjoueur;
 
