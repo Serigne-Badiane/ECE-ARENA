@@ -47,8 +47,7 @@ int main()
         }
 
     sortperso sortjoueur [nbrjoueur];
-    load_cra_feu(&sortjoueur[0]);
-    load_mage_eau(&sortjoueur[1]);
+
     int ennemi;
 
     //menu();
@@ -56,11 +55,12 @@ int main()
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
-    load_cra_feu(&sortjoueur[0]);
-    load_anim_cra_feu_bdf(&perso1[0][0]);
-    load_anim_cra_feu_fleche_feu(&perso1[0][1]);
-    load_anim_mage_eau_vague(&perso1[1][0]);
-    load_anim_mage_eau_flaque(&perso1[1][1]);
+    load_cra_feu(&sortjoueur[1]);
+    load_anim_cra_feu_bdf(&perso1[1][0]);
+    load_anim_cra_feu_fleche_feu(&perso1[1][1]);
+    load_mage_eau(&sortjoueur[0]);
+    load_anim_mage_eau_vague(&perso1[0][0]);
+    load_anim_mage_eau_flaque(&perso1[0][1]);
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
     recuperation_couleur(buffer_deplacement,buffer_deplacement2);
@@ -70,12 +70,7 @@ int main()
         if (tourjoueur > nbrjoueur - 1){
             tourjoueur = 0;
         }
-        if (tourjoueur == 0){
-            ennemi = 1;
-        }
-        else{
-            ennemi = 0;
-        }
+
         for (int i=0;i<nbrjoueur;i++)
             {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
@@ -114,7 +109,7 @@ int main()
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
 
         draw_sprite(buffer, player[tourjoueur], 0,0);
-        usesort(buffer,perso1[tourjoueur],joueur[tourjoueur],joueur[ennemi],temp);
+        usesort(buffer,perso1[tourjoueur],tourjoueur,temp,nbrjoueur);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
         difference = fin_de_tour(buffer);
