@@ -93,6 +93,7 @@ int main()
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
+        double difference2;
         /*for (int i=0;i<LIGNE2;i++)
         {
             for (int j=0;j<COLONNE2;j++)
@@ -108,8 +109,7 @@ int main()
     do
     {
         affichage_terrain(terrain,buffer);
-        fin=clock() ;
-        difference = (double)(fin-debut)/(double)clk_tck ;
+
 
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
@@ -120,12 +120,34 @@ int main()
         usesort(buffer,perso1[tourjoueur],tourjoueur,temp,nbrjoueur);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
-        difference = fin_de_tour(buffer);
+
+
+        //fin=clock();
+        //difference = (double)(fin-debut)/(double)clk_tck ;
+
+        fin=clock() ;
+        difference = (double)(fin-debut)/(double)clk_tck ;
+
+
+
+        circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
+        //textprintf_ex(buffer, font, 1230, 485, makecol(255,255,255), makecol(255,0,0), "%.1lf", difference);
+
+
+        textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf %lf", difference2, difference);
+        //rest(500);
+
+        difference2 = fin_de_tour(buffer);
 
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
 
-    }while(difference<15);
+
+
+
+
+
+    }while(difference<15 /*|| difference2<15*/);
 
     //textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
     clear_bitmap(buffer_deplacement);

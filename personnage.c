@@ -469,11 +469,13 @@ void usesort (BITMAP* buffer,animation perso [4],int tourjoueur,BITMAP* temp,int
 
 
 
-double fin_de_tour (BITMAP* buffer){
+double fin_de_tour (BITMAP* buffer)
+{
     rectfill(buffer,700,650,880,700,makecol(242,143,45));
     textprintf_ex(buffer,font,745,670,makecol(0,0,0),makecol(242,143,45),"FIN DE TOUR");
-    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 700 && mouse_x < 880 && mouse_b & 1){
-        while (mouse_b & 1)                 ///blindage click gauche
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 700 && mouse_x < 880 && mouse_b&1)
+    {
+        while (mouse_b&1)                 ///blindage click gauche
         {
             rest(150);
         }
