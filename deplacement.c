@@ -300,10 +300,9 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             while(t!=y2)
                             {
-                                printf("la2\n");
-                                blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                 masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(200);
+                                rest(400);
                                 y2--;
                             }
                         }
@@ -311,10 +310,9 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             while(t!=y2)
                             {
-                                printf("la4\n");
-                                blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
                                 masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(200);
+                                rest(400);
                                 y2++;
                             }
                         }
@@ -322,10 +320,9 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             while(i!=z2)
                             {
-                                printf("la1\n");
-                                blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                 masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(200);
+                                rest(400);
                                 z2++;
                             }
                         }
@@ -333,10 +330,9 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             while(i!=z2)
                             {
-                                printf("la3\n");
-                                blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                 masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(200);
+                                rest(400);
                                 z2--;
                             }
                         }
