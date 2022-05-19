@@ -16,28 +16,20 @@ double difference ;
 
 int tour=0;
 
-do
-{
-    debut=clock() ;
-
     do
     {
-        fin=clock() ;
-        difference = (double)(fin-debut)/(double)clk_tck ;
-        /*if(difference>10 && difference<11)
+        debut=clock() ;
+        do
         {
-            textprintf_ex(terrain,font,50,350,makecol(255,255,255),makecol(255,0,0),"Fin de tour dans 5 secondes");
-        }*/
-    }while(difference<15);
+            fin=clock() ;
+            difference = (double)(fin-debut)/(double)clk_tck ;
+        }while(difference<15);
 
-    textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
-    /*rest(100);
-    clear_bitmap(buffer);
-    affichage_terrain(terrain,buffer);*/
+        textprintf_ex(terrain,font,50,400,makecol(255,255,255),makecol(255,0,0),"Fin de tour ca fait %.2lf secondes", difference);
 
-    tour++;
+        tour++;
 
-}while(tour<1);
+    }while(tour<1);
 
 }
 

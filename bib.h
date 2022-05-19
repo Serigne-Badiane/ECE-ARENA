@@ -99,4 +99,7 @@ void terrain_couleur(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 
+void sauvegarde(int nbrjoueur, int tour_joueur);
+void retrait(int nbrjoueur, int tour_joueur);
+
 #endif // BIB_H_INCLUDED
