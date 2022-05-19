@@ -103,6 +103,7 @@ void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 
 void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur);
+void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);

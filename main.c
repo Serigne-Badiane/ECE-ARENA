@@ -129,8 +129,9 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
-
+        //barre_de_vie(buffer, nbrjoueur, tourjoueur);
         tour(buffer, nbrjoueur, tourjoueur);
+
 
 
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);

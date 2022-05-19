@@ -33,6 +33,30 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     }
 
     blit(fleche, buffer, 0,0, 1000+tour_joueur*30, 430, fleche->w, fleche->h);
-
-
 }
+
+
+
+
+void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
+{
+    int degats;
+
+    for(int i=0; i<nbrjoueur; i++)
+    {
+        degats=200-joueur[i].pv;
+
+        while(joueur[i].pv>0)
+        {
+            rectfill(buffer, 1000, 400, (1000+joueur[i].pv)-degats, 420, makecol(0,255,0));
+        }
+
+    }
+}
+
+
+
+
+
+
+
