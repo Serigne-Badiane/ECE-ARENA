@@ -143,6 +143,27 @@ int main()
         usesort(buffer,perso1[tourjoueur],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+        if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28 && mouse_b & 1){
+        rectfill(buffer,matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 80,matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+        draw_sprite(screen, buffer, 0,0);
+        rest(500);
+    }
+    if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 && mouse_b & 1){
+         rectfill(buffer,matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 80,matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+
+         draw_sprite(screen, buffer, 0,0);
+         rest(500);
+    }
+    if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28 && mouse_b & 1){
+         rectfill(buffer,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 80,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         draw_sprite(screen, buffer, 0,0);
+         rest(500);
+    }
+    if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28 && mouse_b & 1){
+         rectfill(buffer,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 80,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         draw_sprite(screen, buffer, 0,0);
+         rest(500);
+    }
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
@@ -150,8 +171,8 @@ int main()
 
         circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
-        difference2 = fin_de_tour(buffer);
-
+        difference = fin_de_tour(buffer);
+        affichage_pv(buffer);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
 
