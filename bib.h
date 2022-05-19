@@ -46,13 +46,11 @@ typedef struct{
     int classe;
 
 }str_perso;
+
 int tourjoueur;
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
-
-
-//t_joueur play[4];
 typedef struct{
     BITMAP* anim1;
     BITMAP* anim2;
