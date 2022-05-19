@@ -20,7 +20,6 @@ void initialisation()
     show_mouse(screen);
 }
 
-
 int main()
 {
     srand(time(NULL));
@@ -97,7 +96,6 @@ int main()
         }
         enlevage_des_indications(buffer,buffer_enlevage_indication);
 
-
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
@@ -108,8 +106,9 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
-
+        //barre_de_vie(buffer, nbrjoueur, tourjoueur);
         tour(buffer, nbrjoueur, tourjoueur);
+
 
 
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
@@ -144,7 +143,6 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
-
 
     //retrait(nbrjoueur, tourjoueur);
 

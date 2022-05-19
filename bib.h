@@ -47,13 +47,11 @@ typedef struct{
     int classe;
 
 }str_perso;
+
 int tourjoueur;
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
-
-
-//t_joueur play[4];
 typedef struct{
     BITMAP* anim1;
     BITMAP* anim2;
@@ -105,6 +103,7 @@ void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
 void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur);
 
 void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur);
+void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
