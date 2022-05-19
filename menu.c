@@ -3,7 +3,7 @@
 #include <time.h>
 #include <allegro.h>
 
-void menu(int* nbre_joueur, int* classe_perso)
+void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2 , int* classe_perso_joueur3 , int* classe_perso_joueur4)
 {
     BITMAP* decor;
     BITMAP* page;
@@ -196,6 +196,7 @@ void menu(int* nbre_joueur, int* classe_perso)
 
                 while (!key[KEY_ENTER]) /// Retour en arriere
                 {
+                     masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
 
 
@@ -215,6 +216,7 @@ void menu(int* nbre_joueur, int* classe_perso)
                     masked_blit(deux, Menu2, 0, 0,615, 287, deux->w, deux->h);
 
                     rect(Menu2,500,450,850,550,makecol(255,0,255));
+
 
                     //textprintf_ex(Menu2,font,640,500,makecol(0,255,0),2,"3 Joueurs");
                     masked_blit(trois, Menu2, 0, 0, 615, 437, trois->w, trois->h);
@@ -243,6 +245,7 @@ void menu(int* nbre_joueur, int* classe_perso)
 
                     }
                     rest(1);
+                }
 
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
 
@@ -251,8 +254,8 @@ void menu(int* nbre_joueur, int* classe_perso)
 
 
                         clear_bitmap(Menu2);
-                        show_mouse(screen);
-                        masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                        /*show_mouse(screen);*/
+
 
 
                         nbre_joueur = 2;
@@ -262,12 +265,12 @@ void menu(int* nbre_joueur, int* classe_perso)
                         BITMAP* chevalier;
                         BITMAP* tigre;
 
-                        while(!key[KEY_ENTER]){
 
-                        blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-
-
-                        blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+                        BITMAP* sorcier_feu1;
+                        BITMAP* archer_feu1;
+                        BITMAP* chevalier1;
+                        BITMAP* tigre1;
+                        BITMAP* noirr;
 
 
 
@@ -277,25 +280,135 @@ void menu(int* nbre_joueur, int* classe_perso)
                         chevalier=load_bitmap("player/player11bis.bmp", NULL);
                         tigre=load_bitmap("player/player16bis.bmp", NULL);
 
+                        sorcier_feu1=load_bitmap("player/player1bis.bmp", NULL);
+                        archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
+                        chevalier1=load_bitmap("player/player12bis.bmp", NULL);
+                        tigre1=load_bitmap("player/player17bis.bmp", NULL);
+                        noirr=load_bitmap("noirr.bmp",NULL);
+
                         bordure=load_bitmap("bordure.bmp",NULL);
 
-                        masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
-                        masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+                        int cpteur_nbre_joueurs = 0;
 
-                        masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                        masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                        while(!key[KEY_ENTER]){
 
-                        masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                        masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
 
-                        masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
-                        masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                            masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
-                        textprintf_ex(screen,font,60,300,makecol(0,255,0),makecol(0,0,0),"%4d %4d",mouse_x,mouse_y);
+                            blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                            blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
 
-                        }
+                            masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                            masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342){
+
+                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+                            }
+
+
+                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1){
+
+
+
+                                classe_perso_joueur1 = 1;
+                                cpteur_nbre_joueurs++;
+
+                                if(cpteur_nbre_joueurs==nbre_joueurs){
+                                    break;
+                                }
+
+
+
+                            }
+
+
+                            masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                            masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631){
+
+                                blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
+                                masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                            }
+
+
+                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1){
+
+
+
+                                classe_perso_joueur1 = 2;
+                                cpteur_nbre_joueurs++;
+
+                                if(cpteur_nbre_joueurs==nbre_joueurs){
+                                    break;
+                                }
+
+
+
+                            }
+
+                            masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
+                            masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934){
+
+                                blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
+                                masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                            }
+
+
+                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1){
+
+
+
+                                classe_perso_joueur1 = 3;
+                                cpteur_nbre_joueurs++;
+
+                                if(cpteur_nbre_joueurs==nbre_joueurs){
+                                    break;
+                                }
+
+
+
+                            }
+
+                            masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
+                            masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+
+
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235){
+
+                                blit(noirr,page3,0,0,1055,300,noirr->w,noirr->h);
+                                masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                            }
+
+
+                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1){
+
+
+
+                                classe_perso_joueur1 = 4;
+                                cpteur_nbre_joueurs++;
+
+                                if(cpteur_nbre_joueurs==nbre_joueurs){
+                                    break;
+                                }
+
+
+
+                            }
+
+                           // textprintf_ex(screen,font,60,300,makecol(0,255,0),makecol(0,0,0),"%4d %4d",mouse_x,mouse_y);
+
+
+
+                            }
 
 
 
@@ -312,7 +425,7 @@ void menu(int* nbre_joueur, int* classe_perso)
                     }
 
 
-        }}
+        }
 
         }
 
@@ -324,14 +437,15 @@ void menu(int* nbre_joueur, int* classe_perso)
 
         }
 
-            if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Regles
+            if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
             {
-                masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
 
 
                 clear_bitmap(page);
                 while (!key[KEY_ENTER]) /// Retour en arriere
                 {
+                    masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
 
                     /*show_mouse(Menu2);*/
@@ -373,7 +487,7 @@ void menu(int* nbre_joueur, int* classe_perso)
 
             rect(screen,500,600,850,700,makecol(0,100,255));
 
-            if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)
+            if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)  /// CLick regle
             {
 
 

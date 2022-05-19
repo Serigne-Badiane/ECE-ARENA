@@ -28,8 +28,8 @@ int main()
 
 
 
-    int nbre_joueurs, classe_perso;
-    menu(&nbre_joueurs,&classe_perso);
+    int nbre_joueurs, classe_perso_joueur1,classe_perso_joueur2,classe_perso_joueur3,classe_perso_joueur4;
+    menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
 
     tourjoueur = 0;
 
@@ -62,7 +62,7 @@ int main()
 
     int ennemi;
 
-    init_struct_case();
+    init_struct_case(nbre_joueurs);
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
@@ -87,10 +87,10 @@ int main()
             tourjoueur = 0;
         }
         if (tourjoueur == 0){
-//          ennemi = 1;
+           ennemi = 1;
         }
         else {
-//            ennemi = 0;
+           ennemi = 0;
         }
         for (int i=0;i<nbrjoueur;i++)
             {
