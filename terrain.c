@@ -4,7 +4,7 @@
 #include "bib.h"
 #include <time.h>
 
-void init_struct_case()                                                                         ///sspg qui initialise toutes les cases
+void init_struct_case(int nbre_joueurs)                                                                         ///sspg qui initialise toutes les cases
 {
     matrice_terrain[0][0].hauteur=28;                               ///initialisation des structs : largeur, longueur, pos x, pos y
     matrice_terrain[0][0].largeur=50;
@@ -180,21 +180,34 @@ void init_struct_case()                                                         
     {
         for (int j=11;j<14;j++)
         {
-            matrice_terrain_iso[i][j].placement_debut=2;
+            if (nbre_joueurs==3 || nbre_joueurs==4)
+            {
+                matrice_terrain_iso[i][j].placement_debut=2;
+            }
         }
     }
     for (int i=15;i<18;i++)
     {
         for (int j=2;j<5;j++)
         {
-            matrice_terrain_iso[i][j].placement_debut=3;
+            if (nbre_joueurs==3 || nbre_joueurs==4)
+            {
+                matrice_terrain_iso[i][j].placement_debut=3;
+            }
+            if (nbre_joueurs==2)
+            {
+                matrice_terrain_iso[i][j].placement_debut=2;
+            }
         }
     }
     for (int i=0;i<3;i++)
     {
         for (int j=6;j<9;j++)
         {
-            matrice_terrain_iso[i][j].placement_debut=4;
+            if (nbre_joueurs==4)
+            {
+                matrice_terrain_iso[i][j].placement_debut=4;
+            }
         }
     }                                                                                                                                       ///fin
 }

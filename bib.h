@@ -36,7 +36,6 @@ typedef struct
     int case_ligne_iso;
     int case_colonne_iso;
 }t_joueur;
-int nbre_joueurs;
 
 typedef struct{
 
@@ -80,7 +79,7 @@ int addi (int a, int b);
 void initialisation();
 void menu();
 void afficher();
-void init_struct_case();
+void init_struct_case(int nbre_joueurs);
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
@@ -108,6 +107,6 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
-int checkwin();
+int checkwin(int nbre_joueurs);
 
 #endif // BIB_H_INCLUDED

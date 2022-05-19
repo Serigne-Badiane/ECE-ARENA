@@ -596,7 +596,7 @@ double fin_de_tour (BITMAP* buffer)
 }
 
 
-int checkwin(){
+int checkwin(int nbre_joueurs){
     int game_over;
     for (int i = 0 ; i < nbre_joueurs -1 ; i ++){
         if (joueur[i].pv <= 0){

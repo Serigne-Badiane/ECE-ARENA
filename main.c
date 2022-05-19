@@ -25,8 +25,6 @@ int main()
     srand(time(NULL));
     initialisation();
 
-
-
     int classe_perso;
 
     //menu(&nbre_joueurs,&classe_perso);
@@ -64,7 +62,7 @@ int main()
     int ennemi;
     BITMAP* petit_coeur = load_bitmap("petit_coeur.bmp",NULL);
 
-    init_struct_case();
+    init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
@@ -120,12 +118,12 @@ int main()
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
         usesortboost(buffer,perso1[tourjoueur],temp);
-        if (checkwin() ==  1){
+        /*if (checkwin(nbrjoueur) ==  1){
             blit (player[3],screen,0,0,0,0,SCREEN_W,SCREEN_H);
             rest (500);
             game_over = 1;
             break;
-        }
+        }*/
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
