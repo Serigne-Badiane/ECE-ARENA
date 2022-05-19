@@ -32,9 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="bib.h" />
-		<Unit filename="chrono.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="deplacement.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -51,6 +48,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="terrain.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tour joueur.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
