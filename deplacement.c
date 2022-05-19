@@ -436,6 +436,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                     int pimp=0;
 
                     if(mouse_b&1)
+                    if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==151 && getb(getpixel(buffer,mouse_x,mouse_y))==198 && getg(getpixel(buffer,mouse_x,mouse_y))==223)
                     {
                         while(mouse_b&1)                 ///blindage click gauche
                         {
