@@ -396,7 +396,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         }
                     }
                     compteur2=verif2(z,y,tour_joueur);
-                    printf("%d\n%d\n\n",compteur, compteur2);
                     if (compteur2==0 && compteur!=0)
                     {
                         if (y<joueur[tour_joueur].pos.case_colonne_iso)
