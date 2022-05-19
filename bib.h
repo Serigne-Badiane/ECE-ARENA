@@ -6,6 +6,8 @@
 #define COLONNE2 22
 #define NB_JOUEURS 4
 
+///https://forums.commentcamarche.net/forum/affich-15461118-chronometre-en-c-et-precision
+
 typedef struct
 {
     int x;
@@ -92,12 +94,13 @@ void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication,int nb_joueur);
-void chrono(BITMAP* terrain, BITMAP* buffer);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
 void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);
 void terrain_couleur(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
+
+void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);

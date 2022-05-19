@@ -27,7 +27,7 @@ int main()
     initialisation();
 
     int nbre_joueurs, classe_perso;
-    menu(&nbre_joueurs,&classe_perso);
+    //menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
 
@@ -91,7 +91,7 @@ int main()
             }
         }
         enlevage_des_indications(buffer,buffer_enlevage_indication);
-        //chrono(terrain, buffer);
+
         //deplacement(terrain,buffer, buffer_invisible_couleur);
         //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
 
@@ -119,6 +119,10 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
+
+        tour(buffer, nbrjoueur, tourjoueur);
+
+
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
@@ -139,7 +143,7 @@ int main()
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
 
-    }while(difference<15);
+    }while(difference<15);      ///CHANGE PAS DE TOUR AU BOUT DE 15 SECONDES
 
 
     sauvegarde(nbrjoueur, tourjoueur);
