@@ -8,19 +8,16 @@
 
 void sauvegarde(int nbrjoueur, int tour_joueur)
 {
-    FILE* pf = fopen("monFichier.txt", "w");
+    FILE* pf = fopen("AAA.txt", "w");
     if (pf == NULL)
     {
         printf("Erreur d'ouverture de fichier.");
         return 1;
     }
 
-    for (int i=0; i<nbrjoueur; i++)
+    for (tour_joueur=0; tour_joueur<nbrjoueur; tour_joueur++)
     {
         fprintf(pf, "%d ", joueur[tour_joueur].pos.case_ligne_iso);
-    }
-    for (int i=0; i <nbrjoueur; i++)
-    {
         fprintf(pf, "%d ", joueur[tour_joueur].pos.case_colonne_iso);
     }
 
@@ -31,8 +28,9 @@ pf = NULL;
 
 void retrait(int nbrjoueur, int tour_joueur)
 {
-    int valeursLues[nbrjoueur];
-    FILE* pf = fopen("monFichier.txt", "r");
+    int valeursLues[100];
+
+    FILE* pf = fopen("AAA.txt", "r");
     if (pf == NULL)
     {
         printf("Erreur d'ouverture de fichier.");
@@ -40,9 +38,8 @@ void retrait(int nbrjoueur, int tour_joueur)
     }
 
     int i=0;
-    int j;
 
-    while (i<nbrjoueur && fscanf(pf, "%d", &valeursLues[i]) == 1)
+    while (i<100 && fscanf(pf, "%d", &valeursLues[i]) == 1)
     {
         i += 1;
     }
@@ -50,18 +47,11 @@ void retrait(int nbrjoueur, int tour_joueur)
     fclose(pf);
     pf = NULL;
 
-    for(j = 0; j < 1; j++)
+    for (i=0; i<100; i++)
     {
-         joueur[tour_joueur].pos.case_ligne_iso=valeursLues[j];
-    }
-    for(j = 1; j < 2; j++)
-    {
-         joueur[tour_joueur].pos.case_colonne_iso=valeursLues[j];
+        joueur[tour_joueur].pos.case_ligne_iso=valeursLues[i];
+        joueur[tour_joueur].pos.case_colonne_iso=valeursLues[i];
     }
 
-    for (i = 0; i < 1; i++)
-    {
-        printf("apres x : %d\n",  joueur[tour_joueur].pos.case_ligne_iso);
-        printf("apres y : %d\n",  joueur[tour_joueur].pos.case_colonne_iso);
-    }
+
 }
