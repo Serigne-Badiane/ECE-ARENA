@@ -90,6 +90,8 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
 double fin_de_tour(BITMAP* buffer);
 void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
+int verif (int z,int y,int tour_joueur);
+int verif2 (int z,int y, int tour_joueur);
 
 void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication,int nb_joueur);
 void chrono(BITMAP* terrain, BITMAP* buffer);
