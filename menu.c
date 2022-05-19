@@ -89,7 +89,7 @@ void menu(int* nbre_joueur, int* classe_perso)
 
     for (int i = 1; i < 3; i++){
 
-        sprintf(NomFichier,"marcher%d.bmp",i);
+        sprintf(NomFichier,"player/player%dbis.bmp",i);
 
         Sorcier[i] = load_bitmap(NomFichier,NULL);
 
@@ -258,12 +258,15 @@ void menu(int* nbre_joueur, int* classe_perso)
                         blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-                        sorcier_feu=load_bitmap("player/player3.bmp", NULL);
-                        archer_feu=load_bitmap("player/player6.bmp", NULL);
-                        chevalier=load_bitmap("player/player11.bmp", NULL);
-                        tigre=load_bitmap("player/player16.bmp", NULL);
+                        sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
+                        archer_feu=load_bitmap("player/player6bis.bmp", NULL);
+                        chevalier=load_bitmap("player/player11bis.bmp", NULL);
+                        tigre=load_bitmap("player/player16bis.bmp", NULL);
 
-                        masked_blit(sorcier_feu, page3, 0, 0, 30, 30, Logo->w, Logo->h);
+                        masked_blit(sorcier_feu, page3, 0, 0, 200, 500, Logo->w, Logo->h);
+                        masked_blit(archer_feu, page3, 0, 0, 500, 500, Logo->w, Logo->h);
+                        masked_blit(chevalier, page3, 0, 0, 800, 500, Logo->w, Logo->h);
+                        masked_blit(tigre, page3, 0, 0, 1100, 500, Logo->w, Logo->h);
                         }
 
 
