@@ -46,13 +46,11 @@ typedef struct{
     int classe;
 
 }str_perso;
+
 int tourjoueur;
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
-
-
-//t_joueur play[4];
 typedef struct{
     BITMAP* anim1;
     BITMAP* anim2;
@@ -81,11 +79,12 @@ int addi (int a, int b);
 void initialisation();
 void menu();
 void afficher();
-void init_struct_case();
+void init_struct_case(int nbre_joueurs);
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur);
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement,BITMAP* buffer_enlevage_indication,BITMAP* buffer_deplacement2,int nbr_joueur);
@@ -101,10 +100,13 @@ void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b
 void terrain_couleur(BITMAP* buffer);
 void quadrillage(BITMAP* buffer,BITMAP* terrain);
 void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y);
+void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur);
 
 void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur);
+void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
+int checkwin(int nbre_joueurs);
 
 #endif // BIB_H_INCLUDED
