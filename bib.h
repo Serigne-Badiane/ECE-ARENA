@@ -44,7 +44,7 @@ typedef struct{
     int classe;
 
 }str_perso;
-
+int tourjoueur;
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
@@ -83,7 +83,7 @@ void init_struct_case();
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
-void usesort (BITMAP* buffer,animation perso [4],int tourjoueur,BITMAP* temp,int nbrjoueur);
+void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
 
 void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur);
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement,BITMAP* buffer_enlevage_indication,BITMAP* buffer_deplacement2,int nbr_joueur);
