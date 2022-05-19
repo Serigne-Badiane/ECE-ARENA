@@ -35,9 +35,4 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     blit(fleche, buffer, 0,0, 1000+tour_joueur*30, 430, fleche->w, fleche->h);
 
 
-
-
-
-
-
 }

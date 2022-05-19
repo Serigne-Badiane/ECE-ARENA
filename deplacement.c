@@ -432,54 +432,113 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         }
                     }
                     int z2=joueur[tour_joueur].pos.case_ligne_iso,y2=joueur[tour_joueur].pos.case_colonne_iso;
+
+                    int pimp=0;
+
                     if(mouse_b&1)
                     {
-                        while (mouse_b&1)                 ///blindage click gauche
+                        while(mouse_b&1)                 ///blindage click gauche
                         {
                             rest(150);
                         }
-                        if ( t<y2)
+                        if (t<y2)
                         {
                             while(t!=y2)
                             {
-                                masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                y2--;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2--;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2--;
+                                    pimp++;
+                                }
+
                             }
                         }
                         if ( t>y2)
                         {
                             while(t!=y2)
                             {
-                                masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                y2++;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2++;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2++;
+                                    pimp++;
+                                }
+
                             }
                         }
                         if( i>z2)
                         {
                             while(i!=z2)
                             {
-                                masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                z2++;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2++;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2++;
+                                    pimp++;
+                                }
+
                             }
                         }
                         if ( i<z2)
                         {
                             while(i!=z2)
                             {
-                                masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                z2--;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2--;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2--;
+                                    pimp++;
+                                }
+
                             }
                         }
                         enlevage_des_indications(buffer, terrain);
