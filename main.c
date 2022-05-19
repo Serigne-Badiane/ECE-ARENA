@@ -27,7 +27,7 @@ int main()
     initialisation();
 
     int nbre_joueurs, classe_perso;
-    //menu(&nbre_joueurs,&classe_perso);
+    menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
 
@@ -78,10 +78,10 @@ int main()
             tourjoueur = 0;
         }
         if (tourjoueur == 0){
-            ennemi = 1;
+//          ennemi = 1;
         }
         else {
-            ennemi = 0;
+//            ennemi = 0;
         }
         for (int i=0;i<nbrjoueur;i++)
             {

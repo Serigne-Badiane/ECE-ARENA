@@ -28,7 +28,7 @@
 
 1652179035 ated upstream
 
-1652883233 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1652961756 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -85,7 +85,7 @@
 	<allegro.h>
 	"bib.h"
 
-1652881537 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1652961538 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
 1652884410 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
@@ -93,7 +93,7 @@
 	<time.h>
 	<allegro.h>
 
-1652881538 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -203,7 +203,7 @@
 	"bib.h"
 	<time.h>
 
-1652881538 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
+1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -260,7 +260,7 @@
 	"bib.h"
 	<time.h>
 
-1652436555 source:c:\users\victo\onedrive\documents\github\ece-arena\chrono.c
+1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -275,6 +275,13 @@
 	<time.h>
 
 1652958404 source:c:\users\paul\onedrive\documents\github\ece-arena\sauvegarde.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\sauvegarde.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

@@ -8,6 +8,7 @@ void menu(int* nbre_joueur, int* classe_perso)
     BITMAP* decor;
     BITMAP* page;
     /*BITMAP* page2;*/
+    BITMAP* page3;
     BITMAP* Logo;
     BITMAP* NewGame;
     BITMAP* Credits;
@@ -110,6 +111,7 @@ void menu(int* nbre_joueur, int* classe_perso)
     page=create_bitmap(SCREEN_W,SCREEN_H);
     //page2=create_bitmap(SCREEN_W,SCREEN_H);
     Menu2=create_bitmap(SCREEN_W,SCREEN_H);
+    page3=create_bitmap(SCREEN_W,SCREEN_H);
 
 
 
@@ -236,8 +238,35 @@ void menu(int* nbre_joueur, int* classe_perso)
 
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
 
-                    {
+                    { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
+
+                        clear_bitmap(Menu2);
+
+
                         nbre_joueur = 2;
+
+                        BITMAP* sorcier_feu;
+                        BITMAP* archer_feu;
+                        BITMAP* chevalier;
+                        BITMAP* tigre;
+
+                        while(!key[KEY_ENTER]){
+
+                        blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                        blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                        sorcier_feu=load_bitmap("player/player3.bmp", NULL);
+                        archer_feu=load_bitmap("player/player6.bmp", NULL);
+                        chevalier=load_bitmap("player/player11.bmp", NULL);
+                        tigre=load_bitmap("player/player16.bmp", NULL);
+
+                        masked_blit(sorcier_feu, page3, 0, 0, 30, 30, Logo->w, Logo->h);
+                        }
+
+
 
                     }
 
