@@ -58,7 +58,7 @@ void load_anim_mage_eau_flaque(animation* perso){
     perso->anim2 = load_bitmap("flaque2.bmp",NULL);
     perso->anim3 = load_bitmap("flaque3.bmp",NULL);
 }
-void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]){
+void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [tourjoueur]){
         rectfill(buffer,0,650,1272,713,makecol(130,98,85));
         rectfill(buffer,900,450,1272,650,makecol(64,47,32));
         blit(perso.sort1, buffer ,0,0,220,650,perso.sort1->h,perso.sort1->w);
@@ -67,10 +67,15 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
         blit(perso.sort4, buffer ,0,0,460,650,perso.sort1->h,perso.sort1->w);
         rectfill(buffer,100,20,220,40,makecol(0,0,255));
         rectfill(buffer,100,45,220,65,makecol(0,255,0));
-        textprintf_ex(buffer,font,35,40,makecol(255,255,255),makecol(255,0,0),"%d",joueur[0].pv);
-        textprintf_ex(buffer,font,155,25,makecol(255,255,255),makecol(0,0,255),"%d",joueur[0].pa);
-        textprintf_ex(buffer,font,160,50,makecol(255,255,255),makecol(0,255,0),"%d",joueur[0].pm);
+        textprintf_ex(buffer,font,35,40,makecol(255,255,255),makecol(255,0,0),"%d",joueur[tourjoueur].pv);
+        textprintf_ex(buffer,font,155,25,makecol(255,255,255),makecol(0,0,255),"%d",joueur[tourjoueur].pa);
+        textprintf_ex(buffer,font,160,50,makecol(255,255,255),makecol(0,255,0),"%d",joueur[tourjoueur].pm);
         draw_sprite(buffer,coeurpv,5,10);
+}
+void affichage_pv (BITMAP* buffer){
+
+
+
 }
 
 

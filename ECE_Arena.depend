@@ -217,14 +217,14 @@
 	"bib.h"
 	<time.h>
 
-1652718987 source:c:\users\serigne\documents\github\ece-arena\chrono.c
+1652959832 source:c:\users\serigne\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652957865 c:\users\serigne\documents\github\ece-arena\bib.h
+1652966292 c:\users\serigne\documents\github\ece-arena\bib.h
 
 1652951991 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
 	<stdio.h>
@@ -233,20 +233,20 @@
 	"bib.h"
 	<time.h>
 
-1652957881 source:c:\users\serigne\documents\github\ece-arena\main.c
+1652966292 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652887382 source:c:\users\serigne\documents\github\ece-arena\menu.c
+1652964531 source:c:\users\serigne\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652957825 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1652966255 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -282,6 +282,13 @@
 	<time.h>
 
 1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\sauvegarde.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652959832 source:c:\users\serigne\documents\github\ece-arena\sauvegarde.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
