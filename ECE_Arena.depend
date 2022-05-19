@@ -28,7 +28,7 @@
 
 1652179035 ated upstream
 
-1652961756 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1652971815 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -64,7 +64,7 @@
 	"bib.h"
 	<time.h>
 
-1652900299 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1652972242 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -87,7 +87,7 @@
 
 1652961538 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1652884410 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1652970760 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -124,18 +124,18 @@
 	"bib.h"
 	<time.h>
 
-1652899737 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
+1652970706 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1652958841 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1652972468 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652955037 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1652968311 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
-1652955022 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+1652963193 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -149,19 +149,19 @@
 	"bib.h"
 	<time.h>
 
-1652887191 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+1652972468 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652887240 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1652972242 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652899737 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+1652965679 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -175,7 +175,7 @@
 	"bib.h"
 	<time.h>
 
-1652914000 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
+1652972468 source:c:\users\paul\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -196,7 +196,7 @@
 	"bib.h"
 	<time.h>
 
-1652905484 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
+1652972304 source:c:\users\jdouv\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -217,14 +217,14 @@
 	"bib.h"
 	<time.h>
 
-1652959832 source:c:\users\serigne\documents\github\ece-arena\chrono.c
+1652718987 source:c:\users\serigne\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652966292 c:\users\serigne\documents\github\ece-arena\bib.h
+1652957865 c:\users\serigne\documents\github\ece-arena\bib.h
 
 1652951991 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
 	<stdio.h>
@@ -233,20 +233,20 @@
 	"bib.h"
 	<time.h>
 
-1652966292 source:c:\users\serigne\documents\github\ece-arena\main.c
+1652957881 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652964531 source:c:\users\serigne\documents\github\ece-arena\menu.c
+1652887382 source:c:\users\serigne\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652966255 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1652957825 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -267,7 +267,7 @@
 	"bib.h"
 	<time.h>
 
-1652608542 source:c:\users\jdouv\onedrive\documents\github\ece-arena\chrono.c
+1652965679 source:c:\users\jdouv\onedrive\documents\github\ece-arena\chrono.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -288,7 +288,21 @@
 	"bib.h"
 	<time.h>
 
-1652959832 source:c:\users\serigne\documents\github\ece-arena\sauvegarde.c
+1652965679 source:c:\users\jdouv\onedrive\documents\github\ece-arena\sauvegarde.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652971217 source:c:\users\jdouv\onedrive\documents\github\ece-arena\tour joueur.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652968493 source:c:\users\paul\onedrive\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
