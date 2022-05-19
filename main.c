@@ -32,6 +32,7 @@ int main()
     //menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
+    int game_over;
 
     BITMAP* cursor = load_bitmap("cursor.bmp", NULL);
 
@@ -118,6 +119,13 @@ int main()
 
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
+        usesortboost(buffer,perso1[tourjoueur],temp);
+        if (checkwin() ==  1){
+            blit (player[3],screen,0,0,0,0,SCREEN_W,SCREEN_H);
+            rest (500);
+            game_over = 1;
+            break;
+        }
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
@@ -135,7 +143,9 @@ int main()
 
     }while(difference2<15 && difference<15);
 
-
+    if (game_over == 1){
+        break;
+    }
     sauvegarde(nbrjoueur, tourjoueur);
 
     clear_bitmap(buffer_deplacement);
