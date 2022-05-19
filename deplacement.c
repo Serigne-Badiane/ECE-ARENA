@@ -442,10 +442,8 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         {
                             rest(150);
                         }
-                        if (t<y2)
                         if(compteur==0)
                         {
-
                             if ( t<y2)
                             {
                                 if(pimp%2==0)
@@ -466,8 +464,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     enlevage_des_indications(buffer, buffer_enlevage_indication);
                                     y2--;
                                     pimp++;
-                                }
-
                                 }
                             }
                             if ( t>y2)
@@ -589,7 +585,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 }
 
                                     y2--;
-                                }
                             }
                             if ( t>y2)
                             {
