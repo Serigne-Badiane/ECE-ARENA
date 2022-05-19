@@ -515,7 +515,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                         z2++;
                                         pimp++;
                                     }
-
                                 }
                             }
                             if ( i<z2)
