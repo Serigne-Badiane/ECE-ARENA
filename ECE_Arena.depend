@@ -28,7 +28,7 @@
 
 1652179035 ated upstream
 
-1652971815 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1652972073 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -85,9 +85,9 @@
 	<allegro.h>
 	"bib.h"
 
-1652961538 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1652972021 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1652970760 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1652972882 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -203,7 +203,7 @@
 	"bib.h"
 	<time.h>
 
-1652961538 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
+1652972021 source:c:\users\victo\onedrive\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -303,6 +303,13 @@
 	<time.h>
 
 1652968493 source:c:\users\paul\onedrive\documents\github\ece-arena\tour joueur.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"bib.h"
+	<time.h>
+
+1652972021 source:c:\users\victo\onedrive\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

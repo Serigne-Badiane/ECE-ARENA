@@ -29,7 +29,7 @@ int main()
 
 
     int nbre_joueurs, classe_perso;
-    //menu(&nbre_joueurs,&classe_perso);
+    menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
 

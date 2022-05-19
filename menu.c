@@ -242,12 +242,17 @@ void menu(int* nbre_joueur, int* classe_perso)
                     rect(screen,500,600,850,700,makecol(0,255,0));
 
                     }
+                    rest(1);
 
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
 
                     { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
 
+
+
                         clear_bitmap(Menu2);
+                        show_mouse(screen);
+                        masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
 
                         nbre_joueur = 2;
@@ -286,18 +291,22 @@ void menu(int* nbre_joueur, int* classe_perso)
                         masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
                         masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
 
+                        textprintf_ex(screen,font,60,300,makecol(0,255,0),makecol(0,0,0),"%4d %4d",mouse_x,mouse_y);
+
+
+
                         }
 
 
 
                     }
 
-                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)
                     {
                         nbre_joueur = 3;
                     }
 
-                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)
                     {
                         nbre_joueurs = 4;
                     }
