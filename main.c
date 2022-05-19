@@ -55,7 +55,7 @@ int main()
 
     sortperso sortjoueur [nbrjoueur];
 
-    int ennemi;
+    //int ennemi;
 
 
     init_struct_case();

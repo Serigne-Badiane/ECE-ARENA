@@ -4,7 +4,8 @@
 #include "bib.h"
 #include <time.h>
 
-void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur]){
+void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
+{
     for (int i =0 ; i < nbrjoueur; i ++ ){
         joueur[i].pa = 6;
         joueur[i].pm = 3;

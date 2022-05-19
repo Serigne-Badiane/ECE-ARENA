@@ -47,6 +47,9 @@
 		<Unit filename="personnage.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="sauvegarde.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="terrain.c">
 			<Option compilerVar="CC" />
 		</Unit>
