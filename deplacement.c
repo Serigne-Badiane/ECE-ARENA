@@ -4,6 +4,105 @@
 #include "bib.h"
 #include <time.h>
 
+int verif (int z,int y, int tour_joueur)
+{
+    int compteur=0;
+    if (z<joueur[tour_joueur].pos.case_ligne_iso)
+    {
+        while(z<joueur[tour_joueur].pos.case_ligne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            z++;
+        }
+    }
+    if (z>joueur[tour_joueur].pos.case_ligne_iso)
+    {
+        while(z>joueur[tour_joueur].pos.case_ligne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            z--;
+        }
+    }
+    if (y<joueur[tour_joueur].pos.case_colonne_iso)
+    {
+        while(y<joueur[tour_joueur].pos.case_colonne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            y++;
+        }
+    }
+    if (y>joueur[tour_joueur].pos.case_colonne_iso)
+    {
+        while(y>joueur[tour_joueur].pos.case_colonne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            y--;
+        }
+    }
+    return compteur;
+}
+int verif2 (int z,int y, int tour_joueur)
+{
+    int compteur=0;
+    if (y<joueur[tour_joueur].pos.case_colonne_iso)
+    {
+        while(y<joueur[tour_joueur].pos.case_colonne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            y++;
+        }
+    }
+    if (y>joueur[tour_joueur].pos.case_colonne_iso)
+    {
+        while(y>joueur[tour_joueur].pos.case_colonne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            y--;
+        }
+    }
+    if (z<joueur[tour_joueur].pos.case_ligne_iso)
+    {
+        while(z<joueur[tour_joueur].pos.case_ligne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            z++;
+        }
+    }
+    if (z>joueur[tour_joueur].pos.case_ligne_iso)
+    {
+        while(z>joueur[tour_joueur].pos.case_ligne_iso)
+        {
+            if(matrice_terrain_iso[z][y].passage!=1)
+            {
+                compteur++;
+            }
+            z--;
+        }
+    }
+    return compteur;
+}
+
 void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_enlevage_indication,int nb_joueur)
 {
     for(int i=0;i<LIGNE2;i++)
@@ -259,89 +358,327 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
             {
                 if(getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)))
                 {
-                    int z=i,y=t;
-                    if (z<joueur[tour_joueur].pos.case_ligne_iso)
+                    int z=i,y=t,compteur=0,compteur2=0;
+                    compteur=verif(z,y,tour_joueur);
+                    if (compteur==0)
                     {
-                        while(z<joueur[tour_joueur].pos.case_ligne_iso)
+                        if (z<joueur[tour_joueur].pos.case_ligne_iso)
                         {
-                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
-                            z++;
+                            while(z<joueur[tour_joueur].pos.case_ligne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                z++;
+                            }
+                        }
+                        if (z>joueur[tour_joueur].pos.case_ligne_iso)
+                        {
+                            while(z>joueur[tour_joueur].pos.case_ligne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                z--;
+                            }
+                        }
+                        if (y<joueur[tour_joueur].pos.case_colonne_iso)
+                        {
+                            while(y<joueur[tour_joueur].pos.case_colonne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                y++;
+                            }
+                        }
+                        if (y>joueur[tour_joueur].pos.case_colonne_iso)
+                        {
+                            while(y>joueur[tour_joueur].pos.case_colonne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                y--;
+                            }
                         }
                     }
-                    if (z>joueur[tour_joueur].pos.case_ligne_iso)
+                    compteur2=verif2(z,y,tour_joueur);
+                    if (compteur2==0 && compteur!=0)
                     {
-                        while(z>joueur[tour_joueur].pos.case_ligne_iso)
+                        if (y<joueur[tour_joueur].pos.case_colonne_iso)
                         {
-                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
-                            z--;
+                            while(y<joueur[tour_joueur].pos.case_colonne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                y++;
+                            }
+                        }
+                        if (y>joueur[tour_joueur].pos.case_colonne_iso)
+                        {
+                            while(y>joueur[tour_joueur].pos.case_colonne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                y--;
+                            }
+                        }
+                        if (z<joueur[tour_joueur].pos.case_ligne_iso)
+                        {
+                            while(z<joueur[tour_joueur].pos.case_ligne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                z++;
+                            }
+                        }
+                        if (z>joueur[tour_joueur].pos.case_ligne_iso)
+                        {
+                            while(z>joueur[tour_joueur].pos.case_ligne_iso)
+                            {
+                                case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
+                                z--;
+                            }
                         }
                     }
-                    if (y<joueur[tour_joueur].pos.case_colonne_iso)
-                    {
-                        while(y<joueur[tour_joueur].pos.case_colonne_iso)
-                        {
-                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
-                            y++;
-                        }
-                    }
-                    if (y>joueur[tour_joueur].pos.case_colonne_iso)
-                    {
-                        while(y>joueur[tour_joueur].pos.case_colonne_iso)
-                        {
-                            case_couleur(buffer,matrice_terrain_iso[z][y].x,matrice_terrain_iso[z][y].y,151,223,198);
-                            y--;
-                        }
-                    }
-
                     int z2=joueur[tour_joueur].pos.case_ligne_iso,y2=joueur[tour_joueur].pos.case_colonne_iso;
+
+                    int pimp=0;
+
                     if(mouse_b&1)
+                    if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==151 && getb(getpixel(buffer,mouse_x,mouse_y))==198 && getg(getpixel(buffer,mouse_x,mouse_y))==223)
                     {
-                        while (mouse_b&1)                 ///blindage click gauche
+                        while(mouse_b&1)                 ///blindage click gauche
                         {
                             rest(150);
                         }
-                        if ( t<y2)
+                        if(compteur==0)
                         {
-                            while(t!=y2)
+                            if ( t<y2)
                             {
-                                masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                y2--;
+                                while(t!=y2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2--;
+                                        pimp++;
+                                    }
+                                     else
+                                    {
+                                        masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2--;
+                                        pimp++;
+                                    }
+                                }
+
+                            }
+                            if ( t>y2)
+                            {
+                                while(t!=y2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2++;
+                                        pimp++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2++;
+                                        pimp++;
+                                    }
+                                }
+                            }
+                            if( i>z2)
+                            {
+                                while(i!=z2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2++;
+                                        pimp++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2++;
+                                        pimp++;
+                                    }
+
+                                }
+                            }
+                            if ( i<z2)
+                            {
+                                while(i!=z2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+
+                                }
                             }
                         }
-                        if ( t>y2)
+                        if(compteur2==0 && compteur!=0)
                         {
-                            while(t!=y2)
+                            if( i>z2)
                             {
-                                masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                y2++;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2++;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    y2++;
+                                    pimp++;
+                                }
+
+                                while(i!=z2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2++;
+                                        pimp++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2++;
+                                        pimp++;
+                                    }
+                                }
                             }
-                        }
-                        if( i>z2)
-                        {
-                            while(i!=z2)
+                            if ( i<z2)
                             {
-                                masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                z2++;
+                                if(pimp%2==0)
+                                {
+                                    masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2++;
+                                    pimp++;
+                                }
+                                else
+                                {
+                                    masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                    rest(500);
+                                    enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                    z2++;
+                                    pimp++;
+                                }
+
+                                while(i!=z2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+                                }
                             }
-                        }
-                        if ( i<z2)
-                        {
-                            while(i!=z2)
+                            if ( t<y2)
                             {
-                                masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
-                                masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                                rest(500);
-                                enlevage_des_indications(buffer, buffer_enlevage_indication);
-                                z2--;
+                                while(t!=y2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[1+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+
+                                    else
+                                    {
+                                        masked_blit(image_joueur[2+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        z2--;
+                                        pimp++;
+                                    }
+                                }
+
+                            }
+                            if ( t>y2)
+                            {
+                                while(t!=y2)
+                                {
+                                    if(pimp%2==0)
+                                    {
+                                        masked_blit(image_joueur[3+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2++;
+                                    }
+                                    else
+                                    {
+                                        masked_blit(image_joueur[4+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                        rest(500);
+                                        enlevage_des_indications(buffer, buffer_enlevage_indication);
+                                        y2++;
+                                    }
+                                }
                             }
                         }
                         enlevage_des_indications(buffer, terrain);

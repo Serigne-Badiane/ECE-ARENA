@@ -29,7 +29,7 @@ int main()
 
 
     int nbre_joueurs, classe_perso;
-    menu(&nbre_joueurs,&classe_perso);
+    //menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
 
@@ -100,13 +100,14 @@ int main()
             }
         }
         enlevage_des_indications(buffer,buffer_enlevage_indication);
-        //chrono(terrain, buffer);
+
         //deplacement(terrain,buffer, buffer_invisible_couleur);
         //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
 
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
+        double difference2;
         //double difference2;
         /*for (int i=0;i<LIGNE2;i++)
         {
@@ -128,6 +129,10 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
+
+        tour(buffer, nbrjoueur, tourjoueur);
+
+
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
@@ -140,15 +145,16 @@ int main()
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
+        textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
 
         circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
-        difference = fin_de_tour(buffer);
+        difference2 = fin_de_tour(buffer);
 
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
 
-    }while(difference<15);
+    }while(difference2<15 && difference<15);
 
 
     sauvegarde(nbrjoueur, tourjoueur);
