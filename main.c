@@ -54,6 +54,8 @@ int main()
 
     sortperso sortjoueur [nbrjoueur];
 
+    int ennemi;
+
     init_struct_case();
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
@@ -67,6 +69,7 @@ int main()
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
     recuperation_couleur(buffer_deplacement,buffer_deplacement2);
+
 
     while (!key[KEY_ESC])
     {
@@ -106,6 +109,10 @@ int main()
                 }
             }
         }*/
+
+
+
+
 
         debut=clock() ;
     do
