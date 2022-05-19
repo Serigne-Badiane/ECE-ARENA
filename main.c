@@ -26,10 +26,14 @@ int main()
     srand(time(NULL));
     initialisation();
 
+
+
     int nbre_joueurs, classe_perso;
     //menu(&nbre_joueurs,&classe_perso);
 
     tourjoueur = 0;
+
+    BITMAP* cursor = load_bitmap("cursor.bmp", NULL);
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
@@ -46,6 +50,8 @@ int main()
     player[2] = create_bitmap(SCREEN_W, SCREEN_H);
     player[3] = create_bitmap(SCREEN_W, SCREEN_H);
     animation perso1 [4] [4];
+
+
 
     for (int i = 0 ; i <4 ; i++)
     {
@@ -73,6 +79,9 @@ int main()
 
     while (!key[KEY_ESC])
     {
+
+        masked_blit(cursor, terrain ,0, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;

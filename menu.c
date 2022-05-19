@@ -22,6 +22,8 @@ void menu(int* nbre_joueur, int* classe_perso)
     BITMAP* victor;
     BITMAP* julien;
     BITMAP* paul;
+    BITMAP* bordure;
+
 
 
 
@@ -29,6 +31,7 @@ void menu(int* nbre_joueur, int* classe_perso)
     SAMPLE *son;
 
     char NomFichier[30];
+
 
 
 
@@ -73,6 +76,9 @@ void menu(int* nbre_joueur, int* classe_perso)
 
     Logo=load_bitmap("Logo.bmp",NULL);
     decor=load_bitmap("decordo.bmp",NULL);
+
+
+
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
     Regles=load_bitmap("Regles.bmp", NULL);
@@ -159,6 +165,7 @@ void menu(int* nbre_joueur, int* classe_perso)
 
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
+
 
         draw_sprite(page,Sorcier[imgcourante],200,468);
 
@@ -258,15 +265,27 @@ void menu(int* nbre_joueur, int* classe_perso)
                         blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
+
+
                         sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
                         archer_feu=load_bitmap("player/player6bis.bmp", NULL);
                         chevalier=load_bitmap("player/player11bis.bmp", NULL);
                         tigre=load_bitmap("player/player16bis.bmp", NULL);
 
-                        masked_blit(sorcier_feu, page3, 0, 0, 200, 500, Logo->w, Logo->h);
-                        masked_blit(archer_feu, page3, 0, 0, 500, 500, Logo->w, Logo->h);
-                        masked_blit(chevalier, page3, 0, 0, 800, 500, Logo->w, Logo->h);
-                        masked_blit(tigre, page3, 0, 0, 1100, 500, Logo->w, Logo->h);
+                        bordure=load_bitmap("bordure.bmp",NULL);
+
+                        masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                        masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                        masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                        masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+
+                        masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
+                        masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+
+                        masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
+                        masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+
                         }
 
 
