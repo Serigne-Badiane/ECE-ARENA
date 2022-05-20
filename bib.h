@@ -69,7 +69,7 @@ typedef struct{
 
 }sortperso;
 
-str_perso joueur [4];
+str_perso joueur[4];
 
 void load_cra_feu (sortperso* perso);
 void load_cra_feu_anim(sortperso* perso);
@@ -77,7 +77,7 @@ void load_mage_eau (sortperso* perso);
 
 int addi (int a, int b);
 void initialisation();
-void menu();
+int menu();
 void afficher();
 void init_struct_case(int nbre_joueurs);
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);

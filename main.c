@@ -26,8 +26,8 @@ int main()
     srand(time(NULL));
     initialisation();
 
-    int nbre_joueurs, classe_perso_joueur1,classe_perso_joueur2,classe_perso_joueur3,classe_perso_joueur4;
-    //menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
+    int nbre_joueurs;
+    nbre_joueurs = menu(nbre_joueurs);
 
     tourjoueur = 0;
 
@@ -41,7 +41,6 @@ int main()
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* petit_coeur = load_bitmap("petit_coeur.bmp",NULL);
     int nbrjoueur = 2;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
@@ -83,6 +82,12 @@ int main()
         {
             tourjoueur = 0;
         }
+        if (tourjoueur == 0){
+           ennemi = 1;
+        }
+        else {
+           ennemi = 0;
+        }
         for (int i=0;i<nbrjoueur;i++)
         {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
@@ -111,7 +116,6 @@ int main()
 
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
-        usesortboost(buffer,perso1[tourjoueur],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
 
@@ -122,7 +126,6 @@ int main()
         circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
-        affichage_pv(buffer,petit_coeur);
 
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
