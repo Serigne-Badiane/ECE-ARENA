@@ -26,10 +26,8 @@ int main()
     srand(time(NULL));
     initialisation();
 
-
-
     int nbre_joueurs, classe_perso_joueur1,classe_perso_joueur2,classe_perso_joueur3,classe_perso_joueur4;
-    menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
+    //menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
 
     tourjoueur = 0;
 
@@ -38,6 +36,7 @@ int main()
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* buffer_enlevage = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
@@ -62,7 +61,7 @@ int main()
 
     int ennemi;
 
-    init_struct_case(nbre_joueurs);
+    init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
@@ -79,9 +78,6 @@ int main()
 
     while (!key[KEY_ESC])
     {
-
-        masked_blit(cursor, terrain ,0, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;
@@ -93,45 +89,26 @@ int main()
            ennemi = 0;
         }
         for (int i=0;i<nbrjoueur;i++)
-            {
+        {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
             {
-                placement_joueur_debut(buffer,buffer_invisible_couleur,buffer_enlevage_indication,nbrjoueur);
+                placement_joueur_debut(buffer,buffer_invisible_couleur,nbrjoueur,cursor,buffer_enlevage);
             }
         }
         enlevage_des_indications(buffer,buffer_enlevage_indication);
-
-        //deplacement(terrain,buffer, buffer_invisible_couleur);
-        //deplacement_p2(terrain,buffer,buffer_invisible_couleur);
 
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
         double difference2;
-        //double difference2;
-        /*for (int i=0;i<LIGNE2;i++)
-        {
-            for (int j=0;j<COLONNE2;j++)
-            {
-                if (matrice_terrain_iso[i][j].passage==1)
-                {
-                    case_couleur(buffer,matrice_terrain_iso[i][j].x,matrice_terrain_iso[i][j].y,80,80,80);
-                }
-            }
-        }*/
-
-
-
-
 
         debut=clock() ;
     do
     {
         affichage_terrain(terrain,buffer);
-
+        masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
-
 
         deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
@@ -156,7 +133,6 @@ int main()
 
     }while(difference2<15 && difference<15);
 
-
     sauvegarde(nbrjoueur, tourjoueur);
 
     clear_bitmap(buffer_deplacement);
@@ -164,7 +140,6 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
-
 
     //retrait(nbrjoueur, tourjoueur);
 
