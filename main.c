@@ -26,8 +26,8 @@ int main()
     srand(time(NULL));
     initialisation();
 
-    int nbre_joueurs, classe_perso_joueur1,classe_perso_joueur2,classe_perso_joueur3,classe_perso_joueur4;
-    menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
+    int nbre_joueurs;
+    nbre_joueurs = menu(nbre_joueurs);
 
     tourjoueur = 0;
 

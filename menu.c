@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <allegro.h>
+#include "bib.h"
 
-void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2 , int* classe_perso_joueur3 , int* classe_perso_joueur4)
+int menu(int nbre_joueur)
 {
     BITMAP* decor;
     BITMAP* page;
@@ -290,6 +291,8 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                         while(1){
 
+                        for(int j=0;j<nbre_joueur;j++){
+
 
                             masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
@@ -315,10 +318,9 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
                                 rest(200);
 
 
-
-                                classe_perso_joueur1 = 1;
                                 cpteur_nbre_joueurs++;
                                 printf("%d", cpteur_nbre_joueurs);
+                                joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
 
@@ -344,14 +346,11 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1){
 
-
-
-                                classe_perso_joueur1 = 2;
                                 cpteur_nbre_joueurs++;
                                 printf("%d", cpteur_nbre_joueurs);
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
-                                    break;
+                                    sortie=1;
                                 }
 
 
@@ -371,8 +370,6 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1){
 
 
-
-                                classe_perso_joueur1 = 3;
                                 cpteur_nbre_joueurs++;
                                 printf("%d", cpteur_nbre_joueurs);
 
@@ -397,9 +394,6 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1){
 
-
-
-                                classe_perso_joueur1 = 4;
                                 cpteur_nbre_joueurs++;
                                 printf("%d", cpteur_nbre_joueurs);
 
@@ -415,9 +409,10 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
 
 
-                            }
+                        //}
+                        }
 
-                    }
+                    }}
                     rest(1);
                 }
 
@@ -532,6 +527,7 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
         }*/
 
 }
+return nbre_joueur;
 }
 
 /*int menu_selec_perso(int choix_perso){
