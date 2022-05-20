@@ -27,7 +27,7 @@ int main()
     initialisation();
 
     int nbre_joueurs, classe_perso_joueur1,classe_perso_joueur2,classe_perso_joueur3,classe_perso_joueur4;
-    //menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
+    menu(&nbre_joueurs,&classe_perso_joueur1,&classe_perso_joueur2,&classe_perso_joueur3,&classe_perso_joueur4);
 
     tourjoueur = 0;
 
