@@ -80,10 +80,11 @@ int main()
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
     recuperation_couleur(buffer_deplacement,buffer_deplacement2);
+    int nb_mort;
 
-
-    while (!key[KEY_ESC])
+    while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
+        show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;
@@ -107,26 +108,22 @@ int main()
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
         double difference2;
-
         debut=clock() ;
     do
     {
         affichage_terrain(terrain,buffer);
 
-        masked_blit(cursor,buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
 
-        deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
-
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
         textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
-
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
@@ -134,7 +131,7 @@ int main()
         circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
-
+        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
 
@@ -147,6 +144,7 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
+    nb_mort=checkwin(nbrjoueur,0);
 
     //retrait(nbrjoueur, tourjoueur);
 

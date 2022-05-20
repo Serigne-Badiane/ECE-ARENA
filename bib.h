@@ -106,6 +106,6 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
-int checkwin(int nbre_joueurs);
+int checkwin(int nbre_joueurs,int i);
 
 #endif // BIB_H_INCLUDED
