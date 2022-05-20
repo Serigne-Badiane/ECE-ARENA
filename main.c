@@ -26,8 +26,15 @@ int main()
     srand(time(NULL));
     initialisation();
 
-    int nbre_joueurs;
-    nbre_joueurs = menu(nbre_joueurs);
+    int nbrjoueur;
+    nbrjoueur = menu();
+
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
+    {
+        allegro_message("prb gfx mode");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
 
     tourjoueur = 0;
 
@@ -41,7 +48,6 @@ int main()
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
-    int nbrjoueur = 2;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
     player[0] = create_bitmap(SCREEN_W, SCREEN_H);
@@ -106,7 +112,8 @@ int main()
     do
     {
         affichage_terrain(terrain,buffer);
-        masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+
+        masked_blit(cursor,buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
 
