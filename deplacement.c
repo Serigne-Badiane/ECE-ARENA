@@ -163,153 +163,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
     }
 }
 
-void deplacement(BITMAP* terrain, BITMAP* buffer, BITMAP* buffer_couleur,int tour_joueur)                                  ///sspg qui change les couleurs des cases d'un buffer invisible pour permettre le déplacement du joueur par la suite
-{                                                                                                                          ///on verifiera par la suite que la position de la couleur de la case sur laquelle est la souris correspond bien à la couleur de la case du buffer
-    int i=joueur[tour_joueur].pos.case_ligne_iso;                                                                          ///si c'est le cas, cela veut dire que le joueur peut se déplacer sur la case sur laquelle il a placé la souris
-    int p=joueur[tour_joueur].pos.case_colonne_iso;                                                                        ///sinon, cette case n'est pas à sa portée de déplacement
-
-    if(joueur[tour_joueur].pm==3)
-    {
-        for(int o=p-3;o<p+4;o++)
-        {
-            if (o==p)
-            {
-                o=p+1;
-            }
-            if(matrice_terrain_iso[i][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[i][o].x, matrice_terrain_iso[i][o].y, 140,140,140);
-            }
-        }
-        for(int o=i-3;o<i+4;o++)
-        {
-            if (o==i)
-            {
-                o=i+1;
-            }
-            if(matrice_terrain_iso[o][p].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[o][p].x, matrice_terrain_iso[o][p].y, 140,140,140);
-            }
-        }
-        if(matrice_terrain_iso[i+1][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p+1].x, matrice_terrain_iso[i+1][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+1][p+2].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p+2].x, matrice_terrain_iso[i+1][p+2].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p+1].x, matrice_terrain_iso[i-1][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p+2].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p+2].x, matrice_terrain_iso[i-1][p+2].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+1][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p-1].x, matrice_terrain_iso[i+1][p-1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+1][p-2].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p-2].x, matrice_terrain_iso[i+1][p-2].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p-1].x, matrice_terrain_iso[i-1][p-1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p-2].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p-2].x, matrice_terrain_iso[i-1][p-2].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+2][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+2][p+1].x, matrice_terrain_iso[i+2][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-2][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-2][p+1].x, matrice_terrain_iso[i-2][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+2][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+2][p-1].x, matrice_terrain_iso[i+2][p-1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-2][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-2][p-1].x, matrice_terrain_iso[i-2][p-1].y, 140,140,140);
-        }
-    }
-
-    if(joueur[tour_joueur].pm==2)
-    {
-        for(int o=i+1;o<i+3;o++)
-        {
-            if(matrice_terrain_iso[o][p].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[o][p].x, matrice_terrain_iso[o][p].y, 140,140,140);
-            }
-        }
-        for(int o=i-1;o>i-3;o--)
-        {
-            if(matrice_terrain_iso[o][p].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[o][p].x, matrice_terrain_iso[o][p].y, 140,140,140);
-            }
-        }
-        for(int o=p-1;o>p-3;o--)
-        {
-            if(matrice_terrain_iso[i][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[i][o].x, matrice_terrain_iso[i][o].y, 140,140,140);
-            }
-        }
-        for(int o=p+1;o<p+3;o++)
-        {
-            if(matrice_terrain_iso[i][o].passage==1)
-            {
-                case_couleur(buffer,matrice_terrain_iso[i][o].x, matrice_terrain_iso[i][o].y, 140,140,140);
-            }
-        }
-        if(matrice_terrain_iso[i+1][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p+1].x, matrice_terrain_iso[i+1][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p+1].x, matrice_terrain_iso[i-1][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p-1].x, matrice_terrain_iso[i-1][p-1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+1][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p-1].x, matrice_terrain_iso[i+1][p-1].y, 140,140,140);
-        }
-    }
-    if(joueur[tour_joueur].pm==1)
-    {
-        if(matrice_terrain_iso[i][p+1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i][p+1].x, matrice_terrain_iso[i][p+1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i][p-1].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i][p-1].x, matrice_terrain_iso[i][p-1].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i+1][p].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i+1][p].x, matrice_terrain_iso[i+1][p].y, 140,140,140);
-        }
-        if(matrice_terrain_iso[i-1][p].passage==1)
-        {
-            case_couleur(buffer,matrice_terrain_iso[i-1][p].x, matrice_terrain_iso[i-1][p].y, 140,140,140);
-        }
-    }
-}
-
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
@@ -354,18 +207,19 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     }
     recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
     masked_blit(image_joueur[0+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+
     for(int i=0;i<LIGNE2;i++)
     {
         for(int t=0; t<COLONNE2; t++)
         {
-            if (getr(getpixel(buffer_deplacement,mouse_x,mouse_y))==140 && getb(getpixel(buffer_deplacement,mouse_x,mouse_y))==140 && getg(getpixel(buffer_deplacement,mouse_x,mouse_y))==140)  ///expliquer dans le sspg déplacement
+            if (abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)<=joueur[tour_joueur].pm)  ///calcul pour savoir les cases qui étant possible à atteindre par le joueur
             {                                                                                                               ///la boucle suivante permet de savoir sur quel case est la souris
                 if(getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)))
                 {
                     int z=i,y=t,compteur=0,compteur2=0;
                     compteur=verif(z,y,tour_joueur);                ///vérification qu'il n'y a pas d'obstacle
                     if (compteur==0)                                ///les boucles qui suivent permettent au joueur de savoir s'il peut se déplacer sur la case sur laquelle est la souris et de montrer le chemin
-                    {
+                    {                                               /// si la case est de couleur vert d'eau, elle est accessible
                         if (z<joueur[tour_joueur].pos.case_ligne_iso)
                         {
                             while(z<joueur[tour_joueur].pos.case_ligne_iso)
@@ -645,26 +499,12 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                         }
                         enlevage_des_indications(buffer, terrain);                                       ///effacage du buffer
                         enlevage_des_indications(buffer_deplacement,buffer_deplacement2);               ///effacage du buffer de déplacement (pour ne pas que le joueur puisse ce déplacer n'importe où par la suite
-                        if(i<joueur[tour_joueur].pos.case_ligne_iso)                                    ///on change les points de mouvement du joueur
-                        {
-                            joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_ligne_iso-i;
-                        }
-                        if(i>joueur[tour_joueur].pos.case_ligne_iso)
-                        {
-                            joueur[tour_joueur].pm-=-joueur[tour_joueur].pos.case_ligne_iso+i;
-                        }
-                        if(t>joueur[tour_joueur].pos.case_colonne_iso)
-                        {
-                            joueur[tour_joueur].pm-=-joueur[tour_joueur].pos.case_colonne_iso+t;
-                        }
-                        if(t<joueur[tour_joueur].pos.case_colonne_iso)
-                        {
-                            joueur[tour_joueur].pm-=joueur[tour_joueur].pos.case_colonne_iso-t;
-                        }
-                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=1;
+
+                        joueur[tour_joueur].pm-=(abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)); ///on change les points de mouvement du joueur
+                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=1;        ///la case sur laquelle était le joueur devient accessible
                         joueur[tour_joueur].pos.case_ligne_iso=i;                                       ///on change le positionnement du joueur (en pixel et en case)
                         joueur[tour_joueur].pos.case_colonne_iso=t;
-                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=0;
+                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=0;            ///la nouvelle position du joueur n'est plus accessible
                         joueur[tour_joueur].pos.x = matrice_terrain_iso[i][t].x;
                         joueur[tour_joueur].pos.y = matrice_terrain_iso[i][t].y;
                     }

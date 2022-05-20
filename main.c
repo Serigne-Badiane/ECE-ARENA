@@ -105,7 +105,6 @@ int main()
 
         tour(buffer, nbrjoueur, tourjoueur);
 
-        deplacement(terrain, buffer_deplacement, buffer_invisible_couleur, tourjoueur);
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);

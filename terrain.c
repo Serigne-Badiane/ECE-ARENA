@@ -4,7 +4,7 @@
 #include "bib.h"
 #include <time.h>
 
-void init_struct_case(int nbre_joueurs)                                                                         ///sspg qui initialise toutes les cases
+void init_struct_case(int nbre_joueurs)                                                         ///sspg qui initialise toutes les cases
 {
     matrice_terrain[0][0].hauteur=28;                               ///initialisation des structs : largeur, longueur, pos x, pos y
     matrice_terrain[0][0].largeur=50;
