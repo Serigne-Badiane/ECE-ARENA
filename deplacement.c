@@ -104,8 +104,8 @@ int verif2 (int z,int y, int tour_joueur)                               ///meme 
     return compteur;
 }
 
-void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_enlevage_indication,int nb_joueur)          ///sspg pour placer les joueurs au début de partie
-{                                                                                                                           ///on affiche des cases sur lesquels ils peuvent se placer et en fonction du choix on change leur positionnement
+void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BITMAP* cursor,BITMAP* buffer_enlevage)          ///sspg pour placer les joueurs au début de partie
+{                                                                                                      ///on affiche des cases sur lesquels ils peuvent se placer et en fonction du choix on change leur positionnement
     for(int i=0;i<LIGNE2;i++)
     {
         for(int j=0;j<COLONNE2;j++)
@@ -154,7 +154,11 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur, BITMAP* buffer_
                     }
                 }
             }
-            draw_sprite(screen, buffer, 0,0);
+            recuperation_couleur(buffer,buffer_enlevage);
+            masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+            enlevage_des_indications(buffer,buffer_enlevage);
+            masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         }
     }
 }

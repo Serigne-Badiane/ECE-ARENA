@@ -94,7 +94,7 @@ void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication
 int verif (int z,int y,int tour_joueur);
 int verif2 (int z,int y, int tour_joueur);
 
-void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,BITMAP* buffer_enlevage_indication,int nb_joueur);
+void placement_joueur_debut(BITMAP*buffer,BITMAP*terrain,int nb_joueur,BITMAP* cursor,BITMAP* buffer_enlevage);
 void init_joueur(int nbrjoueur,str_perso joueur [4]);
 void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b);
 void terrain_couleur(BITMAP* buffer);
