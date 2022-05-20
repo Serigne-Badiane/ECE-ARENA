@@ -198,15 +198,72 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
         }
     }
 
+
+    int i=0;
+
+
     for (int s=0;s<nbr_joueur;s++)                      ///on affiche tous les joueurs sauf les joueurs pour lequel c'est le tour
     {
         if(s!=tour_joueur)
         {
-            masked_blit(image_joueur[0+s*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+            while(i<10)
+            {
+                recuperation_couleur(buffer,buffer_enlevage_indication);
+                stretch_blit(image_joueur[0+s*5], buffer, 0, 0, image_joueur[0+s*5]->w, image_joueur[0+s*5]->h, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+s*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+s*5]->h, image_joueur[0+s*5]->w, image_joueur[0+s*5]->h+3*i);
+                rest(200);
+                i++;
+            }
+            while(i>0)
+            {
+                recuperation_couleur(buffer,buffer_enlevage_indication);
+                stretch_blit(image_joueur[0+s*5], buffer, 0, 0, image_joueur[0+s*5]->w, image_joueur[0+s*5]->h, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+s*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+s*5]->h, image_joueur[0+s*5]->w, image_joueur[0+s*5]->h+3*i);
+                rest(200);
+                i--;
+                enlevage_des_indications(buffer, buffer_enlevage_indication);
+            }
+
+            //masked_blit(image_joueur[0+s*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
         }
     }
-    recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
-    masked_blit(image_joueur[0+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+    //recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
+
+
+
+
+
+
+
+    //masked_blit(image_joueur[0+tour_joueur*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+
+
+
+
+
+
+    while(i<10)
+    {
+        recuperation_couleur(buffer,buffer_enlevage_indication);
+        stretch_blit(image_joueur[0+tour_joueur*5], buffer, 0, 0, image_joueur[0+tour_joueur*5]->w, image_joueur[0+tour_joueur*5]->h, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[0+tour_joueur*5]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[0+tour_joueur*5]->h, image_joueur[0+tour_joueur*5]->w, image_joueur[0+tour_joueur*5]->h+3*i);
+        rest(200);
+        i++;
+        enlevage_des_indications(buffer, buffer_enlevage_indication);
+    }
+    while(i>0)
+    {
+        recuperation_couleur(buffer,buffer_enlevage_indication);
+        stretch_blit(image_joueur[0+tour_joueur*5], buffer, 0, 0, image_joueur[0+tour_joueur*5]->w, image_joueur[0+tour_joueur*5]->h, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[0+tour_joueur*5]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[0+tour_joueur*5]->h, image_joueur[0+tour_joueur*5]->w, image_joueur[0+tour_joueur*5]->h+3*i);
+        rest(200);
+        i--;
+        enlevage_des_indications(buffer, buffer_enlevage_indication);
+    }
+
+
+
+
+
+
+
+
 
     for(int i=0;i<LIGNE2;i++)
     {
