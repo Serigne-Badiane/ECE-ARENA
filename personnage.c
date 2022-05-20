@@ -58,6 +58,7 @@ void load_anim_mage_eau_flaque(animation* perso){
     perso->anim2 = load_bitmap("flaque2.bmp",NULL);
     perso->anim3 = load_bitmap("flaque3.bmp",NULL);
 }
+
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [tourjoueur]){
         rectfill(buffer,0,650,1272,713,makecol(130,98,85));
         rectfill(buffer,900,450,1272,650,makecol(64,47,32));
@@ -72,6 +73,7 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
         textprintf_ex(buffer,font,160,50,makecol(255,255,255),makecol(0,255,0),"%d",joueur[tourjoueur].pm);
         draw_sprite(buffer,coeurpv,5,10);
 }
+
 void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur){
     if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28){
 
@@ -104,7 +106,6 @@ void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur){
 
 
 }
-
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290){
@@ -578,9 +579,6 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
 
 }
 
-
-
-
 double fin_de_tour (BITMAP* buffer)
 {
     rectfill(buffer,700,650,880,700,makecol(242,143,45));
@@ -595,11 +593,14 @@ double fin_de_tour (BITMAP* buffer)
     }
 }
 
-
-int checkwin(int nbre_joueurs){
-    for (int i = 0 ; i < nbre_joueurs -1 ; i ++){
-        if (joueur[i].pv <= 0){
-            return 1;
-        }
+int checkwin(int nbre_joueurs,int i)
+{
+    if (i==nbre_joueurs)
+    {
+        return 0;
+    }
+    if (joueur[i].pv <= 0)
+    {
+        return 1+checkwin(nbre_joueurs,i+1);
     }
 }
