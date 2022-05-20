@@ -603,4 +603,6 @@ int checkwin(int nbre_joueurs,int i)
     {
         return 1+checkwin(nbre_joueurs,i+1);
     }
+    else
+        return 0+checkwin(nbre_joueurs,i+1);
 }

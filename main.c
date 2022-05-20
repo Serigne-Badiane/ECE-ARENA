@@ -81,7 +81,7 @@ int main()
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
     recuperation_couleur(buffer_deplacement,buffer_deplacement2);
-    int nb_mort;
+    int nb_mort=0;
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
@@ -141,7 +141,6 @@ int main()
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
-
     //retrait(nbrjoueur, tourjoueur);
 
     }
