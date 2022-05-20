@@ -224,36 +224,36 @@
 	"bib.h"
 	<time.h>
 
-1652987043 c:\users\serigne\documents\github\ece-arena\bib.h
+1653065725 c:\users\serigne\documents\github\ece-arena\bib.h
 
-1652984750 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
+1653065726 source:c:\users\serigne\documents\github\ece-arena\deplacement.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652987035 source:c:\users\serigne\documents\github\ece-arena\main.c
+1653065827 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652973181 source:c:\users\serigne\documents\github\ece-arena\menu.c
+1653065726 source:c:\users\serigne\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 
-1652986365 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1653065726 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1652984750 source:c:\users\serigne\documents\github\ece-arena\terrain.c
+1653065726 source:c:\users\serigne\documents\github\ece-arena\terrain.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -316,7 +316,7 @@
 	"bib.h"
 	<time.h>
 
-1652984750 source:c:\users\serigne\documents\github\ece-arena\tour joueur.c
+1652987113 source:c:\users\serigne\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
