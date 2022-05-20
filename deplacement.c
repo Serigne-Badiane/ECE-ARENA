@@ -233,13 +233,13 @@ void respirer(BITMAP* buffer)
 
     while(i<=10)
     {
-        stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
+        //stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
         rest(200);
         i++;
     }
     while(i>0)
     {
-        stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
+        //stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
         rest(200);
         i--;
     }

@@ -111,6 +111,7 @@ int main()
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
+        barre_de_vie(buffer, nbrjoueur, tourjoueur);
 
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
