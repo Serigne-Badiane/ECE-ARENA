@@ -26,8 +26,8 @@ int main()
     srand(time(NULL));
     initialisation();
 
-    int nbre_joueurs;
-    nbre_joueurs = menu(nbre_joueurs);
+    int nbrjoueur = 2;
+    //nbrjoueur = menu(nbrjoueur);
 
     tourjoueur = 0;
 
@@ -41,7 +41,6 @@ int main()
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
-    int nbrjoueur = 2;
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
     player[0] = create_bitmap(SCREEN_W, SCREEN_H);
