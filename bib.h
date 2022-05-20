@@ -103,6 +103,7 @@ void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur);
 
 void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur);
 void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur);
+void respirer(BITMAP* buffer);
 
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);

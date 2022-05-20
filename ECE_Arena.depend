@@ -127,16 +127,16 @@
 
 1653073829 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1653071459 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1653081798 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1653071117 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1653082750 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
-1652993710 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
+1653081798 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

@@ -226,6 +226,27 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
     }
 }
 
+
+void respirer(BITMAP* buffer)
+{
+    int i=0;
+
+    while(i<=10)
+    {
+        stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
+        rest(200);
+        i++;
+    }
+    while(i>0)
+    {
+        stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
+        rest(200);
+        i--;
+    }
+}
+
+
+
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
