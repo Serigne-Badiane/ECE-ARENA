@@ -178,7 +178,7 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
             rect(screen,500,300,850,400,makecol(0,255,255));
 
 
-            if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur New Game
+            if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1) /// Click sur New Game
             {
                 masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
@@ -193,12 +193,11 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                 clear_bitmap(page);
 
+                rest(1000);
 
                 while (!key[KEY_ENTER]) /// Retour en arriere
                 {
                      masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-
-
 
                     /*show_mouse(Menu2);*/
 
@@ -240,13 +239,9 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
                     if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850)
                     {
 
-
                     rect(screen,500,600,850,700,makecol(0,255,0));
 
                     }
-                    rest(1);
-                }
-
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
 
                     { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
@@ -290,7 +285,7 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                         int cpteur_nbre_joueurs = 0;
 
-                        while(!key[KEY_ENTER]){
+                        while(1){
 
 
                             masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
@@ -410,9 +405,11 @@ void menu(int* nbre_joueur, int* classe_perso_joueur1, int* classe_perso_joueur2
 
                             }
 
-
-
                     }
+                    rest(1);
+                }
+
+
 
                     if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1)
                     {
