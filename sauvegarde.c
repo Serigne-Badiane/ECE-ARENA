@@ -6,7 +6,7 @@
 
 
 
-void sauvegarde(int nbrjoueur, int tour_joueur)
+void sauvegarde(int nbrjoueur, int tour_joueur)         ///pour la revanche
 {
     FILE* pf = fopen("AAA.txt", "w");
     if (pf == NULL)
@@ -17,8 +17,8 @@ void sauvegarde(int nbrjoueur, int tour_joueur)
 
     for (tour_joueur=0; tour_joueur<nbrjoueur; tour_joueur++)
     {
-        fprintf(pf, "%d ", joueur[tour_joueur].pos.case_ligne_iso);
-        fprintf(pf, "%d ", joueur[tour_joueur].pos.case_colonne_iso);
+        fprintf(pf, "%d ", joueur[tour_joueur].classe);
+        fprintf(pf, "%d ", joueur[tour_joueur].classe);
     }
 
 fclose(pf);
@@ -49,8 +49,7 @@ void retrait(int nbrjoueur, int tour_joueur)
 
     for (i=0; i<100; i++)
     {
-        joueur[tour_joueur].pos.case_ligne_iso=valeursLues[i];
-        joueur[tour_joueur].pos.case_colonne_iso=valeursLues[i];
+        joueur[tour_joueur].classe=valeursLues[i];
     }
 
 

@@ -308,7 +308,7 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
 
 void bonus (BITMAP* buffer)
 {
-    BITMAP* pnj_bitmap = load_bitmap("player/player1.bmp",NULL);
+    BITMAP* pnj_bitmap = load_bitmap("ronaldo.bmp",NULL);
     if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
     {
         pnj.pos.case_ligne_iso=rand()%(21);

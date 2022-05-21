@@ -219,7 +219,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
                 }
             }
             recuperation_couleur(buffer,buffer_enlevage);
-            //masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,buffer_enlevage);
         }
