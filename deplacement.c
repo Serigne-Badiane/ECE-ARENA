@@ -227,22 +227,50 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
 }
 
 
-void respirer(BITMAP* buffer)
+void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
 {
-    int i=0;
+    BITMAP* image_joueur[20];
 
-    while(i<=10)
+    image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
+    image_joueur[1] = load_bitmap("player/player2.bmp", NULL);
+    image_joueur[2] = load_bitmap("player/player3.bmp", NULL);
+    image_joueur[3] = load_bitmap("player/player4.bmp", NULL);
+    image_joueur[4] = load_bitmap("player/player5.bmp", NULL);
+    image_joueur[5] = load_bitmap("player/player6.bmp", NULL);
+    image_joueur[6] = load_bitmap("player/player7.bmp", NULL);
+    image_joueur[7] = load_bitmap("player/player8.bmp", NULL);
+    image_joueur[8] = load_bitmap("player/player9.bmp", NULL);
+    image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
+    image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
+    image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
+    image_joueur[12] = load_bitmap("player/player13.bmp", NULL);
+    image_joueur[13] = load_bitmap("player/player14.bmp", NULL);
+    image_joueur[14] = load_bitmap("player/player15.bmp", NULL);
+    image_joueur[15] = load_bitmap("player/player16.bmp", NULL);
+    image_joueur[16] = load_bitmap("player/player17.bmp", NULL);
+    image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
+    image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
+    image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
+    int i=0;
+    recuperation_couleur(buffer,temp);
+    for (int k=0;k<nbr_joueur;k++)
     {
-        //stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
-        rest(200);
-        i++;
+        while(i<=3)
+        {
+            stretch_blit(image_joueur[0+k*5], buffer, 0, 0,image_joueur[0+k*5]->w, image_joueur[0+k*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[0+k*5]->w, image_joueur[0+k*5]->h-3*i);
+            masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+            enlevage_des_indications(buffer,temp);
+            i++;
+        }
+        while(i>0)
+        {
+            stretch_blit(image_joueur[0+k*5], buffer, 0, 0,image_joueur[0+k*5]->w, image_joueur[0+k*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[0+k*5]->w, image_joueur[0+k*5]->h-3*i);
+            masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+            enlevage_des_indications(buffer,temp);
+            i--;
+        }
     }
-    while(i>0)
-    {
-        //stretch_blit(image2, buffer, 0, 0, image2->w, image2->h, 100, 100, image2->w, image2->h-3*i);
-        rest(200);
-        i--;
-    }
+
 }
 
 
