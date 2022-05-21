@@ -4,6 +4,8 @@
 #include <allegro.h>
 #include "bib.h"
 
+
+
 int menu()
 {
     BITMAP* decor;
@@ -60,7 +62,7 @@ int menu()
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1400,750
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1400,750
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -772,6 +774,55 @@ int menu()
         if(imgcourante == 2)
         {
             imgcourante = 1;
+        }
+    }
+}
+
+int menudefin(){
+
+    int quit = 0;
+
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    {
+        allegro_message("prb gfx mode");
+        allegro_exit();
+        exit(EXIT_FAILURE);
+    }
+
+
+    BITMAP* decor_de_fin = load_bitmap("summonersrift.bmp",NULL);
+    BITMAP* buffer_decor = create_bitmap(SCREEN_W,SCREEN_H);
+    BITMAP* cursor=load_bitmap("cursor.bmp",NULL);
+    BITMAP* quitter=load_bitmap("quitter.bmp",NULL);
+    BITMAP* new_game=load_bitmap("new_game.bmp",NULL);
+    BITMAP* revanche=load_bitmap("revanche.bmp",NULL);
+
+    while (quitter!=1)
+    {
+        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
+        rect(buffer_decor,1000,50,1300,150,makecol(255,255,0));
+        rect(buffer_decor,1000,200,1300,300,makecol(255,255,0));
+        rect(buffer_decor,1000,350,1300,450,makecol(255,255,0));
+
+        masked_blit(quitter, buffer_decor, 0, 0, 1025, 70, quitter->w, quitter->h);
+        masked_blit(revanche, buffer_decor, 0, 0, 1025, 220, quitter->w, quitter->h);
+        masked_blit(new_game, buffer_decor, 0, 0, 1025, 370, quitter->w, quitter->h);
+
+
+
+        blit(buffer_decor,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+        blit(decor_de_fin,buffer_decor,0,0,0,0,SCREEN_W,SCREEN_H);
+
+        if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur Quitter
+            {
+                return 1;
+
+            }
+
+        if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1){ /// Click sur Revanche
+
+
         }
     }
 }
