@@ -113,6 +113,7 @@ int main()
         long clk_tck = CLOCKS_PER_SEC ;
         double difference ;
         double difference2;
+        int compteur_respiration=0;
         debut=clock() ;
     do
     {
@@ -138,10 +139,15 @@ int main()
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
-        respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
+        if (compteur_respiration % 100==0)
+        {
+            respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
+            compteur_respiration=0;
+        }
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
+        compteur_respiration++;
 
     }while(difference2<15 && difference<15);
 
