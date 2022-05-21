@@ -26,9 +26,11 @@ int main()
     srand(time(NULL));
     initialisation();
 
+
     int nbrjoueur;
     nbrjoueur = menu();
     sauvegarde(nbrjoueur, tourjoueur);
+
 
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
     {
@@ -167,6 +169,7 @@ int main()
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
+
     //retrait(nbrjoueur, tourjoueur);
 
     }
