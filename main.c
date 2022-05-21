@@ -44,6 +44,7 @@ int main()
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* petit_coeur = load_bitmap("petit_coeur.bmp",NULL);
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* buffer_enlevage_indication2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
@@ -126,6 +127,7 @@ int main()
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
+        affichage_pv(buffer,petit_coeur);
         usesort(buffer,perso1[tourjoueur],temp);
         usesortboost(buffer,perso1[tourjoueur],temp);
         textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
@@ -133,10 +135,10 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
-        affichage_pv(buffer,petit_coeur);
         circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
+        respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
