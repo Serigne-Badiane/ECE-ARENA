@@ -308,7 +308,7 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
 
 void bonus (BITMAP* buffer)
 {
-    BITMAP* pnj_bitmap = load_bitmap("ronaldo.bmp",NULL);
+    BITMAP* pnj_bitmap = load_bitmap("player/player1.bmp",NULL);
     if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
     {
         pnj.pos.case_ligne_iso=rand()%(21);
@@ -321,7 +321,6 @@ void bonus (BITMAP* buffer)
     }
     if (joueur[tourjoueur].pos.case_ligne_iso == pnj.pos.case_ligne_iso && joueur[tourjoueur].pos.case_colonne_iso== pnj.pos.case_colonne_iso)
     {
-        printf("dff\n");
         pnj.pos.case_ligne_iso=rand()%(21);
         pnj.pos.case_colonne_iso=rand()%(22);
         while(matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].passage!=1)
@@ -329,7 +328,7 @@ void bonus (BITMAP* buffer)
             pnj.pos.case_ligne_iso=rand()%(21);
             pnj.pos.case_colonne_iso=rand()%(22);
         }
-        int choix_bonus=rand()%(3);
+        int choix_bonus=rand()%(3-1)+1;
         if (choix_bonus==1)
         {
             joueur[tourjoueur].pv+=rand()%(30-15)+15;
@@ -343,6 +342,6 @@ void bonus (BITMAP* buffer)
             joueur[tourjoueur].pm+=rand()%(4-1)+1;
         }
     }
-    masked_blit (pnj_bitmap,buffer,0,0,matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x,matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y,pnj_bitmap->w,pnj_bitmap->h);
+    masked_blit(pnj_bitmap, buffer, 0 ,0, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x-pnj_bitmap->w/2, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y-pnj_bitmap->h, pnj_bitmap->w, pnj_bitmap->h);
     masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 }

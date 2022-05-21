@@ -102,7 +102,7 @@ int main()
         }
         for (int i=0;i<nbrjoueur;i++)
         {
-             while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
+             while(joueur[i].pos.case_ligne_iso==0 && joueur[i].pos.case_colonne_iso==0 )
             {
                 placement_joueur_debut(buffer,buffer_invisible_couleur,nbrjoueur,cursor,buffer_enlevage);
             }
@@ -139,7 +139,9 @@ int main()
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
+
         bonus(buffer);
+
         if (compteur_respiration % 100==0)
         {
             respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
