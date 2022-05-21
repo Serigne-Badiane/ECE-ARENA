@@ -142,7 +142,7 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
-        circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
+        //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
