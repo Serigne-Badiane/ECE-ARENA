@@ -235,8 +235,8 @@ void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)   
     }
 }
 
-void quadrillage(BITMAP* buffer,BITMAP* terrain)                                                ///sspg qui quadrille toute la map (on appelle le sspg précédent)
-{
+void quadrillage(BITMAP* buffer,BITMAP* terrain)                                                ///sspg qui quadrille toute la map (on appel le sspg précédent)
+{                                                                                               ///extrêmement utile lors de la conception (il est possible de quadriller ou non la map)
     for (int i=0;i<LIGNE;i++)
     {
         for(int j=0;j<COLONNE;j++)

@@ -71,7 +71,7 @@ int main()
 
     init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
-    quadrillage(terrain,terrain);
+    ///quadrillage(terrain,terrain);                 ///quadrille la map (possibilité de le mettre au choix)
     affichage_terrain(terrain,buffer);
     for (int i = 0 ; i< nbrjoueur ; i ++){
         if (joueur[i].classe == 1){
