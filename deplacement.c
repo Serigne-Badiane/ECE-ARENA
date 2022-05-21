@@ -226,7 +226,6 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
     }
 }
 
-
 void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
 {
     BITMAP* image_joueur[20];
@@ -272,8 +271,6 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
     }
 
 }
-
-
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui d�place le joueur
 {
