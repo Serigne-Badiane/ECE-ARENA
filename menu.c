@@ -781,14 +781,6 @@ int menu(int direct)
 }
 
 
-
-
-
-
-
-
-
-
 int menudefin(int nbrjoueur){
 
     int quit = 0;
@@ -828,14 +820,14 @@ int menudefin(int nbrjoueur){
 
         if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur Quitter
             {
-                return 1;
+                return 0;
 
             }
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
 
-                return direct;
+                main();
 
             }
 
@@ -883,7 +875,11 @@ int menudefin(int nbrjoueur){
                 {
                     rectfill(player[i],0,0,1272,713,makecol(255,0,255));
                 }
-
+                for (int i = 0 ; i <nbrjoueur ; i++)
+                {
+                    joueur[i].pos.case_colonne_iso=0;
+                    joueur[i].pos.case_ligne_iso=0;
+                }
                 sortperso sortjoueur [nbrjoueur];
 
                 int ennemi;
