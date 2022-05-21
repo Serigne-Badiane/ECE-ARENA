@@ -65,7 +65,6 @@ void load_anim_mage_eau_flaque(animation* perso){
 
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [tourjoueur]){
         rectfill(buffer,0,650,1272,713,makecol(130,98,85));
-        rectfill(buffer,900,450,1272,650,makecol(64,47,32));
         blit(perso.sort1, buffer ,0,0,220,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort2, buffer ,0,0,300,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort3, buffer ,0,0,380,650,perso.sort1->h,perso.sort1->w);
