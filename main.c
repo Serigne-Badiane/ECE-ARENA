@@ -174,7 +174,9 @@ int main()
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
 
-    direct = menudefin();
+    if(nb_mort == nbrjoueur-1){
+        direct = menudefin();
+    }
 
 
 
