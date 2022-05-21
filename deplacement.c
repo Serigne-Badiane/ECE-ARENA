@@ -258,7 +258,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
         while(i<=2)
         {
             stretch_blit(image_joueur[0+k*5], buffer, 0, 0,image_joueur[0+k*5]->w, image_joueur[0+k*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[0+k*5]->w, image_joueur[0+k*5]->h+i);
-            rest(200);
+            //rest(200);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
 
@@ -267,7 +267,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
         while(i>0)
         {
             stretch_blit(image_joueur[0+k*5], buffer, 0, 0,image_joueur[0+k*5]->w, image_joueur[0+k*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[2]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[2]->h, image_joueur[0+k*5]->w, image_joueur[0+k*5]->h+i);
-            rest(200);
+            //rest(200);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
 
