@@ -294,6 +294,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
+    BITMAP* pnj_bitmap = load_bitmap("mont.bmp",NULL);
 
     image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
     image_joueur[1] = load_bitmap("player/player2.bmp", NULL);
@@ -333,6 +334,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
             masked_blit(image_joueur[0+joueur[s].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+joueur[s].classe*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+joueur[s].classe*5]->h, image_joueur[0+joueur[s].classe*5]->w, image_joueur[0+joueur[s].classe*5]->h);
         }
     }
+    masked_blit(pnj_bitmap, buffer, 0 ,0, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x-pnj_bitmap->w/2, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y-pnj_bitmap->h, pnj_bitmap->w, pnj_bitmap->h);
     recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
 
     masked_blit(image_joueur[0+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[0+joueur[tour_joueur].classe*5]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[0+joueur[tour_joueur].classe*5]->h, image_joueur[0+joueur[tour_joueur].classe*5]->w, image_joueur[0+joueur[tour_joueur].classe*5]->h);

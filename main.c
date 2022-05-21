@@ -119,7 +119,9 @@ int main()
         double difference ;
         double difference2;
         int compteur_respiration=0;
-        debut=clock() ;
+        int ancienne_ligne_joueur;
+        int ancienne_colonne_joueur;
+        debut=clock();
     do
     {
         affichage_terrain(terrain,buffer);
@@ -128,6 +130,9 @@ int main()
 
         tour(buffer, nbrjoueur, tourjoueur);
         barre_de_vie(buffer, nbrjoueur, tourjoueur);
+
+        ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
+        ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
@@ -144,7 +149,7 @@ int main()
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
 
-        bonus(buffer);
+        bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
 
         if (compteur_respiration % 100==0)
         {

@@ -111,6 +111,6 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP*temp);
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
 int checkwin(int nbre_joueurs,int i);
-void bonus (BITMAP* buffer);
+void bonus (BITMAP* buffer,int pos_x,int pos_y);
 
 #endif // BIB_H_INCLUDED

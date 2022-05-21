@@ -306,7 +306,7 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
     blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
 
-void bonus (BITMAP* buffer)
+void bonus (BITMAP* buffer, int pos_x,int pos_y)
 {
     BITMAP* pnj_bitmap = load_bitmap("mont.bmp",NULL);
     if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
@@ -331,7 +331,7 @@ void bonus (BITMAP* buffer)
         int choix_bonus=rand()%(3-1)+1;
         if (choix_bonus==1)
         {
-            joueur[tourjoueur].pv+=rand()%(30-15)+15;
+            joueur[tourjoueur].pv+=rand()%(50-15)+15;
         }
         if (choix_bonus==2)
         {
@@ -339,8 +339,21 @@ void bonus (BITMAP* buffer)
         }
         if (choix_bonus==3)
         {
-            joueur[tourjoueur].pm+=rand()%(4-1)+1;
+            joueur[tourjoueur].pm+=rand()%(8-1)+1;
         }
+    }
+    if(pos_x !=joueur[tourjoueur].pos.case_ligne_iso || pos_y != joueur[tourjoueur].pos.case_colonne_iso)
+    {
+        int ligne_pnj,colonne_pnj;
+        ligne_pnj=rand()%(3+3)-3;
+        colonne_pnj=rand()%(3+3)-3;
+        while(abs(ligne_pnj+colonne_pnj)>3 || pnj.pos.case_ligne_iso+ligne_pnj>20 ||pnj.pos.case_colonne_iso+colonne_pnj>21 || matrice_terrain_iso[pnj.pos.case_ligne_iso+ligne_pnj][pnj.pos.case_colonne_iso+colonne_pnj].passage!=1)
+        {
+            ligne_pnj=rand()%(3+3)-3;
+            colonne_pnj=rand()%(3+3)-3;
+        }
+        pnj.pos.case_ligne_iso+=ligne_pnj;
+        pnj.pos.case_colonne_iso+=colonne_pnj;
     }
     masked_blit(pnj_bitmap, buffer, 0 ,0, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x-pnj_bitmap->w/2, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y-pnj_bitmap->h, pnj_bitmap->w, pnj_bitmap->h);
     masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
