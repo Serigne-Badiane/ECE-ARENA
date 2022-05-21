@@ -45,7 +45,7 @@ void load_mage_eau (sortperso* perso){
     perso->sort1 = load_bitmap("vague.bmp",NULL);
     perso->sort2 = load_bitmap("propulsion.bmp",NULL);
     perso->sort3= load_bitmap("protection.bmp",NULL);
-    perso->sort4 = load_bitmap("vision.bmp",NULL);
+    perso->sort4 = load_bitmap("cac_eau.bmp",NULL);
 
 }
 
@@ -345,7 +345,10 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
 
                                                 }
                                             }
-                                             joueur[k].pv -= (rand()%(40-20+1))+20;
+                                            int degat = (rand()%(40-20+1))+20;
+                                            textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur %d attaque et inflige au Joueur %d %d degat !",tourjoueur+1,k+1,degat);
+                                            draw_sprite(screen, buffer, 0,0);
+                                            joueur[k].pv -= degat;
                                             joueur[tourjoueur].pa -= 4;
                                             leave = 1;
                                         }
@@ -599,7 +602,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
@@ -610,7 +613,132 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige 20 pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530 && mouse_b & 1){
-                rectfill(buffer,0,300,400,713,makecol(255,0,0));
+
+                case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+1][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+1][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-1][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-1][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+1].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+1].y,0,0,255);
+                case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-1].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-1].y,0,0,255);
+                draw_sprite(screen, buffer, 0,0);
+
+                if (joueur[tourjoueur].pa <= 1){
+
+                }
+                else{
+                int leave = 0;
+                while (leave == 0){
+                    int k = 4;
+                    if (mouse_b & 2){
+                        leave =1 ;
+                    }
+                        if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
+                        {
+                            if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28){
+                                k = 0;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 ){
+                                k = 1;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28){
+                                k = 2;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28){
+                                k = 3;
+                            }
+                            if (k != 4){
+                                    int i = 1;
+                                    int am;
+                                    int bm;
+                                    int j =1 ;
+                                    int a;
+                                    int b;
+                                    a = ((joueur[k].pos.x-joueur[tourjoueur].pos.x)/2);
+                                    b = ((joueur[k].pos.y-joueur[tourjoueur].pos.y)/2);
+                                    if (a >= 0){
+                                        am  = 0;
+                                    }
+                                    if (a < 0){
+                                        am = 1;
+                                    }
+                                    if (b>= 0){
+                                        bm  = 0;
+                                    }
+                                    if (b < 0){
+                                        bm = 1;
+                                    }
+                                    if (am == 0 && bm == 0){
+                                        while( i< a || j< b)
+                                        {
+
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    rotate_sprite(buffer, cdp, joueur[tourjoueur].pos.x+(i),joueur[tourjoueur].pos.y+(j)-45, ftofix(32)); // 128 = 180�
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                if (i < a){
+                                                  i++;
+                                                }
+                                                if (j< b){
+                                                  j++;
+                                                }
+
+                                        }
+                                    }
+                                    if (am == 1 && bm == 0){
+                                        while( i > a || j< b)
+                                        {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    rotate_sprite(buffer, cdp, joueur[tourjoueur].pos.x+(i) ,joueur[tourjoueur].pos.y+(j)-45, ftofix(96));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                if (i > a){
+                                                  i--;
+                                                }
+                                                if (j< b){
+                                                  j++;
+                                                }
+                                        }
+
+                                    }
+                                    if (am == 0 && bm == 1){
+                                        while( i< a || j> b)
+                                        {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    rotate_sprite(buffer, cdp, joueur[tourjoueur].pos.x+(i) ,joueur[tourjoueur].pos.y+(j)-45, ftofix(-32));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                if (i < a){
+                                                  i++;
+                                                }
+                                                if (j> b){
+                                                  j--;
+                                                }
+                                        }
+                                    }
+                                    if (am == 1 && bm == 1){
+                                        while( i> a || j> b)
+                                        {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    rotate_sprite(buffer, cdp, joueur[tourjoueur].pos.x+(i) ,joueur[tourjoueur].pos.y+(j)-45, ftofix(-96));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                if (i > a){
+                                                  i--;
+                                                }
+                                                if (j> b){
+                                                  j--;
+                                                }
+
+                                        }
+                                    }
+
+                                leave = 1;
+                                joueur[k].pv -= (rand()%(20-5+1))+5;
+                                joueur[tourjoueur].pa -= 2;
+                            }
+                        }
+
+
+                }
+        }
+
         }
     }
 

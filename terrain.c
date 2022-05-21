@@ -305,3 +305,4 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
 {                                                                                               ///ce sspg n'était pas nécessaire (nous aurions pu utiliser celui du dessus en inversant les bitmaps en paramètre)
     blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
+

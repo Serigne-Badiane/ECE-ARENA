@@ -42,6 +42,7 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* cdp = load_bitmap("coup_de_poing.bmp",NULL);
     BITMAP* petit_coeur = load_bitmap("petit_coeur.bmp",NULL);
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage_indication2 = create_bitmap(SCREEN_W, SCREEN_H);
@@ -129,9 +130,8 @@ int main()
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
-        usesortboost(buffer,perso1[tourjoueur],temp);
-        textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
-        textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+        usesortboost(buffer,perso1[tourjoueur],temp,cdp);
+
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);

@@ -85,7 +85,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp, BITMAP* cdp);
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement,BITMAP* buffer_enlevage_indication,BITMAP* buffer_deplacement2,int nbr_joueur);
 double fin_de_tour(BITMAP* buffer);
