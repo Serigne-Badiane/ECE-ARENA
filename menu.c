@@ -56,7 +56,7 @@ int menu()
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1400,750
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1400,750
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -249,6 +249,16 @@ int menu()
                         BITMAP* chevalier1;
                         BITMAP* tigre1;
                         BITMAP* noirr;
+
+                        sorcier_feu=load_bitmap("player/player3bis.bmp",NULL);
+                        sorcier_feu1=load_bitmap("player/player1bis.bmp",NULL);
+                        archer_feu1=load_bitmap("player/player6bis.bmp",NULL);
+                        archer_feu=load_bitmap("player/player7bis.bmp",NULL);
+                        chevalier1=load_bitmap("player/player11bis.bmp",NULL);
+                        chevalier=load_bitmap("player/player12bis.bmp",NULL);
+                        tigre1=load_bitmap("player/player16bis.bmp",NULL);
+                        tigre=load_bitmap("player/player17bis.bmp",NULL);
+
 
                         int cpteur_nbre_joueurs = 0;
                         for(int j=0;j<nbre_joueur;j++)
