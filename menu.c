@@ -255,12 +255,6 @@ int menu()
                         {
                                 joueur[j].classe=6;
                         }
-
-                        for(int j=0;j<nbre_joueur;j++)
-                        {
-                                joueur[j].classe=6;
-                        }
-
                         for(int j=0;j<nbre_joueur;j++)
                         {
                             while(joueur[j].classe==6)
@@ -304,10 +298,6 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
-
-
-                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
@@ -334,8 +324,6 @@ int menu()
                                         return nbre_joueur;
                                     }
 
-                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
@@ -465,10 +453,6 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
-
-
-                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
@@ -494,9 +478,6 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
-
-                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
@@ -626,10 +607,6 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
-
-
-                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
@@ -656,8 +633,6 @@ int menu()
                                         return nbre_joueur;
                                     }
 
-                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
                                 }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
