@@ -71,6 +71,7 @@ typedef struct{             ///structure pour les sorts de chaque classes
 }sortperso;
 
 str_perso joueur[4];
+str_perso pnj;
 
 void load_cra_feu (sortperso* perso);
 void load_cra_feu_anim(sortperso* perso);
@@ -109,5 +110,6 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP*temp);
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
 int checkwin(int nbre_joueurs,int i);
+void bonus (BITMAP* buffer);
 
 #endif // BIB_H_INCLUDED
