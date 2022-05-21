@@ -54,7 +54,8 @@ int main()
     BITMAP* buffer_enlevage = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* temp1 = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* temp2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
@@ -101,7 +102,7 @@ int main()
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
-        show_mouse(screen);
+        //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;
@@ -121,7 +122,9 @@ int main()
         double difference ;
         double difference2;
         int compteur_respiration=0;
-        debut=clock() ;
+        int ancienne_ligne_joueur;
+        int ancienne_colonne_joueur;
+        debut=clock();
     do
     {
         affichage_terrain(terrain,buffer);
@@ -131,22 +134,25 @@ int main()
         tour(buffer, nbrjoueur, tourjoueur);
         barre_de_vie(buffer, nbrjoueur, tourjoueur);
 
+        ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
+        ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
+
         deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
-        usesort(buffer,perso1[tourjoueur],temp);
-        usesortboost(buffer,perso1[tourjoueur],temp,cdp);
+        usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
+        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2);
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
-        textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
+        textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
         //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
 
-        bonus(buffer);
+        bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
 
         if (compteur_respiration % 100==0)
         {
