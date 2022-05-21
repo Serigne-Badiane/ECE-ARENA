@@ -71,6 +71,7 @@ typedef struct{             ///structure pour les sorts de chaque classes
 }sortperso;
 
 str_perso joueur[4];
+str_perso pnj;
 
 void load_cra_feu (sortperso* perso);
 void load_cra_feu_anim(sortperso* perso);
@@ -85,7 +86,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp, BITMAP* cdp);
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement,BITMAP* buffer_enlevage_indication,BITMAP* buffer_deplacement2,int nbr_joueur);
 double fin_de_tour(BITMAP* buffer);
@@ -109,5 +110,6 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP*temp);
 void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
 int checkwin(int nbre_joueurs,int i);
+void bonus (BITMAP* buffer);
 
 #endif // BIB_H_INCLUDED

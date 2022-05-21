@@ -42,6 +42,7 @@ int main()
 
     BITMAP* terrain= load_bitmap("vrai_map.bmp", NULL);
     BITMAP* buffer = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* cdp = load_bitmap("coup_de_poing.bmp",NULL);
     BITMAP* petit_coeur = load_bitmap("petit_coeur.bmp",NULL);
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage_indication2 = create_bitmap(SCREEN_W, SCREEN_H);
@@ -71,15 +72,15 @@ int main()
 
     init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
-    quadrillage(terrain,terrain);
+    ///quadrillage(terrain,terrain);                 ///quadrille la map (possibilité de le mettre au choix)
     affichage_terrain(terrain,buffer);
     for (int i = 0 ; i< nbrjoueur ; i ++){
-        if (joueur[i].classe == 1){
-             load_mage_eau(&sortjoueur[i]);
+        if (joueur[i].classe == 0){
+            load_mage_eau(&sortjoueur[i]);
             load_anim_mage_eau_vague(&perso1[i][0]);
             load_anim_mage_eau_flaque(&perso1[i][1]);
         }
-        if (joueur[i].classe == 2){
+        if (joueur[i].classe == 1){
             load_cra_feu(&sortjoueur[i]);
             load_anim_cra_feu_bdf(&perso1[i][0]);
             load_anim_cra_feu_fleche_feu(&perso1[i][1]);
@@ -100,9 +101,15 @@ int main()
         {
             tourjoueur = 0;
         }
+
+        for(int k=0; k<nbrjoueur; k++)
+        {
+            printf("%d\n", joueur[k].classe);       ///test class
+        }
+
         for (int i=0;i<nbrjoueur;i++)
         {
-             while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
+             while(joueur[i].pos.case_ligne_iso==0 && joueur[i].pos.case_colonne_iso==0 )
             {
                 placement_joueur_debut(buffer,buffer_invisible_couleur,nbrjoueur,cursor,buffer_enlevage);
             }
@@ -119,7 +126,7 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
         barre_de_vie(buffer, nbrjoueur, tourjoueur);
@@ -129,9 +136,8 @@ int main()
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp);
-        usesortboost(buffer,perso1[tourjoueur],temp);
-        textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur 1 lance une boule de feu !");
-        textprintf_ex(buffer,font,905,470,makecol(255,255,255),makecol(64,47,32),"Joueur 2 - 45 pv");
+        usesortboost(buffer,perso1[tourjoueur],temp,cdp);
+
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
@@ -139,12 +145,15 @@ int main()
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
+
+        bonus(buffer);
+
         if (compteur_respiration % 100==0)
         {
             respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
             compteur_respiration=0;
         }
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
         compteur_respiration++;

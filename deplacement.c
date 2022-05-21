@@ -5,7 +5,7 @@
 #include <time.h>
 
 int verif (int z,int y, int tour_joueur)                                ///sspg qui verifie qu'il n'y a pas d'obstacle sur le chemin de joueur pour qu'il puisse atteindre la case qu'il a choisi
-{                                                                       ///si le compteur renvoi une valeur diff�rente de zero, on ne pourra utiliser ce chemin
+{                                                                       ///si le compteur renvoi une valeur différente de zero, on ne pourra utiliser ce chemin
     int compteur=0;
     if (z<joueur[tour_joueur].pos.case_ligne_iso)
     {
@@ -87,7 +87,7 @@ int verif (int z,int y, int tour_joueur)                                ///sspg 
 }
 
 int verif2 (int z,int y, int tour_joueur)                               ///meme sspg mais pour le chemin numero 2
-{                                                                       ///si le compteur renvoi une valeur diff�rente de z�ro, on ne pourra pas atteindre la case
+{                                                                       ///si le compteur renvoi une valeur différente de zéro, on ne pourra pas atteindre la case
     int compteur=0;
     if (y<joueur[tour_joueur].pos.case_colonne_iso)
     {
@@ -168,7 +168,7 @@ int verif2 (int z,int y, int tour_joueur)                               ///meme 
     return compteur;
 }
 
-void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BITMAP* cursor,BITMAP* buffer_enlevage)          ///sspg pour placer les joueurs au d�but de partie
+void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BITMAP* cursor,BITMAP* buffer_enlevage)          ///sspg pour placer les joueurs au début de partie
 {                                                                                                      ///on affiche des cases sur lesquels ils peuvent se placer et en fonction du choix on change leur positionnement
     for(int i=0;i<LIGNE2;i++)
     {
@@ -219,14 +219,14 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
                 }
             }
             recuperation_couleur(buffer,buffer_enlevage);
-            masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            //masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,buffer_enlevage);
         }
     }
 }
 
-void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
+void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///sspg qui permet un effet de réspiration (le joueur est tjrs en mouvement)
 {
     BITMAP* image_joueur[20];
 
@@ -250,20 +250,39 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
     image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
     image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
     image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
+
+    for(int k=0; k<20; k++)
+    {
+        if (image_joueur[k]==NULL)
+        {
+            allegro_message("Pas l'image %d", k);
+            allegro_exit();
+            exit(EXIT_FAILURE);
+        }
+    }
+
+
+    for(int k=0; k<nbr_joueur; k++)
+    {
+        printf("%d", joueur[k].classe);
+    }
+
+
+
     int i=0;
     recuperation_couleur(buffer,temp);
     for (int k=0;k<nbr_joueur;k++)
     {
         while(i<=2)
         {
-            stretch_blit(image_joueur[0+joueur[k].classe*4], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
             i++;
         }
         while(i>0)
         {
-            stretch_blit(image_joueur[0+joueur[k].classe*4], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
             i--;
@@ -272,7 +291,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)
 
 }
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui d�place le joueur
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
 
@@ -311,24 +330,24 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     {
         if(s!=tour_joueur)
         {
-            masked_blit(image_joueur[0+joueur[s].classe*4], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[joueur[s].classe]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[joueur[s].classe]->h, image_joueur[joueur[s].classe]->w, image_joueur[joueur[s].classe]->h);
+            masked_blit(image_joueur[0+joueur[s].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+joueur[s].classe*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+joueur[s].classe*5]->h, image_joueur[0+joueur[s].classe*5]->w, image_joueur[0+joueur[s].classe*5]->h);
         }
     }
     recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
 
-    masked_blit(image_joueur[0+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[joueur[tour_joueur].classe]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[joueur[tour_joueur].classe]->h, image_joueur[joueur[tour_joueur].classe]->w, image_joueur[joueur[tour_joueur].classe]->h);
+    masked_blit(image_joueur[0+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[0+joueur[tour_joueur].classe*5]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[0+joueur[tour_joueur].classe*5]->h, image_joueur[0+joueur[tour_joueur].classe*5]->w, image_joueur[0+joueur[tour_joueur].classe*5]->h);
 
     for(int i=0;i<LIGNE2;i++)
     {
         for(int t=0; t<COLONNE2; t++)
         {
-            if (abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)<=joueur[tour_joueur].pm)  ///calcul pour savoir les cases qui �tant possible � atteindre par le joueur
+            if (abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)<=joueur[tour_joueur].pm)  ///calcul pour savoir les cases qui étant possible é atteindre par le joueur
             {                                                                                                               ///la boucle suivante permet de savoir sur quel case est la souris
                 if(getr(getpixel(buffer_couleur,mouse_x,mouse_y))==getr(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getb(getpixel(buffer_couleur,mouse_x,mouse_y))==getb(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)) && getg(getpixel(buffer_couleur,mouse_x,mouse_y))==getg(getpixel(buffer_couleur,matrice_terrain_iso[i][t].x,matrice_terrain_iso[i][t].y)))
                 {
                     int z=i,y=t,compteur=0,compteur2=0;
-                    compteur=verif(z,y,tour_joueur);                ///v�rification qu'il n'y a pas d'obstacle
-                    if (compteur==0)                                ///les boucles qui suivent permettent au joueur de savoir s'il peut se d�placer sur la case sur laquelle est la souris et de montrer le chemin
+                    compteur=verif(z,y,tour_joueur);                ///vérification qu'il n'y a pas d'obstacle
+                    if (compteur==0)                                ///les boucles qui suivent permettent au joueur de savoir s'il peut se déplacer sur la case sur laquelle est la souris et de montrer le chemin
                     {                                               /// si la case est de couleur vert d'eau, elle est accessible
                         if (z<joueur[tour_joueur].pos.case_ligne_iso)
                         {
@@ -363,8 +382,8 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                             }
                         }
                     }
-                    compteur2=verif2(z,y,tour_joueur);                      ///on v�rifie qu'il n'y a pas d'obstacles sur le chemin 2
-                    if (compteur2==0 && compteur!=0)                        ///si il y avait un obstacle sur le chemin 1 on utilise le chemin 2 (� condition qu'il n'y en ai pas sur celui-ci)
+                    compteur2=verif2(z,y,tour_joueur);                      ///on vérifie qu'il n'y a pas d'obstacles sur le chemin 2
+                    if (compteur2==0 && compteur!=0)                        ///si il y avait un obstacle sur le chemin 1 on utilise le chemin 2 (é condition qu'il n'y en ai pas sur celui-ci)
                     {
                         if (y<joueur[tour_joueur].pos.case_colonne_iso)
                         {
@@ -417,7 +436,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -426,7 +445,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                      else
                                     {
-                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -442,7 +461,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -451,7 +470,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -466,7 +485,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -475,7 +494,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -490,7 +509,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -499,7 +518,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -517,7 +536,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -526,7 +545,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -541,7 +560,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -550,7 +569,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -565,7 +584,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[1+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -575,7 +594,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
 
                                     else
                                     {
-                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
+                                        masked_blit(image_joueur[2+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w, image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -590,7 +609,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                 {
                                     if(pimp%2==0)
                                     {
-                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(image_joueur[3+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -598,7 +617,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                                     }
                                     else
                                     {
-                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*4], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
+                                        masked_blit(image_joueur[4+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[z2][y2].x-image_joueur[2]->w/2, matrice_terrain_iso[z2][y2].y-image_joueur[2]->h, image_joueur[2]->w,image_joueur[2]->h);
                                         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
                                         rest(500);
                                         enlevage_des_indications(buffer, buffer_enlevage_indication);
@@ -608,10 +627,10 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                             }
                         }
                         enlevage_des_indications(buffer, terrain);                                       ///effacage du buffer
-                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);               ///effacage du buffer de d�placement (pour ne pas que le joueur puisse ce d�placer n'importe o� par la suite
+                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);               ///effacage du buffer de déplacement (pour ne pas que le joueur puisse ce déplacer n'importe oé par la suite
 
                         joueur[tour_joueur].pm-=(abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)); ///on change les points de mouvement du joueur
-                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=1;        ///la case sur laquelle �tait le joueur devient accessible
+                        matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=1;        ///la case sur laquelle était le joueur devient accessible
                         joueur[tour_joueur].pos.case_ligne_iso=i;                                       ///on change le positionnement du joueur (en pixel et en case)
                         joueur[tour_joueur].pos.case_colonne_iso=t;
                         matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=0;            ///la nouvelle position du joueur n'est plus accessible

@@ -62,7 +62,7 @@ void init_struct_case(int nbre_joueurs)                                         
         }
     }                                                                                                                                               ///fin
 
-    for (int i=0;i<LIGNE2;i++)                                                                                                                 ///initialisation de la possibilite de passer à travers cette case
+    for (int i=0;i<LIGNE2;i++)                                                                                                                 ///initialisation de la possibilite de passer ï¿½ travers cette case
     {
         for (int j=0;j<COLONNE2;j++)
         {
@@ -212,7 +212,7 @@ void init_struct_case(int nbre_joueurs)                                         
     }                                                                                                                                       ///fin
 }
 
-void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)                   ///sspg qui à partir de deux coordonnées (x,y) crée un losange autour de celles-ci
+void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)                   ///sspg qui ï¿½ partir de deux coordonnï¿½es (x,y) crï¿½e un losange autour de celles-ci
 {
     int losange=0, j, j2;
     for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
@@ -235,8 +235,8 @@ void case_quadrillage(BITMAP* buffer,BITMAP* terrain,int coord_x,int coord_y)   
     }
 }
 
-void quadrillage(BITMAP* buffer,BITMAP* terrain)                                                ///sspg qui quadrille toute la map (on appelle le sspg précédent)
-{
+void quadrillage(BITMAP* buffer,BITMAP* terrain)                                                ///sspg qui quadrille toute la map (on appel le sspg prï¿½cï¿½dent)
+{                                                                                               ///extrï¿½mement utile lors de la conception (il est possible de quadriller ou non la map)
     for (int i=0;i<LIGNE;i++)
     {
         for(int j=0;j<COLONNE;j++)
@@ -246,7 +246,7 @@ void quadrillage(BITMAP* buffer,BITMAP* terrain)                                
     }
 }
 
-void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b)               ///sspg qui à partir de deux coordonnées (x,y) crée un losange remplit (la couleur du losange est passée en paramètre)
+void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b)               ///sspg qui ï¿½ partir de deux coordonnï¿½es (x,y) crï¿½e un losange remplit (la couleur du losange est passï¿½e en paramï¿½tre)
 {
     int losange=0;
     for(int i=coord_y;i<coord_y+matrice_terrain[0][0].hauteur/2;i++)
@@ -276,8 +276,8 @@ void case_couleur(BITMAP* buffer,int coord_x,int coord_y,float r,float v,float b
     }
 }
 
-void terrain_couleur(BITMAP* buffer)                                                            ///sspg qui créer un buffer (buffer_invisible_couleur) pour lequel chaque case est d'une couleur différente.
-{                                                                                               ///utile pour se déplacer (repérer sur quel case se trouve la souris)
+void terrain_couleur(BITMAP* buffer)                                                            ///sspg qui crï¿½er un buffer (buffer_invisible_couleur) pour lequel chaque case est d'une couleur diffï¿½rente.
+{                                                                                               ///utile pour se dï¿½placer (repï¿½rer sur quel case se trouve la souris)
     float r=40,v=40,b=40;
     for(int i=0;i<LIGNE;i++)
     {
@@ -291,17 +291,57 @@ void terrain_couleur(BITMAP* buffer)                                            
     }
 }
 
-void affichage_terrain(BITMAP* terrain, BITMAP* buffer)                                         ///sspg qui transmet au buffer la bitmap du terrain (nous aurions pu ne pas créer ce sspg)
+void affichage_terrain(BITMAP* terrain, BITMAP* buffer)                                         ///sspg qui transmet au buffer la bitmap du terrain (nous aurions pu ne pas crï¿½er ce sspg)
 {
     blit(terrain,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
 
-void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication)                   ///sspg qui transmet à un buffer l'image d'un autre buffer
-{                                                                                               ///on utilise ce sspg avec celui d'en dessous pour permettre d'effacer les traces d'une indication donnée au joueur
+void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication)                   ///sspg qui transmet ï¿½ un buffer l'image d'un autre buffer
+{                                                                                               ///on utilise ce sspg avec celui d'en dessous pour permettre d'effacer les traces d'une indication donnï¿½e au joueur
     blit(buffer,buffer_enlevage_indication,0,0,0,0,SCREEN_W,SCREEN_H);                          ///par exemple, avec ce sspg on efface les indications des cases sur lesquels les joueurs vont se placer au debut de partie
 }
 
 void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)                ///fait la meme chose que le sspg au-dessus
-{                                                                                               ///ce sspg n'était pas nécessaire (nous aurions pu utiliser celui du dessus en inversant les bitmaps en paramètre)
+{                                                                                               ///ce sspg n'ï¿½tait pas nï¿½cessaire (nous aurions pu utiliser celui du dessus en inversant les bitmaps en paramï¿½tre)
     blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+}
+
+void bonus (BITMAP* buffer)
+{
+    BITMAP* pnj_bitmap = load_bitmap("player/player1.bmp",NULL);
+    if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
+    {
+        pnj.pos.case_ligne_iso=rand()%(21);
+        pnj.pos.case_colonne_iso=rand()%(22);
+        while(matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].passage!=1)
+        {
+            pnj.pos.case_ligne_iso=rand()%(21);
+            pnj.pos.case_colonne_iso=rand()%(22);
+        }
+    }
+    if (joueur[tourjoueur].pos.case_ligne_iso == pnj.pos.case_ligne_iso && joueur[tourjoueur].pos.case_colonne_iso== pnj.pos.case_colonne_iso)
+    {
+        pnj.pos.case_ligne_iso=rand()%(21);
+        pnj.pos.case_colonne_iso=rand()%(22);
+        while(matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].passage!=1)
+        {
+            pnj.pos.case_ligne_iso=rand()%(21);
+            pnj.pos.case_colonne_iso=rand()%(22);
+        }
+        int choix_bonus=rand()%(3-1)+1;
+        if (choix_bonus==1)
+        {
+            joueur[tourjoueur].pv+=rand()%(30-15)+15;
+        }
+        if (choix_bonus==2)
+        {
+            joueur[tourjoueur].pa+=rand()%(8-1)+1;
+        }
+        if (choix_bonus==3)
+        {
+            joueur[tourjoueur].pm+=rand()%(4-1)+1;
+        }
+    }
+    masked_blit(pnj_bitmap, buffer, 0 ,0, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x-pnj_bitmap->w/2, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y-pnj_bitmap->h, pnj_bitmap->w, pnj_bitmap->h);
+    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 }
