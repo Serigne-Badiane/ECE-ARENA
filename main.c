@@ -139,6 +139,7 @@ int main()
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
+        bonus(buffer);
         if (compteur_respiration % 100==0)
         {
             respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);

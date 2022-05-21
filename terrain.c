@@ -305,3 +305,44 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
 {                                                                                               ///ce sspg n'était pas nécessaire (nous aurions pu utiliser celui du dessus en inversant les bitmaps en paramètre)
     blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
+
+void bonus (BITMAP* buffer)
+{
+    BITMAP* pnj_bitmap = load_bitmap("ronaldo.bmp",NULL);
+    if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
+    {
+        pnj.pos.case_ligne_iso=rand()%(21);
+        pnj.pos.case_colonne_iso=rand()%(22);
+        while(matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].passage!=1)
+        {
+            pnj.pos.case_ligne_iso=rand()%(21);
+            pnj.pos.case_colonne_iso=rand()%(22);
+        }
+    }
+    if (joueur[tourjoueur].pos.case_ligne_iso == pnj.pos.case_ligne_iso && joueur[tourjoueur].pos.case_colonne_iso== pnj.pos.case_colonne_iso)
+    {
+        printf("dff\n");
+        pnj.pos.case_ligne_iso=rand()%(21);
+        pnj.pos.case_colonne_iso=rand()%(22);
+        while(matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].passage!=1)
+        {
+            pnj.pos.case_ligne_iso=rand()%(21);
+            pnj.pos.case_colonne_iso=rand()%(22);
+        }
+        int choix_bonus=rand()%(3);
+        if (choix_bonus==1)
+        {
+            joueur[tourjoueur].pv+=rand()%(30-15)+15;
+        }
+        if (choix_bonus==2)
+        {
+            joueur[tourjoueur].pa+=rand()%(8-1)+1;
+        }
+        if (choix_bonus==3)
+        {
+            joueur[tourjoueur].pm+=rand()%(4-1)+1;
+        }
+    }
+    masked_blit (pnj_bitmap,buffer,0,0,matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x,matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y,pnj_bitmap->w,pnj_bitmap->h);
+    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+}
