@@ -8,7 +8,7 @@
 
 ///https://forums.commentcamarche.net/forum/affich-15461118-chronometre-en-c-et-precision
 
-typedef struct
+typedef struct  ///structure pour les cases en forme de losange
 {
     int x;
     int y;
@@ -18,8 +18,8 @@ typedef struct
     int placement_debut;
 }t_case;
 
-typedef struct
-{
+typedef struct  ///structure pour la création de case en forme de carré malgré la forme isométrique du terrain
+{               ///on utilise cette structure pour les déplacements car moins de calculs
     int x;
     int y;
     int passage;
@@ -27,7 +27,7 @@ typedef struct
 
 }t_case_iso;
 
-typedef struct
+typedef struct              ///structure pour la position des joueurs
 {
     int x;
     int y;
@@ -37,7 +37,7 @@ typedef struct
     int case_colonne_iso;
 }t_joueur;
 
-typedef struct{
+typedef struct{             ///structure complète du joueur
 
     t_joueur pos;
     int pa;
@@ -47,18 +47,18 @@ typedef struct{
 
 }str_perso;
 
-int tourjoueur;
+int tourjoueur;                 ///déclaration de tour joueur ici pour ne pas avoir à le mettre dans chaque appel de sspg
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 
-typedef struct{
+typedef struct{                 ///structure pour les animations de sort et la portée de ceci
     BITMAP* anim1;
     BITMAP* anim2;
     BITMAP* anim3;
     int porte;
 }animation;
 
-typedef struct{
+typedef struct{             ///structure pour les sorts de chaque classes
     BITMAP* sort1;
     BITMAP* sort2;
     BITMAP* sort3;
