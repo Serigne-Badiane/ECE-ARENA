@@ -9,7 +9,7 @@ void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
     for (int i =0 ; i < nbrjoueur; i ++ ){
         joueur[i].pa = 6;
         joueur[i].pm = 3;
-        joueur[i].pv = 20;
+        joueur[i].pv = 200;
     }
 }
 
@@ -36,6 +36,26 @@ void load_anim_coco (animation* perso){
 
 }
 
+void load_anim_lance (animation* perso){
+    perso->anim1 = load_bitmap("lance.bmp",NULL);
+    perso->anim2 = load_bitmap("lance.bmp",NULL);
+    perso->anim3 = load_bitmap("lance.bmp",NULL);
+    perso->porte  = 8;
+}
+void load_anim_tigr (animation* perso){
+    perso->anim1 = load_bitmap("tigre1.bmp",NULL);
+    perso->anim2 = load_bitmap("tigre3.bmp",NULL);
+    perso->anim3 = load_bitmap("tigre2.bmp",NULL);
+    perso->porte  = 5;
+
+}
+
+void load_tigre (sortperso* perso){
+    perso->sort1 = load_bitmap("morsure.bmp",NULL);
+    perso->sort2 = load_bitmap("rafale.bmp",NULL);
+    perso->sort3= load_bitmap("bond_felin.bmp",NULL);
+    perso->sort4 = load_bitmap("cac_air.bmp",NULL);
+}
 void load_anim_epee_iop (animation* perso){
     perso->anim1 = load_bitmap("eppe.bmp",NULL);
     perso->anim2 = load_bitmap("eppe.bmp",NULL);
@@ -111,13 +131,17 @@ void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur){
     }
     if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28){
 
-         rectfill(buffer,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 60,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         rectfill(buffer,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 70,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         textprintf_ex(buffer,font,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x -20,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 60,makecol(255,255,255),makecol(0,0,0),"%d",joueur[1].pv);
+         draw_sprite(buffer,petit_coeur,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x+10,matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 70);
          draw_sprite(screen, buffer, 0,0);
 
     }
     if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28){
 
-         rectfill(buffer,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 80,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         rectfill(buffer,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 70,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x + 40,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 40,makecol(0,0,0));
+         textprintf_ex(buffer,font,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x -20,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 60,makecol(255,255,255),makecol(0,0,0),"%d",joueur[1].pv);
+         draw_sprite(buffer,petit_coeur,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x+10,matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 70);
          draw_sprite(screen, buffer, 0,0);
 
     }

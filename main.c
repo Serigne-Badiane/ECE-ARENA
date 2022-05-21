@@ -95,6 +95,12 @@ int main()
             load_anim_coco(&perso1[i][0]);
             load_anim_epee_iop(&perso1[i][1]);
         }
+        if (joueur[i].classe == 3){
+            load_tigre(&sortjoueur[i]);
+            load_anim_tigr(&perso1[i][0]);
+            load_anim_lance(&perso1[i][1]);
+
+        }
 
     }
 
@@ -129,7 +135,7 @@ int main()
         int ancienne_ligne_joueur;
         int ancienne_colonne_joueur;
         debut=clock();
-        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+
     do
     {
         affichage_terrain(terrain,buffer);
@@ -147,6 +153,7 @@ int main()
 
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         draw_sprite(buffer, player[tourjoueur], 0,0);
+        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
         usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2);
 
