@@ -13,7 +13,7 @@ int menu()
     BITMAP* Logo;
     BITMAP* NewGame;
     BITMAP* Credits;
-    BITMAP* Regles;
+    //BITMAP* Regles;
     BITMAP* Menu2;
     BITMAP* Sorcier[2];
 
@@ -24,34 +24,6 @@ int menu()
     BITMAP* julien;
     BITMAP* paul;
     BITMAP* bordure;
-
-    BITMAP* sorcier_feu;
-                        BITMAP* archer_feu;
-                        BITMAP* chevalier;
-                        BITMAP* tigre;
-
-
-                        BITMAP* sorcier_feu1;
-                        BITMAP* archer_feu1;
-                        BITMAP* chevalier1;
-                        BITMAP* tigre1;
-                        BITMAP* noirr;
-
-
-
-
-                        sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
-                        archer_feu=load_bitmap("player/player6bis.bmp", NULL);
-                        chevalier=load_bitmap("player/player11bis.bmp", NULL);
-                        tigre=load_bitmap("player/player16bis.bmp", NULL);
-
-                        sorcier_feu1=load_bitmap("player/player1bis.bmp", NULL);
-                        archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
-                        chevalier1=load_bitmap("player/player12bis.bmp", NULL);
-                        tigre1=load_bitmap("player/player17bis.bmp", NULL);
-                        noirr=load_bitmap("noirr.bmp",NULL);
-
-                        bordure=load_bitmap("bordure.bmp",NULL);
 
 
 
@@ -88,7 +60,7 @@ int menu()
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)          ///1400, 750 /// ICI VICTOR
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1400,750
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -104,7 +76,7 @@ int menu()
 
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
-    Regles=load_bitmap("Regles.bmp", NULL);
+    //Regles=load_bitmap("Regles.bmp", NULL);
     cursor=load_bitmap("cursor.bmp",NULL);
 
     serigne=load_bitmap("serigne.bmp",NULL);
@@ -173,11 +145,11 @@ int menu()
 
         rect(page,500,300,850,400,makecol(255,0,0));
         rect(page,500,450,850,550,makecol(255,0,0));
-        rect(page,500,600,850,700,makecol(255,0,0));
+        //rect(page,500,600,850,700,makecol(255,0,0));
 
         masked_blit(Logo, page, 0, 0, 100, 100, Logo->w, Logo->h);
         masked_blit(NewGame, page, 0, 0, 548, 320, Logo->w, Logo->h);
-        masked_blit(Regles, page, 0, 0, 560, 616, Logo->w, Logo->h);
+        //masked_blit(Regles, page, 0, 0, 560, 616, Logo->w, Logo->h);
         masked_blit(Credits, page, 0, 0, 560, 468, Logo->w, Logo->h);
 
         /*masked_blit(Sorcier[imgcourante],page, 0, 0, 200, 468, Logo->w, Logo->h);*/
@@ -190,7 +162,7 @@ int menu()
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-        draw_sprite(page,Sorcier[imgcourante],200,468);
+        draw_sprite(page,Sorcier[imgcourante],603,590);
 
 
 
@@ -270,7 +242,7 @@ int menu()
 
 
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
-                    { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
+                    { /// PLAYER 1 ï¿½ 5 : Sorcier FEU     PLAYER 6 ï¿½ 10 : Archer FEU   PLAYER 11 ï¿½ 15 : Chevalier PLAYER 16 ï¿½ 20 : TIGRE
 
                         int nbre_joueur = 2;
 
@@ -287,17 +259,32 @@ int menu()
                         for(int j=0;j<nbre_joueur;j++)
                         {
 
-                            while(joueur[j].classe==6)
-                            {
+
+                            masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
+                            blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                            blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
 
-                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                            masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                            masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
 
-                                blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342){
+
+                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                            }
 
 
-                                blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1){
+
+                                textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+
+                                rest(1000);
 
 
 
@@ -435,7 +422,7 @@ int menu()
                     }
 
                     if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 3 donc Selection de 3 joueurs
-                    { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
+                    { /// PLAYER 1 ï¿½ 5 : Sorcier FEU     PLAYER 6 ï¿½ 10 : Archer FEU   PLAYER 11 ï¿½ 15 : Chevalier PLAYER 16 ï¿½ 20 : TIGRE
 
                         int nbre_joueur = 3;
 
@@ -495,13 +482,12 @@ int menu()
 
                                     }
 
+                                    return nbre_joueur;
 
 
                                 }
 
 
-                                masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                                masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
                                 {
@@ -514,10 +500,7 @@ int menu()
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
                                 {
 
-                                    while(mouse_b&1)                 ///blindage click gauche
-                                    {
-                                        rest(150);
-                                    }
+                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631){
 
                                     cpteur_nbre_joueurs++;
                                     //printf("%d\n", cpteur_nbre_joueurs);
@@ -596,7 +579,7 @@ int menu()
                     }
 
                     if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 4 donc Selection de 4 joueurs
-                    { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
+                    { /// PLAYER 1 ï¿½ 5 : Sorcier FEU     PLAYER 6 ï¿½ 10 : Archer FEU   PLAYER 11 ï¿½ 15 : Chevalier PLAYER 16 ï¿½ 20 : TIGRE
 
                         int nbre_joueur = 4;
 
@@ -609,7 +592,7 @@ int menu()
 
 
 
-                        /*BITMAP* sorcier_feu;
+                        BITMAP* sorcier_feu;
                         BITMAP* archer_feu;
                         BITMAP* chevalier;
                         BITMAP* tigre;
@@ -633,7 +616,7 @@ int menu()
                         archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
                         chevalier1=load_bitmap("player/player12bis.bmp", NULL);
                         tigre1=load_bitmap("player/player17bis.bmp", NULL);
-                        noirr=load_bitmap("noirr.bmp",NULL);*/
+                        noirr=load_bitmap("noirr.bmp",NULL);
 
                         bordure=load_bitmap("bordure.bmp",NULL);
 

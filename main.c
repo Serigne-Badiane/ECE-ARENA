@@ -17,7 +17,7 @@ void initialisation()
     }
     install_keyboard();
     install_mouse();
-    show_mouse(screen);
+    //show_mouse(screen);
 }
 
 
@@ -28,6 +28,7 @@ int main()
 
     int nbrjoueur;
     nbrjoueur = menu();
+    sauvegarde(nbrjoueur, tourjoueur);
 
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
     {
@@ -96,7 +97,7 @@ int main()
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
-        show_mouse(screen);
+        //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;
@@ -126,7 +127,7 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
-        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
         barre_de_vie(buffer, nbrjoueur, tourjoueur);
@@ -153,14 +154,12 @@ int main()
             respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
             compteur_respiration=0;
         }
-        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
         compteur_respiration++;
 
     }while(difference2<15 && difference<15);
-
-    sauvegarde(nbrjoueur, tourjoueur);
 
     clear_bitmap(buffer_deplacement);
     clear_bitmap(buffer_deplacement2);
