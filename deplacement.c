@@ -219,7 +219,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
                 }
             }
             recuperation_couleur(buffer,buffer_enlevage);
-            masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            //masked_blit(cursor, buffer , 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,buffer_enlevage);
         }
@@ -250,6 +250,25 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
     image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
     image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
     image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
+
+    for(int k=0; k<20; k++)
+    {
+        if (image_joueur[k]==NULL)
+        {
+            allegro_message("Pas l'image %d", k);
+            allegro_exit();
+            exit(EXIT_FAILURE);
+        }
+    }
+
+
+    for(int k=0; k<nbr_joueur; k++)
+    {
+        printf("%d", joueur[k].classe);
+    }
+
+
+
     int i=0;
     recuperation_couleur(buffer,temp);
     for (int k=0;k<nbr_joueur;k++)

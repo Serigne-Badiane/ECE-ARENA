@@ -29,7 +29,7 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
 
     for(int k=0; k<nbrjoueur; k++)
     {
-        blit(image_joueur[k], buffer, 0,0, 1000+k*30, 400, image_joueur[k]->w, image_joueur[k]->h);
+        blit(image_joueur[joueur[k].classe], buffer, 0,0, 1000+k*30, 400, image_joueur[joueur[k].classe]->w, image_joueur[joueur[k].classe]->h);
     }
 
     masked_blit(fleche, buffer, 0,0, 1000+tour_joueur*30, 430, fleche->w, fleche->h);

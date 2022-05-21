@@ -100,6 +100,12 @@ int main()
         {
             tourjoueur = 0;
         }
+
+        for(int k=0; k<nbrjoueur; k++)
+        {
+            printf("%d\n", joueur[k].classe);       ///test class
+        }
+
         for (int i=0;i<nbrjoueur;i++)
         {
              while(joueur[i].pos.case_ligne_iso==0 || joueur[i].pos.case_colonne_iso==0 )
@@ -119,7 +125,7 @@ int main()
     {
         affichage_terrain(terrain,buffer);
 
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
         tour(buffer, nbrjoueur, tourjoueur);
         barre_de_vie(buffer, nbrjoueur, tourjoueur);
@@ -144,7 +150,7 @@ int main()
             respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
             compteur_respiration=0;
         }
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+        //masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
         compteur_respiration++;

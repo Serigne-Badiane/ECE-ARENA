@@ -25,6 +25,34 @@ int menu()
     BITMAP* paul;
     BITMAP* bordure;
 
+    BITMAP* sorcier_feu;
+                        BITMAP* archer_feu;
+                        BITMAP* chevalier;
+                        BITMAP* tigre;
+
+
+                        BITMAP* sorcier_feu1;
+                        BITMAP* archer_feu1;
+                        BITMAP* chevalier1;
+                        BITMAP* tigre1;
+                        BITMAP* noirr;
+
+
+
+
+                        sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
+                        archer_feu=load_bitmap("player/player6bis.bmp", NULL);
+                        chevalier=load_bitmap("player/player11bis.bmp", NULL);
+                        tigre=load_bitmap("player/player16bis.bmp", NULL);
+
+                        sorcier_feu1=load_bitmap("player/player1bis.bmp", NULL);
+                        archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
+                        chevalier1=load_bitmap("player/player12bis.bmp", NULL);
+                        tigre1=load_bitmap("player/player17bis.bmp", NULL);
+                        noirr=load_bitmap("noirr.bmp",NULL);
+
+                        bordure=load_bitmap("bordure.bmp",NULL);
+
 
 
 
@@ -60,7 +88,7 @@ int menu()
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)          ///1400, 750
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)          ///1400, 750 /// ICI VICTOR
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -256,7 +284,7 @@ int menu()
 
 
 
-                        BITMAP* sorcier_feu;
+                        /*BITMAP* sorcier_feu;
                         BITMAP* archer_feu;
                         BITMAP* chevalier;
                         BITMAP* tigre;
@@ -282,7 +310,7 @@ int menu()
                         tigre1=load_bitmap("player/player17bis.bmp", NULL);
                         noirr=load_bitmap("noirr.bmp",NULL);
 
-                        bordure=load_bitmap("bordure.bmp",NULL);
+                        bordure=load_bitmap("bordure.bmp",NULL);*/
 
                         int cpteur_nbre_joueurs = 0;
 
@@ -316,8 +344,8 @@ int menu()
 
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
@@ -347,8 +375,8 @@ int menu()
                                 rest(200);
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -373,8 +401,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -400,8 +428,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -436,7 +464,7 @@ int menu()
 
 
 
-                        BITMAP* sorcier_feu;
+                        /*BITMAP* sorcier_feu;
                         BITMAP* archer_feu;
                         BITMAP* chevalier;
                         BITMAP* tigre;
@@ -462,7 +490,7 @@ int menu()
                         tigre1=load_bitmap("player/player17bis.bmp", NULL);
                         noirr=load_bitmap("noirr.bmp",NULL);
 
-                        bordure=load_bitmap("bordure.bmp",NULL);
+                        bordure=load_bitmap("bordure.bmp",NULL);*/
 
                         int cpteur_nbre_joueurs = 0;
 
@@ -496,8 +524,8 @@ int menu()
 
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
@@ -527,8 +555,8 @@ int menu()
                                 rest(200);
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -553,8 +581,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -580,8 +608,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -616,7 +644,7 @@ int menu()
 
 
 
-                        BITMAP* sorcier_feu;
+                        /*BITMAP* sorcier_feu;
                         BITMAP* archer_feu;
                         BITMAP* chevalier;
                         BITMAP* tigre;
@@ -640,7 +668,7 @@ int menu()
                         archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
                         chevalier1=load_bitmap("player/player12bis.bmp", NULL);
                         tigre1=load_bitmap("player/player17bis.bmp", NULL);
-                        noirr=load_bitmap("noirr.bmp",NULL);
+                        noirr=load_bitmap("noirr.bmp",NULL);*/
 
                         bordure=load_bitmap("bordure.bmp",NULL);
 
@@ -676,8 +704,8 @@ int menu()
 
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
@@ -707,8 +735,8 @@ int menu()
                                 rest(200);
 
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -733,8 +761,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
@@ -760,8 +788,8 @@ int menu()
 
                                 rest(200);
                                 cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
+                                //printf("%d\n", cpteur_nbre_joueurs);
+                                //printf("%d", nbre_joueur);
                                 joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
