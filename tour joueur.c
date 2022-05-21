@@ -55,10 +55,3 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
         //}
     //}
 }
-
-
-
-
-
-
-
