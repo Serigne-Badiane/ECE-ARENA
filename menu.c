@@ -25,10 +25,6 @@ int menu()
     BITMAP* paul;
     BITMAP* bordure;
 
-
-
-
-
     SAMPLE *son;
 
     char NomFichier[30];
@@ -52,10 +48,10 @@ int menu()
 
     }
 
-    if (!son) {
+    if (!son)
+    {
       allegro_message("Error avec le fichier .wav ");
-
-   }
+    }
 
 
     set_color_depth(desktop_color_depth());
@@ -88,7 +84,8 @@ int menu()
 
 
 
-    for (int i = 1; i < 3; i++){
+    for (int i = 1; i < 3; i++)
+    {
 
         sprintf(NomFichier,"player/player%dbis.bmp",i);
 
@@ -96,25 +93,18 @@ int menu()
 
 
 
-        if (!Sorcier[i]){
-
+        if (!Sorcier[i])
+        {
             allegro_message( "pas pu trouver %s",NomFichier);
-
             exit( EXIT_FAILURE );
-
         }
 
     }
-
-
-
 
     page=create_bitmap(SCREEN_W,SCREEN_H);
     //page2=create_bitmap(SCREEN_W,SCREEN_H);
     Menu2=create_bitmap(SCREEN_W,SCREEN_H);
     page3=create_bitmap(SCREEN_W,SCREEN_H);
-
-
 
     clear_bitmap(page);
     if (!decor)
@@ -130,13 +120,12 @@ int menu()
 
     while (!key[KEY_ESC])
     {
-
         masked_blit(cursor, page, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
         cptimage++;
-        if (cptimage>=tmpimage){ // Animation sorcier dans le menu
+        if (cptimage>=tmpimage)
+        { // Animation sorcier dans le menu
             cptimage=0;
-
             imgcourante++;
         }
 
@@ -249,6 +238,17 @@ int menu()
                         rest(200);
 
                         clear_bitmap(Menu2);
+                        BITMAP* sorcier_feu;
+                        BITMAP* archer_feu;
+                        BITMAP* chevalier;
+                        BITMAP* tigre;
+
+
+                        BITMAP* sorcier_feu1;
+                        BITMAP* archer_feu1;
+                        BITMAP* chevalier1;
+                        BITMAP* tigre1;
+                        BITMAP* noirr;
 
                         int cpteur_nbre_joueurs = 0;
                         for(int j=0;j<nbre_joueur;j++)
@@ -266,83 +266,55 @@ int menu()
                             while(joueur[j].classe==6)
                             {
 
-                            masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
-                            blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-
-
-                            blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+                                blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-
-                            masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
-                            masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
-                            {
-
-                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
-                                masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-
-                            }
+                                blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
-                            {
 
-                                textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+                                masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                                masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
 
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
-                                masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
-                                joueur[j].classe = 0;
-
-
-                                if(cpteur_nbre_joueurs == nbre_joueur)
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
                                 {
-                                    return nbre_joueur;
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
                                 }
 
 
-                                masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                                masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
+                                {
+                                    textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
+                                    joueur[j].classe = 0;
+
+
+                                    if(cpteur_nbre_joueurs == nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+
+
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
                                 {
-
-
-                            masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                            masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
-                            {
-
-                                blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
-                                masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,450,300,makecol(0,255,255),2,"Archer de Feu");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 1;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
                                 }
-
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
                                 {
@@ -362,32 +334,15 @@ int menu()
                                         return nbre_joueur;
                                     }
 
-
-                                masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                                masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
+                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                }
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
                                 {
-
                                     blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
                                     masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,750,300,makecol(100,0,255),2,"Chevalier noir");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
                                 }
-
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
                                 {
@@ -406,37 +361,37 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
+                                }
 
 
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
-                            {
-
-                                masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
-                                masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,1055,300,makecol(255,255,0),2,"Tigrou");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
                                 {
-                                    return nbre_joueur;
+                                    masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
+                                    masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                                }
+
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
+                                {
+                                    textprintf_ex(screen,font,1055,300,makecol(255,255,0),2,"Tigrou");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    joueur[j].classe = 3;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 3 donc Selection de 3 joueurs
+                   if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
                     { /// PLAYER 1 � 5 : Sorcier FEU     PLAYER 6 � 10 : Archer FEU   PLAYER 11 � 15 : Chevalier PLAYER 16 � 20 : TIGRE
 
                         int nbre_joueur = 3;
@@ -444,192 +399,6 @@ int menu()
                         rest(200);
 
                         clear_bitmap(Menu2);
-
-                        int cpteur_nbre_joueurs = 0;
-
-                        for(int j=0;j<nbre_joueur;j++)
-                        {
-                                joueur[j].classe=6;
-                        }
-
-                        for(int j=0;j<nbre_joueur;j++)
-                        {
-                            while(joueur[j].classe==6)
-                            {
-
-                                blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
-
-
-
-                                masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
-                                masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
-                            {
-                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
-                                masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
-                            {
-
-                                   while(mouse_b&1)                 ///blindage click gauche
-                                    {
-                                        rest(150);
-                                    }
-
-                                    cpteur_nbre_joueurs++;
-                                    //printf("%d\n", cpteur_nbre_joueurs);
-                                    //printf("%d", nbre_joueur);
-                                    joueur[j].classe = 0;
-
-                                    if(cpteur_nbre_joueurs == nbre_joueur)
-                                    {
-
-                                        return nbre_joueur;
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 0;
-
-                                if(cpteur_nbre_joueurs == nbre_joueur)
-                                {
-                                    return nbre_joueur;
-                                }
-                            }
-
-
-                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
-                                {
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
-                            {
-                                blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
-                                masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
-                            {
-
-                                }
-
-                                masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                                masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
-
-                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
-                                {
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
-                                }
-
-
-                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
-                                {
-
-                                    while(mouse_b&1)                 ///blindage click gauche
-                                    {
-                                        rest(150);
-                                    }
-                                    cpteur_nbre_joueurs++;
-                                    //printf("%d\n", cpteur_nbre_joueurs);
-                                    //printf("%d", nbre_joueur);
-                                    joueur[j].classe = 2;
-
-                                    if(cpteur_nbre_joueurs==nbre_joueur)
-                                    {
-                                        return nbre_joueur;
-                                    }
-                                }
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
-                            {
-                                blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
-                                masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,750,300,makecol(255,0,0),2,"Chevalier noir");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
-                                }
-
-
-                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
-                                {
-
-                                    while(mouse_b&1)                 ///blindage click gauche
-                                    {
-                                        rest(150);
-                                    }
-                                    cpteur_nbre_joueurs++;
-                                    //printf("%d\n", cpteur_nbre_joueurs);
-                                    //printf("%d", nbre_joueur);
-                                    joueur[j].classe = 3;
-
-                            masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
-                            masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
-
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235){
-
-                                blit(noirr,page3,0,0,1055,300,noirr->w,noirr->h);
-                                masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,1055,300,makecol(255,0,0),2,"Tigrou");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
-                                }
-                            }
-
-                        }
-                    }
-                }
-
-                    if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 4 donc Selection de 4 joueurs
-                    { /// PLAYER 1 � 5 : Sorcier FEU     PLAYER 6 � 10 : Archer FEU   PLAYER 11 � 15 : Chevalier PLAYER 16 � 20 : TIGRE
-
-                        int nbre_joueur = 4;
-
-                        rest(200);
-
-                        clear_bitmap(Menu2);
-                        /*show_mouse(screen);*/
-
-
-
-
-
                         BITMAP* sorcier_feu;
                         BITMAP* archer_feu;
                         BITMAP* chevalier;
@@ -642,167 +411,303 @@ int menu()
                         BITMAP* tigre1;
                         BITMAP* noirr;
 
-
-
-
-                        sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
-                        archer_feu=load_bitmap("player/player6bis.bmp", NULL);
-                        chevalier=load_bitmap("player/player11bis.bmp", NULL);
-                        tigre=load_bitmap("player/player16bis.bmp", NULL);
-
-                        sorcier_feu1=load_bitmap("player/player1bis.bmp", NULL);
-                        archer_feu1=load_bitmap("player/player7bis.bmp", NULL);
-                        chevalier1=load_bitmap("player/player12bis.bmp", NULL);
-                        tigre1=load_bitmap("player/player17bis.bmp", NULL);
-                        noirr=load_bitmap("noirr.bmp",NULL);
-
-                        bordure=load_bitmap("bordure.bmp",NULL);
-
                         int cpteur_nbre_joueurs = 0;
+                        for(int j=0;j<nbre_joueur;j++)
+                        {
+                                joueur[j].classe=6;
+                        }
 
                         for(int j=0;j<nbre_joueur;j++)
                         {
                                 joueur[j].classe=6;
                         }
+
                         for(int j=0;j<nbre_joueur;j++)
                         {
-
                             while(joueur[j].classe==6)
                             {
-                            masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
-                            blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
-
-                            blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+                                blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-
-                            masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
-                            masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
-                            {
-
-                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
-                                masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
-                            {
-
-
-                                textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
-                                rest(1000);
-
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 0;
+                                blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
 
-                                if(cpteur_nbre_joueurs == nbre_joueur)
+                                masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                                masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
                                 {
-                                    return nbre_joueur;
-                                }
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
 
-                            }
-
-
-                            masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
-                            masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
-                            {
-
-                                blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
-                                masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,450,300,makecol(255,0,0),2,"Archer de Feu");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 1;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
-                                {
-                                    return nbre_joueur;
                                 }
 
 
-
-                            }
-
-                            masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
-                            masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
-                            {
-
-                                blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
-                                masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,750,300,makecol(255,0,0),2,"Chevalier noir");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
                                 {
-                                    return nbre_joueur;
+                                    textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
+                                    joueur[j].classe = 0;
+
+
+                                    if(cpteur_nbre_joueurs == nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+
+
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                }
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
+                                {
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                }
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
+                                {
+
+                                    while(mouse_b&1)                 ///blindage click gauche
+                                    {
+                                        rest(150);
+                                    }
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("\n%d\n", cpteur_nbre_joueurs);
+                                    printf("\n%d\n", nbre_joueur);
+                                    joueur[j].classe = 1;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+
+                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
+                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                }
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
+                                {
+                                    blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
+                                    masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                }
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
+                                {
+
+                                     while(mouse_b&1)                 ///blindage click gauche
+                                    {
+                                        rest(150);
+                                    }
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    joueur[j].classe = 2;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
                                 }
 
 
-
-                            }
-
-                            masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
-                            masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
-
-
-                            if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
-                            {
-
-                                blit(noirr,page3,0,0,1055,300,noirr->w,noirr->h);
-                                masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
-                            }
-
-
-                            if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
-                            {
-
-                                textprintf_ex(screen,font,1055,300,makecol(255,0,0),2,"Tigrou");
-
-                                rest(1000);
-
-                                cpteur_nbre_joueurs++;
-                                printf("%d\n", cpteur_nbre_joueurs);
-                                printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
-
-                                if(cpteur_nbre_joueurs==nbre_joueur)
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
                                 {
-                                    return nbre_joueur;
+                                    masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
+                                    masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                                }
+
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
+                                {
+                                    textprintf_ex(screen,font,1055,300,makecol(255,255,0),2,"Tigrou");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    joueur[j].classe = 3;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
+                    { /// PLAYER 1 � 5 : Sorcier FEU     PLAYER 6 � 10 : Archer FEU   PLAYER 11 � 15 : Chevalier PLAYER 16 � 20 : TIGRE
+
+                        int nbre_joueur = 2;
+
+                        rest(200);
+
+                        clear_bitmap(Menu2);
+                        BITMAP* sorcier_feu;
+                        BITMAP* archer_feu;
+                        BITMAP* chevalier;
+                        BITMAP* tigre;
+
+
+                        BITMAP* sorcier_feu1;
+                        BITMAP* archer_feu1;
+                        BITMAP* chevalier1;
+                        BITMAP* tigre1;
+                        BITMAP* noirr;
+
+                        int cpteur_nbre_joueurs = 0;
+                        for(int j=0;j<nbre_joueur;j++)
+                        {
+                                joueur[j].classe=6;
+                        }
+
+                        for(int j=0;j<nbre_joueur;j++)
+                        {
+                                joueur[j].classe=6;
+                        }
+
+                        for(int j=0;j<nbre_joueur;j++)
+                        {
+                            while(joueur[j].classe==6)
+                            {
+
+                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
+                                blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+                                blit(decor,page3,0,0,0,0,SCREEN_W,SCREEN_H);
+
+
+
+                                masked_blit(bordure, page3, 0, 0, 88, 130, bordure->w, bordure->h);
+                                masked_blit(sorcier_feu1, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
+                                {
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                                }
+
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
+                                {
+                                    textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                    masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
+                                    joueur[j].classe = 0;
+
+
+                                    if(cpteur_nbre_joueurs == nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+
+
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                }
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
+                                {
+                                    masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
+                                    masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                }
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
+                                {
+
+                                    while(mouse_b&1)                 ///blindage click gauche
+                                    {
+                                        rest(150);
+                                    }
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("\n%d\n", cpteur_nbre_joueurs);
+                                    printf("\n%d\n", nbre_joueur);
+                                    joueur[j].classe = 1;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+
+                                    masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
+                                    masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                }
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
+                                {
+                                    blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
+                                    masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                }
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
+                                {
+
+                                     while(mouse_b&1)                 ///blindage click gauche
+                                    {
+                                        rest(150);
+                                    }
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    joueur[j].classe = 2;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
+                                }
+
+
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
+                                {
+                                    masked_blit(bordure, page3, 0, 0, 988, 130, bordure->w, bordure->h);
+                                    masked_blit(tigre1, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                                }
+
+
+                                if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
+                                {
+                                    textprintf_ex(screen,font,1055,300,makecol(255,255,0),2,"Tigrou");
+
+                                    rest(1000);
+
+                                    cpteur_nbre_joueurs++;
+                                    printf("%d\n", cpteur_nbre_joueurs);
+                                    printf("%d", nbre_joueur);
+                                    joueur[j].classe = 3;
+
+                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    {
+                                        return nbre_joueur;
+                                    }
                                 }
                             }
                         }
@@ -810,7 +715,6 @@ int menu()
                 }
             }
         }
-    }
 
         if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850)
         {
@@ -905,9 +809,9 @@ int menu()
 
         }*/
 
+    }
 }
 
-}}}}}}}}}}}}}}
 
 /*int menu_selec_perso(int choix_perso){
 
