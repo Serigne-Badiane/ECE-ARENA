@@ -25,7 +25,6 @@ fclose(pf);
 pf = NULL;
 }
 
-
 void retrait(int nbrjoueur, int tour_joueur)
 {
     int valeursLues[100];

@@ -45,6 +45,6 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     for(int i=0; i<nbrjoueur; i++)
     {
         degats=200-joueur[i].pv;
-        rectfill(buffer, 1000+55*i, 60, (1000+55*i+(joueur[i].pv/4))-(degats/4), 65, makecol(255,0,0));
+        rectfill(buffer, 1000+55*i, 60, (1000+55*i+(joueur[i].pv/4))-(degats/30), 65, makecol(255,0,0));
     }
 }
