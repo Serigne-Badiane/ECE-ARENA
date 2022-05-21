@@ -31,12 +31,14 @@ void load_anim_cra_feu_bdf (animation* perso){
     perso->anim1 = load_bitmap("bdf1.bmp",NULL);
     perso->anim2 = load_bitmap("bdf2.bmp",NULL);
     perso->anim3 = load_bitmap("bdf3.bmp",NULL);
+    perso->porte = 5;
 }
 
 void load_anim_cra_feu_fleche_feu (animation* perso){
     perso->anim1 = load_bitmap("fleche_feu.bmp",NULL);
     perso->anim2 = load_bitmap("fleche_feu.bmp",NULL);
     perso->anim3 = load_bitmap("fleche_feu.bmp",NULL);
+    perso->porte  = 8;
 }
 
 void load_mage_eau (sortperso* perso){
@@ -51,12 +53,14 @@ void load_anim_mage_eau_vague(animation* perso){
     perso->anim1 = load_bitmap("vague1.bmp",NULL);
     perso->anim2 = load_bitmap("vague2.bmp",NULL);
     perso->anim3 = load_bitmap("vague3.bmp",NULL);
+    perso->porte = 5;
 }
 
 void load_anim_mage_eau_flaque(animation* perso){
     perso->anim1 = load_bitmap("flaque1.bmp",NULL);
     perso->anim2 = load_bitmap("flaque2.bmp",NULL);
     perso->anim3 = load_bitmap("flaque3.bmp",NULL);
+    perso->porte  = 8;
 }
 
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [tourjoueur]){
@@ -114,224 +118,244 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui infliche 45pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
                 int leave;
+                for (int i = 2 ; i < perso[0].porte ; i++){
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    draw_sprite(screen, buffer, 0,0);
+                }
                 if (joueur[tourjoueur].pa <= 3){
 
                 }
                 else {
-                while (leave == 0 || mouse_b & 1){
-                    int k = 4;
-                    if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 0;
-                    }
-                    if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 1;
-                    }
-                    if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 2;
-                    }
-                    if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 3;
-                    }
-                    if (k != 4){
-                            int altern = 0;
-                            int i = 1;
-                            int am;
-                            int bm;
-                            int j =1 ;
-                            int a;
-                            int b;
-                            a = ((joueur[k].pos.x-joueur[tourjoueur].pos.x)/2);
-                            b = ((joueur[k].pos.y-joueur[tourjoueur].pos.y)/2);
-                            if (a >= 0){
-                                am  = 0;
+                        while (leave == 0){
+                            if (mouse_b & 2){
+                                leave =1;
                             }
-                            if (a < 0){
-                                am = 1;
+                            if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
+                            {
+                            int k = 4;
+                            if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28 ){
+                                k = 0;
                             }
-                            if (b>= 0){
-                                bm  = 0;
+                            if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 ){
+                                k = 1;
                             }
-                            if (b < 0){
-                                bm = 1;
+                            if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28 ){
+                                k = 2;
                             }
-                            if (am == 0 && bm == 0){
-                                while( i< a || j< b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 0;
-                                        }
-                                        if (i < a){
-                                          i++;
-                                        }
-                                        if (j< b){
-                                          j++;
-                                        }
-
-                                }
+                            if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28){
+                                k = 3;
                             }
-                            if (am == 1 && bm == 0){
-                                while( i > a || j< b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
+                            if (k != 4){
+                                    int altern = 0;
+                                    int i = 1;
+                                    int am;
+                                    int bm;
+                                    int j =1 ;
+                                    int a;
+                                    int b;
+                                    a = ((joueur[k].pos.x-joueur[tourjoueur].pos.x)/2);
+                                    b = ((joueur[k].pos.y-joueur[tourjoueur].pos.y)/2);
+                                    if (a >= 0){
+                                        am  = 0;
+                                    }
+                                    if (a < 0){
+                                        am = 1;
+                                    }
+                                    if (b>= 0){
+                                        bm  = 0;
+                                    }
+                                    if (b < 0){
+                                        bm = 1;
+                                    }
+                                    if (am == 0 && bm == 0){
+                                        while( i< a || j< b)
                                         {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
+                                                if (altern == 0)
+                                                   {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                                                    //draw_sprite(screen, buffer, 0,0);
 
-                                            rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            */
+                                                    rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 1;
+                                                   }
+                                                if (altern == 1)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
+                                                    //draw_sprite(screen, buffer, 0,0);
 
-                                            rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 0;
-                                        }
-                                        if (i > a){
-                                          i--;
-                                        }
-                                        if (j< b){
-                                          j++;
-                                        }
-                                }
+                                                    rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 2;
+                                                }
+                                                if (altern == 2)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
+                                                    //draw_sprite(screen, buffer, 0,0);
 
-                            }
-                            if (am == 0 && bm == 1){
-                                while( i< a || j> b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                           /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                           /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 0;
-                                        }
-                                        if (i < a){
-                                          i++;
-                                        }
-                                        if (j> b){
-                                          j--;
-                                        }
-                                }
-                            }
-                            if (am == 1 && bm == 1){
-                                while( i> a || j> b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 0;
-                                        }
-                                        if (i > a){
-                                          i--;
-                                        }
-                                        if (j> b){
-                                          j--;
-                                        }
+                                                    rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 0;
+                                                }
+                                                if (i < a){
+                                                  i++;
+                                                }
+                                                if (j< b){
+                                                  j++;
+                                                }
 
                                         }
                                     }
-                            joueur[k].pv -= (rand()%(40-20+1))+20;
-                            joueur[tourjoueur].pa -= 4;
-                            leave = 1;
+                                    if (am == 1 && bm == 0){
+                                        while( i > a || j< b)
+                                        {
+                                                if (altern == 0)
+                                                   {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 1;
+                                                   }
+                                                if (altern == 1)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 2;
+                                                }
+                                                if (altern == 2)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                    */
+
+                                                    rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 0;
+                                                }
+                                                if (i > a){
+                                                  i--;
+                                                }
+                                                if (j< b){
+                                                  j++;
+                                                }
+                                        }
+
+                                    }
+                                    if (am == 0 && bm == 1){
+                                        while( i< a || j> b)
+                                        {
+                                                if (altern == 0)
+                                                   {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                   /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 1;
+                                                   }
+                                                if (altern == 1)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                    draw_sprite(screen, buffer, 0,0);
+                                                    altern = 2;
+                                                }
+                                                if (altern == 2)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                   /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                    altern = 0;
+                                                }
+                                                if (i < a){
+                                                  i++;
+                                                }
+                                                if (j> b){
+                                                  j--;
+                                                }
+                                        }
+                                    }
+                                    if (am == 1 && bm == 1){
+                                        while( i> a || j> b)
+                                        {
+                                                if (altern == 0)
+                                                   {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                    altern = 1;
+                                                   }
+                                                if (altern == 1)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                    altern = 2;
+                                                }
+                                                if (altern == 2)
+                                                {
+                                                    blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                    /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                    draw_sprite(screen, buffer, 0,0);*/
+
+                                                    rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                    draw_sprite(screen, buffer, 0,0);
+
+                                                    altern = 0;
+                                                }
+                                                if (i > a){
+                                                  i--;
+                                                }
+                                                if (j> b){
+                                                  j--;
+                                                }
+
+                                                }
+                                            }
+                                             joueur[k].pv -= (rand()%(40-20+1))+20;
+                                            joueur[tourjoueur].pa -= 4;
+                                            leave = 1;
+                                        }
+
+
+                              }
+                            } // while
                         }
-                }
-            }
-        }
+                    }
+
 
 
     }
@@ -340,222 +364,235 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une fleche enflamee qui inflige 30pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
                 int leave;
+                for (int i = 2 ; i < perso[1].porte ; i++){
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    draw_sprite(screen, buffer, 0,0);
+                }
                 if (joueur[tourjoueur].pa <= 2){
 
                 }
                 else{
-                while (leave == 0 || mouse_b & 1){
+                while (leave == 0){
                     int k = 4;
-                    if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 0;
+                    if (mouse_b & 2){
+                        leave =1 ;
                     }
-                    if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 1;
-                    }
-                    if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 2;
-                    }
-                    if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28 && mouse_b & 1){
-                        k = 3;
-                    }
-                    if (k != 4){
-                            int altern = 0;
-                            int i = 1;
-                            int am;
-                            int bm;
-                            int j =1 ;
-                            int a;
-                            int b;
-                            a = ((joueur[k].pos.x-joueur[tourjoueur].pos.x)/2);
-                            b = ((joueur[k].pos.y-joueur[tourjoueur].pos.y)/2);
-                            if (a >= 0){
-                                am  = 0;
-                            }
-                            if (a < 0){
-                                am = 1;
-                            }
-                            if (b>= 0){
-                                bm  = 0;
-                            }
-                            if (b < 0){
-                                bm = 1;
-                            }
-                            if (am == 0 && bm == 0){
-                                while( i< a || j< b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
-                                            //draw_sprite(screen, buffer, 0,0);
-
-                                            rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 0;
-                                        }
-                                        if (i < a){
-                                          i++;
-                                        }
-                                        if (j< b){
-                                          j++;
-                                        }
-
-                                }
-                            }
-                            if (am == 1 && bm == 0){
-                                while( i > a || j< b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            */
-
-                                            rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 0;
-                                        }
-                                        if (i > a){
-                                          i--;
-                                        }
-                                        if (j< b){
-                                          j++;
-                                        }
-                                }
-
-                            }
-                            if (am == 0 && bm == 1){
-                                while( i< a || j> b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                           /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                           /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 0;
-                                        }
-                                        if (i < a){
-                                          i++;
-                                        }
-                                        if (j> b){
-                                          j--;
-                                        }
-                                }
-                            }
-                            if (am == 1 && bm == 1){
-                                while( i> a || j> b)
-                                {
-                                        if (altern == 0)
-                                           {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 1;
-                                           }
-                                        if (altern == 1)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 2;
-                                        }
-                                        if (altern == 2)
-                                        {
-                                            blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                            /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                            draw_sprite(screen, buffer, 0,0);*/
-
-                                            rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
-                                            draw_sprite(screen, buffer, 0,0);
-
-                                            altern = 0;
-                                        }
-                                        if (i > a){
-                                          i--;
-                                        }
-                                        if (j> b){
-                                          j--;
-                                        }
-
-                                        }
-                                    }
-                            leave = 1;
-                            joueur[k].pv -= (rand()%(30-10+1))+10;
-                            joueur[tourjoueur].pa -= 3;
+                    if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
+                    {
+                        if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28){
+                            k = 0;
                         }
-                }
+                        if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 ){
+                            k = 1;
+                        }
+                        if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28){
+                            k = 2;
+                        }
+                        if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28){
+                            k = 3;
+                        }
+                        if (k != 4){
+                                int altern = 0;
+                                int i = 1;
+                                int am;
+                                int bm;
+                                int j =1 ;
+                                int a;
+                                int b;
+                                a = ((joueur[k].pos.x-joueur[tourjoueur].pos.x)/2);
+                                b = ((joueur[k].pos.y-joueur[tourjoueur].pos.y)/2);
+                                if (a >= 0){
+                                    am  = 0;
+                                }
+                                if (a < 0){
+                                    am = 1;
+                                }
+                                if (b>= 0){
+                                    bm  = 0;
+                                }
+                                if (b < 0){
+                                    bm = 1;
+                                }
+                                if (am == 0 && bm == 0){
+                                    while( i< a || j< b)
+                                    {
+                                            if (altern == 0)
+                                               {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
+                                                //draw_sprite(screen, buffer, 0,0);
+
+                                                rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 1;
+                                               }
+                                            if (altern == 1)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
+                                                //draw_sprite(screen, buffer, 0,0);
+
+                                                rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 2;
+                                            }
+                                            if (altern == 2)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
+                                                //draw_sprite(screen, buffer, 0,0);
+
+                                                rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 0;
+                                            }
+                                            if (i < a){
+                                              i++;
+                                            }
+                                            if (j< b){
+                                              j++;
+                                            }
+
+                                    }
+                                }
+                                if (am == 1 && bm == 0){
+                                    while( i > a || j< b)
+                                    {
+                                            if (altern == 0)
+                                               {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 1;
+                                               }
+                                            if (altern == 1)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 2;
+                                            }
+                                            if (altern == 2)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                */
+
+                                                rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 0;
+                                            }
+                                            if (i > a){
+                                              i--;
+                                            }
+                                            if (j< b){
+                                              j++;
+                                            }
+                                    }
+
+                                }
+                                if (am == 0 && bm == 1){
+                                    while( i< a || j> b)
+                                    {
+                                            if (altern == 0)
+                                               {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                               /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 1;
+                                               }
+                                            if (altern == 1)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                draw_sprite(screen, buffer, 0,0);
+                                                altern = 2;
+                                            }
+                                            if (altern == 2)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                               /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
+                                                draw_sprite(screen, buffer, 0,0);
+
+                                                altern = 0;
+                                            }
+                                            if (i < a){
+                                              i++;
+                                            }
+                                            if (j> b){
+                                              j--;
+                                            }
+                                    }
+                                }
+                                if (am == 1 && bm == 1){
+                                    while( i> a || j> b)
+                                    {
+                                            if (altern == 0)
+                                               {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                draw_sprite(screen, buffer, 0,0);
+
+                                                altern = 1;
+                                               }
+                                            if (altern == 1)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                draw_sprite(screen, buffer, 0,0);
+
+                                                altern = 2;
+                                            }
+                                            if (altern == 2)
+                                            {
+                                                blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                                                /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
+                                                draw_sprite(screen, buffer, 0,0);*/
+
+                                                rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
+                                                draw_sprite(screen, buffer, 0,0);
+
+                                                altern = 0;
+                                            }
+                                            if (i > a){
+                                              i--;
+                                            }
+                                            if (j> b){
+                                              j--;
+                                            }
+
+                                            }
+                                        }
+                                leave = 1;
+                                joueur[k].pv -= (rand()%(30-10+1))+10;
+                                joueur[tourjoueur].pa -= 3;
+                            }
+                    }
+                    }
             }
         }
     }

@@ -55,6 +55,7 @@ typedef struct{
     BITMAP* anim1;
     BITMAP* anim2;
     BITMAP* anim3;
+    int porte;
 }animation;
 
 typedef struct{
