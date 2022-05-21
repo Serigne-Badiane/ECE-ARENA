@@ -361,7 +361,7 @@ int menu()
                                     {
                                         return nbre_joueur;
                                     }
-                            
+
 
                                 masked_blit(bordure, page3, 0, 0, 688, 130, bordure->w, bordure->h);
                                 masked_blit(chevalier1, page3, 0, 0, 750, 300, Logo->w, Logo->h);
@@ -907,7 +907,7 @@ int menu()
 
 }
 
-}
+}}}}}}}}}}}}}}
 
 /*int menu_selec_perso(int choix_perso){
 
