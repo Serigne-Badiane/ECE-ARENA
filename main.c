@@ -17,7 +17,7 @@ void initialisation()
     }
     install_keyboard();
     install_mouse();
-    show_mouse(screen);
+    //show_mouse(screen);
 }
 
 
@@ -95,7 +95,7 @@ int main()
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
-        show_mouse(screen);
+        //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;

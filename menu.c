@@ -13,7 +13,7 @@ int menu()
     BITMAP* Logo;
     BITMAP* NewGame;
     BITMAP* Credits;
-    BITMAP* Regles;
+    //BITMAP* Regles;
     BITMAP* Menu2;
     BITMAP* Sorcier[2];
 
@@ -76,7 +76,7 @@ int menu()
 
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
-    Regles=load_bitmap("Regles.bmp", NULL);
+    //Regles=load_bitmap("Regles.bmp", NULL);
     cursor=load_bitmap("cursor.bmp",NULL);
 
     serigne=load_bitmap("serigne.bmp",NULL);
@@ -145,11 +145,11 @@ int menu()
 
         rect(page,500,300,850,400,makecol(255,0,0));
         rect(page,500,450,850,550,makecol(255,0,0));
-        rect(page,500,600,850,700,makecol(255,0,0));
+        //rect(page,500,600,850,700,makecol(255,0,0));
 
         masked_blit(Logo, page, 0, 0, 100, 100, Logo->w, Logo->h);
         masked_blit(NewGame, page, 0, 0, 548, 320, Logo->w, Logo->h);
-        masked_blit(Regles, page, 0, 0, 560, 616, Logo->w, Logo->h);
+        //masked_blit(Regles, page, 0, 0, 560, 616, Logo->w, Logo->h);
         masked_blit(Credits, page, 0, 0, 560, 468, Logo->w, Logo->h);
 
         /*masked_blit(Sorcier[imgcourante],page, 0, 0, 200, 468, Logo->w, Logo->h);*/
@@ -162,7 +162,7 @@ int menu()
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
 
 
-        draw_sprite(page,Sorcier[imgcourante],200,468);
+        draw_sprite(page,Sorcier[imgcourante],603,590);
 
 
 
@@ -307,18 +307,24 @@ int menu()
 
                                 blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
                                 masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
                             }
 
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+
+                                rest(1000);
 
 
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
+                                blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
+                                masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
                                 joueur[j].classe = 0;
+
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
 
@@ -344,7 +350,9 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,450,300,makecol(0,255,255),2,"Archer de Feu");
+
+                                rest(1000);
 
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
@@ -371,7 +379,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,750,300,makecol(100,0,255),2,"Chevalier noir");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -398,7 +409,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,1055,300,makecol(255,255,0),2,"Tigrou");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -492,7 +506,9 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,150,300,makecol(0,255,0),2,"Sorcier de Feu");
+
+                                rest(1000);
 
 
                                 cpteur_nbre_joueurs++;
@@ -524,7 +540,9 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,450,300,makecol(0,0,255),2,"Archer de Feu");
+
+                                rest(1000);
 
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
@@ -551,7 +569,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,750,300,makecol(255,0,0),2,"Chevalier noir");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -578,7 +599,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,1055,300,makecol(255,0,0),2,"Tigrou");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -672,13 +696,17 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1){
 
-                                rest(200);
+
+                                textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
+                                rest(1000);
 
 
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
                                 joueur[j].classe = 0;
+
+
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
 
@@ -704,7 +732,9 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,450,300,makecol(255,0,0),2,"Archer de Feu");
+
+                                rest(1000);
 
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
@@ -731,7 +761,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,750,300,makecol(255,0,0),2,"Chevalier noir");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -758,7 +791,10 @@ int menu()
 
                             if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1){
 
-                                rest(200);
+                                textprintf_ex(screen,font,1055,300,makecol(255,0,0),2,"Tigrou");
+
+                                rest(1000);
+
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
@@ -777,9 +813,11 @@ int menu()
 
 
                         //}
+
                         }
 
                     }}
+
 
                     rest(1);
                 }
