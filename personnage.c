@@ -110,7 +110,7 @@ void affichage_pv (BITMAP* buffer,BITMAP* petit_coeur){
 
 }
 
-void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
+void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cursor,BITMAP* temp2){
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290){
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
 
@@ -127,12 +127,16 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
                     draw_sprite(screen, buffer, 0,0);
+                    blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
                 }
                 if (joueur[tourjoueur].pa <= 3){
 
                 }
                 else {
                         while (leave == 0){
+                            blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                            masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                            draw_sprite(screen, buffer, 0,0);
                             if (mouse_b & 2){
                                 leave =1;
                             }
@@ -372,12 +376,16 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
                     draw_sprite(screen, buffer, 0,0);
+                    blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
                 }
                 if (joueur[tourjoueur].pa <= 2){
 
                 }
                 else{
                 while (leave == 0){
+                    blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                    masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                    draw_sprite(screen, buffer, 0,0);
                     int k = 4;
                     if (mouse_b & 2){
                         leave =1 ;
@@ -601,7 +609,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp){
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
@@ -611,6 +619,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
     }
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige 20 pt de degat");
+        blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530 && mouse_b & 1){
 
                 case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+1][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+1][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
@@ -618,13 +627,18 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                 case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+1].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+1].y,0,0,255);
                 case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-1].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-1].y,0,0,255);
                 draw_sprite(screen, buffer, 0,0);
+                blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
 
                 if (joueur[tourjoueur].pa <= 1){
 
                 }
                 else{
+
                 int leave = 0;
                 while (leave == 0){
+                    blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                    masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                    draw_sprite(screen, buffer, 0,0);
                     int k = 4;
                     if (mouse_b & 2){
                         leave =1 ;

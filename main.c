@@ -52,7 +52,8 @@ int main()
     BITMAP* buffer_enlevage = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* temp = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* temp1 = create_bitmap(SCREEN_W, SCREEN_H);
+    BITMAP* temp2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* coeurpv= load_bitmap("coeurpv.bmp",NULL);
     BITMAP* player [nbrjoueur];
@@ -138,8 +139,8 @@ int main()
 
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         draw_sprite(buffer, player[tourjoueur], 0,0);
-        usesort(buffer,perso1[tourjoueur],temp);
-        usesortboost(buffer,perso1[tourjoueur],temp,cdp);
+        usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
+        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2);
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
