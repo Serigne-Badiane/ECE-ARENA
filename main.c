@@ -105,11 +105,6 @@ int main()
             tourjoueur = 0;
         }
 
-        for(int k=0; k<nbrjoueur; k++)
-        {
-            printf("%d\n", joueur[k].classe);       ///test class
-        }
-
         for (int i=0;i<nbrjoueur;i++)
         {
              while(joueur[i].pos.case_ligne_iso==0 && joueur[i].pos.case_colonne_iso==0 )
