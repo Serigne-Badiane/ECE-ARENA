@@ -40,13 +40,7 @@ int menu()
     install_keyboard();
     install_mouse();*/
 
-    set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)          ///1400, 750
-    {
-        allegro_message("prb gfx mode");
-        allegro_exit();
-        exit(EXIT_FAILURE);
-    }
+
 
 
     son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav");
@@ -64,14 +58,14 @@ int menu()
    }
 
 
-    /*set_color_depth(desktop_color_depth());
+    set_color_depth(desktop_color_depth());
 
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
         exit(EXIT_FAILURE);
-    }*/
+    }
 
     play_sample(son, 255, 128, 1000, 1);
 
@@ -324,7 +318,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 1;
+                                joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
 
@@ -355,7 +349,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
+                                joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -381,7 +375,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
+                                joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -408,7 +402,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 4;
+                                joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -504,7 +498,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 1;
+                                joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
 
@@ -535,7 +529,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
+                                joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -561,7 +555,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
+                                joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -588,7 +582,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 4;
+                                joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -684,7 +678,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 1;
+                                joueur[j].classe = 0;
 
                                 if(cpteur_nbre_joueurs == nbre_joueur){
 
@@ -715,7 +709,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 2;
+                                joueur[j].classe = 1;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -741,7 +735,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 3;
+                                joueur[j].classe = 2;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
@@ -768,7 +762,7 @@ int menu()
                                 cpteur_nbre_joueurs++;
                                 printf("%d\n", cpteur_nbre_joueurs);
                                 printf("%d", nbre_joueur);
-                                joueur[j].classe = 4;
+                                joueur[j].classe = 3;
 
                                 if(cpteur_nbre_joueurs==nbre_joueur){
                                     return nbre_joueur;
