@@ -99,7 +99,7 @@ int main()
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
     {
-        show_mouse(screen);
+        //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
         {
             tourjoueur = 0;
@@ -143,7 +143,7 @@ int main()
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
-        textprintf_ex(buffer,font,905,480,makecol(255,255,255),makecol(64,47,32),"%lf", difference);
+        textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
         //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);

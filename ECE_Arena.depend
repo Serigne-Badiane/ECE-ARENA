@@ -127,14 +127,14 @@
 
 1653146701 c:\users\jdouv\onedrive\documents\github\ece-arena\bib.h
 
-1653143665 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
+1653149343 source:c:\users\paul\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"bib.h"
 	<time.h>
 
-1653140355 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
+1653144016 c:\users\paul\onedrive\documents\github\ece-arena\bib.h
 
 1653143665 source:c:\users\paul\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
@@ -150,7 +150,7 @@
 	"bib.h"
 	<time.h>
 
-1653143526 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
+1653147167 source:c:\users\paul\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -306,7 +306,7 @@
 	"bib.h"
 	<time.h>
 
-1653138148 source:c:\users\paul\onedrive\documents\github\ece-arena\tour joueur.c
+1653149370 source:c:\users\paul\onedrive\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
