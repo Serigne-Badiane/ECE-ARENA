@@ -179,15 +179,16 @@ int main()
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
 
-    if(nb_mort == nbrjoueur-1){
-        direct = menudefin();
-    }
+
+
+
 
 
 
     //retrait(nbrjoueur, tourjoueur);
 
     }
+    direct = menudefin();
     return 0;
 
 }END_OF_MAIN();
