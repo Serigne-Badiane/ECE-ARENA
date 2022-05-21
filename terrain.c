@@ -347,7 +347,7 @@ void bonus (BITMAP* buffer, int pos_x,int pos_y)
         int ligne_pnj,colonne_pnj;
         ligne_pnj=rand()%(4+3)-3;
         colonne_pnj=rand()%(3+3)-3;
-        while(abs(ligne_pnj+colonne_pnj)>3 || pnj.pos.case_ligne_iso+ligne_pnj>20 ||pnj.pos.case_colonne_iso+colonne_pnj>21 || matrice_terrain_iso[pnj.pos.case_ligne_iso+ligne_pnj][pnj.pos.case_colonne_iso+colonne_pnj].passage!=1)
+        while(abs(ligne_pnj)+abs(colonne_pnj)>3 || pnj.pos.case_ligne_iso+ligne_pnj>20 ||pnj.pos.case_colonne_iso+colonne_pnj>21 || pnj.pos.case_ligne_iso+ligne_pnj<0 ||pnj.pos.case_colonne_iso+colonne_pnj<0 || matrice_terrain_iso[pnj.pos.case_ligne_iso+ligne_pnj][pnj.pos.case_colonne_iso+colonne_pnj].passage!=1)
         {
             ligne_pnj=rand()%(4+3)-3;
             colonne_pnj=rand()%(4+3)-3;

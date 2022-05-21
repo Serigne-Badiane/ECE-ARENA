@@ -132,6 +132,7 @@ int main()
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
     do
     {
+        printf("%d\n", rand()%(4+3)-3);
         affichage_terrain(terrain,buffer);
 
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
