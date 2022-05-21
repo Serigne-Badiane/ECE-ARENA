@@ -92,6 +92,11 @@ int main()
             load_anim_cra_feu_bdf(&perso1[i][0]);
             load_anim_cra_feu_fleche_feu(&perso1[i][1]);
         }
+        if (joueur[i].classe == 2){
+            load_guerrier(&sortjoueur[i]);
+            load_anim_coco(&perso1[i][0]);
+            load_anim_epee_iop(&perso1[i][1]);
+        }
 
     }
 

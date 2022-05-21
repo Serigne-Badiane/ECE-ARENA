@@ -16,17 +16,33 @@ void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
 void load_cra_feu (sortperso* perso){
     perso->sort1 = load_bitmap("bdf.bmp",NULL);
     perso->sort2 = load_bitmap("tir_explosif.bmp",NULL);
-    perso->sort3= load_bitmap("feu_oku.bmp",NULL);
+    perso->sort3=  load_bitmap("feu_oku.bmp",NULL);
     perso->sort4 = load_bitmap("cac_feu.bmp",NULL);
 
 }
 
-/*void load_cra_feu_anim(sortperso* perso){
-    perso->animsort1->anim1 = load_bitmap("bdf1.bmp",NULL);
-    perso->animsort1->anim2 = load_bitmap("bdf2.bmp",NULL);
-    perso->animsort1->anim3 = load_bitmap("bdf3.bmp",NULL);
+void load_guerrier (sortperso* perso){
+    perso->sort1 = load_bitmap("coco.bmp",NULL);
+    perso->sort2 = load_bitmap("epee_iop.bmp",NULL);
+    perso->sort3 = load_bitmap("boost_terre.bmp",NULL);
+    perso->sort4 = load_bitmap("cac_terre.bmp",NULL);
 
-}*/
+}
+void load_anim_coco (animation* perso){
+    perso->anim1 = load_bitmap("epee1.bmp",NULL);
+    perso->anim2 = load_bitmap("epee2.bmp",NULL);
+    perso->anim3 = load_bitmap("epee3.bmp",NULL);
+    perso->porte  = 5;
+
+}
+
+void load_anim_epee_iop (animation* perso){
+    perso->anim1 = load_bitmap("eppe.bmp",NULL);
+    perso->anim2 = load_bitmap("eppe.bmp",NULL);
+    perso->anim3 = load_bitmap("eppe.bmp",NULL);
+    perso->porte  = 8;
+}
+
 void load_anim_cra_feu_bdf (animation* perso){
     perso->anim1 = load_bitmap("bdf1.bmp",NULL);
     perso->anim2 = load_bitmap("bdf2.bmp",NULL);
@@ -64,7 +80,7 @@ void load_anim_mage_eau_flaque(animation* perso){
 }
 
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [tourjoueur]){
-        rectfill(buffer,0,650,1272,713,makecol(130,98,85));
+        //rectfill(buffer,0,650,1272,713,makecol(130,98,85));
         blit(perso.sort1, buffer ,0,0,220,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort2, buffer ,0,0,300,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort3, buffer ,0,0,380,650,perso.sort1->h,perso.sort1->w);
@@ -644,7 +660,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                             if (joueur[tourjoueur].classe == 2){
                                 joueur[tourjoueur].pv += 20;
                             }
-                            if (joueur[tourjoueur].classe == 2){
+                            if (joueur[tourjoueur].classe == 3){
                                 joueur[tourjoueur].pm += 2;
                             }
                             joueur[tourjoueur].pa -= 2;
