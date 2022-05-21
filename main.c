@@ -74,12 +74,12 @@ int main()
     ///quadrillage(terrain,terrain);                 ///quadrille la map (possibilité de le mettre au choix)
     affichage_terrain(terrain,buffer);
     for (int i = 0 ; i< nbrjoueur ; i ++){
-        if (joueur[i].classe == 1){
-             load_mage_eau(&sortjoueur[i]);
+        if (joueur[i].classe == 0){
+            load_mage_eau(&sortjoueur[i]);
             load_anim_mage_eau_vague(&perso1[i][0]);
             load_anim_mage_eau_flaque(&perso1[i][1]);
         }
-        if (joueur[i].classe == 2){
+        if (joueur[i].classe == 1){
             load_cra_feu(&sortjoueur[i]);
             load_anim_cra_feu_bdf(&perso1[i][0]);
             load_anim_cra_feu_fleche_feu(&perso1[i][1]);
