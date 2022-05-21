@@ -60,7 +60,7 @@ int menu()
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)          ///1400, 750
     {
         allegro_message("prb gfx mode");
         allegro_exit();
