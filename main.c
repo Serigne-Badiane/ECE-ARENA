@@ -23,14 +23,15 @@ void initialisation()
 
 int main()
 {
+    int direct = 0;
     srand(time(NULL));
     initialisation();
 
-    //menudefin();
+
 
 
     int nbrjoueur;
-    nbrjoueur = menu();
+    nbrjoueur = menu(direct);
     sauvegarde(nbrjoueur, tourjoueur);
 
 
@@ -172,6 +173,8 @@ int main()
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
+
+    direct = menudefin();
 
 
 
