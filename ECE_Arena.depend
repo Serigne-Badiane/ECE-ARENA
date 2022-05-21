@@ -236,7 +236,7 @@
 	"bib.h"
 	<time.h>
 
-1653151432 source:c:\users\serigne\documents\github\ece-arena\main.c
+1653151831 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -320,7 +320,7 @@
 	"bib.h"
 	<time.h>
 
-1653151112 source:c:\users\serigne\documents\github\ece-arena\tour joueur.c
+1653151858 source:c:\users\serigne\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

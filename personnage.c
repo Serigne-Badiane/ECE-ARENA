@@ -613,12 +613,50 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
+        blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450 && mouse_b & 1){
-                rectfill(buffer,0,300,400,713,makecol(255,0,0));
+                case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                draw_sprite(screen, buffer, 0,0);
+                blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
+
+                if (joueur[tourjoueur].pa <= 1){
+
+                }
+                else{
+                    int leave = 0;
+                    while (leave == 0){
+                        blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                        draw_sprite(screen, buffer, 0,0);
+
+                        if (mouse_b & 2){
+                            leave =1 ;
+                        }
+                        if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
+                        {
+                            if (joueur[tourjoueur].classe == 0){
+                                joueur[tourjoueur].pa += 4;
+                            }
+                            if (joueur[tourjoueur].classe == 1){
+                                perso[0].porte += 3;
+                                perso[1].porte += 3;
+                            }
+                            if (joueur[tourjoueur].classe == 2){
+                                joueur[tourjoueur].pv += 20;
+                            }
+                            if (joueur[tourjoueur].classe == 2){
+                                joueur[tourjoueur].pm += 2;
+                            }
+                            joueur[tourjoueur].pa -= 2;
+                            leave = 1;
+
+                        }
+                    }
+                }
         }
     }
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530){
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige 20 pt de degat");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige peu de degat");
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 460 && mouse_x < 530 && mouse_b & 1){
 
