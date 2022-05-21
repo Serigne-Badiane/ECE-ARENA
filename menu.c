@@ -949,7 +949,7 @@ int menudefin(int nbrjoueur){
                     ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
                     ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
-                    deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
+                    deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur);
 
                     affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
                     draw_sprite(buffer, player[tourjoueur], 0,0);

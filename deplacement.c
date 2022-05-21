@@ -260,15 +260,6 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
             exit(EXIT_FAILURE);
         }
     }
-
-
-    for(int k=0; k<nbr_joueur; k++)
-    {
-        printf("%d", joueur[k].classe);
-    }
-
-
-
     int i=0;
     recuperation_couleur(buffer,temp);
     for (int k=0;k<nbr_joueur;k++)
@@ -291,7 +282,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
 
 }
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP*buffer_deplacement, BITMAP* buffer_enlevage_indication, BITMAP* buffer_deplacement2, int nbr_joueur)      ///sspg qui déplace le joueur
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur, BITMAP* buffer_enlevage_indication, int nbr_joueur)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
     BITMAP* pnj_bitmap = load_bitmap("mont.bmp",NULL);
@@ -629,7 +620,6 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
                             }
                         }
                         enlevage_des_indications(buffer, terrain);                                       ///effacage du buffer
-                        enlevage_des_indications(buffer_deplacement,buffer_deplacement2);               ///effacage du buffer de déplacement (pour ne pas que le joueur puisse ce déplacer n'importe oé par la suite
 
                         joueur[tour_joueur].pm-=(abs(i-joueur[tour_joueur].pos.case_ligne_iso)+abs(t-joueur[tour_joueur].pos.case_colonne_iso)); ///on change les points de mouvement du joueur
                         matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].passage=1;        ///la case sur laquelle était le joueur devient accessible

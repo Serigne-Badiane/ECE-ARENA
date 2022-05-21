@@ -53,8 +53,6 @@ int main()
     BITMAP* buffer_enlevage_indication = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage_indication2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_enlevage = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* buffer_deplacement2 = create_bitmap(SCREEN_W, SCREEN_H);
-    BITMAP* buffer_deplacement = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp1 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* temp2 = create_bitmap(SCREEN_W, SCREEN_H);
     BITMAP* buffer_invisible_couleur = create_bitmap(SCREEN_W, SCREEN_H);
@@ -103,7 +101,7 @@ int main()
 
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
-    recuperation_couleur(buffer_deplacement,buffer_deplacement2);
+    //recuperation_couleur(buffer_deplacement,buffer_deplacement2);
     int nb_mort=0;
 
     while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
@@ -131,8 +129,10 @@ int main()
         int ancienne_ligne_joueur;
         int ancienne_colonne_joueur;
         debut=clock();
+        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
     do
     {
+        printf("%d\n", rand()%(4+3)-3);
         affichage_terrain(terrain,buffer);
 
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
@@ -143,9 +143,10 @@ int main()
         ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
         ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
-        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur, buffer_deplacement,buffer_enlevage_indication,buffer_deplacement2,nbrjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur);
 
-        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+
+        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         draw_sprite(buffer, player[tourjoueur], 0,0);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
         usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2);
@@ -172,8 +173,6 @@ int main()
 
     }while(difference2<15 && difference<15);
 
-    clear_bitmap(buffer_deplacement);
-    clear_bitmap(buffer_deplacement2);
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;

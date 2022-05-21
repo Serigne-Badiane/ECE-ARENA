@@ -328,29 +328,29 @@ void bonus (BITMAP* buffer, int pos_x,int pos_y)
             pnj.pos.case_ligne_iso=rand()%(21);
             pnj.pos.case_colonne_iso=rand()%(22);
         }
-        int choix_bonus=rand()%(3-1)+1;
+        int choix_bonus=rand()%(4-1)+1;
         if (choix_bonus==1)
         {
-            joueur[tourjoueur].pv+=rand()%(50-15)+15;
+            joueur[tourjoueur].pv+=rand()%(51-15)+15;
         }
         if (choix_bonus==2)
         {
-            joueur[tourjoueur].pa+=rand()%(8-1)+1;
+            joueur[tourjoueur].pa+=rand()%(9-1)+1;
         }
         if (choix_bonus==3)
         {
-            joueur[tourjoueur].pm+=rand()%(8-1)+1;
+            joueur[tourjoueur].pm+=rand()%(9-1)+1;
         }
     }
     if(pos_x !=joueur[tourjoueur].pos.case_ligne_iso || pos_y != joueur[tourjoueur].pos.case_colonne_iso)
     {
         int ligne_pnj,colonne_pnj;
-        ligne_pnj=rand()%(3+3)-3;
+        ligne_pnj=rand()%(4+3)-3;
         colonne_pnj=rand()%(3+3)-3;
-        while(abs(ligne_pnj+colonne_pnj)>3 || pnj.pos.case_ligne_iso+ligne_pnj>20 ||pnj.pos.case_colonne_iso+colonne_pnj>21 || matrice_terrain_iso[pnj.pos.case_ligne_iso+ligne_pnj][pnj.pos.case_colonne_iso+colonne_pnj].passage!=1)
+        while(abs(ligne_pnj)+abs(colonne_pnj)>3 || pnj.pos.case_ligne_iso+ligne_pnj>20 ||pnj.pos.case_colonne_iso+colonne_pnj>21 || pnj.pos.case_ligne_iso+ligne_pnj<0 ||pnj.pos.case_colonne_iso+colonne_pnj<0 || matrice_terrain_iso[pnj.pos.case_ligne_iso+ligne_pnj][pnj.pos.case_colonne_iso+colonne_pnj].passage!=1)
         {
-            ligne_pnj=rand()%(3+3)-3;
-            colonne_pnj=rand()%(3+3)-3;
+            ligne_pnj=rand()%(4+3)-3;
+            colonne_pnj=rand()%(4+3)-3;
         }
         pnj.pos.case_ligne_iso+=ligne_pnj;
         pnj.pos.case_colonne_iso+=colonne_pnj;
