@@ -236,7 +236,7 @@
 	"bib.h"
 	<time.h>
 
-1653121724 source:c:\users\serigne\documents\github\ece-arena\main.c
+1653125381 source:c:\users\serigne\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -250,7 +250,7 @@
 	<allegro.h>
 	"bib.h"
 
-1653123476 source:c:\users\serigne\documents\github\ece-arena\personnage.c
+1653124599 source:c:\users\serigne\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

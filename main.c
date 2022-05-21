@@ -72,12 +72,21 @@ int main()
     terrain_couleur(buffer_invisible_couleur);
     quadrillage(terrain,terrain);
     affichage_terrain(terrain,buffer);
-    load_cra_feu(&sortjoueur[1]);
-    load_anim_cra_feu_bdf(&perso1[1][0]);
-    load_anim_cra_feu_fleche_feu(&perso1[1][1]);
-    load_mage_eau(&sortjoueur[0]);
-    load_anim_mage_eau_vague(&perso1[0][0]);
-    load_anim_mage_eau_flaque(&perso1[0][1]);
+    for (int i = 0 ; i< nbrjoueur ; i ++){
+        if (joueur[i].classe == 1){
+             load_mage_eau(&sortjoueur[i]);
+            load_anim_mage_eau_vague(&perso1[i][0]);
+            load_anim_mage_eau_flaque(&perso1[i][1]);
+        }
+        if (joueur[i].classe == 2){
+            load_cra_feu(&sortjoueur[i]);
+            load_anim_cra_feu_bdf(&perso1[i][0]);
+            load_anim_cra_feu_fleche_feu(&perso1[i][1]);
+        }
+
+    }
+
+
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
     recuperation_couleur(buffer_deplacement,buffer_deplacement2);
