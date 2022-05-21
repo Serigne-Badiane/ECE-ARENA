@@ -41,17 +41,10 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
 void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
 {
     int degats=0;
-    int degats2=0;
 
-    //for(int i=0; i<nbrjoueur; i++)
-    //{
-        degats=200-joueur[0].pv;
-        degats2=200-joueur[1].pv;
-
-        //if(joueur[i].pv>0)
-        //{
-            rectfill(buffer, 1000, 60, (1000+(joueur[0].pv/4))-(degats/4), 65, makecol(255,0,0));
-            rectfill(buffer, 1055, 60, (1055+(joueur[1].pv/4))-(degats/4), 65, makecol(255,0,0));
-        //}
-    //}
+    for(int i=0; i<nbrjoueur; i++)
+    {
+        degats=200-joueur[i].pv;
+        rectfill(buffer, 1000+55*i, 60, (1000+55*i+(joueur[i].pv/4))-(degats/4), 65, makecol(255,0,0));
+    }
 }
