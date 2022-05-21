@@ -26,6 +26,8 @@ int main()
     srand(time(NULL));
     initialisation();
 
+    //menudefin();
+
 
     int nbrjoueur;
     nbrjoueur = menu();
@@ -175,6 +177,8 @@ int main()
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
     nb_mort=checkwin(nbrjoueur,0);
+
+
 
     //retrait(nbrjoueur, tourjoueur);
 

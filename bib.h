@@ -80,7 +80,7 @@ void load_mage_eau (sortperso* perso);
 int addi (int a, int b);
 void initialisation();
 int menu();
-int menu_de_fin();
+int menudefin();
 void afficher();
 void init_struct_case(int nbre_joueurs);
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
