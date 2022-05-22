@@ -843,6 +843,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
 
                                 leave = 1;
                                 joueur[k].pv -= (rand()%(20-5+1))+5;
+
                                 joueur[tourjoueur].pa -= 2;
                             }
                         }
