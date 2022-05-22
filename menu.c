@@ -779,7 +779,7 @@ int menu(int direct)
 }
 
 
-int menudefin(int nbrjoueur){
+int menudefin(int nbrjoueur,int nbre_total_de_tours){
 
     int quit = 0;
     int direct = 1;
@@ -798,10 +798,30 @@ int menudefin(int nbrjoueur){
     BITMAP* quitter=load_bitmap("quitter.bmp",NULL);
     BITMAP* new_game=load_bitmap("new_game.bmp",NULL);
     BITMAP* revanche=load_bitmap("revanche.bmp",NULL);
+    BITMAP* trophee=load_bitmap("trophee.bmp",NULL);
+
+
+
+
+    /*SAMPLE* son_de_fin = load_wav("clash-of-clans-clan-wars-son.wav");
+
+    if (install_sound(DIGI_AUTODETECT, MIDI_NONE, 0) != 0)
+    {
+        printf("Erreur sound: %s\n", allegro_error);
+
+    }
+
+    if (!son_de_fin) {
+      allegro_message("Error avec le fichier .wav ");
+
+   }
+
+
+    play_sample(son_de_fin, 255, 127,1000, 1);*/
 
     while (quit!=1)
     {
-
+        textprintf_ex(buffer_decor,font,500,100,makecol(255,0,0),2,"NOMBRE TOTAL DE TOURS : %d",nbre_total_de_tours);
 
         rect(buffer_decor,1000,50,1300,150,makecol(255,255,0));
         rect(buffer_decor,1000,200,1300,300,makecol(255,255,0));
@@ -810,6 +830,9 @@ int menudefin(int nbrjoueur){
         masked_blit(quitter, buffer_decor, 0, 0, 1025, 70, quitter->w, quitter->h);
         masked_blit(revanche, buffer_decor, 0, 0, 1025, 220, quitter->w, quitter->h);
         masked_blit(new_game, buffer_decor, 0, 0, 1025, 370, quitter->w, quitter->h);
+
+        masked_blit(trophee, buffer_decor, 0, 0, 50, 150, trophee->w, trophee->h);
+
 
         masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 

@@ -192,7 +192,9 @@ int main()
     //retrait(nbrjoueur, tourjoueur);
 
     }
-    direct = menudefin();
+
+
+    direct = menudefin(nbrjoueur, nbtour);
     return 0;
 
 }END_OF_MAIN();
