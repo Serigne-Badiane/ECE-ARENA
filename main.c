@@ -194,10 +194,13 @@ int main()
     if(joueur[tourjoueur].pv<=0)
     {
         joueur[tourjoueur].pv=0;
+        joueur[tourjoueur].tourfinal = nbtour;
         tourjoueur++;
     }
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
+
+
 
     //retrait(nbrjoueur, tourjoueur);
 

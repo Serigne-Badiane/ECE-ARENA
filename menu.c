@@ -135,7 +135,7 @@ int menu(int direct) /// Menu de début qui passe en paramètre une variable qui
         {
             rect(screen,500,300,850,400,makecol(0,255,255));
 
-            if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1 || direct == 1) /// Click sur New Game
+            if ((mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1) || direct == 1) /// Click sur New Game
             {
                 masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de buffer pr le curseur
 
@@ -849,20 +849,22 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
                 if(joueur[i].classe == 0){
 
                     masked_blit(sorcier_feu2, buffer_decor, 0, 0, 175, 400, sorcier_feu2->w, sorcier_feu2->h);
-
-
+                    textprintf_ex(buffer_decor,font,250,400,makecol(255,0,0),2,"Mort au tour : %d", joueur[i].tourfinal);
 
                 }
                 else if(joueur[i].classe == 1){
                     masked_blit(archer_feu2, buffer_decor, 0, 0, 175, 480, archer_feu2->w, archer_feu2->h);
+                    textprintf_ex(buffer_decor,font,250,480,makecol(255,0,0),2,"Mort au tour : %d", joueur[i].tourfinal);
 
                 }
                 else if(joueur[i].classe == 2){
                     masked_blit(chevalier2, buffer_decor, 0, 0, 175, 560, chevalier2->w, chevalier2->h);
+                    textprintf_ex(buffer_decor,font,250,560,makecol(255,0,0),2,"Mort au tour : %d", joueur[i].tourfinal);
 
                 }
                 else if(joueur[i].classe == 3){
                     masked_blit(tigre2, buffer_decor, 0, 0, 175, 640, tigre2->w, tigre2->h);
+                    textprintf_ex(buffer_decor,font,250,640,makecol(255,0,0),2,"Mort au tour : %d", joueur[i].tourfinal);
                 }
             }
 
