@@ -6,7 +6,6 @@
 
 int menu(int direct)
 {
-
     BITMAP* decor;
     BITMAP* page;
     /*BITMAP* page2;*/
@@ -26,23 +25,9 @@ int menu(int direct)
     BITMAP* paul;
     BITMAP* bordure;
 
-
-
-
-
     SAMPLE *son;
 
     char NomFichier[30];
-
-
-
-
-    /*allegro_init();
-    install_keyboard();
-    install_mouse();*/
-
-
-
 
     son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav");
 
@@ -58,7 +43,6 @@ int menu(int direct)
 
    }
 
-
     set_color_depth(desktop_color_depth());
 
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700
@@ -73,8 +57,6 @@ int menu(int direct)
     Logo=load_bitmap("Logo.bmp",NULL);
     decor=load_bitmap("decordo.bmp",NULL);
 
-
-
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
     //Regles=load_bitmap("Regles.bmp", NULL);
@@ -86,31 +68,19 @@ int menu(int direct)
     julien=load_bitmap("julien.bmp",NULL);
 
 
-
-
-
-
-
     for (int i = 1; i < 3; i++){
 
         sprintf(NomFichier,"player/player%dbis.bmp",i);
 
         Sorcier[i] = load_bitmap(NomFichier,NULL);
 
-
-
         if (!Sorcier[i]){
 
             allegro_message( "pas pu trouver %s",NomFichier);
 
             exit( EXIT_FAILURE );
-
         }
-
     }
-
-
-
 
     page=create_bitmap(SCREEN_W,SCREEN_H);
     //page2=create_bitmap(SCREEN_W,SCREEN_H);
@@ -139,7 +109,6 @@ int menu(int direct)
         cptimage++;
         if (cptimage>=tmpimage){ // Animation sorcier dans le menu
             cptimage=0;
-
             imgcourante++;
         }
 
@@ -157,24 +126,14 @@ int menu(int direct)
 
         /*masked_blit(Sorcier[imgcourante],page, 0, 0, 200, 468, Logo->w, Logo->h);*/
 
-
-
-
-
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
 
-
         draw_sprite(page,Sorcier[imgcourante],603,590);
-
-
 
         if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850) /// Petite animation quand on passe la souris
         {
-
-
             rect(screen,500,300,850,400,makecol(0,255,255));
-
 
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1 || direct == 1) /// Click sur New Game
             {
@@ -201,9 +160,7 @@ int menu(int direct)
 
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
-
                     blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
-
 
                     rect(Menu2,500,300,850,400,makecol(0,255,255));
 
@@ -213,7 +170,6 @@ int menu(int direct)
                     masked_blit(deux, Menu2, 0, 0,615, 287, deux->w, deux->h);
 
                     rect(Menu2,500,450,850,550,makecol(255,0,255));
-
 
                     //textprintf_ex(Menu2,font,640,500,makecol(0,255,0),2,"3 Joueurs");
                     masked_blit(trois, Menu2, 0, 0, 615, 437, trois->w, trois->h);
@@ -230,15 +186,11 @@ int menu(int direct)
 
                     if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850)
                     {
-
-                    rect(screen,500,450,850,550,makecol(0,0,255));
-
+                        rect(screen,500,450,850,550,makecol(0,0,255));
                     }
                     if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850)
                     {
-
-                    rect(screen,500,600,850,700,makecol(0,255,0));
-
+                        rect(screen,500,600,850,700,makecol(0,255,0));
                     }
 
                     if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
@@ -273,8 +225,6 @@ int menu(int direct)
 
                         bordure=load_bitmap("bordure.bmp",NULL);
 
-
-
                         int cpteur_nbre_joueurs = 0;
 
                         for(int j=0;j<nbre_joueur;j++)
@@ -286,8 +236,6 @@ int menu(int direct)
                         {
                             while(joueur[j].classe==6)
                             {
-
-
                                 masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
                                 blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
@@ -310,7 +258,6 @@ int menu(int direct)
                                     textprintf_ex(page3,font,220,690,makecol(0,255,0),makecol(255,255,255),"PASSIF : Peut marcher sur l'eau");
 
                                 }
-
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
                                 {
@@ -514,7 +461,6 @@ int menu(int direct)
                                     }
                                 }
 
-
                                 masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
                                 masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
 
@@ -582,7 +528,6 @@ int menu(int direct)
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235 && mouse_b & 1)
                                 {
-
                                     textprintf_ex(screen,font,1055,300,makecol(255,0,0),2,"Tigrou");
 
                                     while(mouse_b&1)                 ///blindage click gauche
@@ -660,7 +605,6 @@ int menu(int direct)
                                     blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
                                     masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
                                 }
-
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342 && mouse_b & 1)
                                 {
@@ -775,8 +719,13 @@ int menu(int direct)
             if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur Credits
             {
                 clear_bitmap(page);
-                while (!key[KEY_ENTER]) /// Retour en arriere
+                int sortie=0;
+                while (!key[KEY_ENTER] && sortie==0) /// Retour en arriere
                 {
+                    if(mouse_b&2)
+                    {
+                        sortie=1;
+                    }
                     masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
