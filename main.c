@@ -15,6 +15,7 @@ void initialisation()               ///initialisation de allegro
         allegro_exit();
         exit(EXIT_FAILURE);
     }
+
     install_keyboard();
     install_mouse();
     //show_mouse(screen);
@@ -27,10 +28,14 @@ int main()
     int direct = 0;
     srand(time(NULL));          ///pour les randoms
     initialisation();
-    //direct = menudefin();
+    int nbrjoueur;          ///le nombre de joueur qui joue
+
+
     int nbtour=1;           ///variable qui calcul le nombre de tours joués
 
-    int nbrjoueur;          ///le nombre de joueur qui joue
+
+
+
     nbrjoueur = menu(direct);
     sauvegarde(nbrjoueur, tourjoueur);
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
@@ -110,7 +115,7 @@ int main()
     //recuperation_couleur(buffer_deplacement,buffer_deplacement2);
     int nb_mort=0;
 
-    while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
+    while (!key[KEY_ESC])
     {
         //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
@@ -200,6 +205,12 @@ int main()
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 
+    if(nb_mort==nbrjoueur-1){
+
+        direct = menudefin(nbrjoueur, nbtour);
+
+    }
+
 
 
     //retrait(nbrjoueur, tourjoueur);
@@ -207,7 +218,8 @@ int main()
     }
 
 
-    direct = menudefin(nbrjoueur, nbtour);
+
+
     return 0;
 
 }END_OF_MAIN();
