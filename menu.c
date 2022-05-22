@@ -892,6 +892,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
                 animation perso1 [4] [4];
                 int compteur;
                 int cible = 5;
+                int blop;
                 int ttour = 0;
 
                 for (int i = 0 ; i <4 ; i++)
@@ -976,7 +977,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
                         draw_sprite(buffer, player[tourjoueur], 0,0);
                         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
 
-                        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour,&cible);
+                        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour,&cible,&blop);
                         if (cible != 5 && ttour == 0){
                             poison(compteur,&cible);
                             ttour = 1;
@@ -1004,6 +1005,11 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
                         compteur_respiration++;
 
                     }while(difference2<15 && difference<15);
+                    if (blop == 1){
+                        perso1[tourjoueur][0].porte -= 3;
+                        perso1[tourjoueur][1].porte -= 3;
+                        blop = 0;
+                    }
 
                     joueur[tourjoueur].pm=3;
                     joueur[tourjoueur].pa=6;
