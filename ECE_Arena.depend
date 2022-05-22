@@ -85,16 +85,16 @@
 	<allegro.h>
 	"bib.h"
 
-1653232794 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1653233449 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1653232490 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1653235257 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 	"bib.h"
 
-1653232794 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+1653233449 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -327,7 +327,7 @@
 	"bib.h"
 	<time.h>
 
-1653232490 source:c:\users\victo\onedrive\documents\github\ece-arena\tour joueur.c
+1653234697 source:c:\users\victo\onedrive\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

@@ -61,7 +61,7 @@ int menu(int direct)
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1272,700
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -302,11 +302,12 @@ int menu(int direct)
                                     blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
                                     masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
 
-                                    textprintf_ex(page3,font,220,640,makecol(0,0,255),makecol(255,255,255),"Boule d'eau : Lance une boule d'eau qui inflige 45pt de degat");
-                                    textprintf_ex(page3,font,220,650,makecol(0,0,255),makecol(255,255,255),"Flocon bien lourd: Lance un flocon bien lourd qui inflige 30pt de degat");
+                                    textprintf_ex(page3,font,220,640,makecol(0,0,255),makecol(255,255,255),"Boule d'eau : Lance une boule d'eau qui inflige 45pt de degat max");
+                                    textprintf_ex(page3,font,220,650,makecol(0,0,255),makecol(255,255,255),"Flocon bien lourd: Lance un flocon bien lourd qui inflige 30pt de degat max");
                                     textprintf_ex(page3,font,220,660,makecol(0,0,255),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
                                     textprintf_ex(page3,font,220,670,makecol(0,0,255),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
                                     textprintf_ex(page3,font,220,680,makecol(0,0,255),makecol(255,255,255),"Patate lointaine : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,690,makecol(0,255,0),makecol(255,255,255),"PASSIF : Peut marcher sur l'eau");
 
                                 }
 
@@ -339,8 +340,8 @@ int menu(int direct)
                                 {
                                     blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
                                     masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
-                                    textprintf_ex(page3,font,220,640,makecol(255,0,0),makecol(255,255,255),"Fleche de Feu : Lance une fleche enflamee qui inflige 30pt de degat");
-                                    textprintf_ex(page3,font,220,650,makecol(255,0,0),makecol(255,255,255),"Boule de Feu : Lance une boule d'eau qui inflige 45pt de degat");
+                                    textprintf_ex(page3,font,220,640,makecol(255,0,0),makecol(255,255,255),"Fleche de Feu : Lance une fleche enflamee qui inflige 30pt de degat max");
+                                    textprintf_ex(page3,font,220,650,makecol(255,0,0),makecol(255,255,255),"Boule de Feu : Lance une boule d'eau qui inflige 45pt de degat max");
                                     textprintf_ex(page3,font,220,660,makecol(255,0,0),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
                                     textprintf_ex(page3,font,220,670,makecol(255,0,0),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
                                     textprintf_ex(page3,font,220,680,makecol(255,0,0),makecol(255,255,255),"Poison : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
@@ -372,6 +373,11 @@ int menu(int direct)
                                 {
                                     blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
                                     masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
+                                    textprintf_ex(page3,font,220,640,makecol(255,0,255),makecol(255,255,255),"Dague qui fait mal : Lance une dague qui inflige 30pt de degat max");
+                                    textprintf_ex(page3,font,220,650,makecol(255,0,255),makecol(255,255,255),"Dague qui fait encore plus mal : Lance une dague qui inflige 45pt de degat max");
+                                    textprintf_ex(page3,font,220,660,makecol(255,0,255),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
+                                    textprintf_ex(page3,font,220,670,makecol(255,0,255),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,680,makecol(255,0,255),makecol(255,255,255),"Poison : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
                                 }
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934 && mouse_b & 1)
@@ -400,6 +406,12 @@ int menu(int direct)
                                 {
                                     blit(noirr,page3,0,0,1055,300,noirr->w,noirr->h);
                                     masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                                    textprintf_ex(page3,font,220,640,makecol(0,255,255),makecol(255,255,255)," Morsure lointaine : Morsure qui inflige 30pt de degat max");
+                                    textprintf_ex(page3,font,220,650,makecol(0,255,255),makecol(255,255,255)," Javelot : Lance un javelot qui inflige 45pt de degat max");
+                                    textprintf_ex(page3,font,220,660,makecol(0,255,255),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
+                                    textprintf_ex(page3,font,220,670,makecol(0,255,255),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,680,makecol(0,255,255),makecol(255,255,255),"Poison : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,690,makecol(255,0,0),makecol(255,255,255)," PASSIF : Deplacement accrue grace au bon cardio");
                                 }
 
 
