@@ -64,4 +64,7 @@ void attaque(BITMAP*buffer, int k)              ///ce sspg colorie en rouge le j
         }
     }
     blit(imgneg,buffer,0,0,matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-imgneg->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-imgneg->h, imgneg->w, imgneg->h);
+
+    //textprintf_ex(buffer,font,matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-(imgneg->w/2)+50, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-imgneg->h,makecol(255,255,255),makecol(153,217,234),"-%d", degats);
+
 }
