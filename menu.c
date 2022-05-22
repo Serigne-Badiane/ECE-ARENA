@@ -61,7 +61,7 @@ int menu(int direct)
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1400,750
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1272,700
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -784,7 +784,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
     int quit = 0;
     int direct = 1;
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
