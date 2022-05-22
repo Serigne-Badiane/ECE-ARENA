@@ -61,7 +61,7 @@ int menu(int direct)
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1272,700
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -343,7 +343,7 @@ int menu(int direct)
                                     textprintf_ex(page3,font,220,650,makecol(255,0,0),makecol(255,255,255),"Boule de Feu : Lance une boule d'eau qui inflige 45pt de degat");
                                     textprintf_ex(page3,font,220,660,makecol(255,0,0),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
                                     textprintf_ex(page3,font,220,670,makecol(255,0,0),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
-                                    textprintf_ex(page3,font,220,680,makecol(255,0,0),makecol(255,255,255),"Patate lointaine : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,680,makecol(255,0,0),makecol(255,255,255),"Poison : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
                                 }
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
