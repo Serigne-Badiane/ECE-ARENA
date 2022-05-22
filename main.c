@@ -156,7 +156,6 @@ int main()
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
         usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&blop);
-        printf("%d %d \n", cible,compteur);
         if (cible != 5 && ttour == 0 && tourjoueur==cible){
            poison();
            ttour=1;
