@@ -127,11 +127,11 @@ int main()
 
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
-        double difference ;
-        double difference2;
+        double difference=0 ;
+        double difference2=0;
         int compteur_respiration=0;
-        int ancienne_ligne_joueur;
-        int ancienne_colonne_joueur;
+        int ancienne_ligne_joueur=0;
+        int ancienne_colonne_joueur=0;
         debut=clock();
 
     do
@@ -180,6 +180,11 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
+    if(joueur[tourjoueur].pv<=0)
+    {
+        joueur[tourjoueur].pv=0;
+        tourjoueur++;
+    }
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 

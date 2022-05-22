@@ -4,8 +4,6 @@
 #include "bib.h"
 #include <time.h>
 
-
-
 void sauvegarde(int nbrjoueur, int tour_joueur)         ///pour la revanche
 {
     FILE* pf = fopen("AAA.txt", "w");
