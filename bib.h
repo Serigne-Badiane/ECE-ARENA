@@ -50,6 +50,9 @@ typedef struct{             ///structure complète du joueur
 int tourjoueur;                 ///déclaration de tour joueur ici pour ne pas avoir à le mettre dans chaque appel de sspg
 t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
+int dureesort[4];
+int ancien_nbtour[4];
+
 
 typedef struct{                 ///structure pour les animations de sort et la portée de ceci
     BITMAP* anim1;
@@ -87,9 +90,9 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1,BITMAP* cursor,BITMAP* temp2);
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour);
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP* buffer_enlevage_indication,int nbr_joueur);
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP* buffer_enlevage_indication,int nbr_joueur,int nbtour);
 double fin_de_tour(BITMAP* buffer);
 void recuperation_couleur(BITMAP* buffer, BITMAP* buffer_enlevage_indication);
 void enlevage_des_indications(BITMAP* buffer, BITMAP* buffer_enlevage_indication);

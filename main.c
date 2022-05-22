@@ -26,15 +26,13 @@ int main()
     int direct = 0;
     srand(time(NULL));
     initialisation();
-
+    int nbtour=1;
 
 
 
     int nbrjoueur;
     nbrjoueur = menu(direct);
     sauvegarde(nbrjoueur, tourjoueur);
-
-
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
     {
         allegro_message("prb gfx mode");
@@ -148,14 +146,14 @@ int main()
         ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
         ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
-        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur);
+        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur,nbtour);
 
 
         masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
         draw_sprite(buffer, player[tourjoueur], 0,0);
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2);
+        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour);
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
@@ -182,6 +180,7 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
+    nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 
     //retrait(nbrjoueur, tourjoueur);

@@ -282,7 +282,7 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
 
 }
 
-void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur, BITMAP* buffer_enlevage_indication, int nbr_joueur)      ///sspg qui déplace le joueur
+void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur, BITMAP* buffer_enlevage_indication, int nbr_joueur,int nbtour)      ///sspg qui déplace le joueur
 {
     BITMAP* image_joueur[20];
     BITMAP* pnj_bitmap = load_bitmap("mont.bmp",NULL);
@@ -329,7 +329,27 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     recuperation_couleur(buffer,buffer_enlevage_indication);                    ///on stocke le buffer sur un buffer temporaire puis on affiche le joueur pour lequel c'est le tour
 
     masked_blit(image_joueur[0+joueur[tour_joueur].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].x-image_joueur[0+joueur[tour_joueur].classe*5]->w/2, matrice_terrain_iso[joueur[tour_joueur].pos.case_ligne_iso][joueur[tour_joueur].pos.case_colonne_iso].y-image_joueur[0+joueur[tour_joueur].classe*5]->h, image_joueur[0+joueur[tour_joueur].classe*5]->w, image_joueur[0+joueur[tour_joueur].classe*5]->h);
-
+   //printf("%d %d \n")
+    if(nbtour==ancien_nbtour[tour_joueur]+nbr_joueur)
+    {
+        if (dureesort[tour_joueur]==1)
+        {
+            if (joueur[tour_joueur].classe == 0){
+                joueur[tour_joueur].pa += 3;
+                dureesort[tour_joueur]=0;
+                ancien_nbtour[tour_joueur]=0;
+            }
+            if (joueur[tour_joueur].classe == 2){
+                joueur[tour_joueur].pv += 20;
+                ancien_nbtour[tour_joueur]=0;
+            }
+            if (joueur[tour_joueur].classe == 3){
+                joueur[tour_joueur].pm += 2;
+                dureesort[tour_joueur]=0;
+                ancien_nbtour[tour_joueur]=0;
+            }
+        }
+    }
     for(int i=0;i<LIGNE2;i++)
     {
         for(int t=0; t<COLONNE2; t++)

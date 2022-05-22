@@ -156,7 +156,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui infliche 45pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
-                int leave;
+                int leave=0;
                 for (int i = 2 ; i < perso[0].porte ; i++){
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
@@ -409,7 +409,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
          blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une fleche enflamee qui inflige 30pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
-                int leave;
+                int leave=0;
                 for (int i = 2 ; i < perso[1].porte ; i++){
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
                     case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
@@ -418,10 +418,8 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                     draw_sprite(screen, buffer, 0,0);
                     blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
                 }
-                if (joueur[tourjoueur].pa <= 2){
 
-                }
-                else{
+                if (joueur[tourjoueur].pa > 2){
                 while (leave == 0){
                     blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
                     masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
@@ -649,7 +647,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
@@ -675,17 +673,23 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                         if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
                         {
                             if (joueur[tourjoueur].classe == 0){
-                                joueur[tourjoueur].pa += 4;
+                                joueur[tourjoueur].pa += 3;
+                                dureesort[tourjoueur]=1;
+                                ancien_nbtour[tourjoueur]=nbtour;
                             }
                             if (joueur[tourjoueur].classe == 1){
                                 perso[0].porte += 3;
                                 perso[1].porte += 3;
+                                ancien_nbtour[tourjoueur]=nbtour;
                             }
                             if (joueur[tourjoueur].classe == 2){
                                 joueur[tourjoueur].pv += 20;
+                                ancien_nbtour[tourjoueur]=nbtour;
                             }
                             if (joueur[tourjoueur].classe == 3){
                                 joueur[tourjoueur].pm += 2;
+                                dureesort[tourjoueur]=1;
+                                ancien_nbtour[tourjoueur]=nbtour;
                             }
                             joueur[tourjoueur].pa -= 2;
                             leave = 1;
