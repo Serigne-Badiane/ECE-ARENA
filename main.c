@@ -185,7 +185,6 @@ int main()
             if(joueur[d].pv<=0)
             {
                 tourfinal[d]=nbtour;
-                 printf("%d\n",tourfinal[d]);
             }
         }
     }while(difference2<15 && difference<15);
