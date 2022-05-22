@@ -4,7 +4,7 @@
 #include <allegro.h>
 #include "bib.h"
 
-int menu(int direct) /// Menu de début qui passe en paramètre une variable qui changera s'il y a un appuie sur new game et qui passera direct a l'interface de selection de joueurs
+int menu() /// Menu de début qui passe en paramètre une variable qui changera s'il y a un appuie sur new game et qui passera direct a l'interface de selection de joueurs
 {
     BITMAP* decor; /// Initialisation de certaines Bitmap (d'autres se feront plus tard car il y eu des crashs en les initialisant tous en même temps
     BITMAP* page;
@@ -131,11 +131,11 @@ int menu(int direct) /// Menu de début qui passe en paramètre une variable qui
 
         draw_sprite(page,Sorcier[imgcourante],603,590); /// animation du bonhomme
 
-        if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850) /// Petite animation quand on passe la souris
+        if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 ) /// Petite animation quand on passe la souris
         {
             rect(screen,500,300,850,400,makecol(0,255,255));
 
-            if ((mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1) || direct == 1) /// Click sur New Game
+            if ((mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1) ) /// Click sur New Game
             {
                 masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de buffer pr le curseur
 
@@ -948,14 +948,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
         if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur Quitter
             {
-                for (int f=0;f<nbrjoueur;f++)
-                {
-                    joueur[f].pos.case_colonne_iso=0;
-                    joueur[f].pos.case_ligne_iso=0;
-                }
-                allegro_exit();
-                main();
-
+                exit(-1);
             }
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
@@ -966,7 +959,6 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
                     joueur[f].pos.case_ligne_iso=0;
                 }
                 allegro_exit();
-                direct = 1; /// Passera en parametre du menu de debut pour sauter la premiere interface
                 main();
 
 

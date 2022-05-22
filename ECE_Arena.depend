@@ -157,14 +157,14 @@
 	<allegro.h>
 	"bib.h"
 
-1653252696 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1653254078 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 	"bib.h"
 
-1653252222 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+1653254125 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
