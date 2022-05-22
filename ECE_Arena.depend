@@ -28,7 +28,7 @@
 
 1652179035 ated upstream
 
-1653242043 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
+1653244049 source:c:\users\victo\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -85,16 +85,16 @@
 	<allegro.h>
 	"bib.h"
 
-1653242084 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
+1653244049 c:\users\victo\onedrive\documents\github\ece-arena\bib.h
 
-1653242295 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
+1653246018 source:c:\users\victo\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 	"bib.h"
 
-1653241612 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
+1653244049 source:c:\users\victo\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

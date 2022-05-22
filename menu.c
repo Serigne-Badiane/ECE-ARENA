@@ -882,7 +882,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
     while (quit!=1)
     {
-        textprintf_ex(buffer_decor,font,550,100,makecol(255,0,0),2,"NOMBRE TOTAL DE TOURS : %d",nbre_total_de_tours);
+        textprintf_ex(buffer_decor,font,550,100,makecol(255,0,0),2,"NOMBRE TOTAL DE TOURS : %d",nbre_total_de_tours-1);
 
         rect(buffer_decor,1000,50,1300,150,makecol(255,255,0));
         rect(buffer_decor,1000,200,1300,300,makecol(255,255,0));
