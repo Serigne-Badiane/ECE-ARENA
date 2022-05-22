@@ -226,7 +226,7 @@ void placement_joueur_debut(BITMAP*buffer,BITMAP*buffer_couleur,int nb_joueur,BI
     }
 }
 
-void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///sspg qui permet un effet de réspiration (le joueur est tjrs en mouvement)
+void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///sspg qui permet un effet de respiration (le joueur est tjrs en mouvement)
 {
     BITMAP* image_joueur[20];
 
