@@ -825,7 +825,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
     int quit = 0;
     int direct = 0;
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -965,7 +965,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
 
         if (mouse_y > 200 && mouse_y < 300 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1){ /// Click sur Revanche
 
-                sauvegarde(nbrjoueur, tourjoueur);
+                //sauvegarde(nbrjoueur, tourjoueur);
 
 
                 if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
