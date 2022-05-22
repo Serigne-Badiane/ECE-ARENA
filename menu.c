@@ -4,9 +4,9 @@
 #include <allegro.h>
 #include "bib.h"
 
-int menu(int direct)
+int menu(int direct) /// Menu de début qui passe en paramètre une variable qui changera s'il y a un appuie sur new game et qui passera direct a l'interface de selection de joueurs
 {
-    BITMAP* decor;
+    BITMAP* decor; /// Initialisation de certaines Bitmap (d'autres se feront plus tard car il y eu des crashs en les initialisant tous en même temps
     BITMAP* page;
     /*BITMAP* page2;*/
     BITMAP* page3;
@@ -25,11 +25,11 @@ int menu(int direct)
     BITMAP* paul;
     BITMAP* bordure;
 
-    SAMPLE *son;
+    SAMPLE *son; /// son de menu
 
     char NomFichier[30];
 
-    son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav");
+    son = load_wav("clash-of-clans-raiding-musicvolume-increased.wav"); /// Precedure pour installer et faire marcher le son
 
 
     if (install_sound(DIGI_AUTODETECT, MIDI_NONE, 0) != 0)
@@ -45,7 +45,7 @@ int menu(int direct)
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700 dans le jeu car 1400 785 ne marche pas sur tous les ordis , ici c'est pour faire plus grand
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -60,7 +60,7 @@ int menu(int direct)
     NewGame=load_bitmap("NewGame.bmp",NULL);
     Credits=load_bitmap("Credits.bmp", NULL);
     //Regles=load_bitmap("Regles.bmp", NULL);
-    cursor=load_bitmap("cursor.bmp",NULL);
+    cursor=load_bitmap("cursor.bmp",NULL); /// changement d'apparence du curseur
 
     serigne=load_bitmap("serigne.bmp",NULL);
     victor=load_bitmap("victor.bmp",NULL);
@@ -68,7 +68,7 @@ int menu(int direct)
     julien=load_bitmap("julien.bmp",NULL);
 
 
-    for (int i = 1; i < 3; i++){
+    for (int i = 1; i < 3; i++){ /// Boucle d'animation du bonhomme dans le menu (pour rendre plus dynamique d'un point de vue esthétique le menu)
 
         sprintf(NomFichier,"player/player%dbis.bmp",i);
 
@@ -82,7 +82,7 @@ int menu(int direct)
         }
     }
 
-    page=create_bitmap(SCREEN_W,SCREEN_H);
+    page=create_bitmap(SCREEN_W,SCREEN_H); /// creation des buffers
     //page2=create_bitmap(SCREEN_W,SCREEN_H);
     Menu2=create_bitmap(SCREEN_W,SCREEN_H);
     page3=create_bitmap(SCREEN_W,SCREEN_H);
@@ -98,13 +98,13 @@ int menu(int direct)
 
     int cptimage = 0;
     int tmpimage = 2;
-    int imgcourante = 1;
+    int imgcourante = 1; /// Variables servant à l'animation
 
 
     while (!key[KEY_ESC])
     {
 
-        masked_blit(cursor, page, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+        masked_blit(cursor, page, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de bitmap pr le curseur
 
         cptimage++;
         if (cptimage>=tmpimage){ // Animation sorcier dans le menu
@@ -115,7 +115,7 @@ int menu(int direct)
         /*show_mouse(page);*/
 
 
-        rect(page,500,300,850,400,makecol(255,0,0));
+        rect(page,500,300,850,400,makecol(255,0,0)); /// Zone de clics a l'écran
         rect(page,500,450,850,550,makecol(255,0,0));
         //rect(page,500,600,850,700,makecol(255,0,0));
 
@@ -129,7 +129,7 @@ int menu(int direct)
         blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         blit(decor,page,0,0,0,0,SCREEN_W,SCREEN_H);
 
-        draw_sprite(page,Sorcier[imgcourante],603,590);
+        draw_sprite(page,Sorcier[imgcourante],603,590); /// animation du bonhomme
 
         if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850) /// Petite animation quand on passe la souris
         {
@@ -137,7 +137,7 @@ int menu(int direct)
 
             if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b&1 || direct == 1) /// Click sur New Game
             {
-                masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de buffer pr le curseur
 
                 BITMAP* deux;
                 BITMAP* trois;
@@ -158,7 +158,7 @@ int menu(int direct)
 
                     /*show_mouse(Menu2);*/
 
-                    blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                    blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H); /// Dessin des zones de clics
 
                     blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
 
@@ -193,7 +193,10 @@ int menu(int direct)
                         rect(screen,500,600,850,700,makecol(0,255,0));
                     }
 
-                    if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 2 donc Selection de 2 joueurs
+                    if (mouse_y > 300 && mouse_y < 400 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Detection Click sur 2 donc Selection de 2 joueurs !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
                     { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
 
                         int nbre_joueur = 2;
@@ -234,9 +237,9 @@ int menu(int direct)
 
                         for(int j=0;j<nbre_joueur;j++)
                         {
-                            while(joueur[j].classe==6)
+                            while(joueur[j].classe==6) /// Boucle pour faire fonctionner
                             {
-                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                                masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de bitmap pr le curseur
 
                                 blit(page3,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
@@ -248,7 +251,7 @@ int menu(int direct)
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 130 && mouse_x < 342)
                                 {
                                     blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
-                                    masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+                                    masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h); /// Quand on passe la souris , on peut voir les sorts des personnages
 
                                     textprintf_ex(page3,font,220,640,makecol(0,0,255),makecol(255,255,255),"Boule d'eau : Lance une boule d'eau qui inflige 45pt de degat max");
                                     textprintf_ex(page3,font,220,650,makecol(0,0,255),makecol(255,255,255),"Flocon bien lourd: Lance un flocon bien lourd qui inflige 30pt de degat max");
@@ -263,7 +266,7 @@ int menu(int direct)
                                 {
                                     textprintf_ex(screen,font,150,300,makecol(255,0,0),2,"Sorcier de Feu");
 
-                                    while(mouse_b&1)                 ///blindage click gauche
+                                    while(mouse_b&1)                 /// Blindage click gauche
                                     {
                                         rest(150);
                                     }
@@ -272,7 +275,7 @@ int menu(int direct)
 
                                     blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
                                     masked_blit(sorcier_feu, screen, 0, 0, 150, 300, Logo->w, Logo->h);
-                                    joueur[j].classe = 0;
+                                    joueur[j].classe = 0; /// Affectation de la classe (la classe est un int)
 
                                     if(cpteur_nbre_joueurs == nbre_joueur)
                                     {
@@ -286,7 +289,7 @@ int menu(int direct)
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631) /// Animation quand passage de souris
                                 {
                                     blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
-                                    masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                    masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h); /// sorts de l'archer
                                     textprintf_ex(page3,font,220,640,makecol(255,0,0),makecol(255,255,255),"Fleche de Feu : Lance une fleche enflamee qui inflige 30pt de degat max");
                                     textprintf_ex(page3,font,220,650,makecol(255,0,0),makecol(255,255,255),"Boule de Feu : Lance une boule d'eau qui inflige 45pt de degat max");
                                     textprintf_ex(page3,font,220,660,makecol(255,0,0),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
@@ -318,7 +321,7 @@ int menu(int direct)
 
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 723 && mouse_x < 934)
                                 {
-                                    blit(noirr,page3,0,0,750,300,noirr->w,noirr->h);
+                                    blit(noirr,page3,0,0,750,300,noirr->w,noirr->h); /// sorts du chevalier
                                     masked_blit(chevalier, page3, 0, 0, 750, 300, Logo->w, Logo->h);
                                     textprintf_ex(page3,font,220,640,makecol(255,0,255),makecol(255,255,255),"Dague qui fait mal : Lance une dague qui inflige 30pt de degat max");
                                     textprintf_ex(page3,font,220,650,makecol(255,0,255),makecol(255,255,255),"Dague qui fait encore plus mal : Lance une dague qui inflige 45pt de degat max");
@@ -352,7 +355,7 @@ int menu(int direct)
                                 if(mouse_y > 173 && mouse_y < 553 && mouse_x > 1024 && mouse_x < 1235)
                                 {
                                     blit(noirr,page3,0,0,1055,300,noirr->w,noirr->h);
-                                    masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h);
+                                    masked_blit(tigre, page3, 0, 0, 1055, 300, Logo->w, Logo->h); /// sorts de tigrou
                                     textprintf_ex(page3,font,220,640,makecol(0,255,255),makecol(255,255,255)," Morsure lointaine : Morsure qui inflige 30pt de degat max");
                                     textprintf_ex(page3,font,220,650,makecol(0,255,255),makecol(255,255,255)," Javelot : Lance un javelot qui inflige 45pt de degat max");
                                     textprintf_ex(page3,font,220,660,makecol(0,255,255),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
@@ -375,7 +378,7 @@ int menu(int direct)
 
                                     joueur[j].classe = 3;
 
-                                    if(cpteur_nbre_joueurs==nbre_joueur)
+                                    if(cpteur_nbre_joueurs==nbre_joueur) /// Verification si le nombre de joueurs correspond aux selections
                                     {
                                         return nbre_joueur;
                                     }
@@ -384,7 +387,9 @@ int menu(int direct)
                         }
                     }
 
-                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 3 donc Selection de 3 joueurs
+                    if (mouse_y > 450 && mouse_y < 550 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur 3 donc Selection de 3 joueurs !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
                     { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
 
                         int nbre_joueur = 3;
@@ -548,7 +553,7 @@ int menu(int direct)
                         }
                     }
 
-                    if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) // Click sur 4 donc Selection de 4 joueurs
+                    if (mouse_y > 600 && mouse_y < 700 && mouse_x > 500 && mouse_x < 850 && mouse_b & 1) /// Click sur 4 donc Selection de 4 joueurs !!!!!!!!!!!!!!!!!!!!!!!!!!!
                     { /// PLAYER 1 à 5 : Sorcier FEU     PLAYER 6 à 10 : Archer FEU   PLAYER 11 à 15 : Chevalier PLAYER 16 à 20 : TIGRE
 
                         int nbre_joueur = 4;
@@ -726,7 +731,7 @@ int menu(int direct)
                     {
                         sortie=1;
                     }
-                    masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+                    masked_blit(cursor, Menu2, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de bitmap pr le curseur
                     blit(Menu2,screen,0,0,0,0,SCREEN_W,SCREEN_H);
 
                     blit(decor,Menu2,0,0,0,0,SCREEN_W,SCREEN_H);
@@ -747,7 +752,7 @@ int menu(int direct)
                 }
             }
 
-        if(imgcourante == 2)
+        if(imgcourante == 2) /// Condition de changement d'image en fin de boucle pour donner l'animation du menu
         {
             imgcourante = 1;
         }
@@ -769,7 +774,7 @@ int menu(int direct)
 
 
 
-int menudefin(int nbrjoueur,int nbre_total_de_tours){
+int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le nombre de joueurs en parametre pour ensuite afficher leur position (gagnant/perdant) et affichage du nombre de tours
 
     int quit = 0;
     int direct = 0;
@@ -836,11 +841,11 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
         masked_blit(trophee, buffer_decor, 0, 0, 50, 150, trophee->w, trophee->h);
 
 
-        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); /// changement de bitmap pr le curseur
 
         for(int i=0;i<nbrjoueur;i++){
 
-            if(joueur[i].pv <= 0){
+            if(joueur[i].pv <= 0){ /// Si perdant , quelle classe n'est plus en vie ?
                 if(joueur[i].classe == 0){
 
                     masked_blit(sorcier_feu2, buffer_decor, 0, 0, 175, 400, sorcier_feu2->w, sorcier_feu2->h);
@@ -861,7 +866,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
                 }
             }
 
-            if(joueur[i].pv > 0){
+            if(joueur[i].pv > 0){ /// Si gagnant , quelle classe est toujours en vie ?
 
                 if(joueur[i].classe == 0){
 
@@ -906,7 +911,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
-                direct = 1;
+                direct = 1; /// Passera en parametre du menu de debut pour sauter la premiere interface
                 return direct;
 
 
