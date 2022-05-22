@@ -961,14 +961,16 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
         if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur Quitter
             {
-                return 0;
+                allegro_exit();
+                main();
 
             }
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
+                allegro_exit();
                 direct = 1; /// Passera en parametre du menu de debut pour sauter la premiere interface
-                return direct;
+                main();
 
 
             }

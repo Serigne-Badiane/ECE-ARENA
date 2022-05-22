@@ -15,6 +15,7 @@ void initialisation()               ///initialisation de allegro
         allegro_exit();
         exit(EXIT_FAILURE);
     }
+
     install_keyboard();
     install_mouse();
     //show_mouse(screen);
@@ -27,10 +28,14 @@ int main()
     int direct = 0;
     srand(time(NULL));          ///pour les randoms
     initialisation();
-    //direct = menudefin();
+    int nbrjoueur;          ///le nombre de joueur qui joue
+
+
     int nbtour=1;           ///variable qui calcul le nombre de tours joués
 
-    int nbrjoueur;          ///le nombre de joueur qui joue
+
+
+
     nbrjoueur = menu(direct);
     sauvegarde(nbrjoueur, tourjoueur);
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
@@ -110,7 +115,7 @@ int main()
     //recuperation_couleur(buffer_deplacement,buffer_deplacement2);
     int nb_mort=0;
 
-    while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
+    while (!key[KEY_ESC])
     {
         //show_mouse(screen);
         if (tourjoueur > nbrjoueur - 1)
@@ -164,7 +169,6 @@ int main()
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
         textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
-        //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
 
         difference2 = fin_de_tour(buffer);
         affichage_pv(buffer,petit_coeur);
@@ -200,6 +204,12 @@ int main()
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 
+    if(nb_mort==nbrjoueur-1){
+
+        direct = menudefin(nbrjoueur, nbtour);
+
+    }
+
 
 
     //retrait(nbrjoueur, tourjoueur);
@@ -207,7 +217,8 @@ int main()
     }
 
 
-    direct = menudefin(nbrjoueur, nbtour);
+
+
     return 0;
 
 }END_OF_MAIN();

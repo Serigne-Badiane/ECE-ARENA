@@ -175,14 +175,38 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
                 int leave=0;
                 for (int i = 2 ; i < perso[0].porte ; i++){
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                        if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso-i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso-i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso+i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso+i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso-i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso-i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso+i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso+i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso-i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso-i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso-i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso-i>0 && joueur[tourjoueur].pos.case_colonne_iso+i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso+i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                        }
+                        if(joueur[tourjoueur].pos.case_ligne_iso-i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso-i>0 && joueur[tourjoueur].pos.case_colonne_iso-i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso-i>0)
+                        {
+                            case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                        }
                     draw_sprite(screen, buffer, 0,0);
                     blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
                 }
@@ -392,10 +416,22 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
                 int leave=0;
                 for (int i = 2 ; i < perso[1].porte ; i++){
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso-i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso-i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso+i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso+i>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso-i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso-i>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    }
                     draw_sprite(screen, buffer, 0,0);
                     blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
                 }
@@ -777,7 +813,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                                 if (((rand()%(12-1+1))+1) != 1){   /// 1 chance sur 12 d'échouer
                                     joueur[k].pv -= (rand()%(20-5+1))+5;
                                 }
-                                //attaque(buffer,k);
+                                attaque(buffer,k);
                                 joueur[tourjoueur].pa -= 2;
                             }
                         }
@@ -793,13 +829,26 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 540 && mouse_x < 610 && mouse_b & 1){
                 for (int i = 2 ; i < 4 ; i++){
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
-                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    }
+                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    {
+                        case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    }
+
                     draw_sprite(screen, buffer, 0,0);
                     blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
-                }
+                 }
                 if (joueur[tourjoueur].pa <= 2){
 
                 }
