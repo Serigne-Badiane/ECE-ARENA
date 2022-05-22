@@ -78,6 +78,8 @@ typedef struct{             ///structure pour les sorts de chaque classes
 
 str_perso joueur[4];
 str_perso pnj;
+int compteur;
+int cible;
 
 void load_cra_feu (sortperso* perso);
 void load_cra_feu_anim(sortperso* perso);
@@ -91,9 +93,10 @@ void afficher();
 void init_struct_case(int nbre_joueurs);
 void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
+void poison ();
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1,BITMAP* cursor,BITMAP* temp2);
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible,int* blop);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* blop);
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP* buffer_enlevage_indication,int nbr_joueur,int nbtour);
 double fin_de_tour(BITMAP* buffer);
