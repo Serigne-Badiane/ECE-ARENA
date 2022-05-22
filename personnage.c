@@ -813,7 +813,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                                 if (((rand()%(12-1+1))+1) != 1){   /// 1 chance sur 12 d'échouer
                                     joueur[k].pv -= (rand()%(20-5+1))+5;
                                 }
-                                attaque(buffer,k);
+                                //attaque(buffer,k);
                                 joueur[tourjoueur].pa -= 2;
                             }
                         }
