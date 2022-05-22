@@ -4,8 +4,6 @@
 #include <allegro.h>
 #include "bib.h"
 
-
-
 int menu(int direct)
 {
 
@@ -833,8 +831,6 @@ int menudefin(int nbrjoueur){
 
         if (mouse_y > 200 && mouse_y < 300 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1){ /// Click sur Revanche
 
-
-
                 sauvegarde(nbrjoueur, tourjoueur);
 
 
@@ -869,17 +865,17 @@ int menudefin(int nbrjoueur){
                 player[3] = create_bitmap(SCREEN_W, SCREEN_H);
                 animation perso1 [4] [4];
 
-
-
                 for (int i = 0 ; i <4 ; i++)
                 {
                     rectfill(player[i],0,0,1272,713,makecol(255,0,255));
                 }
+
                 for (int i = 0 ; i <nbrjoueur ; i++)
                 {
                     joueur[i].pos.case_colonne_iso=0;
                     joueur[i].pos.case_ligne_iso=0;
                 }
+
                 sortperso sortjoueur [nbrjoueur];
 
                 int ennemi;
@@ -902,11 +898,11 @@ int menudefin(int nbrjoueur){
 
                 }
 
-
                 init_joueur(nbrjoueur,joueur);
                 recuperation_couleur(terrain, buffer_enlevage_indication);
                 recuperation_couleur(buffer_deplacement,buffer_deplacement2);
                 int nb_mort=0;
+                int nbtour = 1;
 
                 while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
                 {
@@ -927,69 +923,64 @@ int menudefin(int nbrjoueur){
 
                     clock_t debut, fin ;
                     long clk_tck = CLOCKS_PER_SEC ;
-                    double difference ;
-                    double difference2;
+                    double difference = 0;
+                    double difference2 = 0;
                     int compteur_respiration=0;
-                    int ancienne_ligne_joueur;
-                    int ancienne_colonne_joueur;
+                    int ancienne_ligne_joueur=0;
+                    int ancienne_colonne_joueur=0;
                     debut=clock();
-                do
-                {
-                    affichage_terrain(terrain,buffer);
-
-                    masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-
-                    tour(buffer, nbrjoueur, tourjoueur);
-                    barre_de_vie(buffer, nbrjoueur, tourjoueur);
-
-                    ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
-                    ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
-
-                    //deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur, nbtour);
-
-                    affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
-                    draw_sprite(buffer, player[tourjoueur], 0,0);
-                    usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-                   // usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour);
-
-                    fin=clock() ;
-                    difference = (double)(fin-debut)/(double)clk_tck;
-                    textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
-                    //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
-
-                    difference2 = fin_de_tour(buffer);
-                    affichage_pv(buffer,petit_coeur);
-
-                    bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
-
-                    if (compteur_respiration % 100==0)
+                    do
                     {
-                        respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
-                        compteur_respiration=0;
-                    }
-                    masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-                    masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-                    enlevage_des_indications(buffer,terrain);
-                    compteur_respiration++;
+                        affichage_terrain(terrain,buffer);
 
-                }while(difference2<15 && difference<15);
+                        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
 
-                clear_bitmap(buffer_deplacement);
-                clear_bitmap(buffer_deplacement2);
-                joueur[tourjoueur].pm=3;
-                joueur[tourjoueur].pa=6;
-                tourjoueur ++;
-                nb_mort=checkwin(nbrjoueur,0);
+                        tour(buffer, nbrjoueur, tourjoueur);
+                        barre_de_vie(buffer, nbrjoueur, tourjoueur);
 
+                        ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
+                        ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
+                        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication, nbrjoueur, nbtour);
 
-                //retrait(nbrjoueur, tourjoueur);
+                        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+                        draw_sprite(buffer, player[tourjoueur], 0,0);
+                        usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
 
-                }
-                return 0;
+                        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour);
+
+                        fin=clock() ;
+                        difference = (double)(fin-debut)/(double)clk_tck;
+                        textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
+                        //circlefill(buffer, 1240, 490, 30-(difference*2), makecol(255,0,0));
+
+                        difference2 = fin_de_tour(buffer);
+                        affichage_pv(buffer,petit_coeur);
+
+                        bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
+
+                        if (compteur_respiration % 100==0)
+                        {
+                            respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
+                            compteur_respiration=0;
                         }
 
+                        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+                        enlevage_des_indications(buffer,terrain);
+                        compteur_respiration++;
 
+                    }while(difference2<15 && difference<15);
+
+                    joueur[tourjoueur].pm=3;
+                    joueur[tourjoueur].pa=6;
+                    tourjoueur ++;
+                    nbtour+=1;
+                    nb_mort=checkwin(nbrjoueur,0);
+                    //retrait(nbrjoueur, tourjoueur);
+                }
+                return 0;
         }
     }
+}
 

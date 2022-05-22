@@ -127,11 +127,11 @@ int main()
 
         clock_t debut, fin ;
         long clk_tck = CLOCKS_PER_SEC ;
-        double difference ;
-        double difference2;
+        double difference=0 ;
+        double difference2=0;
         int compteur_respiration=0;
-        int ancienne_ligne_joueur;
-        int ancienne_colonne_joueur;
+        int ancienne_ligne_joueur=0;
+        int ancienne_colonne_joueur=0;
         debut=clock();
 
     do
