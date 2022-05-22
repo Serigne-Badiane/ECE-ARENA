@@ -118,6 +118,6 @@ void retrait(int nbrjoueur, int tour_joueur);
 int checkwin(int nbre_joueurs,int i);
 void bonus (BITMAP* buffer,int pos_x,int pos_y);
 
-void attaque(BITMAP*buffer);
+void attaque(BITMAP*buffer, int k);
 
 #endif // BIB_H_INCLUDED

@@ -46,7 +46,7 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     }
 }
 
-void attaque(BITMAP*buffer)
+void attaque(BITMAP*buffer, int k)
 {
     BITMAP* image_joueur[20];
 
@@ -85,5 +85,5 @@ void attaque(BITMAP*buffer)
             putpixel(imgneg,x,y,makecol(255,0,0));
         }
     }
-    blit(imgneg[0],buffer,0,0,300,0,imgneg[0]->w,imgneg[0]->h);
+    masked_blit(imgneg[0],buffer,0,0,matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-imgneg[0]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-imgneg[0]->h, imgneg[0]->w, imgneg[0]->h);
 }
