@@ -5,7 +5,7 @@
 #include <time.h>
 
 
-void initialisation()
+void initialisation()               ///initialisation de allegro
 {
     allegro_init();
     set_color_depth(desktop_color_depth());
@@ -20,18 +20,15 @@ void initialisation()
     //show_mouse(screen);
 }
 
-
 int main()
 {
     int direct = 0;
-    srand(time(NULL));
+    srand(time(NULL));          ///pour les randoms
     initialisation();
     //direct = menudefin();
-    int nbtour=1;
+    int nbtour=1;           ///variable qui calcul le nombre de tours joués
 
-
-
-    int nbrjoueur;
+    int nbrjoueur;          ///le nombre de joueur qui joue
     nbrjoueur = menu(direct);
     sauvegarde(nbrjoueur, tourjoueur);
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 1272, 700, 0,0)!=0)         ///1272,700
@@ -41,7 +38,7 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    tourjoueur = 0;
+    tourjoueur = 0;         ///variable pour savoir qui doit jouer dans le tour
 
     BITMAP* cursor = load_bitmap("cursor.bmp", NULL);
 

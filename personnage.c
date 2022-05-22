@@ -15,7 +15,6 @@ void poison (int compteur, int* cible){
     }
 }
 
-
 void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
 {
     for (int i =0 ; i < nbrjoueur; i ++ ){

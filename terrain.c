@@ -306,10 +306,10 @@ void enlevage_des_indications(BITMAP* buffer,BITMAP* buffer_enlevage_indication)
     blit(buffer_enlevage_indication,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
 }
 
-void bonus (BITMAP* buffer, int pos_x,int pos_y)
-{
+void bonus (BITMAP* buffer, int pos_x,int pos_y)                                                ///ce sspg creer un bonus sous forme de montgolfière
+{                                                                                               ///si le joueur atteint cette montgolfière il gagne soit des pv soit des pm soit des pa
     BITMAP* pnj_bitmap = load_bitmap("mont.bmp",NULL);
-    if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)
+    if(pnj.pos.case_ligne_iso==0 && pnj.pos.case_colonne_iso==0)                                ///initialisation de la position du bonus
     {
         pnj.pos.case_ligne_iso=rand()%(21);
         pnj.pos.case_colonne_iso=rand()%(22);
@@ -319,7 +319,7 @@ void bonus (BITMAP* buffer, int pos_x,int pos_y)
             pnj.pos.case_colonne_iso=rand()%(22);
         }
     }
-    if (joueur[tourjoueur].pos.case_ligne_iso == pnj.pos.case_ligne_iso && joueur[tourjoueur].pos.case_colonne_iso== pnj.pos.case_colonne_iso)
+    if (joueur[tourjoueur].pos.case_ligne_iso == pnj.pos.case_ligne_iso && joueur[tourjoueur].pos.case_colonne_iso== pnj.pos.case_colonne_iso)      ///si le joueur atteint le bonus
     {
         pnj.pos.case_ligne_iso=rand()%(21);
         pnj.pos.case_colonne_iso=rand()%(22);
@@ -342,7 +342,7 @@ void bonus (BITMAP* buffer, int pos_x,int pos_y)
             joueur[tourjoueur].pm+=rand()%(9-1)+1;
         }
     }
-    if(pos_x !=joueur[tourjoueur].pos.case_ligne_iso || pos_y != joueur[tourjoueur].pos.case_colonne_iso)
+    if(pos_x !=joueur[tourjoueur].pos.case_ligne_iso || pos_y != joueur[tourjoueur].pos.case_colonne_iso)           ///si le joueur se déplace, le bonus fait de même
     {
         int ligne_pnj,colonne_pnj;
         ligne_pnj=rand()%(4+3)-3;

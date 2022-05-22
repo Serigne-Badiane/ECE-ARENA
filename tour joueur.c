@@ -35,7 +35,7 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     masked_blit(fleche, buffer, 0,0, 1010+tour_joueur*55, 70, fleche->w, fleche->h);
 }
 
-void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
+void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)               ///ce sspg crée une barre de vie en dessous des images des joueurs (en haut)
 {
     int degats=0;
 
@@ -46,7 +46,7 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     }
 }
 
-void attaque(BITMAP*buffer, int k)
+void attaque(BITMAP*buffer, int k)              ///ce sspg colorie en rouge le joueur quand il prend des dêgats
 {
     BITMAP* image_joueur[4];
 
