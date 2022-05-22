@@ -905,25 +905,25 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
                 if(joueur[i].classe == 0){
 
                     masked_blit(sorcier_feu, buffer_decor, 0, 0, 260, 210, sorcier_feu->w, sorcier_feu->h);
-                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"MAGE D'EAU REMPORTE LA PARTIE !");
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"MAGE D'EAU REMPORTE LA PARTIE AVEC %d PV RESTANT!", joueur[i].pv);
 
 
 
                 }
                 else if(joueur[i].classe == 1){
                     masked_blit(archer_feu, buffer_decor, 0, 0, 260, 210, archer_feu->w, archer_feu->h);
-                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"ARCHER DE FEU REMPORTE LA PARTIE !");
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"ARCHER DE FEU REMPORTE LA PARTIE AVEC %d PV RESTANT!", joueur[i].pv);
 
 
                 }
                 else if(joueur[i].classe == 2){
                     masked_blit(chevalier, buffer_decor, 0, 0, 260, 210, chevalier->w, chevalier->h);
-                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"CHEVALIER NOIR REMPORTE LA PARTIE !");
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"CHEVALIER NOIR REMPORTE LA PARTIE AVEC %d PV RESTANT!", joueur[i].pv);
 
                 }
                 else if(joueur[i].classe == 3){
                     masked_blit(tigre, buffer_decor, 0, 0, 260, 210, tigre->w, tigre->h);
-                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"TIGROU REMPORTE LA PARTIE !");
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"TIGROU REMPORTE LA PARTIE AVEC %d PV RESTANT!", joueur[i].pv);
                 }
 
 
