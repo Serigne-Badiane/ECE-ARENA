@@ -666,7 +666,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible,int * blop){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
@@ -699,6 +699,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                             if (joueur[tourjoueur].classe == 1){
                                 perso[0].porte += 3;
                                 perso[1].porte += 3;
+                                *blop = 1;
                                 ancien_nbtour[tourjoueur]=nbtour;
                             }
                             if (joueur[tourjoueur].classe == 2){
