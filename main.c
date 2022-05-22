@@ -60,6 +60,9 @@ int main()
     player[1] = create_bitmap(SCREEN_W, SCREEN_H);
     player[2] = create_bitmap(SCREEN_W, SCREEN_H);
     player[3] = create_bitmap(SCREEN_W, SCREEN_H);
+    int compteur;
+    int cible = 5;
+    int ttour;
     animation perso1 [4] [4];
 
 
@@ -153,7 +156,11 @@ int main()
         draw_sprite(buffer, player[tourjoueur], 0,0);
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour);
+        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&cible);
+        if (cible != 5 && ttour == 0){
+           poison(compteur,&cible);
+           ttour = 1;
+        }
 
         fin=clock() ;
         difference = (double)(fin-debut)/(double)clk_tck;
@@ -180,6 +187,7 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
+    ttour = 0;
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 

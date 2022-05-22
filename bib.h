@@ -66,6 +66,7 @@ typedef struct{             ///structure pour les sorts de chaque classes
     BITMAP* sort2;
     BITMAP* sort3;
     BITMAP* sort4;
+    BITMAP* sort5;
     char expl1 [100];
     char expl2 [100];
     char expl3 [100];
@@ -90,7 +91,7 @@ void affichage_terrain(BITMAP* terrain, BITMAP* buffer);
 void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso joueur [4]);
 
 void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1,BITMAP* cursor,BITMAP* temp2);
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour);
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp1, BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible);
 
 void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_joueur,BITMAP* buffer_enlevage_indication,int nbr_joueur,int nbtour);
 double fin_de_tour(BITMAP* buffer);
