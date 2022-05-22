@@ -20,11 +20,13 @@ void initialisation()
     //show_mouse(screen);
 }
 
+
 int main()
 {
     int direct = 0;
     srand(time(NULL));
     initialisation();
+    //direct = menudefin();
     int nbtour=1;
 
 
@@ -62,6 +64,7 @@ int main()
     int compteur;
     int cible = 5;
     int ttour;
+    int blop;
     animation perso1 [4] [4];
 
 
@@ -155,7 +158,7 @@ int main()
         draw_sprite(buffer, player[tourjoueur], 0,0);
         affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&cible);
+        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&cible,&blop);
         if (cible != 5 && ttour == 0){
            poison(compteur,&cible);
            ttour = 1;
@@ -180,15 +183,13 @@ int main()
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
         compteur_respiration++;
-        for(int d=0;d<nbrjoueur;d++)
-        {
-            if(joueur[d].pv<=0)
-            {
-                tourfinal[d]=nbtour;
-            }
-        }
-    }while(difference2<15 && difference<15);
 
+    }while(difference2<15 && difference<15);
+    if (blop == 1){
+        perso1[tourjoueur][0].porte -= 3;
+        perso1[tourjoueur][1].porte -= 3;
+        blop = 0;
+    }
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
