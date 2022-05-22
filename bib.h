@@ -53,7 +53,6 @@ t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 int dureesort[4];
 int ancien_nbtour[4];
-//int tourfinal[4];
 
 
 typedef struct{                 ///structure pour les animations de sort et la portée de ceci
