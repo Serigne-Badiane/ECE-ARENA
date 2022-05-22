@@ -4,8 +4,6 @@
 #include <allegro.h>
 #include "bib.h"
 
-
-
 int menu(int direct)
 {
 
@@ -907,6 +905,7 @@ int menudefin(int nbrjoueur){
                 recuperation_couleur(terrain, buffer_enlevage_indication);
                 recuperation_couleur(buffer_deplacement,buffer_deplacement2);
                 int nb_mort=0;
+                int nbtour=1;
 
                 while (!key[KEY_ESC] && nb_mort!=nbrjoueur-1)
                 {
@@ -945,12 +944,12 @@ int menudefin(int nbrjoueur){
                     ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
                     ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
 
-                    //deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur, nbtour);
+                    deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur, nbtour);
 
                     affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
                     draw_sprite(buffer, player[tourjoueur], 0,0);
                     usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-                   // usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour);
+                    usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour);
 
                     fin=clock() ;
                     difference = (double)(fin-debut)/(double)clk_tck;
@@ -979,6 +978,7 @@ int menudefin(int nbrjoueur){
                 joueur[tourjoueur].pm=3;
                 joueur[tourjoueur].pa=6;
                 tourjoueur ++;
+                nbtour++;
                 nb_mort=checkwin(nbrjoueur,0);
 
 
