@@ -157,8 +157,9 @@ int main()
         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
         usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&blop);
         printf("%d %d \n", cible,compteur);
-        if (cible != 5 && ttour == cible){
+        if (cible != 5 && ttour == 0 && tourjoueur==cible){
            poison();
+           ttour=1;
         }
 
         fin=clock() ;
@@ -187,7 +188,7 @@ int main()
         perso1[tourjoueur][1].porte -= 3;
         blop = 0;
     }
-    ttour=cible;
+    ttour=0;
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
