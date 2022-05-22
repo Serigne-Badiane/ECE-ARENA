@@ -21,7 +21,7 @@ void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
     for (int i =0 ; i < nbrjoueur; i ++ ){
         joueur[i].pa = 6;
         joueur[i].pm = 3;
-        joueur[i].pv = 200;
+        joueur[i].pv = 20;
     }
 }
 
