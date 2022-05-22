@@ -59,9 +59,9 @@ void attaque(BITMAP*buffer, int k)
 
     imgneg=create_bitmap(image_joueur[k]->w,image_joueur[k]->h);
 
-    for (int y=0;y<image_joueur[k]->h;y++)
+    for (int y=0;y<imgneg->h;y++)
     {
-        for (int x=0;x<image_joueur[k]->w;x++)
+        for (int x=0;x<imgneg->w;x++)
         {
             putpixel(imgneg,x,y,makecol(255,0,0));
         }
