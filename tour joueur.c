@@ -48,42 +48,23 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
 
 void attaque(BITMAP*buffer, int k)
 {
-    BITMAP* image_joueur[20];
+    BITMAP* image_joueur[4];
 
     image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
-    image_joueur[1] = load_bitmap("player/player2.bmp", NULL);
-    image_joueur[2] = load_bitmap("player/player3.bmp", NULL);
-    image_joueur[3] = load_bitmap("player/player4.bmp", NULL);
-    image_joueur[4] = load_bitmap("player/player5.bmp", NULL);
-    image_joueur[5] = load_bitmap("player/player6.bmp", NULL);
-    image_joueur[6] = load_bitmap("player/player7.bmp", NULL);
-    image_joueur[7] = load_bitmap("player/player8.bmp", NULL);
-    image_joueur[8] = load_bitmap("player/player9.bmp", NULL);
-    image_joueur[9] = load_bitmap("player/player10.bmp", NULL);
-    image_joueur[10] = load_bitmap("player/player11.bmp", NULL);
-    image_joueur[11] = load_bitmap("player/player12.bmp", NULL);
-    image_joueur[12] = load_bitmap("player/player13.bmp", NULL);
-    image_joueur[13] = load_bitmap("player/player14.bmp", NULL);
-    image_joueur[14] = load_bitmap("player/player15.bmp", NULL);
-    image_joueur[15] = load_bitmap("player/player16.bmp", NULL);
-    image_joueur[16] = load_bitmap("player/player17.bmp", NULL);
-    image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
-    image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
-    image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
+    image_joueur[1] = load_bitmap("player/player6.bmp", NULL);
+    image_joueur[2] = load_bitmap("player/player11.bmp", NULL);
+    image_joueur[3] = load_bitmap("player/player16.bmp", NULL);
 
-    BITMAP *imgneg[4];
+    BITMAP *imgneg;
 
-    imgneg[0]=create_bitmap(image_joueur[0]->w,image_joueur[0]->h);
-    imgneg[1]=create_bitmap(image_joueur[5]->w,image_joueur[5]->h);
-    imgneg[2]=create_bitmap(image_joueur[10]->w,image_joueur[10]->h);
-    imgneg[3]=create_bitmap(image_joueur[15]->w,image_joueur[15]->h);
+    imgneg=create_bitmap(image_joueur[k]->w,image_joueur[k]->h);
 
-    for (int y=0;y<image_joueur[0]->h;y++)
+    for (int y=0;y<image_joueur[k]->h;y++)
     {
-        for (int x=0;x<image_joueur[0]->w;x++)
+        for (int x=0;x<image_joueur[k]->w;x++)
         {
             putpixel(imgneg,x,y,makecol(255,0,0));
         }
     }
-    masked_blit(imgneg[0],buffer,0,0,matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-imgneg[0]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-imgneg[0]->h, imgneg[0]->w, imgneg[0]->h);
+    blit(imgneg,buffer,0,0,matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-imgneg->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-imgneg->h, imgneg->w, imgneg->h);
 }
