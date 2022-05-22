@@ -48,20 +48,17 @@ void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)               
 
 void attaque(BITMAP*buffer, int k)              ///ce sspg colorie en rouge le joueur quand il prend des dêgats
 {
-    BITMAP* image_joueur[4];
+    BITMAP* image_joueur;
 
-    image_joueur[0] = load_bitmap("player/player1.bmp", NULL);
-    image_joueur[1] = load_bitmap("player/player6.bmp", NULL);
-    image_joueur[2] = load_bitmap("player/player11.bmp", NULL);
-    image_joueur[3] = load_bitmap("player/player16.bmp", NULL);
+    image_joueur = load_bitmap("player/player1.bmp", NULL);
 
     BITMAP *imgneg;
 
-    imgneg=create_bitmap(image_joueur[k]->w,image_joueur[k]->h);
+    imgneg=create_bitmap(image_joueur->w,image_joueur->h);
 
-    for (int y=0;y<imgneg->h;y++)
+    for (int y=0;y<image_joueur->h;y++)
     {
-        for (int x=0;x<imgneg->w;x++)
+        for (int x=0;x<image_joueur->w;x++)
         {
             putpixel(imgneg,x,y,makecol(255,0,0));
         }
