@@ -4,14 +4,15 @@
 #include "bib.h"
 #include <time.h>
 
-void poison (int compteur, int* cible){
+void poison (){
+
     if (compteur < 2 && cible != 5){
-        joueur[*cible].pv -= (rand()%(40-10+1))+10;
+        joueur[cible].pv -= (rand()%(40-10+1))+10;
         compteur ++;
     }
     else {
         compteur = 0;
-        *cible = 5;
+        cible = 5;
     }
 }
 
@@ -594,7 +595,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible,int * blop){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int * blop){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous canalisez et gagnez un bonus en fonction de votre classe");
@@ -829,17 +830,15 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                             }
                             if (k!=4){
 
-                                *cible = k;
+                                cible = k;
                                 joueur[tourjoueur].pa -= 2;
                                 leave  = 1;
                             }
-
                         }
                     }
                 }
         }
     }
-
 }
 
 double fin_de_tour (BITMAP* buffer)
