@@ -801,7 +801,7 @@ int menudefin(int nbrjoueur){
 
     while (quit!=1)
     {
-        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
 
         rect(buffer_decor,1000,50,1300,150,makecol(255,255,0));
         rect(buffer_decor,1000,200,1300,300,makecol(255,255,0));
@@ -810,6 +810,8 @@ int menudefin(int nbrjoueur){
         masked_blit(quitter, buffer_decor, 0, 0, 1025, 70, quitter->w, quitter->h);
         masked_blit(revanche, buffer_decor, 0, 0, 1025, 220, quitter->w, quitter->h);
         masked_blit(new_game, buffer_decor, 0, 0, 1025, 370, quitter->w, quitter->h);
+
+        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
 
 
@@ -824,8 +826,9 @@ int menudefin(int nbrjoueur){
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
+                direct = 1;
+                return direct;
 
-                main();
 
             }
 
@@ -983,6 +986,11 @@ int menudefin(int nbrjoueur){
                     joueur[tourjoueur].pa=6;
                     tourjoueur ++;
                     ttour = 0;
+                    if(joueur[tourjoueur].pv<=0)
+                    {
+                        joueur[tourjoueur].pv=0;
+                        tourjoueur++;
+                    }
                     nbtour+=1;
                     nb_mort=checkwin(nbrjoueur,0);
                     //retrait(nbrjoueur, tourjoueur);

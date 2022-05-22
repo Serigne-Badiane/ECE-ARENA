@@ -266,14 +266,20 @@ void respirer(BITMAP* buffer,BITMAP* terrain, int nbr_joueur,BITMAP* temp)  ///s
     {
         while(i<=2)
         {
-            stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            if(joueur[k].pv>0)
+            {
+                stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            }
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
             i++;
         }
         while(i>0)
         {
-            stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            if(joueur[k].pv>0)
+            {
+                stretch_blit(image_joueur[0+joueur[k].classe*5], buffer, 0, 0,image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].x-image_joueur[0+joueur[k].classe*5]->w/2, matrice_terrain_iso[joueur[k].pos.case_ligne_iso][joueur[k].pos.case_colonne_iso].y-image_joueur[0+joueur[k].classe*5]->h, image_joueur[0+joueur[k].classe*5]->w, image_joueur[0+joueur[k].classe*5]->h+3*i);
+            }
             masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
             enlevage_des_indications(buffer,temp);
             i--;
@@ -307,7 +313,7 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     image_joueur[17] = load_bitmap("player/player18.bmp", NULL);
     image_joueur[18] = load_bitmap("player/player19.bmp", NULL);
     image_joueur[19] = load_bitmap("player/player20.bmp", NULL);
-
+    BITMAP* image_fantome=load_bitmap("fantome.bmp", NULL);
     for(int k=0; k<20; k++)
     {
         if (image_joueur[k]==NULL)
@@ -322,7 +328,14 @@ void deplacement_p2(BITMAP*terrain,BITMAP*buffer,BITMAP*buffer_couleur,int tour_
     {
         if(s!=tour_joueur)
         {
-            masked_blit(image_joueur[0+joueur[s].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+joueur[s].classe*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+joueur[s].classe*5]->h, image_joueur[0+joueur[s].classe*5]->w, image_joueur[0+joueur[s].classe*5]->h);
+            if(joueur[s].pv>0)
+            {
+                masked_blit(image_joueur[0+joueur[s].classe*5], buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+joueur[s].classe*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+joueur[s].classe*5]->h, image_joueur[0+joueur[s].classe*5]->w, image_joueur[0+joueur[s].classe*5]->h);
+            }
+            else
+                masked_blit(image_fantome, buffer, 0 ,0, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].x-image_joueur[0+joueur[s].classe*5]->w/2, matrice_terrain_iso[joueur[s].pos.case_ligne_iso][joueur[s].pos.case_colonne_iso].y-image_joueur[0+joueur[s].classe*5]->h, image_joueur[0+joueur[s].classe*5]->w, image_joueur[0+joueur[s].classe*5]->h);
+
+
         }
     }
     masked_blit(pnj_bitmap, buffer, 0 ,0, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].x-pnj_bitmap->w/2, matrice_terrain_iso[pnj.pos.case_ligne_iso][pnj.pos.case_colonne_iso].y-pnj_bitmap->h, pnj_bitmap->w, pnj_bitmap->h);

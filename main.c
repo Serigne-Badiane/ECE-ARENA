@@ -26,6 +26,7 @@ int main()
     int direct = 0;
     srand(time(NULL));
     initialisation();
+    direct = menudefin();
     int nbtour=1;
 
 
@@ -78,7 +79,7 @@ int main()
 
     init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
-    ///quadrillage(terrain,terrain);                 ///quadrille la map (possibilité de le mettre au choix)
+    ///quadrillage(terrain,terrain);                 ///quadrille la map (possibilitï¿½ de le mettre au choix)
     affichage_terrain(terrain,buffer);
     for (int i = 0 ; i< nbrjoueur ; i ++){
         if (joueur[i].classe == 0){
@@ -188,6 +189,11 @@ int main()
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
     ttour = 0;
+    if(joueur[tourjoueur].pv<=0)
+    {
+        joueur[tourjoueur].pv=0;
+        tourjoueur++;
+    }
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 

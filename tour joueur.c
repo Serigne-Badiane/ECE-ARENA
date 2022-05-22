@@ -35,9 +35,6 @@ void tour(BITMAP* buffer, int nbrjoueur, int tour_joueur)
     masked_blit(fleche, buffer, 0,0, 1010+tour_joueur*55, 70, fleche->w, fleche->h);
 }
 
-
-
-
 void barre_de_vie(BITMAP* buffer, int nbrjoueur, int tour_joueur)
 {
     int degats=0;
