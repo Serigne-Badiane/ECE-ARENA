@@ -815,19 +815,6 @@ int menu(int direct) /// Menu de début qui passe en paramètre une variable qui
 }
 
 
-
-
-////////////////////
-
-
-
-
-
-
-
-
-
-
 int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le nombre de joueurs en parametre pour ensuite afficher leur position (gagnant/perdant) et affichage du nombre de tours
 
     int quit = 0;
@@ -961,6 +948,11 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
         if (mouse_y > 50 && mouse_y < 150 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur Quitter
             {
+                for (int f=0;f<nbrjoueur;f++)
+                {
+                    joueur[f].pos.case_colonne_iso=0;
+                    joueur[f].pos.case_ligne_iso=0;
+                }
                 allegro_exit();
                 main();
 
@@ -968,6 +960,11 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
+                for (int f=0;f<nbrjoueur;f++)
+                {
+                    joueur[f].pos.case_colonne_iso=0;
+                    joueur[f].pos.case_ligne_iso=0;
+                }
                 allegro_exit();
                 direct = 1; /// Passera en parametre du menu de debut pour sauter la premiere interface
                 main();
@@ -1028,7 +1025,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
 
                 sortperso sortjoueur [nbrjoueur];
 
-                int ennemi;
+                //int ennemi;
 
                 init_struct_case(nbrjoueur);
                 terrain_couleur(buffer_invisible_couleur);

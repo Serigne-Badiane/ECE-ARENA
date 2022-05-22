@@ -64,7 +64,7 @@
 	"bib.h"
 	<time.h>
 
-1653250049 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
+1653251946 source:c:\users\jdouv\onedrive\documents\github\ece-arena\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -157,14 +157,14 @@
 	<allegro.h>
 	"bib.h"
 
-1653249782 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
+1653252696 source:c:\users\jdouv\onedrive\documents\github\ece-arena\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<allegro.h>
 	"bib.h"
 
-1653251269 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
+1653252222 source:c:\users\jdouv\onedrive\documents\github\ece-arena\personnage.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -299,7 +299,7 @@
 	"bib.h"
 	<time.h>
 
-1653248817 source:c:\users\jdouv\onedrive\documents\github\ece-arena\tour joueur.c
+1653251547 source:c:\users\jdouv\onedrive\documents\github\ece-arena\tour joueur.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>

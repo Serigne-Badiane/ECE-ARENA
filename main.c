@@ -78,7 +78,7 @@ int main()
 
     sortperso sortjoueur [nbrjoueur];
 
-    int ennemi;
+    //int ennemi;
 
     init_struct_case(nbrjoueur);
     terrain_couleur(buffer_invisible_couleur);
@@ -112,7 +112,6 @@ int main()
 
     init_joueur(nbrjoueur,joueur);
     recuperation_couleur(terrain, buffer_enlevage_indication);
-    //recuperation_couleur(buffer_deplacement,buffer_deplacement2);
     int nb_mort=0;
 
     while (!key[KEY_ESC])
@@ -141,78 +140,73 @@ int main()
         int ancienne_colonne_joueur=0;
         debut=clock();
 
-    do
-    {
-        affichage_terrain(terrain,buffer);
-
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-
-        tour(buffer, nbrjoueur, tourjoueur);
-        barre_de_vie(buffer, nbrjoueur, tourjoueur);
-
-        ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
-        ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
-
-        deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur,nbtour);
-
-
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-        draw_sprite(buffer, player[tourjoueur], 0,0);
-        affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
-        usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
-        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&blop);
-        if (cible != 5 && ttour == 0 && tourjoueur==cible){
-           poison();
-           ttour=1;
-        }
-
-        fin=clock() ;
-        difference = (double)(fin-debut)/(double)clk_tck;
-        textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
-
-        difference2 = fin_de_tour(buffer);
-        affichage_pv(buffer,petit_coeur);
-
-        bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
-
-        if (compteur_respiration % 100==0)
+        do
         {
-            respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
-            compteur_respiration=0;
+            affichage_terrain(terrain,buffer);
+
+            masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+
+            tour(buffer, nbrjoueur, tourjoueur);
+            barre_de_vie(buffer, nbrjoueur, tourjoueur);
+
+            ancienne_ligne_joueur=joueur[tourjoueur].pos.case_ligne_iso;
+            ancienne_colonne_joueur=joueur[tourjoueur].pos.case_colonne_iso;
+
+            deplacement_p2(terrain, buffer ,buffer_invisible_couleur, tourjoueur,buffer_enlevage_indication,nbrjoueur,nbtour);
+
+
+            masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            draw_sprite(buffer, player[tourjoueur], 0,0);
+            affichagesort(player[tourjoueur],sortjoueur[tourjoueur],coeurpv,joueur);
+            usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
+            usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2,nbtour,&blop);
+            if (cible != 5 && ttour == 0 && tourjoueur==cible){
+               poison();
+               ttour=1;
+            }
+
+            fin=clock() ;
+            difference = (double)(fin-debut)/(double)clk_tck;
+            textprintf_ex(buffer,font,1000,0,makecol(255,255,255),makecol(153,217,234),"Il vous reste que %.0lf secondes", 15-difference);
+
+            difference2 = fin_de_tour(buffer);
+            affichage_pv(buffer,petit_coeur);
+
+            bonus(buffer,ancienne_ligne_joueur,ancienne_colonne_joueur);
+
+            if (compteur_respiration % 100==0)
+            {
+                respirer(buffer,terrain,nbrjoueur,buffer_enlevage_indication2);
+                compteur_respiration=0;
+            }
+            masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+            masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+            enlevage_des_indications(buffer,terrain);
+            compteur_respiration++;
+
+        }while(difference2<15 && difference<15);
+        if (blop == 1){
+            perso1[tourjoueur][0].porte -= 3;
+            perso1[tourjoueur][1].porte -= 3;
+            blop = 0;
         }
-        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
-        masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
-        enlevage_des_indications(buffer,terrain);
-        compteur_respiration++;
+        ttour=0;
+        joueur[tourjoueur].pm=3;
+        joueur[tourjoueur].pa=6;
+        tourjoueur ++;
+        if(joueur[tourjoueur].pv<=0)
+        {
+            joueur[tourjoueur].pv=0;
+            joueur[tourjoueur].tourfinal = nbtour;
+            tourjoueur++;
+        }
+        nbtour+=1;
+        nb_mort=checkwin(nbrjoueur,0);
 
-    }while(difference2<15 && difference<15);
-    if (blop == 1){
-        perso1[tourjoueur][0].porte -= 3;
-        perso1[tourjoueur][1].porte -= 3;
-        blop = 0;
-    }
-    ttour=0;
-    joueur[tourjoueur].pm=3;
-    joueur[tourjoueur].pa=6;
-    tourjoueur ++;
-    if(joueur[tourjoueur].pv<=0)
-    {
-        joueur[tourjoueur].pv=0;
-        joueur[tourjoueur].tourfinal = nbtour;
-        tourjoueur++;
-    }
-    nbtour+=1;
-    nb_mort=checkwin(nbrjoueur,0);
-
-    if(nb_mort==nbrjoueur-1){
-
-        direct = menudefin(nbrjoueur, nbtour);
-
-    }
-
-
-
-    //retrait(nbrjoueur, tourjoueur);
+        if(nb_mort==nbrjoueur-1)
+        {
+            direct = menudefin(nbrjoueur, nbtour);
+        }
 
     }
 
