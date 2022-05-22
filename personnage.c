@@ -4,6 +4,18 @@
 #include "bib.h"
 #include <time.h>
 
+void poison (int compteur, int* cible){
+    if (compteur < 2 && cible != 5){
+        joueur[*cible].pv -= (rand()%(40-10+1))+10;
+        compteur ++;
+    }
+    else {
+        compteur = 0;
+        *cible = 5;
+    }
+}
+
+
 void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
 {
     for (int i =0 ; i < nbrjoueur; i ++ ){
@@ -18,6 +30,7 @@ void load_cra_feu (sortperso* perso){
     perso->sort2 = load_bitmap("tir_explosif.bmp",NULL);
     perso->sort3=  load_bitmap("feu_oku.bmp",NULL);
     perso->sort4 = load_bitmap("cac_feu.bmp",NULL);
+    perso->sort5 = load_bitmap("poison_feu.bmp",NULL);
 
 }
 
@@ -26,6 +39,7 @@ void load_guerrier (sortperso* perso){
     perso->sort2 = load_bitmap("epee_iop.bmp",NULL);
     perso->sort3 = load_bitmap("boost_terre.bmp",NULL);
     perso->sort4 = load_bitmap("cac_terre.bmp",NULL);
+    perso->sort5 = load_bitmap("poison_terre.bmp",NULL);
 
 }
 void load_anim_coco (animation* perso){
@@ -55,6 +69,7 @@ void load_tigre (sortperso* perso){
     perso->sort2 = load_bitmap("rafale.bmp",NULL);
     perso->sort3= load_bitmap("bond_felin.bmp",NULL);
     perso->sort4 = load_bitmap("cac_air.bmp",NULL);
+    perso->sort5 = load_bitmap("toxine.bmp",NULL);
 }
 void load_anim_epee_iop (animation* perso){
     perso->anim1 = load_bitmap("eppe.bmp",NULL);
@@ -82,6 +97,7 @@ void load_mage_eau (sortperso* perso){
     perso->sort2 = load_bitmap("propulsion.bmp",NULL);
     perso->sort3= load_bitmap("protection.bmp",NULL);
     perso->sort4 = load_bitmap("cac_eau.bmp",NULL);
+    perso->sort5 = load_bitmap("poison_eau.bmp",NULL);
 
 }
 
@@ -105,6 +121,7 @@ void affichagesort (BITMAP* buffer,sortperso perso,BITMAP * coeurpv, str_perso j
         blit(perso.sort2, buffer ,0,0,300,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort3, buffer ,0,0,380,650,perso.sort1->h,perso.sort1->w);
         blit(perso.sort4, buffer ,0,0,460,650,perso.sort1->h,perso.sort1->w);
+        blit(perso.sort5, buffer ,0,0,540,650,perso.sort1->h,perso.sort1->w);
         rectfill(buffer,100,20,220,40,makecol(0,0,255));
         rectfill(buffer,100,45,220,65,makecol(0,255,0));
         textprintf_ex(buffer,font,35,40,makecol(255,255,255),makecol(255,0,0),"%d",joueur[tourjoueur].pv);
@@ -647,7 +664,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
 }
 
-void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour){
+void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
         textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
@@ -834,6 +851,58 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                 }
         }
 
+        }
+    }
+    if (mouse_y > 650 && mouse_y < 713 && mouse_x > 540 && mouse_x < 610){
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige peu de degat");
+        blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
+        if (mouse_y > 650 && mouse_y < 713 && mouse_x > 540 && mouse_x < 610 && mouse_b & 1){
+                for (int i = 2 ; i < 4 ; i++){
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
+                    case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
+                    draw_sprite(screen, buffer, 0,0);
+                    blit(buffer,temp2,0,0,0,0,SCREEN_W,SCREEN_H);
+                }
+                if (joueur[tourjoueur].pa <= 2){
+
+                }
+                else{
+
+                    int leave = 0;
+                    while (leave == 0){
+                        blit(temp2,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
+                        masked_blit(cursor,buffer, 9, 0,mouse_x, mouse_y, cursor->w, cursor->h);
+                        draw_sprite(screen, buffer, 0,0);
+                        int k = 4;
+                        if (mouse_b & 2){
+                            leave =1 ;
+                        }
+                        if(mouse_b&1 && getr(getpixel(buffer,mouse_x,mouse_y))==0 && getb(getpixel(buffer,mouse_x,mouse_y))==255 && getg(getpixel(buffer,mouse_x,mouse_y))==0) ///si le joueur clique et que la case est accessible
+                        {
+                            if (mouse_y > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[0].pos.case_ligne_iso][joueur[0].pos.case_colonne_iso].x +28){
+                                k = 0;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[1].pos.case_ligne_iso][joueur[1].pos.case_colonne_iso].x +28 ){
+                                k = 1;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[2].pos.case_ligne_iso][joueur[2].pos.case_colonne_iso].x +28){
+                                k = 2;
+                            }
+                            if (mouse_y > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y - 45  && mouse_y < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].y + 25 && mouse_x > matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x - 28 && mouse_x < matrice_terrain_iso[joueur[3].pos.case_ligne_iso][joueur[3].pos.case_colonne_iso].x +28){
+                                k = 3;
+                            }
+                            if (k!=4){
+
+                                *cible = k;
+                                joueur[tourjoueur].pa -= 2;
+                                leave  = 1;
+                            }
+
+                        }
+                    }
+                }
         }
     }
 
