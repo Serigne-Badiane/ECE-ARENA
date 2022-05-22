@@ -89,6 +89,8 @@ int menu(int direct)
 
 
 
+
+
     for (int i = 1; i < 3; i++){
 
         sprintf(NomFichier,"player/player%dbis.bmp",i);
@@ -271,6 +273,8 @@ int menu(int direct)
 
                         bordure=load_bitmap("bordure.bmp",NULL);
 
+
+
                         int cpteur_nbre_joueurs = 0;
 
                         for(int j=0;j<nbre_joueur;j++)
@@ -282,6 +286,7 @@ int menu(int direct)
                         {
                             while(joueur[j].classe==6)
                             {
+
 
                                 masked_blit(cursor, page3, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
@@ -296,6 +301,12 @@ int menu(int direct)
                                 {
                                     blit(noirr,page3,0,0,150,300,noirr->w,noirr->h);
                                     masked_blit(sorcier_feu, page3, 0, 0, 150, 300, Logo->w, Logo->h);
+
+                                    textprintf_ex(page3,font,220,640,makecol(0,0,255),makecol(255,255,255),"Boule d'eau : Lance une boule d'eau qui inflige 45pt de degat");
+                                    textprintf_ex(page3,font,220,650,makecol(0,0,255),makecol(255,255,255),"Flocon bien lourd: Lance un flocon bien lourd qui inflige 30pt de degat");
+                                    textprintf_ex(page3,font,220,660,makecol(0,0,255),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
+                                    textprintf_ex(page3,font,220,670,makecol(0,0,255),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,680,makecol(0,0,255),makecol(255,255,255),"Patate lointaine : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
 
                                 }
 
@@ -324,10 +335,15 @@ int menu(int direct)
                                 masked_blit(bordure, page3, 0, 0, 380, 130, bordure->w, bordure->h);
                                 masked_blit(archer_feu1, page3, 0, 0, 450, 300, Logo->w, Logo->h);
 
-                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631)
+                                if(mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631) /// Animation quand passage de souris
                                 {
                                     blit(noirr,page3,0,0,450,300,noirr->w,noirr->h);
                                     masked_blit(archer_feu, page3, 0, 0, 450, 300, Logo->w, Logo->h);
+                                    textprintf_ex(page3,font,220,640,makecol(255,0,0),makecol(255,255,255),"Fleche de Feu : Lance une fleche enflamee qui inflige 30pt de degat");
+                                    textprintf_ex(page3,font,220,650,makecol(255,0,0),makecol(255,255,255),"Boule de Feu : Lance une boule d'eau qui inflige 45pt de degat");
+                                    textprintf_ex(page3,font,220,660,makecol(255,0,0),makecol(255,255,255),"Canalisation : Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
+                                    textprintf_ex(page3,font,220,670,makecol(255,0,0),makecol(255,255,255),"Patate : Un coup au corps a corps qui inflige peu de degat");
+                                    textprintf_ex(page3,font,220,680,makecol(255,0,0),makecol(255,255,255),"Patate lointaine : Un coup au corps a corps avec plus de portée qui inflige peu de degat");
                                 }
 
                                 if (mouse_y > 173 && mouse_y < 553 && mouse_x > 420 && mouse_x < 631 && mouse_b & 1)
@@ -779,10 +795,23 @@ int menu(int direct)
 }
 
 
+
+
+////////////////////
+
+
+
+
+
+
+
+
+
+
 int menudefin(int nbrjoueur,int nbre_total_de_tours){
 
     int quit = 0;
-    int direct = 1;
+    int direct = 0;
 
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
     {
@@ -799,6 +828,18 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
     BITMAP* new_game=load_bitmap("new_game.bmp",NULL);
     BITMAP* revanche=load_bitmap("revanche.bmp",NULL);
     BITMAP* trophee=load_bitmap("trophee.bmp",NULL);
+
+
+
+    BITMAP* sorcier_feu=load_bitmap("player/player3bis.bmp", NULL);
+    BITMAP* archer_feu=load_bitmap("player/player6bis.bmp", NULL);
+    BITMAP* chevalier=load_bitmap("player/player11bis.bmp", NULL);
+    BITMAP* tigre=load_bitmap("player/player16bis.bmp", NULL);
+
+    BITMAP* sorcier_feu2=load_bitmap("player/player3.bmp", NULL);
+    BITMAP* archer_feu2=load_bitmap("player/player6.bmp", NULL);
+    BITMAP* chevalier2=load_bitmap("player/player11.bmp", NULL);
+    BITMAP* tigre2=load_bitmap("player/player16.bmp", NULL);
 
 
 
@@ -835,6 +876,61 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){
 
 
         masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
+        for(int i=0;i<nbrjoueur;i++){
+
+            if(joueur[i].pv <= 0){
+                if(joueur[i].classe == 0){
+
+                    masked_blit(sorcier_feu2, buffer_decor, 0, 0, 175, 400, sorcier_feu2->w, sorcier_feu2->h);
+
+
+
+                }
+                else if(joueur[i].classe == 1){
+                    masked_blit(archer_feu2, buffer_decor, 0, 0, 175, 480, archer_feu2->w, archer_feu2->h);
+
+                }
+                else if(joueur[i].classe == 2){
+                    masked_blit(chevalier2, buffer_decor, 0, 0, 175, 560, chevalier2->w, chevalier2->h);
+
+                }
+                else if(joueur[i].classe == 3){
+                    masked_blit(tigre2, buffer_decor, 0, 0, 175, 640, tigre2->w, tigre2->h);
+                }
+            }
+
+            if(joueur[i].pv > 0){
+
+                if(joueur[i].classe == 0){
+
+                    masked_blit(sorcier_feu, buffer_decor, 0, 0, 260, 210, sorcier_feu->w, sorcier_feu->h);
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"MAGE D'EAU REMPORTE LA PARTIE !");
+
+
+
+                }
+                else if(joueur[i].classe == 1){
+                    masked_blit(archer_feu, buffer_decor, 0, 0, 260, 210, archer_feu->w, archer_feu->h);
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"ARCHER DE FEU REMPORTE LA PARTIE !");
+
+
+                }
+                else if(joueur[i].classe == 2){
+                    masked_blit(chevalier, buffer_decor, 0, 0, 260, 210, chevalier->w, chevalier->h);
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"CHEVALIER NOIR REMPORTE LA PARTIE !");
+
+                }
+                else if(joueur[i].classe == 3){
+                    masked_blit(tigre, buffer_decor, 0, 0, 260, 210, tigre->w, tigre->h);
+                    textprintf_ex(buffer_decor,font,50,140,makecol(0,255,0),2,"TIGROU REMPORTE LA PARTIE !");
+                }
+
+
+
+
+        }
+        }
 
 
 

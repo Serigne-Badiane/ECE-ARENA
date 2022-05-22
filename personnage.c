@@ -171,7 +171,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290){
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
 
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui infliche 45pt de degat");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui inflige 45pt de degat");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
                 int leave=0;
                 for (int i = 2 ; i < perso[0].porte ; i++){
@@ -667,7 +667,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int* cible){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous enflammez et gagnez 3pt de mouvement pour 2 tour");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450 && mouse_b & 1){
                 case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);

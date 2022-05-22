@@ -26,7 +26,7 @@ int main()
     int direct = 0;
     srand(time(NULL));
     initialisation();
-    direct = menudefin();
+    //direct = menudefin();
     int nbtour=1;
 
 
