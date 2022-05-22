@@ -52,6 +52,7 @@ t_case matrice_terrain[LIGNE][COLONNE];
 t_case_iso matrice_terrain_iso[LIGNE2][COLONNE2];
 int dureesort[4];
 int ancien_nbtour[4];
+int tourfinal[4];
 
 
 typedef struct{                 ///structure pour les animations de sort et la portée de ceci
@@ -116,5 +117,7 @@ void sauvegarde(int nbrjoueur, int tour_joueur);
 void retrait(int nbrjoueur, int tour_joueur);
 int checkwin(int nbre_joueurs,int i);
 void bonus (BITMAP* buffer,int pos_x,int pos_y);
+
+void attaque(BITMAP*buffer);
 
 #endif // BIB_H_INCLUDED

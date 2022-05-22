@@ -21,7 +21,7 @@ void init_joueur(int nbrjoueur,str_perso joueur [nbrjoueur])
     for (int i =0 ; i < nbrjoueur; i ++ ){
         joueur[i].pa = 6;
         joueur[i].pm = 3;
-        joueur[i].pv = 20;
+        joueur[i].pv = 200;
     }
 }
 
@@ -406,6 +406,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 }
                                             }
                                             int degat = (rand()%(40-20+1))+20;
+                                            attaque(buffer);
                                             textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur %d attaque et inflige au Joueur %d %d degat !",tourjoueur+1,k+1,degat);
                                             draw_sprite(screen, buffer, 0,0);
                                             joueur[k].pv -= degat;
@@ -654,6 +655,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                         }
                                 leave = 1;
                                 joueur[k].pv -= (rand()%(30-10+1))+10;
+                                attaque(buffer);
                                 joueur[tourjoueur].pa -= 3;
                             }
                     }
@@ -843,6 +845,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
 
                                 leave = 1;
                                 joueur[k].pv -= (rand()%(20-5+1))+5;
+                                attaque(buffer);
                                 joueur[tourjoueur].pa -= 2;
                             }
                         }
