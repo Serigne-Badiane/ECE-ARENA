@@ -801,7 +801,7 @@ int menudefin(int nbrjoueur){
 
     while (quit!=1)
     {
-        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
+
 
         rect(buffer_decor,1000,50,1300,150,makecol(255,255,0));
         rect(buffer_decor,1000,200,1300,300,makecol(255,255,0));
@@ -810,6 +810,8 @@ int menudefin(int nbrjoueur){
         masked_blit(quitter, buffer_decor, 0, 0, 1025, 70, quitter->w, quitter->h);
         masked_blit(revanche, buffer_decor, 0, 0, 1025, 220, quitter->w, quitter->h);
         masked_blit(new_game, buffer_decor, 0, 0, 1025, 370, quitter->w, quitter->h);
+
+        masked_blit(cursor, buffer_decor, 0, 0,mouse_x, mouse_y, cursor->w, cursor->h); // changement de bitmap pr le curseur
 
 
 
