@@ -20,11 +20,13 @@ void initialisation()
     //show_mouse(screen);
 }
 
+
 int main()
 {
     int direct = 0;
     srand(time(NULL));
     initialisation();
+    //direct = menudefin();
     int nbtour=1;
 
 
@@ -181,13 +183,7 @@ int main()
         masked_blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
         enlevage_des_indications(buffer,terrain);
         compteur_respiration++;
-        for(int d=0;d<nbrjoueur;d++)
-        {
-            if(joueur[d].pv<=0)
-            {
-                tourfinal[d]=nbtour;
-            }
-        }
+
     }while(difference2<15 && difference<15);
     if (blop == 1){
         perso1[tourjoueur][0].porte -= 3;
