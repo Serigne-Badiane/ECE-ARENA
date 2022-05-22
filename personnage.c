@@ -171,7 +171,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290){
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
 
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une boule de feu qui inflige 45pt de degat");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une grosse attaque dans un rayon de 5 cases");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 220 && mouse_x < 290 && mouse_b & 1){
                 int leave=0;
                 for (int i = 2 ; i < perso[0].porte ; i++){
@@ -240,9 +240,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 0)
                                                    {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
-                                                    //draw_sprite(screen, buffer, 0,0);
-
                                                     rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 1;
@@ -250,9 +247,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 1)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
-                                                    //draw_sprite(screen, buffer, 0,0);
-
                                                     rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 2;
@@ -260,9 +254,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 2)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
-                                                    //draw_sprite(screen, buffer, 0,0);
-
                                                     rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 0;
@@ -282,9 +273,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 0)
                                                    {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 1;
@@ -292,9 +280,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 1)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 2;
@@ -302,9 +287,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 2)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                    */
-
                                                     rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 0;
@@ -324,9 +306,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 0)
                                                    {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                   /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 1;
@@ -334,9 +313,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 1)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                     draw_sprite(screen, buffer, 0,0);
                                                     altern = 2;
@@ -344,9 +320,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 2)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                   /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                     draw_sprite(screen, buffer, 0,0);
 
@@ -366,9 +339,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 0)
                                                    {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                     draw_sprite(screen, buffer, 0,0);
 
@@ -377,9 +347,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 1)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                     draw_sprite(screen, buffer, 0,0);
 
@@ -388,9 +355,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                                 if (altern == 2)
                                                 {
                                                     blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                    /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                    draw_sprite(screen, buffer, 0,0);*/
-
                                                     rotate_sprite(buffer, perso[0].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                     draw_sprite(screen, buffer, 0,0);
 
@@ -405,19 +369,17 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 
                                                 }
                                             }
-                                            int degat = (rand()%(40-20+1))+20;
+                                            if (((rand()%(12-1+1))+1) != 1){  /// 1 chance sur 12 d'échouer
+                                                joueur[k].pv -= (rand()%(40-20+1))+20;
+                                            }
 
-                                            textprintf_ex(buffer,font,905,460,makecol(255,255,255),makecol(64,47,32),"Joueur %d attaque et inflige au Joueur %d %d degat !",tourjoueur+1,k+1,degat);
-                                            draw_sprite(screen, buffer, 0,0);
-                                            joueur[k].pv -= degat;
-                                            //attaque(buffer, k);
                                             joueur[tourjoueur].pa -= 4;
                                             leave = 1;
                                         }
 
 
                               }
-                            } // while
+                            }
                         }
                     }
 
@@ -426,7 +388,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
     }
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370){
          blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance une fleche enflamee qui inflige 30pt de degat");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance un sort a grande portée en ligne droite uniquement");
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 300 && mouse_x < 370 && mouse_b & 1){
                 int leave=0;
                 for (int i = 2 ; i < perso[1].porte ; i++){
@@ -489,9 +451,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 0)
                                                {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                //blit(bdf1, buffer, 0, 0, joueur1.pos.x+(2*i) - bdf1->w,joueur1.pos.y+(2*j), bdf1->w, bdf1->h);
-                                                //draw_sprite(screen, buffer, 0,0);
-
                                                 rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32)); // 128 = 180�
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 1;
@@ -499,9 +458,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 1)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                //blit(bdf2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf2->w,joueur[tourjoueur].pos.y+(2*j), bdf2->w, bdf2->h);
-                                                //draw_sprite(screen, buffer, 0,0);
-
                                                 rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 2;
@@ -509,9 +465,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 2)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                //blit(bdf3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- bdf3->w,joueur[tourjoueur].pos.y+(2*j), bdf3->w, bdf3->h);
-                                                //draw_sprite(screen, buffer, 0,0);
-
                                                 rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i),joueur[tourjoueur].pos.y+(2*j)-45, ftofix(32));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 0;
@@ -531,9 +484,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 0)
                                                {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 1;
@@ -541,9 +491,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 1)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 2;
@@ -551,9 +498,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 2)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                */
-
                                                 rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(96));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 0;
@@ -573,9 +517,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 0)
                                                {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                               /* blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 1;
@@ -583,9 +524,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 1)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                 draw_sprite(screen, buffer, 0,0);
                                                 altern = 2;
@@ -593,9 +531,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 2)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                               /* blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-32));
                                                 draw_sprite(screen, buffer, 0,0);
 
@@ -615,9 +550,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 0)
                                                {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim1, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim1->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim1->w, perso[0].animsort1.anim1->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim1, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                 draw_sprite(screen, buffer, 0,0);
 
@@ -626,9 +558,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 1)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim2, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim2->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim2->w, perso[0].animsort1.anim2->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim2, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                 draw_sprite(screen, buffer, 0,0);
 
@@ -637,9 +566,6 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             if (altern == 2)
                                             {
                                                 blit(temp,buffer,0,0,0,0,SCREEN_W,SCREEN_H);
-                                                /*blit(perso[0].animsort1.anim3, buffer, 0, 0, joueur[tourjoueur].pos.x+(2*i)- perso[0].animsort1.anim3->w,joueur[tourjoueur].pos.y+(2*j), perso[0].animsort1.anim3->w, perso[0].animsort1.anim3->h);
-                                                draw_sprite(screen, buffer, 0,0);*/
-
                                                 rotate_sprite(buffer, perso[1].anim3, joueur[tourjoueur].pos.x+(2*i) ,joueur[tourjoueur].pos.y+(2*j)-45, ftofix(-96));
                                                 draw_sprite(screen, buffer, 0,0);
 
@@ -655,8 +581,10 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
                                             }
                                         }
                                 leave = 1;
-                                joueur[k].pv -= (rand()%(30-10+1))+10;
-                                //attaque(buffer, k);
+                                if (((rand()%(12-1+1))+1) != 1){ /// 1 chance sur 12 d'échouer
+                                    joueur[k].pv -= (rand()%(30-10+1))+10;
+                                }
+
                                 joueur[tourjoueur].pa -= 3;
                             }
                     }
@@ -670,7 +598,7 @@ void usesort (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* c
 void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITMAP* cdp,BITMAP* cursor,BITMAP* temp2,int nbtour,int * blop){
 
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450){
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous canalisez et gagnez 3pt de mouvement pour 2 tour");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Vous vous canalisez et gagnez un bonus en fonction de votre classe");
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 380 && mouse_x < 450 && mouse_b & 1){
                 case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
@@ -846,7 +774,9 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                                     }
 
                                 leave = 1;
-                                joueur[k].pv -= (rand()%(20-5+1))+5;
+                                if (((rand()%(12-1+1))+1) != 1){   /// 1 chance sur 12 d'échouer
+                                    joueur[k].pv -= (rand()%(20-5+1))+5;
+                                }
                                 //attaque(buffer,k);
                                 joueur[tourjoueur].pa -= 2;
                             }
@@ -859,7 +789,7 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
         }
     }
     if (mouse_y > 650 && mouse_y < 713 && mouse_x > 540 && mouse_x < 610){
-        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Un coup au corps a corps qui inflige peu de degat");
+        textprintf_ex(buffer,font,220,640,makecol(255,0,0),makecol(255,255,255),"Lance un poison qui infige des degats sur 2 tours");
         blit(buffer,temp,0,0,0,0,SCREEN_W,SCREEN_H);
         if (mouse_y > 650 && mouse_y < 713 && mouse_x > 540 && mouse_x < 610 && mouse_b & 1){
                 for (int i = 2 ; i < 4 ; i++){
@@ -925,7 +855,7 @@ double fin_de_tour (BITMAP* buffer)
     }
 }
 
-int checkwin(int nbre_joueurs,int i)
+int checkwin(int nbre_joueurs,int i) /// sspg qui verifie si il y a un vainqueur ou non
 {
     if (i==nbre_joueurs)
     {
