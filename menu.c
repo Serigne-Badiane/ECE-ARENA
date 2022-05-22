@@ -826,8 +826,9 @@ int menudefin(int nbrjoueur){
 
         if (mouse_y > 350 && mouse_y < 450 && mouse_x > 1000 && mouse_x < 1300 && mouse_b & 1) /// Click sur New Game
             {
+                direct = 1;
+                return direct;
 
-                main();
 
             }
 
