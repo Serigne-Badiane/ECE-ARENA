@@ -180,6 +180,11 @@ int main()
     joueur[tourjoueur].pm=3;
     joueur[tourjoueur].pa=6;
     tourjoueur ++;
+    if(joueur[tourjoueur].pv<=0)
+    {
+        joueur[tourjoueur].pv=0;
+        tourjoueur++;
+    }
     nbtour+=1;
     nb_mort=checkwin(nbrjoueur,0);
 
