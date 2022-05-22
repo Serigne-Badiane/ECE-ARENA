@@ -1095,7 +1095,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
                         draw_sprite(buffer, player[tourjoueur], 0,0);
                         usesort(buffer,perso1[tourjoueur],temp1,cursor,temp2);
 
-                        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour,&cible,&blop);
+                        usesortboost(buffer,perso1[tourjoueur],temp1,cdp,cursor,temp2, nbtour,&blop);
                         if (cible != 5 && ttour == 0){
                             poison(compteur,&cible);
                             ttour = 1;
