@@ -833,15 +833,15 @@ void usesortboost (BITMAP* buffer,animation perso [tourjoueur],BITMAP* temp,BITM
                     {
                         case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso+i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
                     }
-                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    if(joueur[tourjoueur].pos.case_ligne_iso-i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso-i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
                     {
                         case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso-i][joueur[tourjoueur].pos.case_colonne_iso].y,0,0,255);
                     }
-                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso+i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso+i>0)
                     {
                         case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso+i].y,0,0,255);
                     }
-                    if(joueur[tourjoueur].pos.case_ligne_iso+i<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso+i>0 && joueur[tourjoueur].pos.case_colonne_iso<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso>0)
+                    if(joueur[tourjoueur].pos.case_ligne_iso<LIGNE2 && joueur[tourjoueur].pos.case_ligne_iso>0 && joueur[tourjoueur].pos.case_colonne_iso-i<COLONNE2 && joueur[tourjoueur].pos.case_colonne_iso-i>0)
                     {
                         case_couleur(buffer,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].x,matrice_terrain_iso[joueur[tourjoueur].pos.case_ligne_iso][joueur[tourjoueur].pos.case_colonne_iso-i].y,0,0,255);
                     }
