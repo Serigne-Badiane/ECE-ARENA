@@ -23,6 +23,7 @@ void initialisation()               ///initialisation de allegro
 
 int main()
 {
+    menudefin();
     cible=5;                ///utilisé pour le sort de poison
     compteur=0;             ///sort poison
     int direct = 0;

@@ -45,7 +45,7 @@ int menu() /// Menu de début qui passe en paramètre une variable qui changera 
 
     set_color_depth(desktop_color_depth());
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)              ///1272,700 dans le jeu car 1400 785 ne marche pas sur tous les ordis , ici c'est pour faire plus grand
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)              ///1272,700 dans le jeu car 1400 785 ne marche pas sur tous les ordis , ici c'est pour faire plus grand
     {
         allegro_message("prb gfx mode");
         allegro_exit();
@@ -820,7 +820,7 @@ int menudefin(int nbrjoueur,int nbre_total_de_tours){ /// Menu de fin, prend le 
     int quit = 0;
     int direct = 0;
 
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1400,750,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,1272,700,0,0)!=0)
     {
         allegro_message("prb gfx mode");
         allegro_exit();
